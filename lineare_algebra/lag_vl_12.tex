@@ -1,0 +1,117 @@
+\documentclass{../tudscript}
+\begin{document}
+  \sect{weiterführung Determinanten}
+       \ilmath{det (\begin{pmatrix}
+        3 & 1 & 1 \\
+        1 & 3 & 1 \\
+        1 & 1 & 3 \end{pmatrix} =  - det (\begin{pmatrix}
+        1 & 3 & 1 \\
+        3 & 1 & 1 \\
+        1 & 1 & 3 \end{pmatrix} &= \\ - - det (\begin{pmatrix}
+        1 & 3 & 1 \\
+        0 & -8 & -2 \\
+        0 & -1 & 2 \end{pmatrix} =  - \frac{1}{4} \begin{pmatrix}
+        1 & 3 & 1 \\
+        0 & -8 & -2 \\
+        0 & 0 & 10 \end{pmatrix} &= \\ - \frac{1}{4} \cdot 1 \cdot (-8) \cdot 10 = 20} 
+       \ssect{Lösbarkeit von LGS}
+            $A \in K^{n \times n}$
+            \ilmath{det (A) \neq 0 \iff A^{-1} ex. \iff rg (A) = n \iff ker (A) = \Set{0_{K^n}}}
+            \ilmath{det (A) = 0 \iff | ker (A) | > 1}
+    \sect{Eigenwerte und Eigenvektoren}
+        $Sei A \in K^{n \times n}, v \in K^n, k \in K$
+        \ilmath{\underbrace{A \cdot v}_{Matrizenmultiplikation} = \underbrace{k \cdot v}_{Skalarmultiplikation} \text{ für Eigenvektoren v von A zum Eigenwert k}}
+        
+        \ssect{Definition: Eigenvektor und Eigenwert}
+            Sei $A \in K^{n \times n}$ (K Körper)
+            \begin{center}
+                k heißt \underline{Eigenwert von A}, wenn es einen Vektor $v \in K^n \ \Set{0}$ gilt, sodass
+                \ilmath{A \cdot v = k \cdot v}
+                gilt.
+                \\
+                Ein solcher Vektor v heißt \underline{Eigenvektor von A (zum Eigenwert von k)}.
+            \end{center}
+        \ssect{Bemerkung: Ausschluss des Nullvoktors}
+            Es gilt:
+            \ilmath{A \cdot 0_{K^n} = 0_{K^n} = k \cdot 0_{K^n} \text{ für alle} k \in K}    
+            
+            Der Nullvektor ist kein Eigenvektor.
+        \ssect{$0_K$ als Eigenwert}
+            $0 \in K$ kann Eigenwert von A sein.
+            z.b.
+            \ilmath{\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}}
+            
+            Für $det (A) = 0$ ist 0 ein eigenwert.
+        \ssect{Beispiele}
+            \begin{enumerate}
+                \item \ilmath{A =\begin{pmatrix}
+                2 & 1 \\
+                0 & 3 \end{pmatrix} \in \bR^{2 \times 2}}
+                \ilmath{v_1 = \ve{1}{0} \text{ ist ein Eigenvektor zum Eigenwert} 2\text{ , denn} A \cdot v_1 \ve{2}{0} = 2 \cdot \ve{1}{0}}
+                \ilmath{v_2 = \ve{1}{1} \text{ ist ein Eigenvektor zum Eigenwert} 3\text{ , denn} A \cdot v_2 \ve{3}{3} = 3 \cdot \ve{1}{1}}
+                \item weiteres Beispiel: Google Page Rank. Siehe Zusatzmaterial.
+            \end{enumerate}
+       \ssect{Bemerkung}
+            k EW von A 
+            \begin{flalign*}
+            		&\iff \exists v \in k^n \ \Set{0}: Av = kv = k E_n v &\\
+                    &\iff \exists v \in K^n \ \Set{0}: \underbrace{Av = k E_n v = (A - k E_n)v = 0}_{homog. LGS mit koeff. Matrix A - k E_n} &\\
+                    &\iff \text{existiert eine vom Nullvektor verschiedene Lösung des homog. LGS mit der koeff. Matrix} A - k E_n &\\
+                    &\iff | ker (A - k \cdot E_n) | > 1 &\\
+                    &\iff det (A - k \cdot E_n) = 0\\
+           	\end{flalign*}
+       \ssect{Bemerkung}
+            Sei v ein EV von A. Dann gilt jeder Eigenwert v ist ein Element des Kerns von $A- K E_n$
+        \ssect{Beispiel}
+        \ilmath{A = \begin{pmatrix}
+            1 & -2 & 0 \\
+            -2 & 0 & 1 \\
+            0 & -2 & 1 \end{pmatrix}_{3 \times 3} \text{ges. EW (EV)}}
+        \ilmath{det (A - k E_n) = det ( \begin{pmatrix}
+            1-k & -2 & 0 \\
+            -2  & -k & 1 \\
+            0 & -2 & 1-k \end{pmatrix}) &= (1-k)^2 \cdot (-k) - (1-k) \cdot (-2) - 4 \cdot (1-k) \\
+                                        &= (1-k)^2 (-k) - 2 \cdot (1-k) = (1-k)((1-k)(-k)-2) \\
+                                        &= (1-k)(k^2-k-2) = 0}
+        \ilmath{\iff 1-k = 0 \lor k^2 -k - 2 = 0 \iff k \in  \Set{1, -1, 2}}
+    \ssect{charakteristisches Polynom}
+        Seien $A \in K^{n \times n}$, dann nennt man
+        \ilmath{\chi_A (x) := det (A - x \cdot E_n)\\
+        	 = c_n \cdot x^n + \cdots + c_1 \cdot x^1 + c_0 \cdot x^0 \text{die \underline{charakteristische Polynom(funktion) der Matrix A}}}
+        Die Eigenwerte von A sind die Nullstellen des charakteristischen Polynoms.
+    \ssect{Bemerkung nach fundemantalsatz der Algebra}
+        \begin{enumerate}
+        \item Jede Matrix in $K^{n \times n}$ hat höchstens n Eigenwerte.
+        \item Für $k = \bC: A \in \bC^{n \times n}$ hat genau n Eigenwerte, wenn man jede Nullstelle mit ihrer Vielfachheit zählt. z.b.
+        \ilmath{\chi_A = (x-1)^3 \cdot (x-2)^2 (x+1)^1\hfill a \in K^{6 \times 6}, k_1 = k_2, k_3 = 1, k_4 = k_5 = 0, k_6 = -1}
+        \end{enumerate}
+    \ssect{Beispiel: Eigenvektoren}
+    \ilmath{A = \begin{pmatrix}
+            1 & -2 & 0 \\
+            -2 & 0 & 1 \\
+            0 & -2 & 1 \end{pmatrix}_{3 \times 3}, EW: -1, 1, 2 ges. EV} 
+    \paragraph
+    EV zu k = 2:
+    \ilmath{A - 2 E_n = \begin{pmatrix}
+    1-2 &-2 &0 \\
+    -2 & 0-2 & 1 \\
+    0 & -2 & 1-2 \end{pmatrix} \rightsquigarrow \begin{pmatrix} +1 & +2 & 0 \\ 0 & +2 & +1 \end{pmatrix}}
+    \ilmath{ker (A - 2 E_n) = \Set{t \ve{-2}{1}{-2}\mid t \in \bR} = span (\Set{\ve{-2}{1}{-2}})}
+    Eigenschaften von A zum EW $k_1 = 2: ker (A) -2 E_3 \ \Set{0} = \Set{t \ve{-2}{1}{-2} \mid t \in \bR}$
+    \paragraph
+    EV zu k = 1. Eigenraum zu 1 
+    \ilmath{ker (A - k E_n) = span (\Set{\ve{1}{0}{2}})}
+    \paragraph
+    EV zu k = -1. Eigenraum zu -1
+    \ilmath{ker (A +1 Ev) = span (\Set{\ve{1}{1}{1}})}
+    \ssect{Bemerkung}
+    \ilmath{\ve{1}{1}{1}, \ve{1}{0}{2}, \ve{-1}{1}{-2} \text{sind linear unabhängig}}
+    \ssect{Satz}
+    für $A \cdot v_i = k_i \cdot v_i  (i = 1, \ldots, t)$ und sind $k_1, \ldots, k_i$ paarweise verschieden., dann sind $v_1, \ldots, v_i$ lin. unabhängig.
+    \ssect{Definition: Eigenraum}
+        Sei $A \in K^{n \times n}$, k ein EW von A.
+        dann nennt man
+        \ilmath{ker (A- k E_n) \text{den Eigenraum von A}}
+        Der Eigenraum von A zu k ist ein UVR von $K^n$
+        Der Eigenraum von A zu k besteht aus allen Eigenvektoren von a zu k und zusätzlich dem Nullvektor (KEIN EV!!).
+\end{document}

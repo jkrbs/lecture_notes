@@ -1,0 +1,88 @@
+\documentclass{../tudscript}
+\begin{document}
+   \sect{Matrizen}
+        \ssect{Determinanten}
+            $det: K^{n \times n} \rightarrow K, A \mapsto \underbrace{det(A=}_{Determinante der n \times n Matrix}$
+            Det (A) gibt den Faktor an, um den sich dads "Volumen" einer Figur ändert, wenn auf die Figur die linare Abbildung: $x \rightarrow Ax$ anwendet.
+        \ssect{Beispiele}
+            
+          \begin{enumerate}
+          \item \begin{equation*}
+            det(  \begin{pmatrix}
+                a & b \\
+                c & d \\        
+                \end{pmatrix} ) = ad -bc
+            \end{equation*}            
+            %%here some TIKZ will appear TODO
+        
+         \end{enumerate}            
+    \ssect{Bermerkung}
+      $det( \begin{pmatrix} 
+        v_1 & w_1 \\
+        v_2 & w_2 \\
+    \end{pmatrix} = 0 \iff v_1 w_2 - v_2 w_1 = 0 \iff v_1 v_2 = v_2 v_1 \iff \frac{v_1}{w_1} = \frac{v_2}{w_2} = k \iff \ve{v_1}{v_2} = \ve{w_1 k}{w_2 k} = k \ve{w_1}{w_2} \iff \vec{v}, \vec{w}$ sind linear abhängig.
+
+    $det (\begin{pmatrix} v_1 & w_1 \\ v_2 && w_2 \end{pmatrix}) \neq 0 \iff \vec{v}, \vew{w} lin unab.$
+
+    \subsectiobn{Beispiel}
+        $n = 3$
+        \begin{equation*}
+        det( \begin{pmatrix}
+            a & b & c \\
+            d & e & f \\
+            g & i & h \\
+        \end{pmatrix} ) = a \cdot e \cdot i + b \cdot f \cdot g + c \cdot d \cdot h - g \cdot e \cdot c - h \cdot f \cdot a - i \cdot d \cdot b  = a(ei -hf) + d (ib -ch) + g (bf- ec) = a det()\begin{pmatrix} e & f \\ h & i \\ \end{pmatrix} - d det(\begin{pmatrix} b & c \\ h & i \\ \end{pmatrix}) + g det (\begin{pmatrix} b & c \\ e 6 f \\ \end{pmatrix})
+        \end{equation*}
+        Für Matrizen mit n > 3 gibt es \underline{KEINE!!11!elf} derartige Brechnungsmethode.
+\ssect{Definition}
+    Sei $A = (a_{ij}) \in K^{n \times n}. Dann gilt:
+\begin{enumerate}
+    \item $n = 1 \implies det((a_{11})) := a _{11}$
+    \item $n > 1 \implies det(A) = \sum_{i = 1}^n (-1) a_{i1} det(A_{i1})
+    wobei $A_{i1}$ aus A durch Streichen der i-ten Zeile und 1-ten Spalte entsteht.
+\end{enumerate}
+\ssect{Bemerkung: Vorzeichenregel}
+erste Zeile +. Dann alternierend.
+\ssect{Bemerkung}
+Die Berechnungsvorschrift aus der Definition nennt man Entwicklung nach der 1-ten Spalte 
+
+\ssect{Satz: es ist egal nach welcher Spalte wir entwickeln}
+Bezeichnung $a \in A^{n \times n} A_{ij}  \in K^{(n-1) \times (n-1)}$ entsteht aus A durch Streichen der i-ten Zeile und j-ten Spalte.
+
+Satz: Sei $A = (a_{ij})_{n \times n}  (n>1)$, dann gilt.
+
+\begin{enumerate}
+\item $det (A) = \sum_{i = 1}^n (-1)^{i+j} a_{ij} \cdot det (A_{ij})$ Einteilung nach der j-ten Spalte.
+\item $det (A) = \sum_{j = 1}^n (-1)^{i+j} a_{ij} \cdot det (A_{ij})$ Einteilung nach der i-ten Zeile.
+\end{enumerate}
+Beiweis möglich mittel Vollständiger Induktion: Klar! üb!^\trademark
+
+\ssect{Folgerung}
+Matrizen, die eine Nullzeile oder eine Nullspalte haben, haben die Determinante 0.
+
+\ssect{Bermerkung}
+\ilmath{det(E^{n \times n}) = 1}
+\ssect{Umformung von Determinanten}
+\begin{enumerate}
+    \item Es gilt $det A = det A^T$
+
+    \item A' entstehe aus A durch Multiplikation einer Zeile mit $k \in K$. Dann: $det A' = k det A$
+    
+    \item $A' = kA \implies det (A') = k^n det A$
+
+    \item A' entstehe aus A durch Vertauschen zweier Zeilen. Dann $det A' = - det A$
+    
+    \item A enthält zwei gleiche Zeilen $\implies det A = 0$
+
+    \item A' entsteht aus A, indem man zu einer Zeile das k-fache einer bel. \underline{anderen} Zeile addiert, dann:
+    \ilmath{det A' = det A}
+    
+    \item 2 bis 6 gilt auch für Spalten statt zeilen
+\end{enumerate}
+\ssect{Multiplikationssatz}
+Sei $A, B \in K^{n \times n} \implies det(AB) = det A \cdot det(B)$.
+\ssect{Folgerung}
+$A \in K^{n \times n}: \boxed{A^{-1} ex \iff det (A) \neq 0}$
+
+Beweis: $\implies A A^{-1} = e \implies det (A) det (A^{-1}) = 1$
+\end{document}

@@ -1,0 +1,308 @@
+\documentclass{../tudscript}
+\begin{document}
+\newcommand{\ilmath}[1]{\begin{flalign*}#1\end{flalign*}}
+\newcommand{\vect}[1]{\begin{pmatrix}#1\end{pmatrix}}
+\makeatletter
+
+\hypertarget{beispiele-fuxfcr-vektorruxe4ume-aus-der-informatik}{%
+\ssect{Beispiele für Vektorräume aus der
+Informatik}\label{beispiele-fuxfcr-vektorruxe4ume-aus-der-informatik}}
+
+\hypertarget{section}{%
+\sssect{1.}\label{section}}
+
+UVR der Splinefunktion (H 36)
+
+\hypertarget{section-1}{%
+\sssect{2.}\label{section-1}}
+
+\(V = GF(2)^n\), Matrix \(H \in GC(2)^{m \times n}\)
+\(\mathscr{L} = \Set{x \in GF(2)^n | H_{m \times n} \cdot X_{n \times 1} = 0_{m \times 1}}\)
+(Linearcodes)
+
+UVR von \(GF(2)^n\), z.B.
+
+\(H = \begin{pmatrix}1&1&0\\1&0&1 \end{pmatrix} \> , \> \mathscr{C}\Set{\begin{pmatrix}0\\0\\0\end{pmatrix}, \begin{pmatrix}1\\1\\1\end{pmatrix}}\)
+
+\(\mathscr{C}\) ist ein UVR von \(GF(2)^3\), denn
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\begin{pmatrix}0\\0\\0\end{pmatrix} = 0_{GF(2)^3} \in \mathscr{C}\)
+\item
+  \(\begin{pmatrix}0\\0\\0\end{pmatrix} + \begin{pmatrix}0\\0\\0\end{pmatrix},  \begin{pmatrix}0\\0\\0\end{pmatrix} + \begin{pmatrix}1\\1\\1\end{pmatrix},  \begin{pmatrix}1\\1\\1\end{pmatrix} + \begin{pmatrix}0\\0\\0\end{pmatrix},  \begin{pmatrix}1\\1\\1\end{pmatrix} + \begin{pmatrix}1\\1\\1\end{pmatrix}  \in \mathscr{C}\)
+\item
+  \(0 \cdot \begin{pmatrix}0\\0\\0\end{pmatrix},  1 \cdot \begin{pmatrix}0\\0\\0\end{pmatrix},  0 \cdot \begin{pmatrix}1\\1\\1\end{pmatrix},  1 \cdot \begin{pmatrix}1\\1\\1\end{pmatrix} \in \mathscr{C}\)
+\end{enumerate}
+
+\hypertarget{beispiel-vr-mathscrr3}{%
+\ssect{\texorpdfstring{Beispiel: VR
+\(\mathscr{R}^3\)}{Beispiel: VR \textbackslash{}mathscr\{R\}\^{}3}}\label{beispiel-vr-mathscrr3}}
+
+UVR sind unter anderem:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\mathscr{R}^3\)
+\item
+  \(\Set{\begin{pmatrix}0\\0\\0\end{pmatrix}^\prime} = \{0_{\mathscr{R}^3}\}\)
+  Nullraum
+\item
+  UVRe der Geraden durch\hfill\quad\linebreak 
+  \(0_{\mathscr{R}^3}\Set{t\begin{pmatrix}a\\b\\c\end{pmatrix} | t \in \mathscr{R}}, \begin{pmatrix}a\\b\\c\end{pmatrix} \in \mathscr{R}^3\)
+\item
+  UVR Ebene durch \(0_{\mathscr{R}^3}\)\\
+  \(\Set{t_1 \begin{pmatrix}a_1\\b_1\\c_1\end{pmatrix} + t_2 \begin{pmatrix}a_2\\b_2\\c_2\end{pmatrix} | t_1,t_2 \in \mathscr{R}}\)\\
+  vorausgesetzt, \(\begin{pmatrix}a_2\\b_1\\c_1\end{pmatrix}\) befindet
+  sich nicht auf einer Geraden mit
+  \(\begin{pmatrix}a_2\\b_2\\c_2\end{pmatrix}\), und beide sind ungleich
+  dem Nullvektor \(0_{\mathbb{R}^3}\)
+\end{itemize}
+
+\hypertarget{allgemein}{%
+\ssect{Allgemein:}\label{allgemein}}
+
+Sei \(V\) ein K-VR, mit \(T \subseteq V\)
+
+\begin{center}
+\begin{tikzpicture}[scale=0.25]
+\draw (0,0) circle (4);
+\draw (2,0) node [text=black, right] {$V$};
+\fill [pattern=north west lines, pattern color=blue](-0.5,0) circle (3);
+\draw (-0.5,0) circle (3);
+\draw (-1.5,1.5) circle (1)node [text=black] {$T$};
+\draw (-0.5, -0.9) node [text=black] {$Span(T)$};
+\end{tikzpicture}
+\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  \(Span(T)\): kleinster UVR, der als Teilmenge \(T\) enthält.
+\item
+  \(Span(V) = V\)
+\item
+  \(Span(\emptyset) = \{0_V\}\)
+\item
+  \(Span(\{\underbrace{v_1, v_2, ..., v_n}_{\in V}\}) = \Set{k_1v_1 + k2v_2 + ... + k_nv_n | k_1,k_2,...,k_n \in K}\)\\
+  \(\Rightarrow\) Linearkombination der Vektoren \(v_1, v_2, ..., v_n\)
+  und den Koeffizienten \(k_1, k_2, ..., k_n\)
+\end{itemize}
+
+\hypertarget{beispiel}{%
+\ssect{Beispiel}\label{beispiel}}
+
+Ist
+\(\Set{\begin{pmatrix}3a + 5b\\2c\\4\end{pmatrix}| a,b,c \in mathbb{R}}\)
+UVR von \(\mathbb{R}^3\) ?\\
+\(\Rightarrow\) Nein, da kein Nullelement.
+
+Ist
+\(\Set{\begin{pmatrix}3a + 5b\\2c\\a+b+c\end{pmatrix}| a,b,c \in mathbb{R}}\)
+UVR von \(\mathbb{R}^3\) ?
+
+\(=\Set{a \begin{pmatrix}3\\0\\1\end{pmatrix} + b \begin{pmatrix}5\\0\\1\end{pmatrix} + c \begin{pmatrix}0\\2\\1\end{pmatrix} |  a,b,c \in \mathscr{R}}\)
+
+\(= Span\left(\left\{\begin{pmatrix}3\\0\\1\end{pmatrix},\begin{pmatrix}5\\0\\1\end{pmatrix},\begin{pmatrix}0\\2\\1\end{pmatrix}  \right\}\right)\)
+ist UVR von \(\mathbb{R}^3\)
+
+\hypertarget{definition}{%
+\ssect{Definition}\label{definition}}
+
+Sei \(V\) ein K-VR, \(T \subseteq V\). Gilt \(Span(T) = V\), so nennt
+man \(T\) ein Erzeugungssystem vom UVR
+
+\hypertarget{beispiel-1}{%
+\sssect{Beispiel}\label{beispiel-1}}
+
+gesucht: ein minimales Erzeugungssystem für den VR V
+
+\hypertarget{definition-1}{%
+\ssect{Definition}\label{definition-1}}
+
+Sei \(V\) ein K-VR, \(v_1, ..., v_n \in V\) \(v_1, ..., v_n\) bzw.
+\(\{v_1, ..., v_n\}\) bzw \((v_1, ..., v_n)\) heißt linear unabhängig,
+wenn gilt:
+
+Andernfalls heißten die Vektoren linear abhängig.
+
+\hypertarget{beispiel-2}{%
+\sssect{Beispiel}\label{beispiel-2}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(\begin{pmatrix}1\\0\end{pmatrix}, \begin{pmatrix}1\\1\end{pmatrix}, \begin{pmatrix}2\\1\end{pmatrix} \in \mathbb{R}\)
+  sind linear abhängig, denn 
+\item
+  \(\begin{pmatrix}1\\0\end{pmatrix}, \begin{pmatrix}1\\1\end{pmatrix} \in \mathbb{R}\)
+  sind linear unabhängig, denn Das LGS hat genau eine Lösung,
+  \(\begin{pmatrix}0\\0\end{pmatrix}\)
+\end{enumerate}
+
+\hypertarget{allgemein-1}{%
+\ssect{Allgemein}\label{allgemein-1}}
+
+Ist
+\(\begin{pmatrix}\bigcirc\\ \vdots \\ \bigcirc\end{pmatrix}, \begin{pmatrix}\bigcirc\\ \vdots \\ \bigcirc\end{pmatrix}, \dotsm, \begin{pmatrix}\bigcirc\\ \vdots \\ \bigcirc\end{pmatrix} \in K^n\)
+linear abhängig/unabhängig?
+
+\(\Set{\begin{pmatrix}\bigcirc\\ \vdots \\ \bigcirc\end{pmatrix},  \begin{pmatrix}\bigcirc\\ \vdots \\ \bigcirc\end{pmatrix}, \dotsm,  \begin{pmatrix}\bigcirc\\ \vdots \\ \bigcirc\end{pmatrix}|  \begin{pmatrix}0\\ \vdots \\0\end{pmatrix} } \rightsquigarrow\)
+homogenes LGS \(\rightsquigarrow\) ZSF
+
+\newcommand\x{\bigcirc}
+\newcommand\xp{\hphantom{\bigcirc}}
+\newcommand*{\bord}{\multicolumn{1}{c|}{}}
+\begin{flalign*}
+    \left(
+        \begin{array}{cccccc}
+            \bigcirc& \bigcirc& \bigcirc& \bigcirc& \dotsm & 
+            \multirow{4}{*}{
+                $\left.\begin{aligned}\\\\\\\\\end{aligned}\right\}r$ 
+            }\\ 
+            \cline{1-1}
+            \multicolumn{1}{c|}{}& \bigcirc& \bigcirc& \bigcirc& \dotsm \\ 
+            \cline{2-2}
+                          & \multicolumn{1}{c|}{}& \bigcirc& \bigcirc& \dotsm \\ 
+            \cline{3-3}
+            \mbox{\huge 0} &        & \multicolumn{1}{c|}{}& \bigcirc& \dotsm \\ \cline{4-5}
+            \multicolumn{5}{c}{
+                \underbrace{\begin{array}{ccccc}
+                \hphantom{\bigcirc}& \hphantom{\bigcirc}& \hphantom{\bigcirc}& \hphantom{\bigcirc}& \hphantom{\bigcirc}
+                \end{array}}_n
+            }&\\
+        \end{array}
+    \right)
+    \text{\qquad}
+    \begin{array}{ll}
+    r=n \implies\ &\text{die Vektoren sind linear unabhängig}\\
+    r<n \implies\ &\text{die Vektoren sind linear abhängig}\\
+    \end{array}
+\end{flalign*}
+
+\hypertarget{beispiel-3}{%
+\sssect{Beispiel}\label{beispiel-3}}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\emptyset\) ist linear unabhängig
+\item
+  \(\{0_V\}\) ist linear unabhängig
+\end{itemize}
+
+\hypertarget{definition-2}{%
+\ssect{Definition}\label{definition-2}}
+
+Sei \(V\) ein K-VR, mit \(B \subseteq V\).\\
+B heißt eine Basis von V, wenn gilt:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(Span(B) = V\)
+\item
+  B ist linear unabhängig
+\end{enumerate}
+
+Bemerkung: Eine Basis ist ein linear unabhängiges Erzeugungssystem
+
+\hypertarget{beispiel-4}{%
+\sssect{Beispiel}\label{beispiel-4}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \begin{itemize}
+  \tightlist
+  \item
+    \(\begin{pmatrix}1\\0\end{pmatrix}, \begin{pmatrix}1\\1\end{pmatrix}\)
+    Basis von \(\mathbb{R}^2\)
+  \item
+    \(\begin{pmatrix}1\\0\end{pmatrix}, \begin{pmatrix}0\\1\end{pmatrix}\)
+    Standardbasis von \(\mathbb{R}^2\)
+  \item
+    \(\{e_1, ..., e_n\}\) mit
+    \(e_i = \begin{pmatrix}0 \\ \vdots \\ 1 \\ 0\end{pmatrix} \begin{array}{l}  \vphantom{0}\\  \vphantom{\vdots}\\  \leftarrow \text{i-te Zeile}\\  \hphantom{0} \end{array} \qquad\)
+    Standardbasis von \(K^n\)
+  \end{itemize}
+\item
+  \begin{itemize}
+  \tightlist
+  \item
+    \(1\) ist eine Basis für \(\mathbb{R}\) (Standardbasis)
+  \item
+    \(1 + i\) ist eine Basis für \(\mathbb{C}\)
+  \end{itemize}
+\item
+  \(\begin{pmatrix}1 & 0 \\ 0 & 0\end{pmatrix}, \begin{pmatrix}0 & 1 \\ 0 & 0\end{pmatrix},  \begin{pmatrix}0 & 0 \\ 1 & 0\end{pmatrix}, \begin{pmatrix}0 & 0 \\ 0 & 1\end{pmatrix}\)
+  ist eine Basis von \(\mathbb{R}^{2 \times 2}\)
+\item
+  Der Nullraum \(\{0_V\}\) hat die Basis \(\emptyset\)
+\end{enumerate}
+
+\hypertarget{bemerkung}{%
+\sssect{Bemerkung}\label{bemerkung}}
+
+\begin{itemize}
+\tightlist
+\item
+  Eine Basis eines VR ist ein minimales Erzeugungssystem dieses VR
+\item
+  Jedes minimale Erzeugungssystem eines VR ist eine Basis dieses VR\\
+  (der Beweis ist aktuell noch zu schwer)\texttrademark
+\end{itemize}
+
+\hypertarget{bemerkung-1}{%
+\sssect{Bemerkung}\label{bemerkung-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  Eine Basis eines VR ist eine maximale linear unabhängige Menge dieses
+  VR
+\item
+  Jede maximale linear unabhängige Menge ist eine Basis des VR
+\end{itemize}
+
+\hypertarget{satz}{%
+\ssect{Satz}\label{satz}}
+
+Sei \(V\) ein K-VR, \(B_1, B_2\) seien Basen.\\
+Dann gilt \(|B_2| = |B_2|\)
+
+\hypertarget{definition-3}{%
+\ssect{Definition}\label{definition-3}}
+
+Sei \(V\) ein K-VR, \(B_1\) Basis von V.\\
+\(dim\>V := |B|\quad\) heißt Dimension von V
+
+\hypertarget{beispiel-5}{%
+\sssect{Beispiel}\label{beispiel-5}}
+
+\begin{itemize}
+\tightlist
+\item
+  \(dim\>\mathbb{R}= |\{1\}| = 1\)
+\item
+  \(dim\>\mathbb{C} = \left|\left\{\begin{pmatrix}1\\0\end{pmatrix}, \begin{pmatrix}0\\i\end{pmatrix}\right\}\right| = 2\)
+\item
+  \(dim\>K^n = n\)
+\item
+  \(dim\>\{0_v\} = |\emptyset| = 0\)
+\end{itemize}
+
+\hypertarget{definition-4}{%
+\ssect{Definition}\label{definition-4}}
+
+Sei \(V\) ein K-VR, \(B=(b_1, b_2, ..., b_n)\) eine angeordnete Basis
+von \(V, v \in V\)\\
+Dann nennt man den eindeutig bestimmten Vektor
+\(\begin{pmatrix}k_1\\\vdots\\k_n\end{pmatrix} \in K^n\) mit
+\(k_1b_1 + k_2b_2+...+k_nb_n = v\) den Koordinatenvektor von v,
+Bezeichnung: \(v_B\)
+\end{document}

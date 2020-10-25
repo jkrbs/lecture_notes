@@ -1,0 +1,276 @@
+\documentclass{../tudscript}
+\begin{document}
+\hypertarget{einfuxfchrung-in-die-mathematik-fuxfcr-informatikerinnen}{%
+\sect{Einführung in die Mathematik für
+InformatikerInnen}\label{einfuxfchrung-in-die-mathematik-fuxfcr-informatikerinnen}}
+
+\hypertarget{vl}{%
+\sect{3. VL}\label{vl}}
+
+\hypertarget{kuxf6rper-galois-field-gf}{%
+\ssect{Körper / Galois Field
+(GF)}\label{kuxf6rper-galois-field-gf}}
+
+Körper GF(2)
+
+\hypertarget{endliche-kuxf6rper-mit-zwei-elementen}{%
+\subparagraph{Endliche Körper mit zwei
+Elementen:}\label{endliche-kuxf6rper-mit-zwei-elementen}}
+
+\(({0,1},+,\cdot)\)
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
++ & 0 & 1\tabularnewline
+\midrule
+\endhead
+0 & 0 & 1\tabularnewline
+1 & 1 & 0\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\(\cdot\) & 0 & 1\tabularnewline
+\midrule
+\endhead
+0 & 0 & 0\tabularnewline
+1 & 0 & 1\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\ \ L = {(1,1)}\)
+\item
+  \(\ \ L = \emptyset\)
+\item
+  \(\ \ L = {(t,1-t)|t\in\mathbb{R}}\) \(t\) ist ein reeller Parameter
+\end{enumerate}
+
+\hypertarget{lgs-und-matritzen-uxfcber-einem-kuxf6rper-k}{%
+\ssect{2. LGS und Matritzen über einem Körper
+K}\label{lgs-und-matritzen-uxfcber-einem-kuxf6rper-k}}
+
+z.B. \(K=\mathbb{R}, K=\mathbb{C},K=GF(2)\)
+
+Lineare Gleichung in den Unbekannten \(x_1,x_2,\)\ldots{}\(,x_n\)
+\((n \in \mathbb{N} \geq 1)\)
+
+\begin{itemize}
+\tightlist
+\item
+  \(a_1 \cdot x_1 + a_2 \cdot x_2 +\)\ldots{}\(+a_n \cdot x_n = b\) für
+  \(a_1,a_2,...,a_n\in K;\) \(b \in K\)
+\end{itemize}
+
+i-te Gleichung einer LGS
+
+\begin{itemize}
+\item
+  \(a_{i1}x_1+a_{i2}x_2+\)\ldots{}\(+a_{in}x_n= b_i\)
+\item
+  kurz: \(\sum_ {j=1}^n a_{ij}x = b_{i,j}\)
+\item
+  LGS mit m Gleichungen in n Unbekannten \(x_1, x_2,...,x_n\) über
+  \(K\):
+\end{itemize}
+
+\((i=1,2,...,m) \sum_ {j=1}^n a_{ij}x_j = b_i \:\:(\*)\)
+
+n-Tupel \(K^n\)
+
+\((l_1,l_2,...,l_n)\in (K\times K\times ...\times K)\) heist (eine)
+Lösung von (*), wenn gilt:
+
+\(\sum_ {j=1}^n a_{ij} \cdot b_i (i=1,2,...,m)\)
+
+Die Lösungsmenge von (*) ist die Menge aller Lösungen von \((*)\)
+
+\hypertarget{homogene-und-inhomogene-lgs}{%
+\ssect{Homogene und Inhomogene
+LGS}\label{homogene-und-inhomogene-lgs}}
+
+Homogene LGS: \(b_1 = b_2 =...=b_m = 0\)
+
+Dann \((0,0,0,...,0)\in K^n\) ist eine Lösung in jedem homogenen LGS.
+
+Inhomogene LGS: Es gilt ein \(i \in {1,2,...,m}\) mit \(b \neq 0\)
+
+\hypertarget{bemerkung}{%
+\subparagraph{Bemerkung:}\label{bemerkung}}
+
+\begin{itemize}
+\tightlist
+\item
+  \((0,0,0,...,0) \in K^n\) ist keine Lösung eines Inhomogenen LGS.
+\end{itemize}
+
+\hypertarget{definition}{%
+\subparagraph{Definition:}\label{definition}}
+
+Seien \(m,n \in \mathbb{N}\setminus {0}\) Sei K ein Körper.
+
+Eine \(x\times n\) - Matrix über \(K\) ist eine Abbildung
+
+\(A : {1,2,...,m} \times {1,2,...,m}\rightarrow K:(i,j)\rightarrow a_{i,j}\)
+(j = spaltenindex, i = zeilen index)
+
+Die Menge aller \(m \times n\)- Matritzen über \(K\) wird mit
+\(K ^{m \times n}\) bezeichnet.
+
+\hypertarget{schreibweise}{%
+\subparagraph{Schreibweise:}\label{schreibweise}}
+
+\(A = \begin{bmatrix}  a_{11} & a_{12} & \dots & a_{1n} \\  a_{21} & a_{22} & \dots & a_{2n} \\  a_{m1} & a_{m2} & \dots & a_{mn}\\ \end{bmatrix}\)
+
+\(A = (a_{ij})\) i=1,2,\ldots{},m ; j=1,2,\ldots{},n
+
+\(A = (a_{ij})^{m \times n}= A \in K^{m \times n}\)
+
+\hypertarget{spezielle-matritzen}{%
+\subparagraph{Spezielle Matritzen:}\label{spezielle-matritzen}}
+
+\begin{itemize}
+\item
+  quadratische Matrix : \(m=x\)
+\item
+  \(\begin{bmatrix}  a_{11} & \dots & a_{1n} \\  \dots & \dots & \dots \\  a_{n1} & \dots & a_{nn}\\  \end{bmatrix}\)
+\item
+  diagonal Matrix : \(D=(d_{ij})_{n \times m}\) mit \(d_{ij}=0\) für
+  alle \(i,j \in {1,...,n}\) und \(i\neq 0\)
+\item
+  \(\begin{bmatrix}  a_{11} & 0 & 0 & 0 \\  0 & \dots & 0 & 0 \\  0 & 0 & \dots & 0 \\  0 & 0 & 0 & a_{nn}\\ \end{bmatrix}\)
+\item
+  Einheitsmatrix \(m=n\)
+\item
+  \(E_n = (e_{ij})_{m \times n}\)
+\item
+  mit \(e_{i,j}=1\) für \(i,...,n\)
+\item
+  und \(e_{i,j}=0\) für \(i,j \in {1,...,n}, i\neq j\)
+\item
+  Nullmatrix
+\item
+  \(0_{m\times n}=(a_{ij})_{m \times n}\)
+\item
+  mit \(a_{ij}=0\) für alle \(i \in {1,...,n}, j \in {1,...,n}\)
+\end{itemize}
+
+\hypertarget{definition-1}{%
+\subparagraph{Definition}\label{definition-1}}
+
+\(A\in K ^{m_1n_1}, B = K^{m_2 \times n_2} A\)
+\(A=B :\iff m_1 = m_2 \wedge n_1=n_2 \wedge A_{ij}=B_{ij}\) für alle
+\(i\in {1,...,n},j\in {1,...,n}\)
+
+\hypertarget{rechnen-mit-matritzen}{%
+\ssect{Rechnen mit Matritzen:}\label{rechnen-mit-matritzen}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Transponieren einer Matrix:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(A \leadsto A^T\)
+  \end{itemize}
+\item
+  Addition von Matriten:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(A_{m \times n}+ B_{m \times n}\)
+  \end{itemize}
+\item
+  Skalarprodukt
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(A, k \in K \leadsto kA\)
+  \end{itemize}
+\item
+  Subtraktion von Matriten:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(A-B := A+(-1) \cdot B\)
+  \end{itemize}
+\item
+  Multiplikation von Matrizen
+\end{enumerate}
+
+\hypertarget{zu-1.}{%
+\sssect{Zu 1.}\label{zu-1.}}
+
+\(A= (a_{ij})_{m \times n} A^T= (a^t_{ij})\) mit \(a^t_{ij} := a_{ji}\)
+* Beispiel:
+\(A=\begin{bmatrix}  1 & 2 & 3\\  4 & 5 & 6 \\ \end{bmatrix}\)
+\(A^T=\begin{bmatrix}  1 & 4 \\  2 & 5 \\  3 & 6 \\ \end{bmatrix}\)
+
+\hypertarget{zu-2.}{%
+\sssect{Zu 2.}\label{zu-2.}}
+
+\((a_{ij})_{m \times n} + (b_{ij})_{m \times n}\) * Beispiel:
+\(A=\begin{bmatrix}  1 & 2 & 3 \\  4 & 5 & 6 \\ \end{bmatrix}\)
+\(B= \begin{bmatrix}  1 & 0 & 0 \\  0 & 1 & 1 \\ \end{bmatrix}\)
+\(A+B = \begin{bmatrix}  2 & 2 & 3 \\  4 & 6 & 7 \\ \end{bmatrix}\)
+
+\hypertarget{zu-3.}{%
+\sssect{Zu 3.}\label{zu-3.}}
+
+\(k (a_{ij})_{m \times n} = (k a_{ij})_{m \times n}\) * Beispiel:
+\((-2)\begin{bmatrix}  1 & 0 & 1 \\  -1 & 0 & 1 \\ \end{bmatrix}=\begin{bmatrix}  -2 & 0 & -2 \\  2 & 0 & -2 \\ \end{bmatrix}\)
+
+\hypertarget{zu-5.}{%
+\sssect{Zu 5.}\label{zu-5.}}
+
+\(A_{m \times n} = (a_{ij})_{m \times n} , B_{n\times p }=(b_{ij})_{n \times p}, C_{m\times p }=(b_{ij})_{m \times p}\)
+mit
+\(c_{ij} = \lbrack (a_{i1},...,a_{in}) \cdot \begin{bmatrix}  b_{i1} \\  \dots \\  b_{in} \\ \end{bmatrix} = \sum_ {k=1}^n a_{ik} \cdot b_{kj}\)
+* Beispiel:
+\(A=\begin{bmatrix}  1 & 2 & 3 \\  4 & 5 & 6 \\ \end{bmatrix} B=\begin{bmatrix}  a & b \\  c & d \\  e & f \\ \end{bmatrix}\)
+
+\begin{longtable}[]{@{}llllll@{}}
+\toprule
+\endhead
+& & & & a & b\tabularnewline
+& & & & c & d\tabularnewline
+& & & & e & f\tabularnewline
+-- & -- & -- & & -- & --\tabularnewline
+1 & 2 & 3 & & \(x_1\) & \(x_2\)\tabularnewline
+4 & 5 & 6 & & \(y_1\) & \(y_2\)\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\item
+  \(x_1=1a +2c +3e\)
+\item
+  \(x_2 = 1b+2d+3f\)
+\item
+  \(y_1 =4a+5c+6e\)
+\item
+  \(y_2= 4b+5d+6f\)
+\item
+  \(A(BC) =(AB)C\)
+\item
+  \(A(B+C)= AB+AC\)
+\item
+  \(AE_n =A\)
+\end{itemize}
+
+Im allgemeinen gilt \(A \cdot B \neq B \cdot A\)
+
+\(\begin{bmatrix}  1 & 1 \\  1 & 0 \\ \end{bmatrix} \cdot \begin{bmatrix}  1 & 0 \\  0 & 0 \\ \end{bmatrix}\neq \begin{bmatrix}  1 & 0 \\  0 & 0 \\ \end{bmatrix} \cdot \begin{bmatrix}  1 & 1 \\  1 & 0 \\ \end{bmatrix}\)
+
+\((A^T)^T = A\) \((kA)^T = kA^T\) \((A+B^T)= A^T+B^T\) \((AB)^T=B^TA^T\)
+\end{document}

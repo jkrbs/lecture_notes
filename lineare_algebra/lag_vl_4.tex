@@ -1,0 +1,145 @@
+\documentclass{../tudscript}
+\begin{document}
+\hypertarget{einfuxfchrung-in-die-mathematik-fuxfcr-informatikerinnen}{%
+\sect{Einführung in die Mathematik für
+InformatikerInnen}\label{einfuxfchrung-in-die-mathematik-fuxfcr-informatikerinnen}}
+
+\hypertarget{vl}{%
+\sect{4. VL}\label{vl}}
+
+\hypertarget{matritzen}{%
+\ssect{Matritzen}\label{matritzen}}
+
+Matrizenring über K (kein Körper)
+
+\({\qquad \uparrow}\) Ring mit Einselement
+
+\({\begin{pmatrix}  1 & 0 \\  0 & 0 \\ \end{pmatrix}\begin{pmatrix}  0 & 0 \\  0 & 1 \\ \end{pmatrix} = \begin{pmatrix}  0 & 0 \\  0 & 0 \\ \end{pmatrix} = \begin{pmatrix}  1 & 0 \\  0 & 0 \\ \end{pmatrix}\begin{pmatrix}  0 & 0 \\  0 & 2 \\ \end{pmatrix}}\)
+
+\({A * B = A * C \quad }\)aber\({ \quad B \neq C}\)
+
+\hypertarget{kurz}{%
+\sssect{Kurz:}\label{kurz}}
+
+\(A * x = b\) bzw. \(A_{m \times n} *x_{m \times n} = b_{m \times n}\)
+
+\hypertarget{lang}{%
+\sssect{Lang:}\label{lang}}
+
+\(\begin{pmatrix}  a_{11} & \dots & a_{1n} \\  \vdots &\vdots &\vdots \\  a_{1m} & \dots & a_{nm} \\ \end{pmatrix}*\begin{pmatrix}  x_{1} \\  \vdots \\  x_{n} \\ \end{pmatrix}=\begin{pmatrix}  b_{1} \\  \vdots \\  b_{n} \\ \end{pmatrix}\)
+\(\begin{pmatrix}  a_{11} *x_1 & \dots & a_{1n}*x_n \\  \vdots &\vdots &\vdots \\  a_{1m} *x_1 & \dots & a_{nm}*x_n \\ \end{pmatrix}=\begin{pmatrix}  b_{1} \\  \vdots \\  b_{n} \\ \end{pmatrix}\)
+
+\(A :=\begin{pmatrix}  a_{11} & \dots & a_{1n} \\  \vdots &\vdots &\vdots \\  a_{1m} & \dots & a_{nm} \\ \end{pmatrix}\)
+(Koeffizienzmatrix)
+
+\((A|b) = \left(\begin{array}{ccc|c}  a_{11} & \dots & a_{1n} & b_1 \\  \vdots & \vdots &\vdots &\vdots \\  a_{m1} & \dots & a_{mn} & b_m \\ \end{array}\right)\)
+
+\hypertarget{bsp}{%
+\sssect{Bsp:}\label{bsp}}
+
+\(H= \begin{pmatrix}  1 & 1 & 1 & 1 & 0 & 0 & 0\\  1 & 1 & 0 & 0 & 1 & 1 & 0\\  1 & 0 & 1 & 0 & 1 & 0 & 1\\ \end{pmatrix}_{3 \times 7}\)
+über \(GF(2)\)
+\(\mathcal{L}= \left\{ {\begin{pmatrix}  x_1\\  \vdots \\  x_7\\ \end{pmatrix}| x_i \in GF(2) (i=1,\dots,7),H \times \begin{pmatrix}  x_1\\  \vdots \\  x_7\\ \end{pmatrix}=\begin{pmatrix}  0\\  0\\  0\\ \end{pmatrix}~}\right \}\)
+
+z.B.
+\(\begin{pmatrix}  1\\  1\\  1\\  1\\  1\\  1\\  1\\ \end{pmatrix} \in L\),denn:
+\(\left.\begin{aligned}  1*1 + 1*1 + 1*1 + 1*1 + 0*1 + 0*1 +0*1 = 0\\  \dots = 0\\  \dots = 0 \end{aligned}\right.\)
+
+\(\qquad \enspace \downarrow\)
+
+\({\quad} \enspace \begin{pmatrix}  1\\  1\\  1\\  0\\  1\\  1\\  1\\ \end{pmatrix} \in L\)
+,denn:
+\(\left.\begin{aligned}  1*1 + 1*1 + 1*1 + 1*0 + 0*1 + 0*1 +0*1 = 0\\  \dots = 0\\  \dots = 0 \end{aligned}\right.\)
+
+Es gibt LGS, aus denen man die Lösung sofort ablesen kann. (reduzierte
+Zeilenstufenform)
+
+z.B.
+
+\((A|b) = \left(\begin{array}{ccccccc|c}  x_1 & x_2 & x_3 & x_4 & x_5 & x_6 & x_7 \\  1 & 0 & -7 & 2 & 0 & 1 & 0 & 0 \\  0 & 1 & 2 & -3 & 0 & -5 & 0 & 8 \\  0 & 0 & 0 & 0 & 1 & 5 & 0 & 15 \\  0 & 0 & 0 & 0 & 0 & 0 & 1 & 42 \\  \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{1} \\ \end{array}\right)\)
+
+\(x_1 = 7r -2s -t\)
+
+\(x_2 = 8-2r+3s+5t\)
+
+\(x_3 = r\)
+
+\(x_4 = s\)
+
+\(x_5 = 15-5t\)
+
+\(x_6 = t\)
+
+\(x_7 = 42\)
+
+\(\mathcal{L} =\{(7r-2s-t, 8-2r+3s+5t, r, s, 15-5t,t,42 | r,s,t \in \mathbb{R} )\}\)
+
+\textcolor{red}{${\mathcal{L} = \{\emptyset\}}$}
+
+\hypertarget{allgemein}{%
+\sssect{Allgemein:}\label{allgemein}}
+
+LGS in Zeilenstufenform(ZSF)
+\({(A|b) = \left(\begin{array}{ccccc|c}  \underline{a_1} & & & & & b_1 \\  &|\underline{a_2}& & & & b_2 \\  & & |\underline{a_3} & & & b_3 \\  & & & |\underline{\dots} & & \vdots \\  & & & & |\underline{a_r}& b_r \\  & & & & & b_{r+1} \\  & & & & & \vdots \\  & & & & & b_m \\ \end{array}\right)}\)
+mit \({ a_i \neq 0}\) für \({i= 1,2,\dots,r }\)
+
+\hypertarget{bemerkung}{%
+\ssect{Bemerkung:}\label{bemerkung}}
+
+Bei LGS in ZSF kann man leicht entscheiden, ob es Lösungen gibt:
+
+\(\mathcal{L} =\emptyset \Leftrightarrow \exists j \in\{r+1,\dots,m\}\enspace|\enspace b_j \neq 0\)
+
+j-te Gleichung \(0*+\dots+0*x_n = b_j\)
+\(\enspace \color {red}{Wiederspruch!}\)
+
+Elementare Zeilenumformung:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Vertauschen zweier Zeilen
+\item
+  Multiplizieren einer Gleichung mit \(k \in K \setminus \{0\}\)
+\item
+  Addieren des k-fachen einer Gleichung \((k \in K)\) zu einer anderen
+  Gleichung
+\end{enumerate}
+
+\hypertarget{satz}{%
+\ssect{Satz}\label{satz}}
+
+Elementare Zeilenumformung ändern die Lösung eines LGS nicht.
+
+\hypertarget{beweis}{%
+\ssect{Beweis}\label{beweis}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Klar
+\item
+  \((s) a_{i1}x_1 + \dots +a_{in}x_n = b_i -*k\rightarrow (s') ka_{i1}x_1 + \dots + ka_{in}x_n =k_{bi}\)
+
+  \(k(a_{i1}x'_1 + \dots + a_{in} x')=kb_i\)
+
+  \((s') ka_{i1}x''_1+\dots+ka_{in}x''_n = kb_i | k \neq 0\)
+\item
+  Klar
+\end{enumerate}
+
+\((A|b)\enspace \underrightarrow{GAUS}\) LGS in ZSF
+\({\qquad \qquad \qquad \underrightarrow{GAUS/JORDAN}}\) LGS in
+reduzierter ZSF
+
+\({\otimes} \neq 0 \left(\begin{array}{cccc|c}  \underline{\otimes} &&&& b_1\\  &|\underline{\otimes} &&&\\  &&|\underline{\otimes} &&\\  &&&|\underline{\otimes} &\underline{~}\\  &&&& b_m\\ \end{array}\right) \underrightarrow{\text{falslösbar}}\left(\begin{array}{cccc|c}  \underline{\otimes} &0&0&0& b_1\\  &|\underline{\otimes} &0&0&\\  &&|\underline{\otimes} &0&\\  &&&|\underline{\otimes} & b_r\\ \end{array}\right) \otimes= 1\)
+
+\(\hphantom{abcdefgh} \textcolor {red}{Lösbarkeitsentscheidung} \hphantom{abcdefghijklmno}\)
+Nullzeilen weglassen
+
+\hypertarget{bsp-1}{%
+\ssect{Bsp:}\label{bsp-1}}
+
+\(\left(\begin{array}{ccccccc|c}  1 & 1 & 1 & 1 & 0 & 0 & 0 &0\\  1 & 1 & 0 & 0 & 1 & 1 & 0 &0\\  1 & 0 & 1 & 0 & 1 & 0 & 1 &0\\ \end{array}\right) \rightsquigarrow \left(\begin{array}{ccccccc|c}  1 & 1 & 1 & 1 & 0 & 0 & 0 &0\\  0 & 0 & 1 & 1 & 1 & 1 & 0 &0\\  0 & 1 & 0 & 1 & 1 & 0 & 1 &0\\ \end{array}\right)\rightsquigarrow \left(\begin{array}{ccccccc|c}  1 & 1 & 1 & 1 & 0 & 0 & 0 &0\\  0 & 1 & 0 & 1 & 1 & 0 & 1 &0\\  0 & 0 & 1 & 1 & 1 & 1 & 0 &0\\ \end{array}\right) \rightsquigarrow \left(\begin{array}{ccccccc|c}  1 & 1 & 0 & 0 & 1 & 1 & 0 &0\\  0 & 1 & 0 & 1 & 1 & 0 & 1 &0\\  0 & 0 & 1 & 1 & 1 & 1 & 0 &0\\ \end{array}\right) \rightsquigarrow \left(\begin{array}{ccccccc|c}  \underline{1} & 0 & 0 & 1 & 0 & 1 & 1 &0\\  0 & |\underline{1} & 0 & 0 & 1 & 1 & 0 &0\\  0 & 0 & \underline{1} & \underline{1} & \underline{1} & \underline{1} & \underline{0} &0\\ \end{array}\right)\)
+\(\qquad \left.\begin{aligned}  x_4 = a \\  x_5 = b \\  x_6 = c \\  x_7 = d \\ \end{aligned}\right\} \in GF(2)\)
+\end{document}

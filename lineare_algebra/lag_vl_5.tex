@@ -1,0 +1,214 @@
+\documentclass{../tudscript}
+\begin{document}
+\newcommand{\ilmath}[1]{\begin{flalign*}#1\end{flalign*}}
+\newcommand{\vect}[1]{\begin{pmatrix}#1\end{pmatrix}}
+
+\#3. Vektorräume z.B.
+\(\left(\left\{\begin{pmatrix}1\\2\end{pmatrix} \mid a,b \in \mathbb{R}\right\}, \boxed{+}, \boxed{\cdot}\right)\)
+
+Vekturräume werden im folgenden mit VR abgekürzt.
+
+\#\#Definition Sei K ein Körper. Ein K-VR (VR über K) ist eine Struktur
+bestehend aus
+
+\begin{itemize}
+\tightlist
+\item
+  einer Menge \(V \neq \emptyset\)
+\item
+  einer Addition
+  \(\boxed{+}: V \times V \rightarrow V, (v_1, v_2) \mapsto v_1 \boxed{+} v_2 = v_1 + v_2\)
+\item
+  einer Skalarmultiplikation
+  \(\boxed{\cdot}: K \times V \rightarrow V, (k, v) \mapsto k \boxed{\cdot} v = k \cdot v = kv\)
+\end{itemize}
+
+wobei die Vektorraumaxiome (V1) bis (V10) erfüllt sind.
+
+\begin{itemize}
+\tightlist
+\item
+  (V1) Zu je zwei \(v_1, v_2 \in V\) existiert ein eindeutig bestimmter
+  \(v_1 \boxed{+} v_2 \in V\)
+\item
+  (V2) Für alle \(v_1,v_2,v_3 \in V\) gilt
+  \((v_1 \boxed{+} v_2) \boxed{+} v_3 = v_1 \boxed{+} (v_2 \boxed{+} v_3)\)\\
+\item
+  (V3) Für alle \(v_1,v_2 \in V\) gilt (v\_1 \boxed{+} v\_2) = (v\_2
+  \boxed{+} v\_1)
+\item
+  (V4) Es exisitert ein Vektor \(0 = \in V\) mit
+  \(v \boxed{+} 0 = v = 0 \boxed{+} v\)
+\item
+  (V5) Zu jedem \(v \in V\) existiert ein \(\boxed{-v} \in V\) mit
+  \(v \boxed{+} \boxed{-v} = 0 = \boxed{-v} \boxed{+} 0\)
+\item
+  (V6) Zu jedem \(k \in K\) und \(v \in V\) existiert ein einduetig
+  bestimmtes \(k \boxed{\cdot} v \in V\)
+\item
+  (V7) \(1 \boxed{\cdot} v = V\) für alle \(v \in V\) (wobei 1 das
+  Einselement des Körpers K ist)
+\item
+  (V8)
+  \((k_1 \cdot k2) \boxed{\cdot} v = k_1 \boxed{\cdot} (k_2 \boxed{\cdot} v)\)
+  für alle \(k_1, k_2 \in K, v \in V\)
+\item
+  (V9) (k\_1 + k\_2) \boxed{\cdot} v = (k\_1 \boxed{\cdot} v) \boxed{+}
+  (k\_2 \boxed{\cdot} v)\$ für alle \(v_1, v_2 \in V, k_1, k_2 \in K\)
+\item
+  (V10)
+  \(k \boxed{\cdot} (v_1 \boxed{+} v_2) = (k \boxed{\cdot} v_1) \boxed{+} (k \boxed{\cdot} v_2)\)
+  für alle \(v_1, v_2 \in V, k \in K\)
+\end{itemize}
+
+\hypertarget{beispiele}{%
+\ssect{Beispiele}\label{beispiele}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  VR \(K^{m \times n}\) mit Matritzenaddition und Skalarmultiplikation
+  \(0 =\) Nullmatrix \(0_{m \times n}\)
+\item
+  K Körper, \(n \in \mathbb{N}\),
+  \(K^n := \left\{\begin{pmatrix}k_1 \\ \vdots \\ k_n\end{pmatrix} \mid k_1, ..., k_n \in K\right\}\)
+  \hfill\quad\linebreak  z.B \(\mathbb{R}^2\)
+\item
+  K Körper, z.B \(\mathbb{R}, \mathbb{C}, GF(2)\)
+\item
+  Sei \(A \neq 0\), \(\wp(A)\) für \(X,Y \in A\). Sei Nullvektor =
+  \(\emptyset\)
+\item
+  VR von Abbildungen \(f: A \rightarrow K\), Nullvektor
+  \(f : A \rightarrow K, a \mapsto 0\)
+\end{enumerate}
+
+\hypertarget{bezeichnungen}{%
+\ssect{Bezeichnungen}\label{bezeichnungen}}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\mathbb{R}\)-VR: reeller Vektorraum
+\item
+  \(\mathbb{C}\)-VR: komplexer Vektorraum
+\end{itemize}
+
+\hypertarget{bemerkung}{%
+\ssect{Bemerkung}\label{bemerkung}}
+
+\begin{itemize}
+\item
+  \((V, \boxed{+})\): abelsche Gruppe \quad \(\boxed{+}\) 2-stellige
+  Operation
+\item
+  \((V, \boxed{+}, \underbrace{(k \mid k \in K)}_{\mathrlap{  \text{Skalarmultiplikation}  \begin{cases}  |k| \text{ 1-stellige Operation} \\  k \in K, k \text{ fest } V \rightarrow V: v \mapsto k  \end{cases}  }})\)
+\item
+  (V7) kann nicht weggelassen werden. Ein Gegenbeispiel ist eine
+  abelsche Gruppe mit einer Skalarmultiplikation als Operation bei der
+  alle Elemente auf \(0\) abgebildet werden.
+\item
+  (V3) kann weggelassen werden (kann aus den anderen Axiomen hergeleitet
+  werden)
+\item
+  da \(0 \in K\) und \(0 \in V\) wird oft \(0_K\) und \(0_V\)
+  geschrieben
+\end{itemize}
+
+\hypertarget{rechengesetze-fuxfcr-vektoren}{%
+\ssect{Rechengesetze für
+Vektoren}\label{rechengesetze-fuxfcr-vektoren}}
+
+\begin{itemize}
+\item
+  (R1) \(0_K \in K, \> V \in V \implies 0_K \boxed{\cdot} v = 0_V\)
+\item
+  (R2) \(k \in K, \> 0_V \in V \implies k \boxed{\cdot} 0_V = 0_V\)
+\item
+  (R3)
+  \(k \in K, \> v \in V, \> k \boxed{\cdot} v = 0_V \implies k = 0_K \vee v=0_V\)
+\item
+  (R4)
+  \(k \in K, \> v \in V \implies -k \boxed{\cdot} v = -(k \boxed{\cdot} v)\)
+  \hfill\quad\linebreak z.B.
+  \((-1) \boxed{\cdot} v = - (1 \boxed{\cdot} v) = -v\)
+\end{itemize}
+
+\hypertarget{beweis-r1}{%
+\sssect{Beweis (R1)}\label{beweis-r1}}
+
+\begin{flalign*}
+0
+
+Substitution: \(\boxed{\quad} := (0_K \boxed{\cdot} v)\)
+
+Wegen (V5) existiert \(-\boxed{\quad}\) mit
+\(\boxed{\quad} \boxed{+} -\boxed{\quad} = 0_V\) nach (V3)
+
+\begin{flalign*}
+\boxed{\quad} &= \boxed{\quad} \boxed{+} \boxed{\quad}&&\\
+\boxed{\quad} \boxed{+} -\boxed{\quad} &= \boxed{\quad} \boxed{+} \boxed{\quad} \boxed{+} -\boxed{\quad}&&\\
+0
+
+Rücksubstitution \(\boxed{\quad} = 0_K \boxed{\cdot} v\)
+
+\(\implies 0_K \boxed{\cdot} v = 0_V \hfill \square\)
+
+\hypertarget{bemerkung-1}{%
+\ssect{Bemerkung}\label{bemerkung-1}}
+
+Der Nullvektor ist in jedem VR eindeutig bestimmt, denn:
+
+Annahme: \$0\_1 0\_2 seien Nullvektoren mit \(0_1 \neq 0_2\)
+
+\(0_1 \boxed{+} 0_2 = 0_2 \boxed{+} 0_1 = 0_1 = 0_2 \implies\)
+Widerspruch \(\implies\) Nullvektor eindeutig bestimmt
+
+\hypertarget{definition}{%
+\ssect{Definition}\label{definition}}
+
+Sei V ein K-VR mit \(U \in V\), so heißt U heißt Untervektorraum von V,
+wenn gilt:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{-1}
+\tightlist
+\item
+  \(0_V \in U\) oder äquivalent \(\{\} \neq U\)\\
+\item
+  \(U_1, U_2 \in U \implies u_1 \boxed{+} u_2\) für alle
+  \(u_1, u_2 \in U\) (Abgeschlossenheit von \(\boxed{+}\))
+\item
+  \(k \in K, \> u \in U \implies k \boxed{\cdot} u \in U\) für alle
+  \(k \in K, u \in U\) (Abgeschlossenheit von \(\boxed{\cdot}\))
+\end{enumerate}
+
+Untervektorraum wird im folgenden im UVR abgekürzt.
+
+\hypertarget{bemerkung-2}{%
+\ssect{Bemerkung}\label{bemerkung-2}}
+
+\begin{itemize}
+\tightlist
+\item
+  UVR sind ebenfalls VR
+\item
+  Sei \(V\) ein K-VR, so sind insbesondere folgende VR UVR von V:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    (V, \boxed{+}, \boxed{\cdot}) {[}V ist UVR von sich selbst{]}
+  \item
+    (\{0\_V\}, \boxed{+}, \boxed{\cdot}) {[}Nullraum{]}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{definition-1}{%
+\ssect{Definition}\label{definition-1}}
+
+Sei V ein K-VR, \(T \subseteq V\) der kleinste UVR von \(V\) der
+sämltiche Elemente von \(T\) enthält heißt Spannraum von \(T\) oder von
+\(T\) aufgespannter UVR und wird mit \(Span(T)\) bezeichnet.
+\end{document}

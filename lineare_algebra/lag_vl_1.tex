@@ -1,0 +1,466 @@
+\documentclass{../tudscript}
+\begin{document}
+\hypertarget{einfuxfchrung-in-die-mathematik-fuxfcr-informatikerinnen}{%
+\sect{Einführung in die Mathematik für
+InformatikerInnen}\label{einfuxfchrung-in-die-mathematik-fuxfcr-informatikerinnen}}
+
+\hypertarget{vl}{%
+\sect{1. VL}\label{vl}}
+
+\hypertarget{personen}{%
+\ssect{Personen}\label{personen}}
+
+\begin{itemize}
+\tightlist
+\item
+  Prof.~Ulrike Baumann
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ulrike.baumann@tu-dresden.de
+  \end{itemize}
+\item
+  Kursassistenz: Antje Noack
+
+  \begin{itemize}
+  \tightlist
+  \item
+    antje.noack@tu-dresden.de
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{klausuren}{%
+\ssect{Klausuren}\label{klausuren}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Klausur 90min
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Anfang Dezember
+  \item
+    Wdh. Termine zu Beginn des SoSe19
+  \end{itemize}
+\item
+  Klausur 120min
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Prüfungszeitraum des WiSe18/19
+  \item
+    Wdh. Termine im Prüfungszeitraum des SoSe19
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{hausaufgabe}{%
+\ssect{Hausaufgabe}\label{hausaufgabe}}
+
+\begin{itemize}
+\tightlist
+\item
+  Nachbereitung der Vorlesung
+\item
+  Zettel liegen auf Seite der VL
+
+  \begin{itemize}
+  \tightlist
+  \item
+    getrennt zzwischen dis und lin
+  \end{itemize}
+\item
+  regeölmäßiges Lösen empfohlen
+
+  \begin{itemize}
+  \tightlist
+  \item
+    um die VL weiterhin zu verstehen
+  \end{itemize}
+\item
+  HA kann zur Bewertung abgegeben werden
+
+  \begin{itemize}
+  \tightlist
+  \item
+    auf den Zetteln mit A gekennzeichnet
+  \end{itemize}
+\item
+  Bonuspunkte in Klausur
+
+  \begin{itemize}
+  \tightlist
+  \item
+    wenn Klausur knapp nicht bestanden, kann HA dich retten
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{hilfsmittel-bei-klausur}{%
+\ssect{Hilfsmittel bei Klausur}\label{hilfsmittel-bei-klausur}}
+
+\begin{itemize}
+\tightlist
+\item
+  kein Taschenrechner
+\item
+  keine elektronischen Hilfsmittel
+\item
+  eine A4 Seite beidseitig beschrieben
+
+  \begin{itemize}
+  \tightlist
+  \item
+    keine Kopie
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{literaturempfehlung}{%
+\ssect{Literaturempfehlung}\label{literaturempfehlung}}
+
+\begin{itemize}
+\tightlist
+\item
+  Formeln + Hilfen zur höheren Mathematik
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ISBN-10: 392392335X
+  \item
+    ISBN-13: 978-3923923359
+  \end{itemize}
+\item
+  weitere Lit. auf der Website
+\item
+  Gerd Fischer, Lineare Algebra
+
+  \begin{itemize}
+  \tightlist
+  \item
+    DOI 10.1007/978-3-658-03945-5
+  \end{itemize}
+\item
+  Grundwissen Mathematik, Springer
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ISSN: 1431-4215
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{inhalt-der-vl}{%
+\ssect{Inhalt der VL}\label{inhalt-der-vl}}
+
+\begin{itemize}
+\tightlist
+\item
+  Körper der komplexen Zahlen
+\item
+  Matrizen
+\item
+  Linera Gleichungssysteme
+\item
+  Vektorräume über Körper
+\item
+  Lineare Abbildung
+\item
+  Determinanten
+\item
+  Euklidische vektorräume
+\item
+  Best Approximation
+\end{itemize}
+
+\hypertarget{vl-einfuxfchrung-kuxf6rper-der-komplexen-zahlen}{%
+\ssect{1.VL Einführung Körper der komplexen
+Zahlen}\label{vl-einfuxfchrung-kuxf6rper-der-komplexen-zahlen}}
+
+\begin{itemize}
+\tightlist
+\item
+  zahlenbereich:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Menge von Zahlen
+  \item
+    Struktur von Zahlen
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Es wird eine Struktur, wenn die Rechenoperationen darauf Anwendbar
+      sind und die Eigenschaften auf die Struktur zutreffen
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{begriffe}{%
+\sssect{Begriffe}\label{begriffe}}
+
+\begin{itemize}
+\tightlist
+\item
+  Definitionen
+\item
+  Sätze
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Aussagen, die richtig sind und beweisbar sind
+  \end{itemize}
+\item
+  Beweis
+\item
+  Lemma
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Hilfssätze
+  \end{itemize}
+\item
+  Folgerungen
+\item
+  im Prinzip auch Sätze mit offentsichtlichem Beweis
+\item
+  Bemerkungen
+
+  \begin{itemize}
+  \tightlist
+  \item
+    andere richtige Aussagen
+  \item
+    einfacher und ohne Beweis
+  \end{itemize}
+\item
+  Beispiele
+
+  \begin{itemize}
+  \tightlist
+  \item
+    sollten nach jeder Definition und nach jedem Satz auftachen
+  \item
+    dienen zur Verständlichkeit
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{zahlenbereiche}{%
+\sssect{Zahlenbereiche}\label{zahlenbereiche}}
+
+\begin{itemize}
+\tightlist
+\item
+  Natürliche Zahlen
+\item
+  Ganze Zahlen
+
+  \begin{itemize}
+  \tightlist
+  \item
+    natürlich Zahlen sind teilmenge der ganzen Zahlen
+  \end{itemize}
+\item
+  Rationale Zahlen
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Gnaze Zahlen sind teilmenge der rationalen Zahlen
+  \end{itemize}
+\item
+  Reele Zahlen
+
+  \begin{itemize}
+  \tightlist
+  \item
+    in \(\Re\) ist eine Gleichung nicht lösbar: \(x^{2} = -1\)
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{zahlenbereich-konstrurieren-mit}{%
+\sssect{Zahlenbereich konstrurieren
+mit:}\label{zahlenbereich-konstrurieren-mit}}
+
+\begin{itemize}
+\tightlist
+\item
+  enthält alle reelen Zahlen
+\item
+  \(x^{2} = -1\) soll lösbar sein
+\item
+  Rechengesetze aus der Menge der Reelen Zahlen sollen auch gelten
+\item
+  neue Berreich soll so klein wie möglich sein
+\end{itemize}
+
+\hypertarget{komplexe-zahlen}{%
+\sssect{Komplexe Zahlen}\label{komplexe-zahlen}}
+
+\hypertarget{def.}{%
+\paragraph{Def.}\label{def.}}
+
+\begin{itemize}
+\tightlist
+\item
+  i mit der Eigenschaft \(i^{2} = i \cdot i := -1\) heißt imaginäre
+  Einheit.
+\end{itemize}
+
+\hypertarget{bem.}{%
+\paragraph{Bem.}\label{bem.}}
+
+\begin{itemize}
+\tightlist
+\item
+  \(i \in \mathbb{C}\)
+\item
+  \(\Re \in \mathbb{C}\)
+\item
+  \({a,b \in \Re => a+bi \in \mathbb{C}}\)
+\end{itemize}
+
+\hypertarget{def.-1}{%
+\paragraph{Def.}\label{def.-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\mathbb{C} := {a+bi | a,b \in \Re}\) heißt Menge der komplexen
+  Zahlen
+\item
+  Für \(\lbrace Z = a + bi \in \mathbb{C} \rbrace\) heißt
+\item
+  a: Realteil Re(Z)
+\item
+  b: Imaginärteil Im(Z)
+\item
+  Man nennt eine \(\overline{Z} := a - bi\) die zu Z konjugierte
+  komplexe Zahl
+\item
+  reinimmaginäre Zahlen haben den Realteil 0
+\item
+  Komplexe Zahlen haben real und immaginärteil
+\end{itemize}
+
+\hypertarget{rechenoperation-mit-komplexen-zahlen}{%
+\ssect{Rechenoperation mit komplexen
+Zahlen}\label{rechenoperation-mit-komplexen-zahlen}}
+
+\hypertarget{addition}{%
+\sssect{Addition}\label{addition}}
+
+\hypertarget{beispiel}{%
+\paragraph{Beispiel}\label{beispiel}}
+
+\((1+2i) + (3+4i) = 1 + 2i + 3+ 4i = = 4 + 6i\)
+
+\hypertarget{mit-formelzeichen}{%
+\paragraph{mit Formelzeichen}\label{mit-formelzeichen}}
+
+\((a+bi) + (c+di) = (a+c) + (b+d)i\)
+
+\hypertarget{allgemein}{%
+\paragraph{Allgemein}\label{allgemein}}
+
+\(a+b = (Re(a) + Re(b)) + (Im(a) + Im(b))i \forall \> a,b \in \mathbb{C}\)
+
+\hypertarget{subtraktion}{%
+\sssect{Subtraktion}\label{subtraktion}}
+
+\hypertarget{mit-formelzeichen-1}{%
+\paragraph{mit Formelzeichen}\label{mit-formelzeichen-1}}
+
+\((a+bi) - (c+di) = (a-c) + (b-d)i\)
+
+\hypertarget{allgemein-1}{%
+\paragraph{Allgemein}\label{allgemein-1}}
+
+\(a+b = (Re(a) - Re(b)) + (Im(a) - Im(b))i \forall \> a,b \in \mathbb{C}\)
+
+\hypertarget{multiplikation}{%
+\sssect{Multiplikation}\label{multiplikation}}
+
+\hypertarget{mit-formelzeichen-2}{%
+\paragraph{mit Formelzeichen}\label{mit-formelzeichen-2}}
+
+\((a + bi) \cdot (c + di) =\) \$ac + adi + bci + bdi\^{}2 = \$
+\((ac - bd) + (ad + bc)i\)
+
+\hypertarget{division}{%
+\sssect{Division}\label{division}}
+
+\hypertarget{beispiel-1}{%
+\paragraph{Beispiel:}\label{beispiel-1}}
+
+\(\frac{(1+2i)}{(3+4i)} = \frac{1+2i}{3+4i} \cdot \frac{3-4i}{3-4i} = \frac{3+8+i(6-4)}{9+16} = \frac{11+2i}{25} = \frac{11}{25} + \frac{2i}{25}\)
+
+\hypertarget{mit-formelzeichen-3}{%
+\paragraph{mit Formelzeichen:}\label{mit-formelzeichen-3}}
+
+\(\frac{a + bi}{c + di} \cdot \frac{c - di}{c - di} = \frac{ac + d + (ad + bc)i}{c^{2} + d^{2}}\)
+
+\hypertarget{bemerkung}{%
+\paragraph{Bemerkung}\label{bemerkung}}
+
+\((\mathbb{C};+;\cdot)\) heißt Körper der konmplexen Zahlen
+
+\hypertarget{gauuxdfsche-zahlenebene}{%
+\ssect{Gauß'sche Zahlenebene}\label{gauuxdfsche-zahlenebene}}
+
+\footnote{Quelle:
+  \url{https://de.wikipedia.org/wiki/Gau\%C3\%9Fsche_Zahlenebene\#/media/File:Gau\%C3\%9Fsche_Zahlenebene.svg}}
+\includegraphics{gausssche_zahlenebene.png}
+
+Jeder Punkt der Gauß'schen Zahlenebene stellt eine komplexe Zahl dar.
+
+\hypertarget{darstellungsformen-komplexer-zahlen}{%
+\ssect{Darstellungsformen komplexer
+Zahlen}\label{darstellungsformen-komplexer-zahlen}}
+
+\(Z \in \mathbb{C}\)
+
+\hypertarget{arithmetischekartesiche-darstellung}{%
+\sssect{arithmetische/kartesiche
+Darstellung}\label{arithmetischekartesiche-darstellung}}
+
+\(Z = a + bi\)
+
+\hypertarget{trigonometrische-darstellungpolarkoordinaten}{%
+\sssect{trigonometrische
+Darstellung/Polarkoordinaten}\label{trigonometrische-darstellungpolarkoordinaten}}
+
+\(Z = r \cdot (cos(\phi) + i \cdot sin(\phi))\)
+
+\hypertarget{konversion}{%
+\paragraph{Konversion}\label{konversion}}
+
+\(r = \sqrt{a^{2}+b^{b}}\) \(sin \phi = \frac{b}{r}\)
+\(cos \phi = \frac{a}{r}\)
+
+\hypertarget{eulerischeexponentielle-darstellung}{%
+\sssect{Eulerische/exponentielle
+Darstellung}\label{eulerischeexponentielle-darstellung}}
+
+\(Z = r \cdot e^{i \cdot \phi}\)
+
+\hypertarget{multiplikation-in-der-eulerischen-dartstellung}{%
+\paragraph{Multiplikation in der Eulerischen
+Dartstellung}\label{multiplikation-in-der-eulerischen-dartstellung}}
+
+\((r_{1} \cdot e^{i \phi_{1}}) \cdot (r_{2} \cdot e^{i \phi_{2}}) = r_{1} \cdot r_{2} \cdot e^{i \cdot (\phi_{1} + \phi_{2})}\)
+
+\hypertarget{division-in-der-eulerischen-darstellung}{%
+\paragraph{Division in der Eulerischen
+Darstellung}\label{division-in-der-eulerischen-darstellung}}
+
+\(\frac{r_{1} \cdot e^{i \phi_{1}}}{r_{2} \cdot e^{i \phi_{2}}}\)
+\(= \frac{r_{1}}{r_{2}} \cdot e^{i \cdot (\phi_{1} - \phi_{2})}\)
+\end{document}

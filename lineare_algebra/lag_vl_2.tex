@@ -1,0 +1,224 @@
+\documentclass{../tudscript}
+\begin{document}
+\hypertarget{einfuxfchrung-in-die-mathematik-fuxfcr-informatikerinnen}{%
+\sect{Einführung in die Mathematik für
+InformatikerInnen}\label{einfuxfchrung-in-die-mathematik-fuxfcr-informatikerinnen}}
+
+\hypertarget{vl}{%
+\sect{2. VL}\label{vl}}
+
+\hypertarget{beispiel-der-komplexen-uhr}{%
+\ssect{Beispiel der komplexen
+Uhr}\label{beispiel-der-komplexen-uhr}}
+
+\begin{itemize}
+\tightlist
+\item
+  kleiner Zeiger: \(Z_{k} = e^{i \phi}\)
+\item
+  großer Zeiger: \(Z_{g} = e^{i \phi \cdot 12}\)
+\end{itemize}
+
+Gesucht sind die Winkel an denen der kleine auf dem großen Zeiger liegt.
+
+\(z_{k} = z_{g} \iff e^{i \phi} = e^{i \phi \cdot 12} \\ 1 = \frac{e^{i 12 \phi}}{e^{i \phi}}\\ = e^{i 11 \phi} \\ \iff e^{0 i} = e^{i 11 \phi} \\ \iff 1 \phi = {0 \pm 2 \pi k \mid k \in \mathbb{N}}\\ \iff \phi \in {\pm \frac{2 \pi}{11}\cdot k \mid k \in \mathbb{N}}\)
+
+Für \(0 \leq \phi < 2 \pi\)
+
+\(L = {0, \frac{2 \pi}{11}\cdot 1, \frac{2 \pi}{11}\cdot 2}, \frac{2 \pi}{11}\cdot 3, \dotsc, \frac{2 \pi}{11}\cdot 10\)
+
+\(k \in {0, 1, \dotsc, 10}\)
+
+\(e^{i \cdot \frac{2\pi}{11} (k \pm 11x)} = e^{i \frac{2 \pi}{11} \cdot k} \cdot e^{i \cdot \frac{2 \pi}{11} \cdot 11 x} = e^{i \frac{2 \pi}{11} \cdot k}\)
+
+\hypertarget{satz-von-moirre}{%
+\ssect{Satz von Moirre}\label{satz-von-moirre}}
+
+Sei \(Z = r \cdot e^{i \phi} \in \mathbb{C}\) und \(n \in \mathbb{N}\).
+Dann gilt:
+
+\(z^n = r^n \cdot e^{i n \phi}\)
+
+Beweis mittels vollständiger Induktion möglich.
+
+\hypertarget{folgerung-formel-von-moirre}{%
+\ssect{Folgerung: Formel von
+Moirre}\label{folgerung-formel-von-moirre}}
+
+Sei \(Z = e^{i \phi} \in \mathbb{C}\) und \(n \in \mathbb{N}\). Dann
+gilt:
+
+\(z^n = e^{i n \phi}\)
+
+\hypertarget{bemerkung}{%
+\ssect{Bemerkung}\label{bemerkung}}
+
+Sei \(Z \in \mathbb{C}\) und \(n \in \mathbb{N}\)
+
+\(| z^n | = r^n = | z |^n\)
+
+Potenzieren in \(\mathbb{C}\) ist Äquvivalent zum Potenzieren in
+\(\mathbb{R}\)
+
+\hypertarget{beispiel}{%
+\ssect{Beispiel}\label{beispiel}}
+
+\(z = e^{i \frac{\pi}{4}}\), gesucht \({z^n \mid n \in \mathbb{N} }\)
+
+Alle Potenzen \(z^n\) liegen auf dem Einheitskreis (Kreis mit r = 1 und
+Mittelpunkt 0).
+
+\hypertarget{wurzelziehen-von-komplexen-zahlen}{%
+\ssect{Wurzelziehen von komplexen
+Zahlen}\label{wurzelziehen-von-komplexen-zahlen}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(z^n = 1\)
+\item
+  \(z^n = z_{0} \in \mathbb{C}\)
+\end{enumerate}
+
+\hypertarget{definition-einheitswurzel}{%
+\sssect{Definition:
+Einheitswurzel}\label{definition-einheitswurzel}}
+
+Die n-te Einheitswurzel ist eine komplexe Zahl z mit \(z^n = 1\), wobei
+\(n\in \mathbb{N}, n \geq 1\) gilt.
+
+\hypertarget{beispiele}{%
+\sssect{Beispiele}\label{beispiele}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  i ist eine 4-te Einheitswurzel, denn \(i^4 = 1\)
+\item
+  -i ist eine 4-te Einheitswurzel, denn \(-i^4 = 1\)
+\item
+  1 ist eine 4-te Einheitswurzel, denn \(1^4 = 1\)
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  1 ist eine n-te Einheitswurzel für \(n \in \mathbb{N}\), denn
+  \(1^n = 1\)
+\item
+  \(e^{i \cdot \frac{2 \pi}{3}}\) ist eine 3-te Einheitswurzel, denn
+  \(e^{i \cdot \frac{2 \pi}{3} \cdot 3} = 1\)
+\item
+  \(e^{i \cdot \frac{2 \pi}{4}}\) ist eine 8-te Einheitswurzel, denn
+  \(e^{i \cdot \frac{2 \pi}{4} \cdot 8} = 1\)
+\end{enumerate}
+
+\hypertarget{bemerkung-1}{%
+\sssect{Bemerkung}\label{bemerkung-1}}
+
+\(z^n = 1 (n \in \mathbb{N}, n \geq 1)\) hat genau n Lösungen.
+
+\(z_k = 1 \cdot e^{i \frac{2 \pi}{n} \cdot k}\)
+\((k = 0, 1, \dotsc, n-1)\)
+
+\hypertarget{probe}{%
+\sssect{Probe}\label{probe}}
+
+\((e^{i \frac{2 \pi}{n} \cdot k })^n = e^{i 2 \pi k} = 1\)
+
+\hypertarget{luxf6sen-von-gleichungen-in-mathbbc}{%
+\ssect{\texorpdfstring{Lösen von Gleichungen in
+\(\mathbb{C}\)}{Lösen von Gleichungen in \textbackslash{}mathbb\{C\}}}\label{luxf6sen-von-gleichungen-in-mathbbc}}
+
+\hypertarget{gesucht}{%
+\sssect{Gesucht}\label{gesucht}}
+
+Alle Lösungen von \(z^n = z_0 = e^{i \phi_{0}} \in \mathbb{C}\)
+
+(\(z_0 \in \mathbb{C}\), beliebig, fest)
+
+\hypertarget{ansatz}{%
+\sssect{Ansatz}\label{ansatz}}
+
+\(z = r \cdot e^{i \phi}\) (ges. r, \(\phi\))
+
+\hypertarget{einsetzen}{%
+\sssect{Einsetzen}\label{einsetzen}}
+
+\((r \cdot e^{i \phi})^n = r \cdot e^{i \phi_0} \\ \iff r^n e^{i n \phi} = r_0 e^{i \phi_0} \\ \iff r^n = r_0 \wedge e^{i n \phi} = e^{i \phi_0} \\ \iff r = \sqrt[n]{r_0} \wedge n \phi = \phi_0 \pm 2 \pi k \mid k \in \mathbb{N}\)
+
+\(\phi \in {\frac{\phi_0 \pm 2 \pi k}{n} \mid k \in \mathbb{N}}\)
+
+\hypertarget{luxf6sungen-von-zn-z_0}{%
+\sssect{\texorpdfstring{Lösungen von
+\(z^n = z_0\)}{Lösungen von z\^{}n = z\_0}}\label{luxf6sungen-von-zn-z_0}}
+
+\(z_k = \sqrt[n]{r_o} \cdot e^{i \cdot (\frac{\phi_0}{n} + \frac{2 \pi}{n}k)}\)
+
+\(k = {0,1, \dotsc, n-1}\)
+
+\hypertarget{bemerkung-2}{%
+\sssect{Bemerkung}\label{bemerkung-2}}
+
+Lösungen von \(z^n = z_0\)
+
+\(z_k = \sqrt[n]{r_0} \cdot e^{i \cdot \frac{\phi_0}{n}} \cdot e^{i \cdot \frac{2 \pi}{n} k}\)
+
+\(k = {0,1, \dotsc, n-1}\)
+
+\(e^{i \cdot \frac{2 \pi}{n} k}\) ist die n-te Einheitswurzel
+
+\hypertarget{beispiel-1}{%
+\sssect{Beispiel}\label{beispiel-1}}
+
+\(z^2 = -16 i = 16 \cdot (-i) = 16 \cdot e^{i \frac{3}{2} \pi}\)
+
+\hypertarget{weg}{%
+\paragraph{1. Weg}\label{weg}}
+
+\(z_k = \sqrt{16} e^{i (\frac{3}{4} \pi + \frac{2 \pi}{2}k)}\)
+
+\(k = {0,1}\)
+
+\(z_0 = 4 e^{i \frac{3 \pi}{4}} = 4 (- \frac{1}{2} \sqrt{2} + \frac{1}{2} \sqrt{2} = -2 \sqrt{2} - 2 \sqrt{2} i)\)
+
+\(z_1 = 4 e^{i \frac{7 \pi}{4}} = 2 \sqrt{2} - 2 \sqrt{2} i)\)
+
+\hypertarget{weg-1}{%
+\paragraph{2. Weg}\label{weg-1}}
+
+2-te Einheitswurzel \{1, -1\}
+
+Eine spezielle Lösung: \(4 \cdot e^{i \frac{3 \pi}{4}}\)
+
+\(L = \pm 4 \cdot e^{i \frac{3 \pi}{4}} = \pm 2 \sqrt{2} - 2 \sqrt{2} i\)
+
+\hypertarget{allgemein}{%
+\sssect{Allgemein}\label{allgemein}}
+
+\(az^2 + bz + c = 0\) mit \(a, b, c \in \mathbb{C}, a \neq 0\)
+
+\(\iff z^2 + \frac{b}{a} z + \frac{c}{a} = 0\)
+
+\((p = \frac{b}{a}, q = \frac{c}{a})\)
+
+\(\iff z^2 + pz + q = 0\)
+
+\(\iff (z + \frac{p}{2})^2 - \frac{p^2}{4} + q = 0\)
+
+Substituation mit \(w := z - \frac{p^2}{4}\)
+
+\((z +\frac{p}{2})^2 = \frac{p^2}{4} - q \iff w^2 = \frac{p^2}{4} - q\)
+
+daraus folgt:
+
+\(z_1 = - \frac{p}{2} + w_0\) \(z_2 = \frac{p}{2} + w_1\)
+\end{document}

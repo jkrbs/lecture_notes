@@ -1,0 +1,93 @@
+\documentclass{../tudscript}
+\begin{document}
+\setcounter{section}{1}
+
+    \ssect*{Widerholung: Was sind lineare Abbildungen?}
+        \ilmath{f: \underbrace{V}_{\text{K-VR}} \rightarrow\underbrace{W}_{\text{K-VR}}: k_1 \cdot v_1 + k_2 \cdot v_2 \mapstok_1 \cdot f (v_1) + k_2 \cdot f (v_2)}
+
+        Beispiel:
+        \begin{enumerate}
+            \item $f: \bR \rightarrow\bR: c \mapsto a \cdot x$ ($a \in \bR$, a fest)
+            \item $f: K^n \rightarrow K^n: v \mapsto A \cdot v$ ($A \in K^{m \times n}$, A fest) ist eine lineare Abb, denn:
+                \ilmath{f (k_1 v_1 + k_2 + v_2) = A (k_1 v_1 + k_2 v_2)\\
+                        k_1 f (v_1) + k_2 f (v_2) = k_1 A v_1 + k_2 A v_2 }
+            \item $: f \mapsto \underbrace{f'}_{\text{Abbildung}}$ linear, denn $(r_1 f_1 (x) + r_2 f_2 (x))' = (r_1 f_1 (x)' + r_2 f_2 (x)')$
+
+        \end{enumerate}
+    \ssect{Bemerkung}
+        Jede lineare Abb. $f: V \rightarrow W$ ist durch die Bilder der Vektoren einer Bsais von V eindeutig bestimmt.
+        Sei $b_1, \ldots, b_n$ eine Basis von V. Sei $\Set{f (b_1), \ldots, f (b_n)}$ die Menge der Bilder der Basisvektoren.
+        Gesucht: $f (v)$ für $v \in V$, beliebig.
+
+        Dann $f(v) = f(k_1 b_1 + \cdots + k_n b_n) = k_1 f(b_1) + \cdots + k_n f(b_n)$
+
+        \ilmath{\underbrace{v_B}_{\text{Koordinatenvektor von v bzgl. B}} = \ve{k_1}{\ldots}{k_n} \iff v = k_1 b_1 + \ldots + k_n b_n}
+
+        \sssect{Beispiel}
+        \ilmath{f: \underbrace{\bR^3}_{mit Standartbasis} \rightarrow\bR^2: \ve{a}{b}{c} \mapsto\ve{a+2c}{a+b}}
+        
+        \ilmath{f (\ve{a}{b}{c}) = f (a \cdot \ve{1}{0}{0} + b \cdot \ve{0}{1}{0} +c \cdot \ve{0}{0}{1})}
+
+        \begin{enumerate}
+            \item $f(\ve{1}{0}{0}) = \ve{1}{1}$
+            \item $f(\ve{0}{1}{0}) = \ve{0}{1}$
+            \item $f(\ve{0}{0}{1}) = \ve{2}{0}$
+        \end{enumerate}
+        
+        Eigenschaften von $f: V \rigtarrow W$ linear, wobei $\Set{b_1, \ldots, b_n}$ eine Basis von V:
+        \begin{enumerate}
+            \item f: injektivi $\iff \Set{f(b_1), \ldots, f(b_n)}$ linear unabhängig.
+            \item f: surjektiv $\iff span(\Set{f(b_1), \ldots, f(b_n)}) = W$.
+            \item f: bijektiv $\iff \Set{f(b_1), \ldots, f(b_n)}$ ist eine Basis von W.
+            \item f: injektiv $\iff \underbrace{Ker(f)}_{Ker(f) = \Set{v \in V \mid f(v) =0} \subseteq V} = \Set{0_V}$ ($\iff |Ker(f)| = 1$)
+        \end{enumerate}
+
+       \begin{enumerate}
+        \item $\implies$
+        Vorraussetzung: f ist injektiv
+        Behauptung: $ker(f) = \Set{0_v}$, z.z: $0_v \in Ker(f)$, $v \in Ker(f) \implies v = 0_v$
+        Beweis: 
+            \begin{enumerate}
+                \item $0_v \in Ker(f)$: siehe letzte VL
+                \item $v \in Ker(f) \implies f(v) = 0_W = f(0_v) \implies v = 0_v$
+            \end{enumerate}
+
+        \item $Leftarrow$
+            Voraussetzung: $Ker(f) = \Set{0_V}$
+            Behauptung: f: injektiv, z.z. $f(v_1) = f(v_2) \implies v_1 = v_2$
+            Beweis: $f(v_1) = f(v_2) \implies f(v_1) - f(v_2) = \underbrace{f(v_2) - f(v_2)}_{0_W}$
+            $v_1 - v_2 = 0_V$
+        \end{enumerate}
+    \ssect{Lieare Abbildung mittels Matrizen}
+        $f: \underbrace{K^n}_{Basis: e_1, \ldots, e_n} \rightarrow \underbrace{K^n}_{Basis: e_1, \ldots, e_n}$ linear, $v = \ve{v_1}{\cdots}{v_n} \in K^n$
+        \ilmath{f (v) = f (k_1 v_1 + \cdots + k_n v_n) = f (k_1) v_1 + \cdots f (k_n) v_n = \sve{\box}{\cdots}{\box} = A}
+
+        \ilmath{f: \underbrace{V}_{Basis: B = \Set{b_1, \ldots, b_n}} \rightarrow\underbrace{W}_{Basis: C= \Set{c_1, \ldots, c_n} \text{linear}}}
+
+        \ilmath{f (v) = A_B \cdot v_B  \text{mit:}}
+
+        \ilmath{A_B = \sve{\underbrace{\box}_{f (b_1)_C}}{\cdots}{\underbrace{\box}_{f (b_n)_C}}}
+       
+        \sssect{Beispiel}
+            \ilmath{f: \bR^2 \rightarrow\bR^3: \ve{x}{y}{z} \mapsto\ve{x-y+z}{-x+2y+3z}}
+
+            $Basis B= \Set{\ve{1}{0}{0}, \ve{0}{1}{0}, \ve{0}{0}{1}}$
+            $Basis B_2 = \Set{\ve{1}{0}, \ve{0}{1}}$
+
+            \ilmath{f (\ve{1}{0}{0})_C = \ve{2}{-1}}
+            \ilmath{f (\ve{0}{1}{0})_C = \ve{-1}{1}}
+            \ilmath{f (\ve{0}{0}{1})_C = \ve{-3}{4}}
+
+            \ilmath{A_{BC} = \begin{pmatrix}
+                2 & -1 & -3\\
+                -1 & 1 & 4
+            \end{pmatrix}}
+            
+            gesucht: $f(\ve{1}{2}{3})$
+
+            \ilmath{v = \ve{1}{2}{3} = -1 \cdot \ve{1}{0}{0} + -1 \ve{1}{1}{0} + 3 \ve{1}{1}{1} \implies v_B \ve{-1}{-1}{3}}
+            \ilmath{A_{BC} v_B = \begin{pmatrix}
+            1 & -1 & -1 \\
+            -1 & 1  & 4 
+            \end{pmatrix} \cdot \ve{-1}{-1}{3} = \ve{-10}{12} = f (v)_C}
+\end{document}

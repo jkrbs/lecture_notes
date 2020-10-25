@@ -1,0 +1,261 @@
+\documentclass{../../meta/tudscript}
+\begin{document}
+
+
+\paragraph{2)}
+
+``\(\implies\)'': Klar. ``\(\impliedby\)'' Nach 1) folgt sowohl
+\(m \leq n\) als auch \(n \leq m\) daher \(n = m\)A.
+
+
+\ssect{Definition}
+
+Eine Menge \(X\) heißt endlich, falls es \(n \in \mathbb{N}\) und eine
+Bijektion \(f:[n] \rightarrow X\) gibt. In diesem Fall ist \(n\)
+eindeutig bestimmt (nach FOlgerung 6.3, 2) und wir nennen \(|X|\) := n
+die Mächtigkeit (Kardinalität) von \(X\).
+
+
+\ssect{Bemerkung}
+
+Seien X,Y,Z Mengen, so folgt
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  Sind \(f: X \rightarrow Y\) und \(g: Y \rightarrow Z\) injektiv
+  (surjektiv, bijektiv) dann ist auch \(g \circ f: X \rightarrow Z\)
+  injektiv (surjektiv, bijektiv).
+\item
+  Ist \(f: X \rightarrow Y\) bijektiv, dann ist auch
+  \(f^{-1}: Y \rightarrow X\) mit
+  \(f^{-1} = \{(y,x) \in Y \times X \mid (x,y) \in f\}\) eine Bijektion.
+\end{enumerate}
+
+
+\ssect{Satz}
+
+Sei X endliche Menge. EIne Abbildung \(f: X \rightarrow X\) ist injektiv
+genau dann, wenn \(f\) surjektiv ist.
+
+
+\sssect{Beweis}
+
+``\(\implies\)'': Sei \(f: X \rightarrow X\) injektiv. Sei \(n \in sN\)
+und \(g: [n] \rightarrow X\) bijektiv, dann ist
+\(h:= g^{-1} \circ f \circ g: [n]\) injektiv nach Bemerkung 6.5. Also
+\(h\) surjektiv nach Lemma 6.2. Somit \(f \circ h \circ g^{-1}\)
+surjektiv nach Bemerkung 6.5. \(X \xrightarrow{f} X\)
+
+
+\sssect{Beweis:}
+
+eine Surjektive Abbildung ist immer Injektiv bei einer endlichen Meneg
+ein sich selbst.
+
+
+\paragraph{Vorbemerkung}
+
+Sind X,Y endliche Mengen und ist \(f: X \rightarrow Y\) surjektiv, dann
+ist diese auch rechtsinvertierbar, d.h es exyistiert eine Abbildung
+\(g: Y \rightarrow X\) mit \(\exists g = id_y\). (Beweis durch
+vollständoige Induktion über \textbar{}X\textbar{})
+
+In unserem Fall brachten wir surjektivität und rechtsinvertierbarkeit
+als äquivalent, genau, wie Injektivität und linksinvertierbarkeit.
+
+
+\paragraph{\texorpdfstring{Beweis
+\(\Rightarrow\)}}
+
+Sei \(f: X \rightarrow X\) surjektiv. Dann gibt es (Vorbemerkung)
+\(g: X \rightarrow X\) mit \(f \circ g =id_x\)
+
+Nach Bemerkung 4.11,1 ist g injektiv, also Surjektiv nach
+\(\Rightarrow\).
+
+Damit folgt Inkektivität von f: Sind\(x,y \in X\) mit \(f(x) = f(y)\),
+dann gibt es (wegen Surjektivität von g) \(a,b \in X\) mit \(g(a) = x\)
+und \(g(b) = y\) und es folgt
+
+\begin{flalign*}x = g(a) = g(f((g(a))) = g(f(x)) = g(f(y)) = g(f(g(b))) = g(b) = y\end{flalign*}
+\begin{flalign*}q.e.d\end{flalign*}
+
+
+\ssect{Proposition:}
+
+Seien X,Y endliche Mengen.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  \(|X| \leq |y| \iff \exists f: x \rightarrow Y\) injektiv
+\item
+  \(|x| = |Y| \iff \exists f: X \rightarrow Y\) bijektiv
+\end{enumerate}
+
+
+\sssect{Bemerkung}
+
+Es folgt das \emph{Schubfachprinzip} (engl. pigionhole principal). Sind
+
+X,Y endliche Mengen mit \(|X| > |Y|\), dann ist jede Abbildung
+\(f: X \rightarrow Y\) nicht-injektiv.
+
+
+\ssect{Proposition}
+
+Seien X,Y endliche Mengen. Dann gelten folgende Aussagen
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  \(X \cap Y = \emptyset \iff |X \cup Y| = |X| + |Y|\)
+\item
+  Ist \(\mathscr{C}= \{A_1, ..., A_n\}\) eine Partition von X mit
+		\(| \mathscr{C} | = n\), dann ist \(|X| = \sum_{i=1}^{n} |A_i|\)
+\item
+  \(|X \times Y| = |X| \cdot |Y|\)
+\item
+  \(|Y^X| = |Y|^{|X|}\)
+\end{enumerate}
+
+
+\sssect{Beweis 1}
+
+Übung
+
+
+\sssect{Beweis 2}
+
+Folgt aus 1. mittels vollständiger Induktion über n. (1. ist Spezialfall
+von 2. Betrachte die Partition \(\mathscr{C}= \{X,Y\}\) der Menge
+\(X \cup Y\).)
+
+
+\sssect{Beweis 3}
+
+für jedes \(x \in X\) ist die Abbildung
+
+bijektiv. (Lemma 2.8) Also \(|\{x\} \times Y| = |Y|\). (nach Proposition
+6.7.2)
+
+Auch:
+
+ist Partition von \(X \times Y \text{mit} |\mathscr{C}| = |X|\)
+
+(Lemma 2.8, Propostition 6.7.2), Hinweis
+\(x \rightarrow \mathscr{C}, x \mapsto \{x\} \times Y\) bijektiv
+
+Ist nun \(n := |X|\) und \textbar{}X = \{x\_1, \ldots{}, x\_n\},
+dann folgt mit 2.
+
+\(|X \times Y| = \sum_{i=1}^{n} |\{ x_i\} \times Y| = n \cdot |Y| = |X| \cdot |Y|\)
+
+
+\sssect{Beweis 4}
+
+Vollständige Induktion über \textbar{}X\textbar{}.
+
+IA: \(|X| = 0\), d.h \(X = \emptyset\). Dann ist die Aussage wahr, denn
+\(|Y^{\emptyset} | = 1 = |Y|^{0}\)
+
+IS: Angenommen \(n \in \mathbb{N}\) und für alle endlichen Mengen X,Y
+mit \(|X| = n\) gilt:
+
+\begin{flalign*}IV: | Y^{X} | = | Y |^{n}\end{flalign*}
+
+Sei nun \(\tilde{X}\) endliche Menge mit \(| \tilde{X} | = n + 1\).
+Wähle \(x_0 \in \tilde{X}\).
+
+Definiere \(X = \tilde{X} \\ \{x_0\}\). Dann \textbar{}X\textbar{} = n.
+
+Für jedes \(y \in Y\) erhalten wir eine Bijektion:
+
+\(\varphi_{y} : Y^X \rightarrow A_y, f \mapsto \varphi_{y} (f)\)
+
+mit \(A_y = \{g \in Y^X | y(x_0) = y\}\) und
+
+\begin{equation}
+  \varphi_g(f) :=
+  \begin{cases}
+	  f(x) \text{falls} x \in X
+	  y \text{falls} x = x_0
+  \end{cases}
+\end{equation}
+
+und daher ist \(|A_y| = |Y^X| = |Y|^ni\).
+
+wieder: \(\mathscr{C}:= \{ A_y | y \in Y \}\) Partition von
+\(Y^{\tilde{X}}\) mit
+\(|\mathscr{C}| = |Y| ( Abb. Y \rightarrow \mathscr{C}, y \mapsto A_y\)
+ist bijektiv nach Proposition 6.7.2.
+
+Ist nun m = \textbar{}Y\textbar{} und Y = \{y\_1, \ldots{}, y\_m\},
+dann folgt mit 2.
+
+\(|Y^{\tilde{X}}| = \sum_{i = 1}^{n} A_{y} = m \cdot |Y|^n = |Y| \cdot |Y|^n= |Y|^{n + 1} = |Y|^{|\tilde{X} |}\)
+
+\begin{flalign*}q.e.d\end{flalign*}
+
+
+\ssect{Folgerung}
+
+Ist X endliche Menge., dann gilt: \( | \mathscr(P) (X) | = 2 \)
+
+
+\sssect{Beweis}
+
+\begin{flalign*}|\wp(X)| = |\{0,1\}^X = 2^{|X|}\end{flalign*}
+\begin{flalign*}&&q.e.d&\end{flalign*}
+
+
+\sect{§7 Algebraische Strukturen}
+
+
+\ssect{Definition: Halbgruppe}
+
+Eine Halbgruppe ist ein Paar (M, *) bestehend aus einer Menge M, sowie
+einer Abbildung
+\( * : M \times M \rightarrow M, (x,y) \mapsto x*y ,  \)
+Sodass gilt:
+\( \forall x,y,z \in M : x*(y*z) + (x*y)*z \) (Assoziativität)
+
+Eine Halbgruppe (M, *) heißt \emph{Monoit}, falls (Existens eines
+neutralen Elements)
+
+
+\ssect{Bemerkung:}
+
+Sei (M, *) Monoid. Dann besitzt (M, *) genau ein neutrales Element:
+
+Sind \(e, \tilde{e} \in M\) mit
+
+\begin{flalign*}\forall \in M: x \* e =x \wedge x \* e^{\tilde{i}} = \tilde{e} \* x = x\end{flalign*}
+
+dann folgt \(e = \tilde{e} \* e = \tilde{e}\).
+
+
+\ssect{Definition: Gruppen}
+
+Ein Monoid (M, *) mit neutralem Element \(e \in M\) heißt \emph{Gruppe},
+falls
+
+\begin{flalign*}\forall x \in M: \exists y \in M: x \* y = y \* x = e\end{flalign*}
+
+Existens \emph{inverser Elemente}.
+
+
+\ssect{Bemerkung}
+
+Sei (M, *) Gruppe, \(x \in M\). Dann besitzt (M, *) genau ein zu x
+inverses Element. Sind \(y, \tilde{y} \in M\) mit
+\(x \* y = y \* x = e\), dann folgt
+\(y = y \* e = y \* (x \* \tilde{y}) = (y \* x) \* \tilde{y} = e \* \tilde{y} = \tilde{y}\).
+
+Das zu x inverse Elementfindet wird häufig \(x^{-1}\) bezeichnet.
+
+
+\end{document}

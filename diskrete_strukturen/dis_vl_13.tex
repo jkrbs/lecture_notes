@@ -1,0 +1,144 @@
+\documentclass{../../meta/tudscript}
+\begin{document}
+\ssect{Proposition}
+Sei $n \in \mathbb{N} \setminus \{0,1\}$ Dann äquivalent:
+\begin{enumerate}
+       \item
+       $n \in \mathbb{P}$
+       \item
+       $\forall a,b \in \mathbb{N} : n | ab \rightarrow n|a \lor n|b$
+\end{enumerate}
+
+\sssect{Beweis}
+	\begin{enumerate}
+		\item
+		$1 \rightarrow 2$
+		Sei $n \in \mathbb{P}$ Seien $a,b \in \mathbb{N} $ mit $n|ab$
+		Ist n kein Teiler von a, denn ggT$(a,n)=1$ und daher $n|b$ nach Folgerung 9.13
+		\item 
+		$2 \rightarrow  1$
+		Angenommen, 2. ist wahr. Sei $d \in T(n)$.
+		Dann gibt es $k \in \mathbb{N} $ mit $ n=kd$. Insbesondere $ k|n$
+		Mit 2. (und Bemerkung 9.3.1) folgt $n|k$ und dann $n=k$ und $d=1$, 
+		oder $n|d$ und dann $n=d$
+		Daher $T(n)+ \{1,n\}$, also $ n\in \mathbb{P}
+		
+		q.e.d.
+	\end{enumerate}
+\sssect*{Einschub zur Notation von Produkten}
+	Für $k,n \in \mathbb{N} $ und $x_n , \cdots , x_{n+k} \in \mathbb{Q}$  definieren wir das \underline{Produkt} 
+	\( \prod_{i=n}^{n+k} x_i \in mathbb{Q} \) mittels Rekursion folgt:
+	\begin{equation}	
+	
+	\prod_{i=n}^n x_i := x_n ,\\
+	\prod_{i=n}^{n+k+1} x_i & := \left( \prod_{i=n}^{n+k} x_i \right)  \cdot x_{n+k+1}
+	
+	\end {equation}
+	
+	Für $m,n \in \mathbb{N}$ mit $ m<n$ definieren wir
+	
+	$$\prod_{i=n}^m x_i := 1$$
+
+\ssect{Satz (Fundamentalsatz der Arithmetik)}
+Für jedes $a \in \mathbb{N} \setminus \set{0}$ gibt es eindeutig bestimmte Primzahlen $p_1 < \ldots < p_n$ und Zahlen $k_1, \ldots, k_n \in \mathbb{N} \setminus \set{0}$ so, dass gilt:
+\begin{equation*}
+a = \prod_{i=1}^n p_i^{k_i}
+\end{equation*}
+Die angegebene Darstellung von $a$ heißt \underline{Primfaktorzerlegung} von $a$.
+\sssect{Beweis}
+\begin{itemize}
+	\item Existenz: \\
+	 Betrachte die Menge \begin{equation*}
+	      A := \condset{a \in \mathbb{N} \setminus \set{0}}{\begin{aligned} & \exists p_1 < \ldots < p_n \in \mathbb{P} \\ & \exists k_1, \ldots, k_n \in \mathbb{N} 			\setminus \set{0} \end{aligned}: a = \prod_{i=1}^n p_i^{k_i}} \end{equation*}
+	      Angenommen $A \neq \mathbb{N}$. \\
+	      Nach Satz 9.8 besitzt $\mathbb{N} \setminus \left( A \cup \set{0} \right)$ ein kleinstes Element bezüglich $\leqslant$, nennen wir dieses $n$. \\
+	      Dann gilt insbesondere $n \notin \mathbb{P}$. \\
+	      Daher gibt es $a,b \in \mathbb{N} \setminus \set{0,1}$ mit $n=ab$. \\
+	      Da $a < n$ und $b < n$, folgt $a,b \in A$ und damit $n = ab \in A$. \\
+	      Widerspruch. \\
+	      Also ist $A = \mathbb{N}$.
+	      
+	 \item Eindeutigkeit: \\
+	      Angenommen, Eindeutigkeit gilt nicht. \\
+	      Nach Satz 9.8 gibt es eine kleinste Zahl $a \in \mathbb{N} \setminus \set{0}$ mit Primzahlen $p_1 < \ldots < p_n$ und $q_1 < \ldots < q_m$ und Zahlen \\ $k_1, \ldots, k_n, l_1, \ldots, l_m \in \mathbb{N} \setminus \set{0}$ mit
+	      $a = \prod_{i=1}^n p_i^{k_i} = \prod_{i=1}^m q_i^{l_i}$ und \\ $\left( \left( p_1,\ldots,p_n \right), \left( k_1,\ldots,k_n \right) \right) \neq \left( \left( q_1,\ldots,q_m \right), \left( l_1,\ldots,l_m \right) \right)$. \\
+	      Mit Proposition 9.20 folgt $\set{p_1, \ldots, p_n} = \set{q_1, \ldots, q_m}$. \\
+	      (Genauer: $\forall i \in \set{1,\ldots,n} \, \exists j \in \set{1,\ldots,m}: p_i \vert q_j \Rightarrow p_i = q_j$ und umgekehrt.) \\
+	      Insbesondere ist $n = \abs{\set{p_1,\ldots,p_n}} = \abs{\set{q_1,\ldots,q_m}} = m$. \\
+	      Es folgt $\forall i \in \set{1,\ldots,n=m}: p_i = q_i$. \\
+	      Mit $b := \frac{a}{p_1}$ ergeben sich zwei verschiedene Primfaktorzerlegungen für $b < a$. \\
+	      Ein Widerspruch zur Wahl von $a$. \\
+	      q.e.d
+\end{itemize}
+
+\ssect{Satz}
+Die Menge $ \mathbb{P}$ ist unendlich
+\sssect{Beweis (Euklid)}
+Annahme:\\
+$ \mathbb{P}$ ist endlich $\mathbb{P} = \{ p_1, \cdots, p_n \}$ Betrachte $a :=1 \prod_{i=1}^n p_i \in \mathbb{N}$ \\
+Mit Satz 9.21 gibt es $p \in \{p_1, \cdots , p_n\}$ mit $p|a$. Da auch $p| \prod_{i=1}^n p_i $ folgt :\\
+$p|\( a- \prod_{i=1}^n p_i \) =1$ \\
+
+nach Proposition 9.2.2. Wiederspruch!
+q.e.d.
+
+\sssect*{Einschub zur Notation}
+Für eine endliche nicht-leere Teilmenge $A \subseteq mathbb{N}$ bezeichnet $max A$ von A bzgl $\leq$ (vgl. Bemerkung 9.7)
+
+\ssect{Definition}
+Für $p \in  \mathbb{P}$ und $a\in \mathnn{N} \setminus \{0\}:
+\begin{equation*}
+\nu_p (a) = \max \condset{k \in \mathbb{N}}{p^k \vert a}
+\end{equation*}
+
+\ssect{Bemerkung}
+Sei $a \in \mathbb{N} \setminus \set{0}$. \\
+\begin{enumerate}
+	\item Sind $p_1, \ldots, p_n \in \mathbb{P}$ paarweise verschieden und $k_1, \ldots, k_n \in \mathbb{N} \setminus \set{0}$ mit $a = \prod_{i=1}^n p_i^{k_i}$, dann gilt für alle $p \in \mathbb{P}$:
+	      \begin{equation*}
+	      \nu_p (a) = \left\lbrace \begin{aligned} k_i & \text{ falls } p=p_i \text{ für } i \in \set{1, \ldots, n} \\ 0 & \text{ falls } p \notin \set{p_1,\ldots,p_n} \end{aligned} \right.
+	      \end{equation*}
+	      $a$ hat also die folgende Darstellung:
+	      \begin{equation*}
+	      a = \prod_{i=1}^n p_i^{\nu_{p_i}(a)}
+	      \end{equation*}
+	\item Für alle $a,b \in \mathbb{N} \setminus \set{0}$ gilt:
+	      \begin{enumerate}
+		\item $A \vert b \Leftrightarrow \forall p \in \mathbb{P}: \nu_p (a) \leqslant \nu_p (b)$
+		\item $\forall p \in \mathbb{P}: \nu_p \left( \ggTop \left( a,b \right) \right) = \min \set{\nu_p (a), \nu_p (b)}$
+		\item $\forall p \in \mathbb{P}: \nu_p \left( \kgVop \left( a,b \right) \right) = \max \set{\nu_p (a), \nu_p (b)}$
+	      \end{enumerate}
+\end{enumerate}
+\ssect{Definition}
+Für $n \in \mathbb{N} \setminus \set{0}$ definieren wir:
+\begin{equation*}
+\varphi (n) := \abs{\condset{a \in \set{0, \ldots, n-1}}{\ggTop \left( a,n \right) = 1}}
+\end{equation*}
+Die Abbildung $\varphi: \mathbb{N} \setminus \set{0} \rightarrow \mathbb{N}$ heißt \textsc{Euler}\textbf{sche Phi-Funktion}.
+
+\ssect{Bemerkung}
+
+Explizite Funktionswerte der \textsc{Euler}schen Phi-Funktion: ($p$ sei hier prim)
+\begin{align*}
+\varphi (1) & = 1 \\
+\varphi (p) & = p-1
+\end{align*}
+Allgemein gilt: Ist $a \in \mathbb{N} \setminus \set{0}$ mit Primfaktorzerlegung $a = \prod_{i=1}^n p_i^{k_i}$, dann:
+\begin{align*}
+\varphi (a) & = \prod_{i=1}^n \left( p_i - 1 \right) p_i^{k_i -1} \\ & = a \cdot \prod_{i=1}^n \left( 1 - \frac{1}{p_i} \right)
+\end{align*}
+
+\ssect{Definition (Teileranzahlfunktion)}
+Für $n \in \mathbb{N} \setminus \set{0}$ sei:
+\begin{equation*}
+\tau (n) = \abs{T(n)}
+\end{equation*}
+Die Abbildung $\tau: \mathbb{N} \setminus \set{0} \rightarrow \mathbb{N}$ heißt \underline{Teileranzahlfunktion}.
+
+\ssect{Bemerkung}
+
+Ist $a \in \mathbb{N} \setminus \set{0}$ mit Primfaktorzerlegung $a = \prod_{i=1}^n p_i^{k_i}$, dann
+$ \tau (a) = \prod_{i=1}^n \left( k_i +1 \right) $
+
+
+\end{document}

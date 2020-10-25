@@ -1,0 +1,109 @@
+\documentclass{../../meta/tudscript}
+\begin{document}
+\setcounter{section}{13}
+\setcounter{subcounter}{3}
+    \ssect{Lemma: Handschlaglemma}
+        Sei $G = (V, E)$ endlicher Graph. Dann gilt:
+        \ilmath{\sum_{v \in V} deg_G (V) = 2 |E|}
+        Isbesondere: Ist G k-regulär für ein $k \in \bN$, dann:
+        \ilmath{k \cdot |V| = 2 |E|}
+        
+        \paragraph{Beweis}
+        Mit Proposition 6.9,2\ref{6.9} gilt:
+        \ilmath{|\Set{(v, e) \in V \times E \mid v \in e}| &= \sum_{v \in V} |\Set{e \in E \mid v \in e}|\\ 
+                                                           &= \sum_{v \in V} deg_G (v)}
+
+        \ilmath{|\Set{(v,e) \in V \times E \mid v \in e}| = \sum_{e \in E} \underbrace{|\Set{v \in V \mid v \in e}|}_{=2} = 2 |E|}
+
+        $\hfill\square$
+        
+    \ssect{Definition}
+        Sei $G = (V, E)$ Graph.
+        Ein Tupel $(v_0, \ldots, v_e) \in V^{k + 1}$ mit $k \in \bN$ heißt
+        \underline{Weg (auch Pfad, Kantenzug)} in G \underline{der Länge k}, falls:
+        \ilmath{\forall i \in \Set{0, \ldots, k-1}: \Set{v_i, v_{i + 1}} \in E}
+
+        Ein Weg $(v_0, \ldots, v_k)$ heißt \underline{Kreis}, falls:
+        \begin{enumerate}
+            \item $k \geq 3$
+            \item $v_0 = v_k$
+            \item $\forall i, j \in \Set{0, \ldots, k-1} : i \neq j \implies v_i \new v_j$
+        \end{enumerate}
+        
+        Ein Graph G heißt \underline{zusammenhängend (zushgd)}
+        \ilmath{:\iff \forall u, v \in V: \exists (w_0, \ldots, w_k) Weg in G: w_0 = u, w_k = v}
+        
+        \underline{kreisfrei (Wald)} $:\iff$ G enthält keinen Kreis,\\
+        \underline{Baum} $:\iff$ G zushgd und kreisfrei,\\
+        \underline{leer} $:\iff V = \emptyset$.
+
+        Falls G Baum, so heißt ein Knoten $v \in V$ \underline{Blatt} (von G) $:\iff deg_G (v) = 1$.
+
+    \ssect{Lemma}
+        Sei $G = (V, E)$ endlicher, nicht-leerer Graph. Ist $deg_G (v) \geq 2$ für alle $v \in V$, dann enthält G einen Kreis.
+
+        \paragraph{Beweis}
+        Sei $n :=  |V|$. Konstruiere einen Weg $(v_0, \ldots, v_n)$ in G rekursiv wie folgt:
+
+        \begin{enumerate}
+            \item Wähle $v_0 \in V$ beliebig (möglich, da $V \neq \emptyset$)
+            \item Wähle $v_1 \in V \ \Set{v_0}$ mit $\set{v_0, v_1} \in E$ (möglich, da $deg_G (v_0) \geq 2$)
+            \item Sind $v_0, \ldots, v_i \in V$ mit $i \in \Set{1, \ldots, n-1}$ bereits gewählt.
+            \item Dann wähle $v_{i+1} \in V \ \Set{v_{i-1}, v_i}$ mit $\Set{v_i, v_{i+1}} \in E$ (möglich, da $deg_G (b_i) \geq 2$)
+        \end{enumerate}
+
+        Nach Konstruktion ist $(v_0, \ldots, v_n)$ ein Weg in G, und es gilt:
+        \ilmath{|\Set{v_{i-1}, v_i, v_{i+1}}| = 3 \text{für alle } i \in \Set{1, \ldots, n-1}}
+        Die Abbildung:
+        \ilmath{\Set{0, \ldots, n} \rightarrow G, i \mapsto v;}
+        ist nicht injektiv (Schubfachprinzip) also ist die Menge $M := \Set{(i,j) } \in \Set{0, \ldots, n}^2 \mid i < j, v_i = v_j}$
+        nicht leer. Wähle $(k, l) \in M$ mit 
+        \ilmath{l-k = \text{nun} \Set{j-i \mid (i, j) \in M} \star}
+        Da $v_k = v_l$ und $|\Set{v_{i-1}, v_i, v_{i+1}}| = 3$ für alle $i \in \Set{1, \ldots, n-1}$, folgt
+        $l-k \leq 3$. Wegen $\star$ ist $(v_k, \ldots, v_l)$ din Kreis in G.
+
+    \ssect{Folgerrung}
+        Jeder endliche Baum mit mindestens zwei Knoten besitzt mindestens ein Blatt.
+
+        \paragraph{Beweis}
+        Sei $G = (V, E)$ Baum, endlic mit $|V| \geq 2$.
+
+        Nach Lemma 13.6\ref{13.6} gibt es $v \in V$ mit $deg_G \leq 1$. Weil G zushgd und $|V| \geq 2$, folgt $deg_G (v) = 1$.
+        $\hfill\square$
+
+    \ssect{Lemma}
+        Sei $G = (V, E)$ zushgder Graph. Enthält G einen Kreis, dann:
+        \ilmath{\exists e \in E: (V, E \setminus \Set{e}) \text{G zushgd}}
+
+        \paragraph{Beweis}
+        Sei $(v_0, \ldots, _k)$ Kreis in G, $e := \Set{v_0, v_1}$.
+        Wir zeigen: $G = (V, E \setminus \Set{e})$ zushgd.
+        Seien dazu $u_0, u_1 \in V$. Da G zushgd, gibt es einen Weg $(w_0, \ldots, w_e)$ in G mit $w_0 = u_0$ und $w_l = u_1$.
+        Falls $e \notin \Set{(w_i, w_{i + 1}) \mid i \in \Set{0, \ldots, l-1}}$, dann ist $(w_0  \ldots, w_l)$ auch ein Weg in G. Annahme:
+        $e \in \Set{(w_i, w_{i+1}) \mid i \in \Set{0, \ldots, l-1}}$.
+
+        O.E. gibt es genau ein $i \in \Set{0, \ldots, l-1}$ mit $e = (w_i, w_{i+1})$.
+
+        Dann ist:
+        \ilmath{w_0, w_1, \ldots, w_{i-1}, v_0, v_{k-1}, v_{k-2}, \ldots, \underbrace{v_1}_{= w_{i+1}}, w_{i+2}, \ldots, \underbrace{w_l}_{= u_1}}
+
+        ein Weg in $\tilde{G}$. Also $\tilde{G}$ zushgd. $\hfill\square$
+        
+    \ssect{Satz}
+        Sei $G = (V, E)$ endlicher, zushgder, nicht-leerer Graph. Dann gilt:
+        \ilmath{\text{G ist Baum} \iff |E| = |V| - 1}
+
+        \paragraph{Beweis}
+        \underline{$\implies$} Vollst. Induktion über $n := |V|$.
+
+        $\boxed{IA} (n = 1)$: Dann $E= \emptyset$, d.h. $|E| = 0$ und Aussage wahr. \\
+        $\boxed{IS}$ Sei $G = (V, E)$ Baum mit $|V| = n > 1$.
+        Nach Folgerung 13.7\ref{13.7} besitzt der Graph G ein Blatt $v \in V$. Sei $w \in V$ der eindeutig bestimmte Nachbar von v in G, d.h. $e := \Set{v, w} \in E$.
+        Dann ist $(V \setminus \Set{v}, E \setminus \Set{e})$ ein Graph, nicht-leer, endlich, kreisfrei und zushgd, also Baum. Wegen $|V \setwothout \Set{v}| = n-1$
+        folgt nach $\boxed{IV}$:
+        \ilmath{|E \setminus \Set{e} = |V \setminus \Set{v}| = 1}
+        daher:
+        \ilmath{|E| = |E \setminus \Set{e}| + 1 = |V \setminus \Set{v} | = |V| - 1}
+
+        
+\end{document}

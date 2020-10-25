@@ -1,0 +1,126 @@
+\documentclass{../../meta/tudscript}
+\begin{document}
+\setcounter{section}{13}
+\setcounter{subsection}{9}
+\paragraph{$\Leftarrow$}
+Es gelte:
+\ilmath{|E| = |V| - 1}
+Annahme: G ist kein Baum, d.h. G nicht Kreisfrei. Durch wiederholte Anwendung
+von Lemma 13.8\ref{13.8} erhalten wir kreisfreien, zusammenhängenden Graphen 
+$\tilde{G} = (V, \tilde{E})$ mit $\tilde{E} \subseteq E$. Werden $t \in \bN$ Kanten
+dabei entfern (t-malige Anwendung des Lemmas), so gilt:
+\ilmath{|E| - t = E - |\tilde{E}| = |V| - t \text{ nach} "\implies"}
+Nach Voraussetzung ist $|V| - 1 = |E|$, also $t = 0$, d.h. $\tilde{G} = G$.
+Widerspruch, da G nicht kreisfrei.$\hfill\square$
+
+\ssect{Definition: Zusammenhangskomponente}
+Sei $G = (V, E)$ Graph. Für $v \in V$ heißt 
+\ilmath{C_G (v) := \Set{w \in V \mid \exists (u_0, \ldots, u_k) \text{Weg in G}: u_0 = v, u_k = w}}
+die \underline{Zusammenhangskoponente (engl. connected component)} von v in G.
+
+Ein Graph $\tilde{G} = (\tilde{V}, \tilde{E})$ heißt 
+\ilmath{\text{\underline{Teilgraph} von G}:\iff \tilde{V} \subseteq V, \tilde{E} \subseteq E}
+\ilmath{\text{\underline{induzierter Teilgraph von G}} :\iff \tilde{V} \subseteq V, \tilde{E} = E \cap \wp_2 (\tilde{V})}
+
+Für $\tilde{V} \subseteq V$. Sei $G [\tilde{V}] := (\tilde{V}, E \cap \wp_2 (\tilde{V}))$.
+
+\ssect{Bemerkung}
+Sei $G = (V, E)$ Graph.
+\begin{enumerate}
+    \item Für $v \in V$: 
+    \begin{enumerate}
+        \item $C_G (v) = \bigcup \Set{\tilde{v} \subseteq V \mid G [\tilde{V}] zushgd, v \in \tilde{V}}$ 
+        \item $G [C_G (v)]$ zusammenhängend    
+    \end{enumerate}
+    \item $W_G := \Set{(v,w) \in V \times V \mid \exists (u_0, \ldots, u_k) \text{Weg in G}: u_0 = v, u_k = w}$
+    Ist eine Äquivalenzrelation auf V, und es gilt:
+    \ilmath{\forall v \in V: [v]_{W_G} = C_G (v)}
+    Insbesondere:
+    \ilmath{\Set{C_G (v) \mid v \in V} \text{Partition von V}}
+    \item G Wald (kreisfrei). $\iff \forall v \in V: G [C_G (v)]$ kreisfrei $\iff \forall v \in V: G[C_G (v)]$ Baum. 
+\end{enumerate}
+
+\ssect{Lemma}
+Jeder endliche Baum mit mindestens zwei Knoten mindestens zwei Blätter.
+\paragraph{Beweis}
+Sei $G = (V, E)$ endlicher Baum, $|V| > 2$. Nach Folgerung 13.7\ref{13.7}besitzt G mindestens ein Blatt $v \in V$.
+Annahme: G besitzt kein weiteres Blatt, d.h. $deg_G (w) \geq 2$ für alle $w \in V \setminus \Set{v}$. Sei $n := |V|$.
+Konstruiere Weg $(v_0, \ldots, v_{n + 1})$ in G rekursiv wie folgt:
+\begin{enumerate}
+\item Setze $v_0 := V$.
+\item Wähle $v_1$ als eindeutig bestimmten Nachbarn von $v_0$ in G.
+\item Sind $(v_0, \ldots, v_i)$ mit $i \in \Set{1, \ldots, n}$ gewählt, dann wähle $v_{i+1} \in V \setminus \Set{v_{i-1}, v_i}$ mit 
+$\Set{v_i, v_{i+1}} \in E$ (möglich, da $deg_G (v) \geq 2$).
+Wie im Beweis von Lemma 13.6\ref{13.6} folgt:Es gibt $k, l \in \Set{1, \ldots, n-1}$, mit $k < l$, sodass $(v_k, \ldots, v_l)$ ein Kreis in G ist.
+Widerspruch! $\hfill\square$
+\end{enumerate}
+
+\ssect{Proposition}
+Sei $G = (V, E)$ ein endlicher nicht-leerer Baum, $s = max \Set{deg_G (v) \mid v \in V}$. Dann besitzt G mindesten s 
+paarweise verschiedene Blätter.
+
+\paragraph{Beweis}
+Sei $v \in V$ mit $deg_G (v) = s$. Seien $v_1, \ldots, v_s \in V$ die Nachbarn von v on G, d.h. $\Set{v, v_i} \in E$ für alle $i \in \Set{1, \ldots, s}$.
+und $v_i \neq v_j$ für je zwei versch. $i, j \in \Set{1, \ldots, s}$.
+Definiere: $\tilde{V} := V \setminus \Set{v},\tilde{G} := G[\tilde{v}]$.
+
+%%
+%% TODO: some TIKZ will appear
+%%
+\ilmath{\tilde{V_j} := C_{\tilde{G}} (v_j) \text{für alle} j \in \Set{1, \ldots, s}}
+Dann:
+\begin{enumerate}
+\item $\tilde{V} = \bigcup_{j \in [s]} \tilde{V_j}$
+\item $\forall i, j \in \Set{1, \ldots, s}: i \neq j \implies \tilde{V_i} \cap \tilde{V_j} = \emptyset$
+\end{enumerate}
+Zu 1.: Sei  $w \in \tilde{V}$. Da G zusammenhängend, gibt es einen Weg $(w_0, \ldots, w_k)$ in G mit $w_0 = v, w_k = w$. O.E. $w_i \neq v$
+für alle $i \in \Set{1, \ldots, k}$. Also $(w_1, \ldots, w_k)$ Weg in G.
+
+Sei $j \in \Set{1, \ldots, s}$ mit $v_j = w_1$.
+
+Dann ist $w \in C_{\tilde{G}} (v_j) = \tilde{V_j}$.
+
+Zu 2.: Seien $i, j \in \Set{1, \ldots, s}, i \neq j$.
+Annahme: $\tilde{V_i} \cap \tilde{V_j} \neq \emptyset$, d.h.
+$C_{\tilde{G}} (v_i) = C_{\tilde{G}} (v_j)$ nach Bem. 13.11\ref{13.11}, 2. Sei $(w_0, \ldots, w_k)$ Weg in G minimaler Länge mit $w_0 = v_i$ und $w_k = v_j$. Dann ist 
+$(w_0, \ldots, w_k, v)$ ein Kreis in G. Widerspruch! Also $\tilde{V_i} \cap \tilde{V_j} = \emptyset$.
+
+Sei nun $j \in \Set{1, \ldots, s}$. Ist $C_{\tilde{G}} (v_j) = \Set{v_j}$, dann ist $v_j$ ein Blatt in G, und wir setzen $v_j = v_i$. Ist $|C_{\tilde{G}} (v_j)| \geq 2$,
+dann besitzt der Braum $G [\tilde{V_j}] = \tilde{G} [\tilde{V_i}]$ ein Blatt $u_j \in V_j \setminus \Set{v_j}$ (Lemma 13.12\ref{13.12});
+mit 1. und 2. folgt, dass $u_j$ ein Blatt in G ist. (Üb! (aber ich erklärs euch))
+
+Wegen 2. sind die Blätter $u_1, \ldots, u_s$ paarweise verschieden. $\hfill\square$
+
+%%
+%% TODO: some TIKZ will appear
+%%
+
+\ssect{Definition}
+Seien $G = (V, E), G = (\tilde{V}, \tilde{E})$ Graphen.
+Eine Abb. $\varphi: V \rightarrow \tilde{V}$ 
+heißt \underline{(Graphen-) Homomorphismus} von G nach $\tilde{G}$ $:\iff \forall u, v \in V: \Set{u,v} \in E \rightarrow \Set{\varphi (u), \varphi (v)} \in \tilde{E}$
+
+Eine Abb. $\varphi: V \rightarrow \tilde{V}$ heißt
+\underline{(Graphen-) Isomorphismus} von G nach $\tilde{G}$ $:\iff \varphi$ bijektiv, $G \rightarrow \tilde{G} Hom., \varphi^{-1}: \tilde{G} \tightarrow G$ Hom.
+
+$G \cong \tilde{G} :\iff \exists \varphi: G \rightarrow \tilde{G}$ 
+
+Eine Abb. $f: V \rightarrow \Set{0, \ldots, n-1}$ mit $n \in \bN \setminus \Set{0}$ heißt \underline{(n-) Färbung} $:\iff \forall u,v \in V: \Set{u,v} \in E \implies f(u) \neq f(v) \iff f:G \rightarrow K_n$ Homomorphismus.
+
+Für $n \in \bN \setminus \Set{0}$ heißt G \underline{n-färbbar} $\iff \exists f: G \rightarrow K_n$ Hom.
+
+Spezialfall:
+G: bibpartit (2 Färbbar)
+
+\ssect{Beispiel}
+Für Mengen A, B mit $A \cap B = \emptyset$ heißt $K_{A, B} = (A \cup B, \Set{\Set{x, y} \mid x \in A, y \in B})$ vollständig bipartiter Graph über A und B.
+Für $m, n \in \bN \setminus \Set{0}$ sei 
+\ilmath{K_{m, n} := K_{\underbrace{\Set{0} \times {b, \ldots, m}}_{= A}, \underbrace{\Set{1} \times {1, \ldots, m}}_{=K}}}
+
+%%
+%% TODO: some TIKZ will appear
+%%
+
+
+
+\end{document}

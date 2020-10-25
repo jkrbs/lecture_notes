@@ -1,0 +1,146 @@
+\documentclass{../../meta/tudscript}
+\begin{document}
+ \setcounter{section}{14}
+    \setcounter{subsection}{8}
+    
+    \paragraph{Beweis}
+
+    \subparagraph{$\leq$}
+
+    Sei A Antikette in $(M, \leq)$. Sind $K_1, \ldots, K_n$ Ketten in $(M, \leq)$
+    mit $M = \bigcup_{i = 1}^{n} K_i$, dann
+    \ilmath{\forall x, y \in A: \forall i \in \Set{1, \ldots, n}: (x, y \in K_i \implies x = y)}
+    daher ist \underline{jede} Abbildung $f: A \rightarrow \Set{1, \ldots, n}$ mit 
+    \ilmath{\forall x \in A: x \in K_{f (x)}}
+    injektiv. Somit $n \geq |A|$, vgl. Folgerung 6.3\ref{6.3}.
+    
+
+    \subparagraph{$\geq$}
+    
+    Vollständige Induktion über $m := |M|$.
+
+    $\boxed{IA} (m = 0)$ wahr, da beide Terme = 0
+
+    $\boxed{IS}$ Sei $|M| = m \geq 1, n = width (M, leq)$.
+
+    Sei C maximale Kette in $(M, \leq)$ (maximal bzgl. $\subseteq$ (Inklusion)).
+    $C \neq \emptyset$, da $M \neq \emptyset$
+
+    Sei $c^+$ größtes Element und $c^-$ kleinstes Element von C bzgl. $\leq$.
+    (vgl. Bem. 9.7.3\ref{9.7})
+
+    \underline{Fall 1:}
+
+    \ilmath{width (M \setminus C, \leq) < n}
+    Wegen $|M \setminus C| < |M|$ und $\boxed{IV}$:
+    \ilmath{\exists K_1, \ldots, K_{n-1} \text{ Ketten in } (M \setminus C, \leq): M \setminus C = \bigcup_{i = 1}^{n - 1} K_i}
+    Mit $K_n := C$ folgt $M = \bigcup_{i = 1}^n K_i$
+
+    \underline{Fall 2:}
+
+    \ilmath{width (M \setminus C, \leq) = n}
+    Dann:
+    \ilmath{\exists A \text{ Antikette in } (M \setminus C, \leq): |A| = n}
+    Wegen $width (M, \leq) = n$ ist $M = M^+ \cup M^-$ mit 
+    \ilmath{M^+ := \Set{x \in M \mid \exists a \in A: a \leq x} \\
+            M^- := \Set{x \in M \mid \exists a \in A: x \leq a}} 
+    
+    (A Antikette $\implies M^+ \cap M^- = A$)
+    
+    Da C maximale Kette:
+    \ilmath{c^+ \in M^+ \setminus M^-, c^- \in M^- \setminus M^+ \implies |M^+| < |M|, |M^-| < |M|}
+    
+    Wegen $width (M^+, \leq), width (M^-, \leq) \leq n$ und $\boxed{IV}$:
+    \ilmath{\exists K_{1}^+, \ldots, K_{n}^+ \text{ Ketten in } (M^+, \leq): M^+ = \bigcup_{i = 1}^n K_{i}^+, \\
+            \exists K_{1}^-, \ldots, K_{n}^- \text{ Ketten in } (M^-, \leq): M^- = \bigcup_{i = 1}^n K_{i}^-} 
+    O.B.d.A. sei $A = \Set{a_1, \ldots, a_n}$, sodass
+    \ilmath{\forall i \in \Set{1, \ldots, n}: a_i \in K_{i}^+ \cap K_{i}^-}
+    Für jedes $i \in \Set{1, \ldots, n}: K_i := K_{i}^+ \cup K_{i}^-$ Kette in $(M, \leq)$.
+
+    Schließlich $M = \bigcup_{i = 1}^n K_i.$
+    $\hfill\square$
+
+    \ssect{Satz (auch Dilworth)}
+    Sei $(M, \leq)$ eine endliche, nicht-leere, geordnete Menge. Dann $dim (M, \leq) \leq width (M, \leq)$
+
+    \paragraph{Beweis}
+
+    Sei $n = width{M, \leq}$. Nach Satz 14.8\ref{14.8} gibt es Kette $K_1, \ldots, K_n$
+    in $(M, \leq)$, sodass $M = \bigcup_{i = 1}^n K_i$.
+
+    Für $i \in \Set{1, \ldots, n}$ definiere
+    \ilmath{R_i := \leq \cup \Set{(x,y) \in M \times K_i \mid x,y \text{ unvergleichbar in } (M, \leq)}}
+
+    Es gilt:
+    \ilmath{\forall i \in \Set{1, \ldots, n} \forall m \in \bN \forall a_0, \ldots, a_m \in M: \\
+            (a_0 R_i a_1 R_i a_2 \ldots a_{m-1} R_i a_m = a_0) \implies (a_0 = a_1 = \ldots = a_{m-1} = a_m) \star}
+    
+    \subparagraph{Beweis von $\star$}
+
+    Sei $i \in \Set{1, \ldots, n}, m \in \bN \setminus \Set{0}$, und $a_0, \ldots, a_m \in M$ mit
+    $a_0 R_i a_1 \ldots a_{m-1} R_i a_m = a_0$
+
+    Annahme: $\Set{A_0, \ldots, a_{m-1}} \cap K_i \neq \emptyset$
+
+    O.B.d.A.: Sei $a_0$ größtes Element von $\Set{a_0, \ldots, a_{m-1}} \cap K_i$
+
+    bzgl. $\leq$, Sei 
+    \ilmath{k := min \Set{j \in \Set{1, \ldots, m} \mid a_j \in K_i}}
+    
+    Dann $a_k \leq a_0$, und $a_0 \leq a_1 \leq \ldots, a_{k-1}$ wegen Minimalität
+    von k. also $a_k \leq a_{k-1}$.
+    Wegen $a_{k-1} R_i a_k$ folgt $a_{k-1} \leq a_k$. Somit $a_{k-1} = a_k$,
+    Widerspruch zu Minimalität von k!    
+    Folglich $\Set{a_0, \ldots, a_{m - 1} \cap K_i = \emptyset}$.
+    Somit:
+    \ilmath{a_0 \leq a_1 \leq \ldots \leq a_{m-1} \leq a_m = a_0}
+    daher
+    \ilmath{a_0 = a_1 = \ldots = a_{m-1} = a_m}
+    wegen Antisymmetrie von $\leq$.
+     $\hfill\boxed{\lightning}$
+
+    Es folgt: Für jedes $i \in \Set{1, \ldots, n}$ ist 
+    \ilmath{Q_i := \Set{(x,y) \in M \times M \mid \exists m \in \bN \exists a_0, \ldots, a_m \in M: x = a_0 R_i a_1 \ldots a_{m-1} R_i a_m = y}}
+    
+    Ist Ordnungsrelation auf M mit $R_i \subseteq Q_i$.
+    (Klar: $R_i \in Q_i$, insbesondere $Q_i$ reflexiv. Auch Klar.)
+    $Q_i$ transitiv. Wegen $\star$ ist $Q_i$ antisymmetrisch.
+
+    Für jedes $i \in \Set{1, \ldots, n}$ sei $L_i$ lineare Ordnungserweiterung
+    von $Q_i$. Dann:
+    \ilmath{\leq = \bigcap_{i = 1}^n L_i \hfill(\star\star)}
+
+    \paragraph{Beweis von $\star\star$}
+
+    Klar: $\leq \subseteq \bigcap_{i = 1}^n L_i$
+
+    Seien $x,y \in M$ unvergleichbar in $(M, \leq)$.
+
+    Es gibt $r, s \in \Set{1, \ldots, n}$ mit
+    \ilmath{x \in K_r, y \in K_s}
+    Es folgt:
+    \begin{enumerate}
+        \item $(x,y) \in R_s \subseteq L_s \overset{\iff}{x \neq y} (y,x) \notin L_s$
+        \item $(y,x) \in R_r \subseteq L_r \overset{\iff}{x \neq y} (x,y) \notin L_r$
+    \end{enumerate}
+    Somit liegt werde $(x,y)$ noch $(y,x)$ in $\bigcap_{i = 1}^n L_i$.
+    $\hfill\boxed{\star\star}$
+
+    Aus $\star\star$ folgt:
+    \ilmath{dim (M, \leq) \leq n}
+
+    \ssect{Beispiele}
+    \begin{enumerate}
+        \item Sei $n \in \bN \setminus \Set{0}$ BEtrachte
+        \ilmath{A_n := (\Set{1, \ldots, n}, \bigtriangleup_{\Set{1, \ldots, n}}) \text{(n-elementige Antikette)}}
+        Offenbar: $width A_n = n$. Aber: $dim (A_n) = 2$.
+
+        Die Abbildung:
+        \ilmath{\varphi: \Set{1, \ldots, n} \rightarrow \Set{1, \ldots, n} \times \Set{1, \ldots, n},\\
+                 k \mapsto (k, n-k+1)}
+        ist Ordnungseinbettung von $A_n$ nach $(\Set{1, \ldots, n}, \leq) \times (\Set{1, \ldots, n}, \leq)$
+
+        %%TODO some tikz needed
+    \end{enumerate}
+    
+\end{document}

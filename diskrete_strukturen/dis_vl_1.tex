@@ -1,0 +1,172 @@
+\documentclass{../../meta/tudscript}
+\begin{document}
+\sect{Aussagenlogik}
+
+\ssect{Definition: Aussage}
+
+Eine Aussage ist eine endliche Zeichenfolge, der genau einer der
+Wahrheitswerte ``wahr'' (1) oder ``falsch''(0) zugeordnet ist.
+
+\ssect{Beispiele}
+\begin{itemize}
+\item Dresden liegt an der Elbe
+\item Die Erde ist eine Scheibe
+\item 4 ist eine Primzahl
+\end{itemize}
+\ssect{Definition}
+
+Zwei Aussagen A und B können durch Junktoren zu neuen Aussagen verknüpft
+werden:
+
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+$\neg A$ :  \''nicht A\'' ist wahr, wenn A falsch is. (Negation)
+\item
+$A \vee B $: \''A oder B\''  ist wahr, wenn  A oder B oder beide wahr sind. (Disjunktion)
+\item
+$A \wedge B$ : \''A und B\'' ist wahr, wenn A und B wahr sind. (Konjunktion)
+\item
+\(A \Rightarrow B\) : \''A impliziert B\'' wenn A, dann B. (Implikation)
+\item
+\(A \Leftrightarrow B\) : \''genau dann A, wenn B  \'' ist wahr, wenn A und B wahr sind oder beide falsch sind . (ist wahr, wenn A und B wahr sind oder beide falsch sind)
+
+\end{enumerate}
+
+\ssect{Darstellung als Wahrheitstabelle}
+
+\begin{tabular}{l c c c c c c r}
+           A & B & \neg A & A\vee B &A\wedge B &A \Rightarrow & A \Leftrightarrow B \\
+            0 & 0 & 1 & 0 & 0 & 1 & 1 \\
+            0 & 1 & 1 & 1 & 0 & 1 & 0\\
+            1 & 0 & 0 & 1 & 0 & 0 & 0 \\
+            1 & 1 & 0 & 1 & 1 & 1 & 1 \\
+\end{tabular}
+
+\ssect{Proposition: Grundlegende Gesetze}
+Folgende Aussagen sind wahr für beliebige Aussagen A,B,C:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(A \vee (B \vee C) \Leftrightarrow (A \vee B) \vee C\)
+
+  \(A\wedge (B \wedge C) \Leftrightarrow (A \wedge B) \wedge C\)
+\item
+  \(A \vee \urcorner A\)
+\item
+  \(A \vee B \leftrightarrow B \vee A\)
+
+  \(A \wedge B \leftrightarrow B \wedge A\)
+\item
+  \(A \vee (B \wedge C) \Leftrightarrow (A \vee B) \wedge (A \vee C)\)
+
+  \(A \wedge (B \vee C) \Leftrightarrow (A \wedge B) \vee (A \wedge C)\)
+\item
+  \(\urcorner (A \vee B) \leftrightarrow \urcorner A \wedge \urcorner B\)
+
+  \(\urcorner(A \wedge B) \leftrightarrow \urcorner A \vee \urcorner B\)
+\item
+  \(\urcorner \urcorner A \Leftrightarrow A\)
+\item
+  \((A \leftrightarrow B) \leftrightarrow ((A \rightarrow B) \wedge (B \rightarrow A))\)
+\item
+  \(A \rightarrow B \leftrightarrow (\urcorner A \vee B)\)
+\end{enumerate}
+
+Beweis durch Wahrscheinlichkeitstabellen oder durch Benutzung bereits
+bekannter Aussagen (am Beispiel von 8)
+
+\begin{tablular}{l c c c c r}
+A  & B  & \(\urcorner A\)  &\(\urcorner A \vee B\)  &\(A \rightarrow B\)  &\((A \rightarrow B) \leftrightarrow (\urcorner A \vee B)\)  \\
+0  & 0  & 1  & 1  &1  &1 \\
+0  & 1  & 1  & 1  &1  &1  \\
+1  & 0  & 0  & 0  &0  &1  \\
+1  & 1  & 0  & 1  &1  &1  \\
+\end{tablular}
+
+Prädikatenlogik Wir betrachten im Folgenden Variablen x,y,z,\ldots aus
+einem festzulegenden Universum, z,B alle Menschen, alle natürlichen
+Zahlen, etc.
+
+\ssect{Definition}
+
+Ein Prädikat ist eine endliche Zeichenfolge, die Variablen beinhalten
+kann und der für jede Variablenbelegung aus dem Universum ein
+Wahrheitswert zugeordnet ist. Ein Prädikat, das für alle
+Variablenbelegungen wahr ist heißt Tautologie.
+
+\ssect{Beispiele}
+
+\begin{tablular}{}
+Prädikat  & Universum  \\
+
+A(x)=``x ist eine Katze''  & alle Tiere  \\
+B(x)=``x ist eine Primzahl''  & alle natürlichen Zahlen  \\
+C(x,y)=``x ist Teiler von y''  & alle natürlichen Zahlen  \\
+D(x,y,z)=``\(x^2 + y^2 = z\)''  & alle natürlichen Zahlen \\
+E(x)=``x ist Primzahl \(\rightarrow\) x ist ungerade''  & alle natürlichen Zahlen  \\
+F(x, y)=``(x gerade) \(\wedge\) (y gerade) \(\rightarrow\) (x + y) gerade''  &
+alle natürlichen Zahlen  \\
+\end{tablular}
+
+Wie Aussagen lassen sich Prädikate durch Junktoren (Negation,
+Disjunktion, Konjunktion, Implikation, Äquivalenz, \ldots{}) zu neuen
+Prädikaten verbinden. Wir führen nun den Allquantor \(\forall\) und den
+Existenzquantor \(\exists\) ein.
+
+\ssect{Definition}
+
+Sei P(x) ein Prädikat. Dann sind \(\forall x: P(x)\) und
+\(\exists x: P(x)\) Aussagen mit folgenden Wahrheitswerten:
+
+\begin{itemize}
+\item
+\(\forall \> x: P(x)\) ~``für alle x gilt P(x)''  ist wahr, wenn P(x) für alle x aus dem Universum wahr ist, ansonsten
+falsch
+\item
+\(\exists \> x: P(x)\) ~``es existiert x mit P(x)''ist wahr, wenn P(x) für mindestens x aus dem Universum wahr ist,
+ansonsten falsch.
+\item
+Weiter definieren wir $\exists ! \> x: P(x) : \iff  \exists \> x: P(x) \wegde (\forall x,y : P(x) \wedge P(y) \rightarrow x=y$
+\end{itemize}
+
+\ssect{Bemerkung}
+
+Seien P(x) und Q(x) Prädikate, so gilt:
+
+\begin{itemize}
+\item \(\forall \> x: P(x)) \leftrightarrow \exists \>x: \urcorner P(x)\)
+\item \(\urcorner (\exists \> x: P(x)) \leftrightarrow \forall \> x: \urcorner P(x)\)
+\item \((\forall \> x: P(x)) \wedge (\forall \> x: Q(x)) \leftrightarrow \forall \> x: P(x) \wedge Q(x)\)
+\item \((\exists \> x: P(x)) \vee (\exists \> x: Q(x)) \leftrightarrow \exists \> x: P(x) \vee Q(x)\)
+\end{itemize}
+
+\sect{Mengen}
+
+\ssect{Naive Definition (Georg Cantor,
+1895)}
+
+Unter einer Menge verstehen wir jede Zusammenfassung M von bestimmten
+wohlunterschiedenen Objekten unserern Anschauung oder unsers Denkens
+(welche die Elemente von M genannt werden) zu einem Ganzen
+
+Beispiele für Mengen sind
+
+\begin{itemize}
+\item \{rot, grün, blau\}, \{0, 1\}
+\item \(\mathbb{N}\) = \{0, 1, 2, 3, \ldots{}\}
+\item \(\mathbb{Z}\) = \{\ldots{}, -2, -1, 0, 1, 2, \ldots{}\}
+\item \(\mathbb{Q}, \> \mathbb{R}, \> \mathbb{C}\)
+\end{itemize}
+
+\ssect{Notation}
+
+\begin{itemize}
+\item \(x \in M\) ``x ist Element der Menge M''
+\item \(x \in M\) ``x ist nicht Element der Menge M''
+\end{itemize}
+
+
+\end{document}

@@ -1,0 +1,188 @@
+\documentclass{../../meta/tudscript}
+\begin{document}
+
+\newcommand{\ilmath}[1]{\begin{flalign*}#1\end{flalign*}}
+
+
+\ssect{9.3 Bemerkung}\label{bemerkung}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  \(\{(a,b) \in \mathbb{N}\times \mathbb{N}| a | b \}\) ist eine
+  Ordnungsrelation auf \(\mathbb{N}\)
+\item
+  Für alle \(a,b \in \mathbb{N}\) gilt:
+  \(a|b \iff \exists c \in \mathbb{N}: b = a \cdot c\)
+\end{enumerate}
+
+
+\ssect{9.4 Definition: Teiler natürlicher
+Zahlen}\label{definition-teiler-natuxfcrlicher-zahlen}
+
+Für eine \(n \in \mathbb{N}\) heißt
+\(T(n) := \{d \in \mathbb{N}| d|n\}\) die Menge der \textbf{Teiler} von
+n.
+
+
+\ssect{9.5 Bemerkung}\label{bemerkung-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  Für jedes \(n\in \mathbb{N}\\ \{0\}\) ist
+  \(T(n) \subseteq \{1,\ldots,n\}\) und daher T (n) endlich
+\item
+  \(T(0) = \mathbb{N}\)
+\end{enumerate}
+
+
+\ssect{9.6 Definition}\label{definition}
+
+Sei \((M, \leq)\) eine geordnete Menge, d.h ein Paar bestehend auseiner
+Menge M und einer Ordnungsrelation \(\leq \subseteq M \times M\)
+
+Sei $A \subseteq M$. Dann heißt \(x \in M\) * \textbf{untere Schranke}
+von A (bzgl. \(\leq\)) \(: \iff \forall a \in A: x \leq A\) *
+\textbf{obere Schranke} von A (bzgl. §\leq\$)
+\(: \iff \forall a \in A: a \leq x\) * \textbf{Infimum} von A \(: \iff\)
+1. x ist untere Schranke von A 2. \(\forall y \in M\): untere Schranke
+von A \(\Rightarrow y \leq x\) * \textbf{Supremum} von A 1. x ist obere
+Schranke von A 2. \(\forall y \in M:\) obere Schranke von A
+\(\Rightarrow x \leq y\) * \textbf{Kleinstes Element} von A
+\(: \iff x \in A \land x\) untere Schranke von A. * \textbf{größtes
+Element} von A \(: \iff x \in A \land\) obere Schranke von A.
+
+Wir nennen \(\leq\) eine \textbf{Wohlordnung} auf M und nennen
+\((M, \leq)\) eine \textbf{wohlgeordnete Menege}, falls gilt: 1.
+\(\leq \subseteq M \times M\) ist total 2. kede nicht-leere Teilmenge
+von M besitzt ein kleinstes Element bzgl \(\leq\).
+
+Anmerkung des Chronisten: Ist nur für unendliche Menegen relvant.
+
+
+\ssect{9.7 Bemerkung}\label{bemerkung-2}
+
+Sei \$(M, \leq) geordnete Menge \(A \subseteq M\). 1. A besitzt
+höchstens ein kleinstes Element 1. A besitzt höchstens ein größtes
+Element 1. A besitzt höchstens ein Infimum 1. A besitzt höchstens ein
+Supremum bzgl \(\leq\)
+
+(Beweis: Sind \(x, x' \in M\) Infima von A, dann $x \leq x'$ und $x'
+\leq x$, also $x = x'$)
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+
+\item
+  Ist $x \in A$ kleinstes (größtes) Element von A bzgl. \(\leq\), dann x
+  Infimum (Supremum) von A bzgl. \(\leq\)
+\item
+  Ist \(\leq\) total, dann besitzt jede \textbf{endliche} nichtleere
+  Teilmenge von M ein kleinstes (größtes) Element bzgl. \(\leq\)
+\end{enumerate}
+
+(Beweis durch vollständige Induktion über die Kardinalität einer
+endlichen nichtleeren Teilmenge von M.)
+
+
+\ssect{9.8 Satz: Wohlordnungssatz}\label{satz-wohlordnungssatz}
+
+\((\mathbb{N}, \leq)\) ist wohlgeordnet.
+
+
+\sssect{Beweis}\label{beweis}
+
+Nach Satz 5.14: \(\leq\) ist totale Ordnungsrelation auf \(\mathbb{N}\)
+
+Sei \(\emptyset \neq A \subseteq \mathbb{N}\) Wähle \(n \in A\). Die
+Menge \(B := \{a \in A | a \leq n\}\) ist endliche und nicht leer,
+besitzt daher ein kleinstes Element \(b \in B\) (Bemerkung 9.7,3). Es
+folgt b kleinstes Element von A. \(\hfil \quad \linebreak\)
+
+
+\ssect{9.9 Lemma: Division mit
+Rest}\label{lemma-division-mit-rest}
+
+Für alle \(a,b \in \mathbb{N}\) und \(b \neq 0\) existiren
+\(q,r \in \mathbb{N}\), sodass \(a = q \cdot b + r\) und \(r < b\).
+
+
+\sssect{Beweis}\label{beweis-1}
+
+Sei \(b \in \mathbb{N}\\ \{0\}\). Wir beweisen die Aussage:
+
+\begin{flalign*}\forall a \in \mathbb{N}\exists q,r \in \mathbb{N}: a= q \cdot b + r, r < b\end{flalign*}
+
+Beweis mittels vollständiger Induktion über \(a \in \mathbb{N}\)
+
+\(\boxed{IA} a = 0\) Klar mit \(a = 0 \cdot b + 0\). \(\boxed{IS}\) Sei
+\(a \in \mathbb{N}\), sodass
+
+Ist \(r+1 < b\), dann folgt IS mit Ist \(r+1 = b\), dann folgt IS mit
+
+\(\hfil \quad \linebreak\)
+
+
+\ssect{9.10 Definition}\label{definition-1}
+
+Seien \(ka,b \in \mathbb{N}\). Dann heißt \(d \in \mathbb{N}\)
+\textbf{größter gemeinsamer Teiler (ggT)} von a und b \(: \iff\) 1.
+\(d|a \land d|b\) 2.
+\(\forall d' \in \mathbb{N}: d'|a \land d'|b \Rightarrow d'|d\)
+
+Weiter heißt \(m \in \mathbb{N}\) \textbf{kleinstes gemeinsames
+Vielfaches (kgV)} von a und b \(: \iff\) 1. \(a|m \land b|m\) 2.
+\(\forall m' \in \mathbb{N}: (a|m' \land b|m') \Rightarrow m|m'\)
+
+
+\ssect{9.11 Satz}\label{satz}
+
+Seien \(a,b \in \mathbb{N}\). Dann gelten: 1. Es existiert genau ein ggT
+von a und b, den wir mit ggT (a,b) bezweichnen. Es gilt: 2. Es existiert
+genau ein kgV von a und b, den wir mit kgV (a,b) bezeichnen.
+
+
+\sssect{Beiweis}\label{beiweis}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  Eindeutigkeit: Sind d und d' ggT von a und b, dann d\textbar{}d' und
+  d'\textbar{}d, also \(d = d'\) (bemerkung 9.3.1) Existens: Ist
+  \(a = b = 0\), dann \(ggT(a,b) = 0\) (Klar)
+\end{enumerate}
+
+Wir nehmen daher an (o.B.d.A = Ohne Beschränkung der Allgemeinheit, o.E.
+= ``ohne Einschränkung'', w.l.o.g = without loss of generality), dass
+m\textbar{}0
+
+\(a \neq 0\) oder \(b \neq 0\). Dann ist die Menge nicht leer. Nach Satz
+9.8 besitzt A kleinstes Element \(d \in A\) (bzgl. \(\leq\)). Nach
+Definition von A gibt es \(s,t \in \mathbb{Z}\) mit \(d = sa+bt\).
+
+Behauptung: \(d|a \land d|b\). Dazu (nach Lemma 9.9) gibt es
+\(q,r \in \mathbb{N}\) mit \(a =dq+r, r < d\). Dann
+
+\begin{flalign*}(\star):r = a - qd = \underbrace{(1-qs)}{\in\mathbb{Z}} a + \underbrace{(-qt)}{\in \mathbb{Z}}b\end{flalign*}
+
+Wäre \(r \neq 0\), dann also \(r \in A\) (wegen (\(\star\))) und daher
+Widerspruch wegen \(r < d\) Somit also \(r = 0\), d\textbar{}a. Also
+zeigt man d\textbar{}b. Ist nun \(d' \in \mathbb{N}\) mit
+\(d'|a \land d'|b\), dann \(d'| (sa+tb)\) (nach Proposition 9.2,2).
+
+Somit ggt (a,b) = d = sa + tb
+
+\begin{enumerate}
+    \def\labelenumi{\arabic{enumi}}
+\setcounter{enumi}{1}
+
+\item
+  Eindeutigkeit: wie zuvor mit (Bemerkung 9.3,1). Existens: Ist a = 0
+  oder b = 0, dann kgV (a,b) = 0
+\end{enumerate}
+\end{document}

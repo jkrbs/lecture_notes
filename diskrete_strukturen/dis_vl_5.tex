@@ -1,0 +1,237 @@
+\documentclass{../../meta/tudscript}
+\begin{document}
+
+\ssect{Lemma: Gleichheit von Abbildungen}
+
+Seien X, Y, Z, W Mengen und
+
+\begin{itemize}
+
+\item
+  \(f: X \rightarrow Y\)
+\item
+  \(g: Y \rightarrow Z\)
+\item
+  \(h: Z \rightarrow W\)
+\end{itemize}
+
+Dann gilt:
+
+\begin{enumerate}
+
+\item
+  \(id_y \circ f = f = f \circ id_x\)
+\item
+  \((h \circ g) \circ f = h \circ (g \circ f)\)
+\end{enumerate}
+
+\sssect{Beweis}
+
+\paragraph{Vorbemerkung}
+
+Zwei Abbildungen \(u,v: A \rightarrow B\) sind genau dann gleich, wenn
+
+\(u(a) = v(a)\) für alle \(a \in A\)
+
+\paragraph{1.}}
+Für alle
+\(x \in X: (id_y \circ f)(x) = f(id_y(x)) = f(x) = id_x(f(x)) = (f \circ id_x)(x)\)
+
+\paragraph{2.}
+
+Für alle
+\(x \in X: ((h \circ g) \circ f)(x) = (h \circ g)(f(x)) = h(g(f(x))) = h((g \circ f)(x)) = (h \circ (g \circ f))(x)\)
+
+\ssect{Definition: Invertierbarkeit von Abbildungen}
+
+Eine Abbildung \(F: X \leadsto Y\) heißt
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  linksinvertierbar
+  :\(\iff \exists g: Y \rightarrow X: g \circ f = id_x\)
+\item
+  rechtsinvertierbar
+  :\(\iff \exists g: Y \rightarrow X: f \circ g = id_y\)
+\item
+  invertierbar, genau dann, wenn links- und rechtsinvertierbar
+\end{enumerate}
+
+\ssect{Bemerkung: Invertierbarkeit und In-/Surjektivität}
+
+Sei \(f: X \rightarrow Y\) eine Abbildung. Dann gilt
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  Wenn f linksinvertierbar, dann ist f injektiv.
+\item
+  Wenn f rechtsinvertierbar, dann ist f surjektiv.
+\item
+  Wenn f injektiv und \(X \neq \emptyset\)
+\end{enumerate}
+
+\sssect{Beweis 1.}}
+
+Sei \(g: Y \rightarrow X\) und \(g \circ f = id_x\). Sei nun
+\(x,y \in X\) mit \(f(x) = f(y)\), dann folgt
+\(x = id_x(x) = (g \circ f)(x) = g(f(x)) = g(f(y)) = id_x(y) = y\)
+
+\sssect{Beweis 2.}
+
+Sei \(g: Y \rightarrow X\) und \(f \circ g = id_y\). für alle
+\(y \in Y\), betrachte x = g(y) und beobachte
+\(y = id_y(y) =(f \circ g)(y) = f(g(y)) = f(x)\)
+
+Also \(f(X) = Y\), d.h. f ist surjektiv.
+
+\sssect{Beweis 3.}
+
+Wähle \(x_0 \in X\). Dann ist
+
+\(g := {(x,y) \in X \times Y | (x,y) \in f} \cup ((Y \ f(x)) \times {x_0}\)
+
+eine Abbildung von \(Y \rightarrow X\), und es gilt \(g \circ f =id_x\)
+
+\ssect{Proposition}
+
+Sei \(f: X \rightarrow Y\). Dann sind folgende Aussagen äquivalent.
+
+\begin{enumerate}
+\item
+  f ist bijektiv
+\item
+  f ist invertierbar
+\item
+  \(\exists g: Y \rightarrow X: g \circ f = id_x \wedge f \circ g = id_y\)
+\end{enumerate}
+
+Ist f bijektiv, so ist die Abblidung g eindeutig bestimmt. mit
+
+\(g = {(x,y) \in Y \times X | (x,y) \in f}\)
+
+\ssect{Definition}
+
+Seien X, Y Mengen. Die Menge alle Abbildungen \(X \rightarrow Y\)
+
+\(Y^X = {f \in \wp ((x,y)) | f \)Abbildung von X \( \rightarrow Y}\)
+
+\ssect{Satz}
+
+Sei X Menge. Dann ist die Abbildung
+
+\(\Phi : {0,1}^X \rightarrow \wp (x), f \mapsto f^{-1} ({1})\)
+
+\sssect{Beweis}
+
+für jede Teilmenge \(A \subseteq X\) betrachten wir die
+charakteristische Funktion.
+
+(Indikatorfunktion) \(\chi_1 : x \mapsto {0,1}\) mit
+
+\begin{equation}
+  \chi_1 (x) =
+  \begin{cases}
+    1 falls X \in A
+    0 falls X \notin A
+  \end{cases}
+\end{equation}
+
+d.h. \(\chi_1 (x) = (A \times {1} \cup ((X \ A_x{0}\)
+
+Definiere: \(\Psi : \wp (X) \rightarrow {0,1}^X, A \mapsto \chi_A\)
+
+Für jede Teilmenge von \(A \subseteq X\) gilt
+
+\(\Phi (\Psi (A)) = \Phi(\chi_A) = (\chi_A)^{-1} ({1}) = A\)
+
+also \(\Phi \circ \Psi = id_{\wp (x)}\)
+
+Für jedes \(f \in {0,1}^X\) ist
+\(\Psi(\Phi(f)) = \chi_{\Phi(f)} = \chi_{f^{-1}(1)} = f\), und daher
+\(\Psi \circ \Phi = id_{{0,1}^X}\)
+
+Somit ist \(\Phi\) invertierbar, also bijektiv nach Proposition 4.12.
+
+\ssect{Definition: Tupel}
+
+Sei X Menge. Für \(n \in \mathbb{N}\) bezeichnet man die Elemente von
+
+\(X^n = X^{{1,n}}\) als n-Tupel bzw. nX
+
+Schreibweise für \(x \in X^n\)
+
+d.h. \(x: {1,...,n} \rightarrow X: x = (x_1,...,x_n)\)
+
+\(X_i = X(i)\) für \(i \in {1,...,n}\)
+
+Für \(m,n \in \mathbb{N}\) heißen die Elemente von
+
+\(X^{m \times n} = X^{{1,...,m} \times {1,...,m}}\)
+
+auch \(m \times n\) Matrizen (Sigular: Matrix).
+
+Schreibweise für \(A \in X^{m \times n}\)
+
+\(A= \begin{bmatrix}  a_{11} & \dots & a_{1n} \\  \dots & \dots & \dots \\  a_{m1} & \dots & a_{mn}\\  \end{bmatrix}\)
+
+wobei \(A_{ij} := A(i,j)\) für \(i \in {1,...,m}\) und \( j \in {1,...,n}\)
+
+\ssect{Definition: Familien}
+
+Sei I Menge. Ist X eine Menge, so nennt man \(x: I \rightarrow X\) auch
+\emph{Familie} in X und dann schreibt man \(x = (X_i)_{i \in I}\), wobei
+\(x_i := x(i)\) für \(i \in I\).
+
+Eine Mengenfamilie ist eine Familie \((M_i)_{i \in I}\) in der
+Potenzmenge \(\wp(Y)\) einer Menge Y, d.h. für \(i \in I\) ist
+\(M_i \subseteq Y\).
+
+Für die Mengenfamilie \((M_i)_{i \in I}\) definieren wir:
+
+\begin{enumerate}
+
+\item
+  die Vereinigung
+
+
+\(\cup_{i \in I} = \cup {M_i | i \in I} (= {y \in Y| \exists i \in I: y \in M_i})\)
+
+
+\item
+  die Schnittmenge, dalls \(I \neq 0\) \$
+  \(\cap_{i \in I} = \cap {M_i | i \in I} (= {y \in Y | \forall i \in I: y \in M_i})\)
+\item
+  das kartesiche Produkt
+\end{enumerate}
+
+\(\prod_{i \in I} M_i = {(x_i)_{i \in I} | \forall i \in I: x_i \in M}\)
+
+\(= {(x_i)_{i \in I} \in (\cup_{i \in I} M)^I | \forall i \in I: x \in M_i}\)
+
+\sect{Natürliche Zahlen und vollständige Induktion}
+
+\ssect{Definition: Natürliche Zahlen}
+
+Der Nachfolger einer Menge X ist:
+
+\(X^+ = x \cup \{X\}\)
+
+Die natürlichen Zahlen sind nun rekursiv definiert:
+
+\begin{itemize}
+
+\item
+  \(0 := \emptyset\)
+\item
+  \(1 := 0^+ = \emptyset \cup \{\emptyset\} = \{\emptyset\} = \{0\}\)
+\item
+  \(2 := 1^+ = 1 \cup \{1\} = \{0\} \cap \{1\} = \{0,1\}\)
+\item
+  \(3 := 2^+ = 2 \cup \{2\} = \{0,1,2\}\)
+\end{itemize}
+
+\end{document}

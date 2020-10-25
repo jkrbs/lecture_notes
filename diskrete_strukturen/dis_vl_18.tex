@@ -1,0 +1,114 @@
+\documentclass{../../meta/tudscript}
+\begin{document}
+\setcounter{section}{11}
+\setcounter{subsection}{24}
+    \ssect{Satz: zyklische Gruppen und Primzahlen}
+        Seien $m, n \in \bN \setminus \Set{0}$. Dann äquivalent:
+        \begin{enumerate}
+            \item $ggT (m,n) = 1$
+            \item $(\bZ_m, +) \times (\bZ_n, +) \cong (\bZ_{m \times n}, +)$
+            \item $(\bZ_m, +) \times (\bZ_n, +)$ zyklisch
+        \end{enumerate}
+        
+        Zum Beweis von Satz von 11.25 benötigen wir folgendes Hilfsmittel
+       
+       \ssect{Lemma: $mn|z \iff m|z \land n|z$}
+            Seien $m, n \in \bn \ \Set{0}$ mit $ggT (m,n) = 1$. Für alle $z \in \bZ$ gilt dann:
+            \ilmath{mn|z \iff  (m|z \land n|z)}
+            
+            \sssect{Beweis}
+                $\implies$: Klar! \\
+                $\Leftarrow$: Nach Satz 9.11\ref{9.11} (Lemma von Bezont) gibt es $s, t \in \bZ$ mit $1 = sm + tn$.
+                Gilt nun $m|z$ und $n|z$, dann $mn|mz$ und $mn|nz$, daher mit Proposition 9.2\ref{9.2} auch 
+                \ilmath{mn|(smz+tnz) = (sm+tn)z = z \hfill\square}
+        
+        \sssect{Beweis von 11.25}
+            Wir zeigen: $(3) \implies (1) \implies (2) \implies (3)$
+            \subsubsubsection{$(3) \implies (1)$}
+                Zeige: $\neg (1) \implies \neg (3)$. Annahme: $ggT (m,n) > 1$
+                Sei $l := kgV (m,n)$ Für alle $x,y \in \bZ$
+                \ilmath{\underbrace{([x]_m, [y]_n) + \cdots + ([x]_m, [y]_n)}_{\text{l Summanden}} &= ([x]_m + \cdots + [x]_m, [y]_n + \cdots + [y]_n)\\
+                        &= ([lx]_m, [ly]_n) = ([0]_m, [0]_n) = 0_{\bZ_m \times \bZ_n}}
+                Also $ord (([x]_m, [y]_n)) \leq l$ für alle $x,y \in \bZ$ nach Lemma 11.9\ref{11.9}. Wegen $ggT (m,n) > 1$:
+                \ilmath{l = kgV(m,n) = \frac{m \cdot n}{ggT (m,n)} < mn}
+                
+                Also: $\langle ([x]_m, [y]_m) \rangle \neq \bZ_m \times \bZ_n$ für die $x,y \in \bZ$.
+                Somit $(\bZ_m, +) \times (\bZ_n, +)$ nicht zyklisch.
+
+            \subsubsubsection{$(1) \implies (2)$}
+                Sei $ggT (m,n) = 1$. Für alle $x,y \in \bZ$ gilt:
+                \ilmath{x \equiv_{m \times n} y &\iff mn|(x-y) \\
+                        &\iff (m|(x-y) \land n|(x-y)) \\
+                        &\iff x \equiv_m y \land x \equiv_n y}
+                Wegen $\implies$ ist die Abbildung
+                \ilmath{\varphi: \bZ_{m \times n} \rightarrow \bZ_m \times \bZ_n, [x]_{m \times n} \mapsto ([x]_m, [y]_n)}
+                wohldefiniert.\\
+                Wegen $\Leftarrow$ ist $\varphi$ injektiv. Da $|\bZ_{m \times n}| = mn = |\bZ_m \times \bZ_n|$ ist $\varphi$ bijektiv. (vgl. Satz 6.6\ref{6.6})
+
+                $\varphi$: Homomorphismus: Für alle $x,y \in \bZ$
+                \ilmath{\varphi ([x]_m + [y]_n) = \varphi ([x+y]_{m \times n}) &= ([x+y]_m, [x+y]_n) \\
+                        &= ([x]_m + [y]_m, [x]_n + [y]_n) = ([x]_m, [x]_n) + ([y]_m, [y]_n) \\
+                        &= \varphi ([x]_{mn}) + \varphi ([y]_{mn})}
+
+                Also $\varphi: (\bZ_{mn}, +) \rightarrow (\bZ_m, +) \times (\bZ_n, +)$ Isomorphismus, daher $(\bZ_{mn}, +) \cong (\bZ_m, +) \times (\bZ_n, +)$.
+
+            \subsubsubsection{$(2) \implies (3)$}
+                Allgemeine Beobachtung:
+                Sing G und H Gruppen mit $G \cong H$, dann gilt G zyklisch $\iff$ H zyklisch. $\start$
+            \paragraph
+            Beweis $\start$:
+                Ist $\varphi: G \rightarrow H$ Isomorphismus und $g \in G$ mit $\langle g \rangle = G$, dann
+                \ilmath{\langle \varphi (g) \rangle_H &= \Set{\varphi (g)^n \mid n \in \bZ} = \Set{\varphi (g^n) \mid n \in \bZ} \\
+                        &= \varphi (\langle g \rangle_G) = \varphi (G) = H \star}
+
+            Offenbar ist $(\bZ_{mn}, +)$ zyklisch, denn $\langle [1]_{mn} \rangle = \bZ_{mn}$. Ist nun $(\bZ_m, +) \times (\bZ_n, +) \cong (\bZ_{mn}, +)$, dann 
+            $(\bZ_m, +), (\bZ_n, +)$ zyklisch. $\hfill\square$
+
+    \ssect{Proposition (mit Definition): direkte Produkt}
+        Sei $(G, \cdot_i)_{i \in I}$ Familie von Gruppen (mit der Indexmenge I). Sei $G := \prod_{i \in I} G_i$ und $\cdot : G \times G \rightarrow G$ defininiert durch
+        \ilmath{(x_i)_{i \in I} \cdot (y_i)_{i \in I} := (x_i \cdot_i y_i)_{i \in I}}
+        für alle $(x_i)_{i \in I}, (y_i)_{i \in I} \in G$. Dann ist $(G, \cdot)$ eine Gruppe.
+
+        Wie nennen $(G, \cdot)$ das \underline{direkte Produkt} der Gruppe $(G_i, \cdot_i)_{i \in I}$ und schreiben $\prod_{i \in I} (G_i, \cdot_i) := (G, \cdot)$.
+
+        Beiweis: Assoziativität: Für alle $(x_i)_{i \in I}, (g_i)_{i \in I}, (z_i)_{i \in I} \in G$ ist
+        \ilmath{(x_i)_{i \in I} \cdot (y_i)_{i \in I} &= (x_i \cdot_i y_i)_{i \in I} \cdot (z_i)_{i \in I} \\
+                &= ((x_i \cdot_i y_i) \cdot_i z_i)_{i \in I} = (x_i \cdot_i (y_i \cdot_i z_i))_{i \in I} \\
+                &= (x_i)_{i \in I} \cdot (y_i \cdot z_i)_{i \in I} = (x_i)_{i \in I} \cdot ((y_i)_{i} \in I \cdot (z_i)_{i \in I}}
+        Neutrales Element: Für jedes $i \in I$ sei $e_i$ neutrales Element von $(G, \cdot)$. Dann $(e_i)_{i \in I}$ neutrales El. von $(G, \cdot)$:
+
+        Für alle $(x_i)_{i \in I} \in G$ ist
+        \ilmath{(x_i)_{i \in I} \cdot (x_i)_{i \in I} = (e_i \cdot x_i)_{i \in I} = (x_i)_{i \in I}, \\
+                (e_i)_{i \in I} \cdot (x_i)_{i \in I} = (e_i \cdot x_i)_{i \in I} = (x_i)_{i \in I}} 
+	Existiens inverser Elemente: Sei $(x_i)_{i \in I} \in G$. Dann $(x_{i}^{-1})_{i \in I}$ Inverses zu $(x_i)_{i \in I}$ in $(G, \cdot)$... %too lazy to tex
+
+    \ssect{Satz}
+        Sei $n \in \bN \setminus \Şet{0, 1}$ mit PFZ $n = \prod_{i = 1}^n p_i^{k_i}$ Dann:
+
+        \ilmath{(\bZ_n, +) \cong \prod_{i \in [m]} (\bZ_{p^{k_i}_i}, +)}
+
+        Der Beweis von Satz 11.28\ref{11.28} verwendet folgendes Lemma:
+    
+    \ssect{Lemma: paarweise Teilerfremd}
+        Sei $m \in \bN \ \Set{0}$. Seien $n_1, \ldots, n_m \in \bN \ \Set{0}$ \underline{paarweise Teilerfremde (pw.tf.)}, 
+        d.h $ggT (n_i, n_j) = 1$ für $i,j \in [m]$ mit $i \neq j$.
+
+        Dann gilt für alle $z \in \bZ$ 
+        \ilmath{n_1, \ldots, n_m |z \iff \forall i \in [m]: n_i|z}
+
+	\paragraph{}
+        Beweis: Vollst. Induktion über $m \in \bN \setminus \Set{0}$. 
+        
+        $\boxed{IA}$: m = 1. klar.
+
+        $\boxed{IS}$: Sei $m \in \bN \setminus \Set{0}$, sodass aussage wahr.
+
+	Seien $n_1, \ldots, n_m \in \bN \settminus \Set{0}$ pw.tf Dann
+        \ilmath{ggT (n_1, \ldots, n_m, n_{mn}) = 1}
+
+        Beweis: Sei $d\in T (n_1, \ldots, n_m) \cap T(n_{nm})$
+
+        Da $d|n_m$ und $ggT (n_1, n_{}m+1) = 1$ für alle $i \in [m]$
+        folgt$ggT (d, n_i) = 1$ für alle $i \in [m]$. Mit $d|n_i \cdot n_m$ folgt $d=1$ (Folgerung aus 9.13\ref{9.13}).
+
+\end{document}

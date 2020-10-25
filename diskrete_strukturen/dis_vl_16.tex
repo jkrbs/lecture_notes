@@ -1,0 +1,115 @@
+\documentclass{../../meta/tudscript}
+\begin{document}
+    \ssect{Proposition: Untergruppen der kleinschen Vierergruppe}
+        Zur Kleinschen Vierergruppe $(V, \cdot)$ mit $V = \Set{e, a, b, c}$.
+        Ordnung von Elementen
+        \begin{enumerate}
+            \item $ord (e) = 1$
+            \item $ord (a) = ord (b) = ord (c) =2$
+        \end{enumerate}
+        Untergruppen: $\langle e \rangle = \Set{e}, \langle a \rangle = \Set{a, e}, \langle b \rangle = \Set{b, e}, \langle c \rangle = \Set{c, e}$,
+    
+        $\langle \Set{a, b} \rangle = \langle \Set{b, c} \rangle = \langle \Set{a, c} \rangle$
+
+    \ssect{Definition: Rechts- und Linksnebenklassen}
+        Sei G Gruppe und $H < G$. Für $g \in G$ heißt $Hg = \Set{hg \mid h \in H}$ die \underline{Rechtsnebenklassen} von H nach g und gH die \underline{Linksnebenklasse} von H nach g.
+
+	Wir definieren Relationen $\tilde_{H}^r, \tilde_{H}^l \subseteq G \times G$ durch $x \tilde_{H}^r \iff xy^{-1} \in H$, $x \tilde_{H}^l \iff x^{-1}y \in H$.
+    
+    \ssect{Proposition}
+        Sei G Gruppe und $H < G$. 
+        \begin{enumerate} 
+            \item $\tilde_{H}^r$ ist ÄR auf G, und $\forall x \in G: [x]_{\tilde_{H}^r} = Hx$
+            \item $\tilde_{H}^l$ ist ÄR auf G, und $\forall x \in G: [x]_{\tilde_{H}^l} = xH$
+            \item Die Abb $\phi_H : G/\tilde_{H}^r \rightarrow G/\tilede_{H}^l, [x]_{\tilde_{H}^r} \mapsto [x^{-1}]_{\tilde_{H}^l}$ ist eine Bijektion.
+        \end{enumerate}
+        
+        \sssect{Beweis}
+            1.
+            \begin{enumerate}
+                \item Reflexivität
+                    Für $x \in G$ ist $x x^{-1} = e \in H$
+                \item Symmetrie
+                    Für $x, y \in G$ ist $x \tilde_{H}^r y \iff xy^{-1} \in H
+                    $\implies yx^{-1} = (xy^{-1})^{-1} \in H \implies x \tilde_{H}^r x$.
+                \item Transitivität
+                    Für $x, y, z \in G$. $x \tilde_{H}^r y \land y \tilde_{H}^r z$ \\
+                    $\iff xy^{-1} \in H \land yz^{-1} \in H \implies xz^{-1}$\\
+                    $= (xy^{-1})(yz^{-1}) \in H \iff x \tilde_{H}^r z$
+            \end{enumerate}
+            Außerdem: Für alle $x, y \in G$ ist $y \tilde_H^r x \iff yx^{-1} \in H \iff y \in Hx$, also $[x]_{\tilde_H^r} = Hx$ für alle $x \in G$.
+            2. Analog: Üb!
+            
+    
+            3. Für alle 
+            \ilmath{x, y \in G$: [x]_{\tilde_H^r} = [y]_{\tilde_H^r}\\ 
+                        &\iff x \tilde_{H}^r y \\
+                        &\iff xy^{-1} \in H \iff (x^{-1})^{-1} y^{-1} \in H \\
+                        &\iff x^{-1} \tilde_H^l y^{-1} \\
+                        &\iff [x^{-1}]_{\tilde_H^l} = [y^{-1}]_{\tilde_H^l}\\ 
+                        &\iff \phi_H([x]_{\tilde_H^r}) = \phi_H([y]_{\tilde_H^r})} 
+
+            Wegen $\implies$ ist die Abbildung $\phi_H$ wohldefiniert. Wegen $\Leftarrow$ ist $\phi_H$ inkeltiv. 
+
+Surjektivität: Für jedes $x \in G$ ist
+\ilmath{[x]_{\tilde_H^l} = [(x^{-1})^{-1})]_{\tilde_H^l} = \phi_H ([x^{-1}]_{\tilde_H^r}) \hfill\square}
+
+\ssect{Definition}
+
+Sei G endliche Gruppe und $H < G$. Dann heißt
+
+\ilmath{[G_H] := |\Set{Hx < x \in G}| = |G / \tilde_H^r| = |\Set{xH < x \in G}|}
+
+der \underline{Index} in G.
+
+\ssect{Satz von Lagrange}
+Sei G eine endliche Gruppe und $H < G$. Dann gilt:
+
+\ilmaht{ord (G) = [G:H] \cdot ord (H)}
+
+\sssect{Beweis}
+
+Für jedes $g \in G$ ist $H \rightarrow Hg, h \mapsto hg$ eine Bijektion. (mit Umkehrabbildung: $Hg \rightarrow H, x \mapsto xg^{-1}$)
+und daher $|H| = |Hg|$ nach Proposition 6.7,2\ref{6.7}.
+
+Ist $n := [G:H]$ und $G / \tilde_H^r = \Set{[x_1]_{\tilde_H^r}, \ldots, [x_n]_{\tilde_H^r}}$, dann gilt:
+\ilmath{|G| = \sum_{i = 1}^n | [x_i]_{\tilde_H^r} | = \sum_{i = 1}^n \underbrace{| Hx_i |}_{|H|} = n \cdot |H| = [G:H] \cdot |H| \hfill\sqaure} 
+            
+        
+\ssect{Folgerung}
+Sei G endliche Gruppe. Dan gelten:
+\begin{enumerate}
+    \item Für alle $H \leq G$: $|h| | |G|$ und $[G:H] | |G|$.
+    \item Für alle $g \in G$: $ord (g) | |G|$.
+    \item Für alle $g \in G$: $g^{|G|} = e$.
+\end{enumerate}
+
+\sssect{Beweis}
+1 und 2 sind nach Satz von Lagrange.
+
+3. folgt aus Lemaa 11.9\ref{11.9} und Satz von Lagrange.
+$\fill\square$
+
+\ssect{prominente Folgerungen für die modulare Arithmetik}
+Sei $a \in \bZ$, $n \in \bN \ \Set{0}$, $p \in \bP$
+\begin{enumerate}
+\item Satz von Euler: $ggT (a, n) = 1 \implies a^{\varphi (n)} = 1 (\mod n)$
+\item kleiner Satz von Fermat: $ggT (a, p) = 1 \implies a^{p -1} = 1 (\mod p)$
+\end{enumerate}
+
+\sssect{Beweis}
+1. Ist $ggT (a, n) = 1$, dann $[a]_n \in \bZ_n^\star$ nach Prop 10.9\ref{10.9}
+und daher $[n]_n = [a^{|\bZ_n^\star|}]_n = [a^{\varphi (n)}]_n$, d.h. $1 = a^{\varphi (n)} (\mod n)$.
+
+2. folgt direkt aus 1 mit $\varphi (p) = p-1$ vgl. 9.2.6\ref{9.2}.
+$\hfill\square$
+
+\ssect{Folgerung}
+Ist G eine endliche Gruppe mit $|G| \in \bP$, dann ist G zyklisch.
+
+\sssect{Beweis}
+Da $|GF| \geq 2$ gibt es ein $g \in G$ mit $g \neq e$ Wegen $g, e \in \langle g \rangle$ folgt $ord (g) = | \langle g \rangle | \geq 2$. Nach S.v. Lagrange (11.15,2)\ref{11.15} gilt.
+$ord (g) | |G|$, somit $ord (g) = |G|$, d.h. $G = \langle g \rangle$.
+$\hfill\square$
+
+\end{document}

@@ -1,0 +1,138 @@
+\documentclass{../../meta/tudscript}
+\begin{document}
+\setcounter{section}{10}
+\setcounter{subsection}{10}
+    \sect{Gruppen}
+        \ssect{Definition: Gruppe}
+            Sei $(G, \cdot)$ Gruppe mit neutralem Element $e \in G$. 
+            Für $g \in G$ und $n \in \bN$
+            \begin{enumerate}
+                \item $g^0 := e$
+                \item $g^{n+1} := g^n \cdot g$
+                \item $g^{-n} := (g^n)^{-1}$
+            \end{enumerate}
+            Für $A, B, C \subseteq G$ und $g \in G$
+            \begin{enumerate}
+                \item $A \cdot B := AB = \Set{ab \mid a \in A, b \in B}$
+                \item $A^{-1} := \Set{a^{-1} \mid a \in A}$
+                \item $gA := g \cdot A := \Set{ga \mid a \in A}$
+                \item $Ag := A \cdot g := \Set{ag \mid a \in A}$
+            \end{enumerate}
+            Für $A \subseteq G$ und $n \in \bN$:
+            \ilmath{A^0 := \Set{e}, A^{n+1} := A^n \cdot A, A^{-n} = (A^n)^{-1}}
+        \ssect{Bemerkung: Potentzgesetze}
+            Sei $(G, \cdot)$ Gruppe. Für alle $m, n \in \bZ$, $g \in G$ und $A \subseteq G$ gilt
+            \begin{enumerate}
+                \item $g^{m+n} = g^m \cdot g^n$
+                \item $g^{mn} = (g^m)^n$
+                \item $A^{m+n} = A^m A^n$
+                \item $A^{mn} = (A^m)^n$
+            \end{enumerate}
+            Beweis durch Induktion.
+            Für $g, h \in G$, $A, B \subseteq G$
+            \ilmath{(gh)^{-1} = h^{-1}g^{-1}, (AB)^{-1} = B^{-1} A^{-1}}
+            Denn: $(gh)(h^{-1}g^{-1}) = g(h h^{-1})g^{-1} = g g^{-1} = e$ und
+            $(h^{-1}g^{-1})(gh) = h^{-1}(g^{-1}g)h = e$, also 
+            $(gh)^{-1} = h^{-1}g^{-1}$ wegen Eindeutigkeit des Inversen von $gh$. 
+        \ssect{Definition: Untergruppe}
+            Sei $(G, \cdot)$ Gruppe mit neutralem Element e. Eine Teilmenge $H \subseteq G$
+            heißt \underline{Untergruppe (von $(G, \cdot)$)} und wir schreiben:
+            \ilmath{H \leq G \text{ falls gilt:}}
+            \begin{enumerate}
+                \item $e \in H$
+                \item $\forall x \in H: x^{-1} \in H$ (d.h $H^{-1} \subseteq H$)
+                \item $\forall x,y \in H: xy \in H$ (d.h $HH \in H$ oder wegen Geschichte: $UU \in U für U := H$)
+            \end{enumerate}
+        \ssect{Bemerkung: Notation von Untergruppen}
+            Ist $(G, \cdot)$ eine Gruppe und $H \subseteq G$, dann ist $(H, \cdot)$ auch eine Gruppe.
+            (Dies ist ein "Missbrauch von Notation".) (Ganz formal: $(H, \cdot_H)$ mit $\cdot_H: H \times H \rightarrow H, (x,y) \mapsto x \cdot y$ eine Gruppe)
+        \ssect{Lemma: Schnitt der Untergruppen}
+            Sei $(G, \cdot)$ Gruppe. Ist M eine Menge von Untergruppen von G, dann ist auch $\bigcap M$ eine Untergruppe von G.
+            (Hier: $\bigcap \emptyset := G$)
+            \sssect{Beweis}
+                Hier nur Bedingung 3 aus Def. 11.3\ref{11.3}.
+                Für alle $x,y \in G$ gilt:
+
+                \ilmath{x,y \in \bigcap U &\iff \forall H \in U: x,y \in H\\
+                                          &\implies \forall H \in M: xy \in H\\
+                                          &\implies xy \in \bigcap U}
+                Beweis von 1 und 2 analog: Übung!
+                $\hfill\square$
+        \ssect{Definition}
+            Sei $(G, \cdot)$ Gruppe. Für $A \subseteq G$ heißt
+            \ilmath{<a> := <A>_G := \bigcap \Set{H \leq G \mid A \subseteq H}}
+            die von A \underline{erzeugte} Untergruppe (von G)
+
+            Für $g \in G$ sei $<g> := <\Set{g}>$.
+
+            Die Gruppe G heißt \underline{zyklisch} $:\iff \exists g \in G: G = <g>$.
+        \ssect{Bemerkung}
+            Sei $(G, \cdot)$ Gruppe. für $A \subseteq G$ ist $\langle A \rangle$
+            die kleinste Untergruppe von G, die A enthält, und es gilt:
+            \ilmath{\langle A \rangle := \Set{a_1, \cdots, a_n| a_1, \ldots, a_n \in A \cup A^{-1} \cup \Set{e}}}
+            Insbesondere $\langle g \rangle = \Set{g^n \mid n \in \bZ}$ für alle $g \in G$.
+        \ssect{Definition: endliche Gruppen}
+            Sei $(G, \cdot)$ \underline{endliche} Gruppe, d.h. die Menge G ist endlich.
+            Dann heißt $|G|$ die \underline{Ordnung} von G. Die Ordnung eines Elements $g \in G$ ist $ord_G (g) := |\langle g \rangle|$.
+            
+            \underline{Hinweis:} 
+            Das kleinste Element einer Teilmenge $\emptyset \neq A \subseteq \bN$ bezeichnen wir mit min A. (vgl 9.8\ref{9.8})
+        \ssect{Lemma:}
+            Sei $(G, \cdot)$ endliche Gruppe, $g \in G$. Dann gilt:
+            \begin{enumerate}
+                \item $ord (g) = min \Set{n \in \bN \setminus \Set{0} | g^n = e}$
+                \item $\forall m \in \bZ: g^m = e \iff ord(g)|m$
+            \end{enumerate}
+            \sssect{Beweis}
+            1:\\
+            Die Abb. $\bZ \rightarrow G, m \mapsto g^m$ ist nicht injektiv (da G endlich), 
+            d.h. es gibt $k, l \in \bZ$ mit $k < l$ und $g^k = g^l$, und daher $l-k > 0$ und
+            $g^{l-k} = g^l \cdot (g^k)^{-1} = e$. Also:
+            
+            \ilmath{M := \Set{m \in \bN \setminus \Set{0} | g^m = e} \neq \emptyset \boxed{n := min M}}
+
+            Für alle $m \in \bZ: g^m = g^{m mod n}$ ($m \mod n \in \Set{0, \cdots, n-1}$ vgl Definition 10.3\ref{10.3})
+            Denn: Ist $r := m \mod n$ und $q \in \bZ$ mit $m = qn + r$, dann $g^m = (g^n)^q \cdot g^r = g^r$.
+
+            Es folgt: $\langle g \rangle = \Set{g^m \mid m \in \bZ} = \Set{g^r \mid r \in \Set{0, \cdots, n-1}}$.
+            Also ist die Abb. $f: \Set{0, \cdots, n-q} \rightarrow \langle g \rangle, r \mapsto g^r$ surjektiv. 
+            f auch injektiv: $k,l \in \Set{0, \cdots, n-1}$ mit $k \leq l$ und $g^k = g^l$, dann $l = k \in \Set{0, \cdots, n-1}$ 
+            und $g^{l-k} = g^l (g^k)^{-1} = e$, somit $k = l$ wegen $n = min M$.
+            
+            Also f bijektiv. Damit $ord(g) = | \langle g \rangle | = n$.
+            
+            
+            2:\\
+            Für $m \in \bZ$ erhalten wir:
+            \ilmath{g^m = e \iff g^{m \mod n} = e = g^0 \iff m \mod n = 0 \iff n|m}
+            $\hfill\square$
+
+        \ssect{Beispiel}
+            Betrachte 4-elementige Menge $V := \Set{e, a, b, c}$ und Verknüpfung $\cdot$ definiert durch:
+            \begin{tabular}{l c c c c r}
+            $\cdot$ & e & a & b & c \\
+            E & e & a & b & c \\
+            a & a & e & c & b \\
+            b & b & c & e & a \\
+            c & c & b & a & e \\
+            \end{tabular}
+            $(V, \cdot)$ ist eine Gruppe, die \underline{Kleinsche Vierergruppe}. (nach Felix Klein)
+
+            Geometrische Darstellung: Symmetrien eines nicht-quadratischen Rechtecks:
+            \begin{center}
+            \begin{tikzpicture}
+                \draw[draw=black] (0, 0) rectangle ++(3, 1.5);
+                \draw[dash pattern={on 4pt off 3pt}] (-0.5, 0.75) -- ++(4, 0);
+                \draw[dash pattern={on 4pt off 3pt}] (1.5, -0.5) -- ++(0, 2.5);
+                \node at (-0.2, -0.2) {A};
+                \node at (3.2, -0.2) {B};
+                \node at (3.2, 1.7) {C};
+                \node at (-0.2, 1.7) {D};
+            \end{tikzpicture} 
+            \end{center}
+            
+            e: identische Abbildung
+            a: Spiegelung an vert. Achse
+            b: Spiegelung an hor. Achse
+            c: Drehung um 180° 
+\end{document}

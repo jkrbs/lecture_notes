@@ -1,0 +1,153 @@
+\documentclass{../../meta/tudscript}
+\begin{document}
+
+\ssect{Definition}
+
+Die Relation \(\leq \quad \subseteq \mathbb{N}\times \mathbb{N}\) ist
+definiert durch \(m \leq n :\iff \exists k \in \mathbb{N}: n = m + k\)
+Auch: \(m < n :\iff m \leq n \wedge m \neq n\)
+
+\ssect{Satz}
+
+Die Relation \(\leq\) ist eine totale Ordnungsrelation auf
+\(\mathbb{N}\)
+
+\sssect{Beweis}
+
+\paragraph{Reflexivität:}
+
+Für jedes \(n \in \mathbb{N}\) ist \(n = n+0\) und daher \(n \leq n\)
+
+\paragraph{Transitivität}
+
+Seien \(k,m,n \in \mathbb{N}\) mit \(k \leq m\) und \(m \leq n\). Dann
+gibt es \(p,q \in \mathbb{N}\) mit \(m = k + p\) und \(n = m + q\). Es
+folgt \(n = m + q = (k + p) + q = k + (p + q)\) und somit \(k \leq n\)
+
+\paragraph{Antisymmetrie}
+
+Seien \(m,n \in \mathbb{N}\) mit \(m \leq n\) und \(n \leq m\). Dann
+gibt es \(p,q \in \mathbb{N}\) mit \(n = m + p\) und \(m = n + q\), also
+\(n = n + p + q\). Nach Bemerkung 5.9.1 folgt \(0 = p + q\) und wegen
+Bemerkung 5.9.2 dann \(p = q = 0\). Daher m = n.
+
+Damit ist \(\leq\) eine Ordnungsrelation auf \(\mathbb{N}\). Noch zu
+zeigen: \(\leq\) ist total. Wir zeigen für jedes \(n \in \mathbb{N}\)
+gilt \(\forall m \in sN: m \leq n \vee n \leq m\).
+
+\paragraph{\texorpdfstring{Beweis durch vollständige Induktion über
+\(\mathbb{N}\)}}
+
+\boxed{IA}: \(n = 0\). Für jedes \(m \in \mathbb{N}\) ist \(m = 0 + n\)
+(Proposition 5.8.2) und daher \(0 \leq m\)
+
+\boxed{IS}: Sei \(n \in \mathbb{N}\), sodass
+
+Sei \(m \in sN\). Fallunterscheidung: Fall 1: \(m \leq n\). Dann ist
+\(m \leq n + 1\) (wegen Transitiviät und \(n \leq n + 1\) )
+
+Fall 2: \(n \leq m\). Dann gilt \(k \in \mathbb{N}\) mit \(m = n + k\).
+Ist \(k=0\), so folgt \(m = n \leq n + 1\). Ist \(k \neq 0\), so gibt es
+\(l \in sN\) mit \(k = l + 1\) (Üb!.). Somit ist
+\(m = n + l + 1 = n + 1 + l\) also \(n + 1 \leq m\).
+
+In jedem Fall ist \(m \leq n + 1 \vee n + 1 \leq m\) eine wahre Aussage.
+
+\ssect{Definition}
+
+Für natürliche Zahlen \(k,n,x_n,...x_{n+k} \in \mathbb{N}\) definieren
+wir die Summe \(\displaystyle\sum_{i=n}^{n} x_i\) mittels Rekursion über
+\(k\) wie folgt:
+
+Für \(m,n \in \mathbb{N}\) mit \(m < n\) definieren wir:
+
+\sect{Endliche Mengen}}
+
+\ssect{Definition: endliche Menge}
+
+Für \(n \in \mathbb{N}\) definieren wir
+\([n] := \{ m \in \mathbb{N}\mid 0 < m \leq n \}\) (d.h.
+\([n] = \{1,...,n\}\) und insbesondere \([0] = \emptyset\))
+
+\ssect{Lemma: Abbildungen in endliche Mengen}
+
+Sei \(n \in \mathbb{N}\). Jede injektive Abbildung
+\(f:[n] \rightarrow [n]\) ist surjektiv.
+
+\sssect{Beweis}
+
+Vollständige Induktion über \(n \in \mathbb{N}\)
+
+\boxed{IA}: \(n = 0\). Dann \([n] = [0] = \emptyset\). Es gibt genau
+eine Abbildung \(f : \emptyset \rightarrow \emptyset\), und diese ist
+surjektiv.
+
+\boxed{IS}: Annahme: Die Aussage ist wahr für \(n \in \mathbb{N}\). Zu
+zeigen: Die Aussage ist wahr für \(n + 1\). Sei dazu
+\(f: [n+1] \rightarrow [n + 1]\). Wir zeigen \([n+1] = im(f)\).
+
+\paragraph{\texorpdfstring{Hilfsaussage:
+\(n + 1 \in im(f)\)}}
+
+\paragraph{Beweis (durch Widerspruch)}
+
+Wäre \(n + 1 \not\in im(f)\), also \(im(f) \subseteq [n]\) dann wäre die
+Einschränkung \(f\mid_{[n]}: [n] \rightarrow [n], k \mapsto f(k)\)
+injektiv, also surjektiv nach \boxed{IV}. Wegen \(f(n+1) \in [n]\) gäbe
+es ein \(k \in [n]\) mit \(f(k) = f(n+1)\). Widerspruch zur Injektivirät
+von f (da \(k \neq n+1\)). \(\hfill\square\)
+
+Also \(n+1 \in im(f)\), d.h. es gibt \(k \in [n+1]\) mit
+\(n+1 = f(k)\quad\). Fallunterscheidung:
+
+Fall 1: \(k = n+1\) Dann \(f\mid_[n]: [n] \rightarrow [n]\)
+(wohldefiniert und injektiv) also surjektiv nach \boxed{IV}, somit
+\([n] \subseteq im(f)\)
+
+Fall 2: \(k \neq n + 1\). Dann ist \(g:[n] \rightarrow [n]\) mit
+\(g_i:= \begin{cases} f(i) & \text{ falls } i \neq k \\ f(n+1) & \text{ falls } i = k \end{cases}\)
+injektiv, also surjektiv nach \boxed{IV}. Somit
+\([n] \subseteq im(g) \subseteq im(f)\). In jedem Fall ist also
+\([n \subseteq im(f)]\). Da auch \(n + 1 \in im(f)\) ist \(f\)
+surjektiv.
+
+
+\includegraphics[scale=0.3]{assets/point_diagrams.png}
+\caption{Mengendiagramme}
+
+
+\ssect{Folgerung}
+
+Seien \(m,n \in \mathbb{N}\). Dann gilt:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+
+\item
+  \(n \leq m \iff \exists f: [n] \rightarrow [n]\) injektiv
+\item
+  \(n = m \iff \exists f: [n] \rightarrow [n]\) bijektiv
+\end{enumerate}
+
+\sssect{Beweis}
+
+\paragraph{1)}
+
+``\(\implies\)'': Klar, denn ist \(n \leq m\), dann
+\([n] \subseteq [m]\) und \([n] \rightarrow[m] k \mapsto k\) injektiv
+nach Beispiel 4.4, 1)
+
+``\(\impliedby\)'': Sei \(f[n] \rightarrow[m]\) injektiv. Annahme:
+\(n \not\leq m\), d.h. m \textless{} n nach Satz 5.14. Damit ist
+\(g:[n] \rightarrow[n], k \mapsto f(k)\) injektiv, aber wegen
+\(im(g) = im(f) \subseteq [m] \subsetneq [n]\) nicht surjektiv.
+Widerspruch zum Lemma 6.2. Also \(n \leq m\)
+\begin{tikz}
+\begin{tikzcd}
+X \arrow[r, "f"]  & X \arrow[d, xshift=0.5ex, "\text{$g^{-1}$}"] \\
+\text{$[n]$} \arrow[u, "g"] \arrow[r, dashrightarrow, "h"] &
+\text{$[n]$} \arrow[u, xshift=-0.5ex, "g"]
+\end{tikzcd}
+\end{tikz}
+
+\end{document}

@@ -1,0 +1,114 @@
+\documentclass{../../meta/tudscript}
+\begin{document}
+    \setcounter{section}{13}    \setcounter{subsection}{19}
+
+    Fall 2: 
+    \ilmath{\exists S \in \wp (X) \setminus \Set{\emptyset, X}: |\underbrace{N_I (S)}_{=T}| = |S|}
+    
+    Dann: 
+    \begin{itemize}
+        \item $I_0 := (S, T, R_0)$ mit $R_0 := R \cap (S \times T)$ Inzidenzstruktur. Und es gelte:
+        \ilmath{\forall Q \subseteq S: |N_{I_0} (Q)| = N_I (Q) \geq |Q|}        
+        \item $I_1 := (X \setminus S, Y \setminus T, T_1)$ mit $R_1 := R \cap ((X \setminus S) \times (Y \setminus T))$ Inzidenzstruktur. Und es gilt:
+    \ilmath{\forall Q \subseteq X \setminus S: |N_{I_1} (Q)| \geq |Q|}
+    (Gäbe es $Q \subseteq X \setminus S$ mit $|N_{I_1} (Q)| < |Q|$, dann $|N_I (Q \cap S)| \leq |Q| + |S| = |Q \cap S|$) $\lightning$
+    \end{itemize}
+    
+Nach \boxed{IV} gibt es perfekte Paarungen, $\varphi_0$ in $I_0$ und $\varphi_1$ in $I_1$.
+Dann $\varphi: X \rightarrow Y$ mit:
+    \ilmath{\varphi (x) = \begin{cases} \varphi_0 (x) \text{ falls } x \in S \\
+                                        \varphi_1 (x) \text{ falls } x \in X \setminus S \end{cases}}
+perfekte Paarung in I. $hfill\square$
+
+\ssect{Bemerkung: Verallgeminerung von 13.19}
+Sei $I = (X, Y , R)$ Inzidenzstruktur. Dann:
+\ilmath{max \Set{|D| \mid \varphi :D \rightarrow Y \text{ Paarung in I}} \\
+        = |X| - max \Set{|S| - |N_I (S)| \midS \subseteq X}}
+    Dann Paarungszahl (Matching Zahl)
+     
+\ssect{Definition: Euler Weg}
+\includegraphics[3cm]{assets/kaliningrad_bridges.png} \\
+
+Sei $G = (V, E)$ Graph. Ein Weg $(w_0, \ldots, w_n)$ in G heißt
+\ilmath{\text{Eulerweg } &:\iff \forall e \in E \exists!  i \in \Set{0, \ldots, n-1}: e = \Set{w_1, \ldots, w_n} \\
+        \text{Geschlossen } &:\iff w_0 = w_n \\
+        \text{Eulertour } &:\iff (w_0, \ldots, w_n) \text{ geschlossener Weg}}
+        Der Graph heißt:
+        \ilmath{\text{eulerisch } &:\iff \text{ G besitzt Eulertour}\\
+                \text{semieulerisch } &:\iff \text{ G besitzt Eulerweg}}
+        
+
+\ssect{Satz: Euler}
+Sei $G = (V, E)$ endlicher, nicht-leerer, zusammenhängender Graph.
+\ilmath{\text{G eulersch } \iff \forall v \in V: deg_G (v) \text{ gerade}}
+
+\sssect{Beweis}
+\paragraph{$\implies$}
+    Sei $(w_0, \ldots, w_n)$ Eulertour in G. Sei $v \in V, I := \Set{i \in \Set{0, \ldots, n-1} \midw_i = v}$.
+\begin{itemize}
+    \item $\Set{e \in E \mid v \in e} = \Set{\Set{w_{i - 1 \mod n}, w_i }\mid i \in I} \cap \Set{\Set{w_{i}, w_{i + 1 \mod n } }\mid i \in I}$ $= T$
+    \item $S \cap T = \emptyset$
+\end{itemize}
+Somit $deg_G (v) = 2 |I|$ gerade Zahl.
+\paragraph{$\Leftarrow$}
+Wir nenn einen Weg $(w_0, \ldots, w_n)$ in G:
+\ilmath{\text{\underline{interessant} } :\iff \forall i, j \in \Set{0, \ldots, n-1}: i + j \implies \Set{w_i, \w_{i+1}} \neq \Set{w_j, w_{w+1}}}
+
+Sei $(w_0, \ldots, w_1)$ interessanter Weg maximaler L#nge in G. (existiert, weil G endlich)
+Sei $K := \Set{\Set{w_i, w_{i + 1}} \mid i \in \Set{0, \ldots, n - 1}}$.
+
+Es gilt $w_n = w_0$.
+
+%%TODO some tikz work needed
+
+(Sonst wäre $|\Set{e \in K \mid w_n \in e}|$ ungerade, wegen $2|deg_G (w_n)$ gibt es also einen Knoten $w_{n+1} \in V)$ mit $\Set{w_n, w_{n+1}} \in E \setminus K$, sonst
+$(w_0, \ldots, w_n, w_{n+1})$ interessanter Weg in G der Länge $n+1$ \lightning) 
+
+
+Annah,e: $K \neq E$. Dann folgt:
+    \ilmath{\exists i \in \Set{0, \ldots, n-1} \exists v \in V: \Set{v, w_i} \in E \setminus K (\star)}
+
+\paragraph{Beweis von $(\star)$} \\
+Es gibt $u, v \in V$ mit $\Set{u, v} \in E \setminus K$. \\
+Falls $\Set{u, v} \cap \Set{w_o, \ldots, w_n} \neq \emptyset$, dann $(\star)$ bereits bewiesen.
+
+%%TODO some more tikz needed
+
+Angenommen, $\Set{u, v} \cap \Set{w_0, \ldots, w_n} = \emptyset$. \\
+Da G zusammenhängend, existiert Weg 
+\ilmath{(v_0, \ldots, v_m)$ in G mit $v_0 = v$ und $v_m = w_0}
+Sei 
+\ilmath{r := max \Set{l \in \Set{0, \ldots, m - 1} \mid v_l \notin \Set{w_0, \ldots, w_n}}}
+
+Dann existiert $i \in \Set{0, \ldots, n-1}$ mit $v_{r + 1} = w_i$, und
+dann $\Set{v_r, w_i} \in E \setminus K \hfill\boxed{\star}$ 
+
+Aus $(\star)$ folgt: \\
+$(v, w, w_{i+1}, \ldots, w_n, w_1, \ldots, w_{i-1}, w_i)$
+interessanter Weg der Länge $n+1$. $\lightning$
+
+Also $K = E$, d.h. $(w_0, \ldots, w_n)$ Eulertour $\hfill\square$
+
+\ssect{Folgerung}
+Sei $G = (V, E)$ endlicher, nicht-leerer, zusammenhängender Graph. Dann:
+\ilmath{\text{G semieulersch } \iff |\Set{v \in V \mid deg_g (v) \text{ ungerade}}| \leq 2}
+
+
+\enquote{Gibt es nach 45 eine Eulertour? - Nein, natürlich nicht, das rechte Ufer wird's wie immer versauen}
+
+\paragraph{Beweis}
+Sei $U := \Set{v \in V \mid deg_G (v) \text{ungerade}}$. Nach Handschlaglemma \ref{13.4}:
+
+\ilmath{\sum_{v \in U} deg_G (v) = 2 |E| - \sum_{v \in V \setminus U} deg_G (v) \\ \implies |U| \text{gerade}}
+
+\underline{$\Leftarrow$} \\
+Sei $|U| \leq 2$. Entweder $|U| = 0$ oder $|U| = 2$. Ist $|U| = 0$, dann G sogar eulersch.
+
+Angenommen, $|U| = 2$. Sei $U = \Set{u, v}$. Wähle "neuen" Knoten $t \nootin V$.
+Definiere $\tilde{G} := (\tilde{V}, \tilde{E})$
+
+\ilmath{\tilde{V} := V \cup \Set{t}, \tilde{E} := E \cup \Set{\Set{u, t}, \Set{v, t}}}
+Dann $\tilde{G}$ zusammenhängend (da G zusammenhängend). Für alle $w \in \tilde{V}$
+\ilmath{deg_G (w) = \begin{cases} deg_G (w) \text{ falls } w \in V \setminus \Set{u, v}}
+
+\end{document}

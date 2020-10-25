@@ -1,0 +1,645 @@
+\documentclass{../../meta/tudscript}
+\begin{document}
+\sssect{Ergänzung zu Bemerkung(7.4)}
+Konvention zur Schreibweise: Ist \((M,+)\) eine Gruppe, dann bezeichnet
+man das zu einem \(x \in M\) inverse Element in \((M,+)\) üblicherweise
+mit \(-x\), und man schreibt \(x-y:=x+(-y)\) für \(x,y \in M\)
+
+\ssect{Definition}
+
+Eine Halbgruppe \((M,*)\) heißt \underline{kommutativ (abelsch)} falls
+gilt: \(\forall x,y \in M: x*y=y*x\)
+
+\ssect{Beispiele}
+
+\begin{enumerate}
+
+\item
+  \((\mathbb{N},+)\) und \((\mathbb{N},\cdot )\) sind kommutative
+  Monoide. (Propositionen 5.8 und 5.11)
+\item
+  Sei \(X\) Menge. Die Menge aller Abbildungen von \(X\) nach \(X\)
+  zusammen mit der Verkettung ist \((X^X,\circ )\) ist ein Monoid.
+  (Lemma 4.9) Das neutrale Element von \((X^X ,\circ )\) ist
+  \(id_x :X \rightarrow X\)
+\item
+  Sei \(X\) Menge und \(Sym(X):=\{ f \in X^X | f \text{ bijektiv} \}\).
+  Dann ist \((Sym(X),\circ )\) eine Gruppe, die
+  \underline{(volle) Symmetrische Gruppe} über der Menge \(X\).
+  (Proposition 4.12)
+\end{enumerate}
+
+\ssect{Definition}
+
+Ein \underline{Semiring} (Halbring) ist ein Tripel \((R,+,\cdot )\)
+bestehend aus einer Menge \(R\) sowie den Abbildungen
+
+\(+:R \times R \rightarrow R, (x,y) \mapsto x+y\),
+\(\cdot : R \times\ R \rightarrow R, (x,y) \mapsto x\cdot y\),
+
+so dass gilt:
+
+\begin{enumerate}
+
+\item
+  \((R,+)\) ist kommutatives Monoid (dessen neutrales Element wir als
+  \underline{Nullelement} \(0=0_R\) bezeichnen),
+\item
+  \((R,*)\) ist Monoid (dessen neutrales Element wir als Einselement
+  \(1=1_R\) bezeichnen),
+\item
+  \(\forall x \in R: 0 \cdot x = 0 = x \cdot 0\) (Null ist
+  \underline{Absorbierend})
+\item
+  \(\forall x,y,z \in R: x \cdot(y+z)=x \cdot y + x \cdot z \land (x+y) \cdot z = x \cdot z + y \cdot z\)
+  (\underline{Distributivität})
+\end{enumerate}
+
+Ein Semiring \((R,+,*)\) heißt:
+
+\underline{Ring} \(:\iff (R,+)\) ist Gruppe \underline{kommutativ}
+\(:\iff (R,\cdot )\) ist kommutativ
+
+Ein \underline{Körper} ist ein kommutativer Ring \((R,+,\cdot )\), so
+dass * \(0_K \neq 1_K\) * \(\forall x \in K \setminus \{0\}\)
+\(\exists y \in K: 1=y \cdot x (=xy)\) (\(K\) ohne \(0\) ist mit
+\(\cdot\) eine Gruppe)
+
+\ssect{Beispiele}
+
+\begin{enumerate}
+
+\item
+  \((\mathbb{N},+,\cdot )\) ist kommutativer Semiring (weil keine
+  negativen Zahlen)
+\item
+  Sei \(X\) Menge. Dann \((\wp(X),\cup ,\cap )\) kommutativer Semiring
+  (Proposition 2.14) mit Nullelement \(\varnothing\) und Einselement
+  \(X\)
+\item
+  Ausblick: \((\mathbb{Z},+,\cdot )\) ist kommutativer Ring,
+  \((\mathbb{Q},+,\cdot )\) ist Körper
+\end{enumerate}
+
+\sect{Ganze und Rationale Zahlen}
+
+\ssect{Lemma}
+Sei \(X:= \mathbb{N}\times \mathbb{N}\) Dann ist die Relation
+\(\sim \subseteq X \times X\) mit \((a,b) \sim (a',b'):\iff a+b'=a'+b\)
+eine Äquivalenzrelation auf \(X\).
+
+\sssect{Beweis}
+
+\paragraph{Reflexivität + Symmetrie: Trivial siehe Übung!}
+
+\paragraph{Transitivität:}
+
+Seien \((a,b),(a',b'),(a'',b'') \in X\) mit \((a,b) \sim (a',b')\) und
+\((a',b') \sim (a'',b'')\) d.h. \(a+b'=a'+b\) und \(a'+b''=a''+b'\) Dann
+\(a+b''+b'=a'+b''+b=a''+b'+b\) und daher \(a+b''=a''+b\) wegen
+Kürzbarkeit (Bemerkung 5.9,1) Also \((a,b) \sim (a'',b'')\)
+
+\ssect{Definition}
+
+Wir bezeichnen
+\(\mathbb{Z}:= ( \mathbb{N}\times \mathbb{N})_{/\sim} = \{ [ (a,b) ]_\sim | a,b \in \mathbb{N}\}\)
+als die Menge der \underline{ganzen Zahlen}
+(\(\mathbb{N}\neq \mathbb{Z}\) weil Datentyp anders)
+
+\ssect{Bemerkung}
+
+Die Abbildung
+\(\mathbb{N}\rightarrow \mathbb{Z}, a \mapsto [(a,o)]_\sim\) ist
+injektiv. Wir identifizieren eine natürliche Zahl \(a \in \mathbb{N}\)
+mit ihrem Bild \([(a,0)]_\sim \in \mathbb{Z}\) (d.h. wir schreiben
+\(a=[(a,0)]_\sim\) ) und fassen so \(\mathbb{N}\) als Teilmenge von
+\(\mathbb{Z}\) auf. \(\mathbb{N}\) und \(\mathbb{Z}\) werden
+\underline{nicht} durch Größe unterschieden.
+
+\ssect{Satz: $\bZ$ als kommutative Gruppe}
+
+Die Menge \(\mathbb{Z}\) bildet mit der \underline{Addition}
+\(+ : \mathbb{Z}\times \mathbb{Z}\rightarrow \mathbb{Z}\), definiert
+durch \([(a,b)]_\sim + [(c,d)]_\sim := [(a+c, b+d)]_\sim\) für alle
+\(a,b,c,d \in \mathbb{N}\) eine kommutative Gruppe.
+
+\sssect{Beweis}
+
+Wohldefiniert (d.h. Unabhängig der Definition von der Wahl der
+Repräsentanten):
+
+Seien \((a,b),(a',b'),(c,d),(c',d') \in \mathbb{N}\times \mathbb{N}\)
+Ist \((a,b) \sim (a',b')\) und \((c,d) \sim (c',d')\), d.h.
+\(a+b'=a'+b\) und \(c+d'=c'+d\), dann folgt
+\(a+c+b'+d'=a'+b+c'+d=a'+c'+b+d\), und somit
+\((a+c,b+d) \sim (a'+c',b'+d')\), d.h.
+\([(a+c.b+d)]_\sim = [(a'+c',b'+d')]_\sim\)
+
+Nach Proposition 5.8. ist \((\mathbb{N},+)\) kommutatives Monoid, mit
+neutralem Element \(0\)
+
+Es folgt: \(\mathbb{Z},+)\) ist kommutatives Monoid mit neutralem
+Element \(0_\mathbb{Z}= [(0,0)]_\sim\).
+
+\paragraph{Beispiel}
+
+Assoziativität: Für alle \(a,b,c,d,e,f \in \mathbb{N}\) gilt
+
+\([(a,b)] + ( [(c,d)] + [(e,f)] ) = [(a,b)] + [(c+e,d+f)]\)
+\(= [(a+(c+e),b+(d+f))] = [((a+c)+e,(b+d)+f)]\)
+\(= [(a+c,b+d)] + [(e,f)] = ( [(a,b)] + [(c,d)] ) + [(e,f)]\)
+
+\sssect{Weiter zu Beweisen}
+
+Existenz inverser Elemente: Zu jedem \([(a,b)] \in \mathbb{Z}\) ist
+\([(b,a)]\) ein inverses Element, denn:
+\textit{\textbf{\textexclamdown EinfacherTrick\textsuperscript{TM}!}}
+
+\([(b,a)] + [(a,b)] = [(a+b,a+b)] = [(0,0)] = 0_\mathbb{Z}\) (Denn jedes
+identische Paar \([(x,x)] \in \mathbb{Z}= 0_\mathbb{Z}\))
+
+\(\hfill \square\)
+
+
+\ssect{Bemerkung (vgl. Bem.
+7.4)}
+
+\begin{enumerate}
+
+\item
+  Der obige Beweis zeigt: \(-[(a,b)] = [(b,a)]\) für alle
+  \(a,b \in \mathbb{N}\) Es folgt: \(-a = -[(a,0)] = [(0,a)]\) für alle
+  \(a \in \mathbb{N}\) Für jedes \(z=[(a,b)] \in \mathbb{Z}\) erha\dots
+\end{enumerate}
+
+\sssect{Nachtrag zur Bemerkung 8.5}
+\begin{enumerate}
+
+\item
+  für jede ganze Zahl \(z = [(a,b)] \in \mathbb{Z}\) erhalten wir eine
+  Darstellung der Form
+\end{enumerate}
+
+\( z = [(a,b)] = [(a,0)] + {[}(0,b){]} = a - b\)
+
+und es gilt \((a,b) ~ (a', b') \iff a-b = a' - b'\)
+
+\begin{enumerate}
+
+\item
+  Für jedes \(z \in \mathbb{Z}\) gibt es ein \(n \in \mathbb{N}\) mit
+  \(z = n\) oder \(z = -n\)
+\end{enumerate}
+
+\sssect{Beweis}
+
+Sei \(z =p [(a,b)] \in \mathbb{Z}\). Nach Satz 5.14 ist
+\(a \leq b aber b \geq a\), aber existiert \(n \in \mathbb{N}\) mit
+\(b = a + n\) oder \(a = b + n\), und somit
+
+\begin{flalign*}z = [(a,b)] = [(a, a+n)] = [(0,n)] = -n\end{flalign*}
+
+oder
+
+\begin{flalign*}z = [(a,b)] = [(b+n,b)] = [(n,0)] = n\end{flalign*}
+
+\ssect{\texorpdfstring{Satz Multiplikation in \(\mathbb{Z}\)}}
+Die Menge \(\mathbb{Z}\) bildet mit der Addition
+\(+: \mathbb{Z}\times \mathbb{Z}\rightarrow \mathbb{Z}\) aus Satz 8.4
+und der Multiplikation
+\(\cdot : \mathbb{Z}\times \mathbb{Z}\rightarrow \mathbb{Z}\), definiert
+durch
+
+\begin{flalign*}[(a,b)] \cdot [(c,d)] := [(ac+bf)],ad+bc]\end{flalign*}
+
+für alle \(a,b,c,d \in \mathbb{N}\), einen \textbf{kommutativen Ring}.
+
+
+\ssect{Bemerkung}
+
+Nach obiger Definition gilt:
+
+\begin{flalign*}(a-b) \cdot (c-d) = (ac + bd) -  (ad - bc)\end{flalign*}
+
+für alle \(a,b,c,d \in \mathbb{N}\).
+
+
+\sssect{Beweis von 8.6}
+
+Wohldefiniert (d.h Unabhängigkeit der Definition von der Wahl der
+Repräsentanten):
+
+Für \(a,b,c,d \in \mathbb{N}\) sei
+\((a,b) \cdot (c,d) := (ac+bd, ad+bc)\)
+
+Seien \(a,b,c,d,a',b',c',d' \in \mathbb{N}\) mit \((a,b) ~ (a',b')\) und
+\((c,d) \ (c',d')\). Zu zeigen:
+\( (a,b) \cdot (c,d) \sim (a',b') \cdot (c',d') \)
+
+Wir beweisen: (1): \((a,b) \cdot (c,d) ~ (a',b') \cdot (c',d')\)
+
+(2): \((a',b') \cdot ~ (a',b') \cdot (c',d')\)
+
+Dann folgt aus (1) und (2) wegen Transitivität:
+
+\begin{flalign*}(a,b) \cdot (c,d) ~ (a',b') \cdot (c',d')\end{flalign*}
+
+\textbf{Beweis zu (1)}
+
+Wegen \((a,b) ~ (a',b')\) ist \(a + b' = a' + b\) und daher
+
+\begin{flalign*}ac+ bd + a'd + 'c = (a+b')c + (a'+b)d\end{flalign*}
+
+\begin{flalign*}= (a' + b)c  + (a+b')d = a'c + b'd + ad + bc\end{flalign*}
+
+d.h
+
+\begin{flalign*}(a,b) \cdot (c,d) ~ (a',b') \cdot (c,d)\end{flalign*}
+
+\textbf{Beweis zu (2)}
+
+Analog: Üb!
+
+Mit Satz 8.4 und Proposition 5.11 folgt nun leicht, dass
+\((\mathbb{Z}, +, \cdot)\) ein kommutativer Ring ist
+
+
+\ssect{Bemerkung:
+``Nullteilerfreiheit''}
+
+Der Ring \((\mathbb{Z}, +, \cdot)\) ist ``nullteilerfrei'', d.h für alle
+\(x,y \in \mathbb{Z}\) gilt:
+
+\begin{flalign*}x \cdot y \Rightarrow x = 0 \lor y = 0\end{flalign*}
+
+
+\ssect{Lemma}
+
+Sei \(X := \mathbb{Z}\times (\mathbb{Z}\\ \{0\})\). Dann ist die
+Relation: eine Äquivalenzrelation auf X.
+
+
+\sssect{Beweis}
+
+Reflexivität + Symmetrie: Üb!
+
+Transitivität:
+
+Seien \((x,y),(x'y'),(x'',y'') \in X\) mit \((x,y) ~ (x',y')\) und
+\((x',y') ~ (x'',y'')\), d.h.\(xy' = x'y\) und \(x'y'' = x''y'\). Dann
+\(xy''y' = x'yy'' = x''y'y = x''yy'\), also \((xy'' - x''y) y' = 0\)
+Wegen \(y' \neq 0\) und Nullteilerfreiheit von
+\((\mathbb{Z}, +, \cdot)\) folgt \(xy'' = x''y\).
+
+Somit \((x,y) ~ (x'',y'')\).
+
+
+\ssect{Definition: Rationale
+Zahlen}
+
+Wir bezeichnen:
+
+als die Menge der rationalen Zahlen.
+
+
+\ssect{\texorpdfstring{Bemerkung: \(\mathbb{Z}\) als Teilmenge
+von
+\(\mathbb{Q}\)}}
+
+Die Abbildung \(\mathbb{Z}\rightarrow \mathbb{Q}, x \mapsto [(x,1)]\)
+ist injektiv. Wir identifizieren im Folgenden eine ganze Zahl
+\(\mathbb{Z}\) mit ihrem Bild \([(x,1)] \in \mathbb{Q}\) wir schreiben:
+
+\begin{flalign*}x =  [(x,1)]\end{flalign*}
+
+und fassen so \(\mathbb{Z}\) als Teilmenge von \(\mathbb{Q}\) auf.
+
+
+\ssect{Satz}
+
+Die Menge \(\mathbb{Q}\) bildet mit der Addition
+\(+: \mathbb{Q}\times \mathbb{Q}\rightarrow \mathbb{Q}\) und der
+Multiplikation
+\(\cdot : \mathbb{Q}\times \mathbb{Q}\rightarrow \mathbb{Q}\) definiert
+durch \([(x,y)] + [(z,w)] := [(xq+yz,yw)]\)
+
+\([(x,y)] \times [(z,w)] := [(xz,yw)]\)
+
+für \(x,y,z,w \in \mathbb{Z}\) mit \(y \neq 0\) und \(w \neq 0\), einen
+Körper.
+
+\textbf{Beweis}
+
+Wohldefiniertheit (d.h Repräsentantenunabhängigkeit)
+
+Sind
+\((x,y),(x',y'),(z,w),(z',w') \in \mathbb{Z}\times (\mathbb{Z} \setminus \{0\})\)
+mit \((x,y) ~ (x',y')\) und \((z,w) ~ (z',w')\), also \(xy' =x'y\) und
+\(zw' = z'w\), dann folgt \((xw+yz)y'w' = (x'w'+y'z')yw\),
+\((xz)(y'w') = (x'z')(yw)\).
+
+Somit \(((xw+yz,yw) ~ (x'w'+y'z',y'w')\) und \((xz,yw) ~ (x'z',y'w')\)
+
+(Beatchte auch, dass \(yw + 0\) für alle \(yw \in \mathbb{Z} \setminus \{0\}\)
+nach Bemerkung 8.8) Mithilfe von Satz 8.6 folgert man leicht, dass
+\((\mathbb{Q},+, \cdot)\) ein kommutativer Ring mit Einselement
+\([(1,1)]_{~}\) ist.
+
+Existenz inverser Elemente für die Multiplikation: Für alle
+\(x,y \in \mathbb{Z} \setminus \{0\}\) ist
+
+\begin{flalign*}[(x,y)] \cdot [(y,x)] = [(xy,xy)] = [(1,1)]\end{flalign*}
+
+q.e.d.
+
+
+\ssect{Bemerkung (vgl. Bemerkung
+8.11)}
+
+Für eine ganze Zahl \(x \in \mathbb{Z} \setminus \{0\}\) schrieben wir
+
+\begin{flalign*}\frac{1}{x} := x^{-1} = [(x,1)] = [(1,x)]\end{flalign*}
+
+Für jede rationale Zahl \(q = [(x,y)] \in \mathbb{Q}\) erhalten wir eine
+Darstellung der Form:
+
+\begin{flalign*}q = [(x,1)] \cdot [(1,y)] = x \cdot \frac{1}{y} := \frac{x}{y}\end{flalign*}
+
+mit dieser Notation gilt für die Operation des Körpers
+\((\mathbb{Q}, +, \cdot)\):
+
+\begin{flalign*}\frac{x}{y} + \frac{z}{w} = \frac{x+w+yz}{yw} und \frac{x}{y} \cdot \frac{z}{w} = \frac{xz}{yw}\end{flalign*}
+
+
+\sect{§9 Elementare Zahlentheorie}
+
+
+\ssect{Definition}
+
+Wir definieren die Relation : \(|: \mathbb{Z}\times \mathbb{Z}\) wie
+folgt: (gerader senkrechter Strich (it's not a pipe)) (a teilt b)
+
+
+\ssect{Proposition}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  Die Relation \textbar{} ist reflexiv und transitiv (auf
+  \(\mathbb{Z}\))
+\item
+  Für alle \(a,b,d,x,y \in \mathbb{Z}\) gilt: 
+\end{enumerate}
+
+\textbf{Beweis} (1) Üb!
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\setcounter{enumi}{1}
+
+\item
+  Gelte d\textbar{}a und d\textbar{}b, d.h es gilt
+  \(k,l \in \mathbb{Z}\) mit \(a = k \cdot d\) und \(b = l \cdot d\).
+  Dann folgt:
+\end{enumerate}
+
+\begin{flalign*}xa + yb = xkd + yld = (xk+yl)d)\end{flalign*}
+
+somit d\textbar{}(xa+yb)
+
+
+\ssect{Bemerkung}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  \(\{(a,b) \in \mathbb{N}\times \mathbb{N}| a | b \}\) ist eine
+  Ordnungsrelation auf \(\mathbb{N}\)
+\item
+  Für alle \(a,b \in \mathbb{N}\) gilt:
+  \(a|b \iff \exists c \in \mathbb{N}: b = a \cdot c\)
+\end{enumerate}
+
+
+\ssect{Definition: Teiler natürlicher
+Zahlen}
+
+Für eine \(n \in \mathbb{N}\) heißt
+\(T(n) := \{d \in \mathbb{N}| d|n\}\) die Menge der \textbf{Teiler} von
+n.
+
+
+\ssect{Bemerkung}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  Für jedes \(n\in \mathbb{N}\\ \{0\}\) ist
+  \(T(n) \subseteq \{1,...,n\}\) und daher T(n) endlich
+\item
+  \(T(0) = \mathbb{N}\)
+\end{enumerate}
+
+
+\ssect{Definition}
+
+Sei (M, \(\leq\)) eine geordnete Menge, d.h ein Paar bestehend auseiner
+Menge M und einer Ordnungsrelation \(\leq \subseteq M \times M\)
+
+Sei \(A \subseteq M\). Dann heißt \(x \in M\)
+
+\begin{itemize}
+\item
+  \textbf{untere Schranke} von A (bzgl. \(\leq\))
+  \(: \iff \forall a \in A: x \leq A\)
+\item
+  \textbf{obere Schranke} von A (bzgl. \(\leq\))
+  \(: \iff \forall a \in A: a \leq x\)
+\item
+  \textbf{Infimum} von A \(: \iff\)
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  x ist untere Schranke von A
+\item
+  \(\forall y \in M:\) untere Schranke von A \(\Rightarrow y \leq x\)
+\end{enumerate}
+
+\begin{itemize}
+
+\item
+  \textbf{Supremum} von A
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  x ist obere Schranke von A
+\item
+  \(\forall y \in M:\) obere Schranke von A \(\Rightarrow x \leq y\)
+\end{enumerate}
+
+\begin{itemize}
+\item
+  \textbf{kleinstes Element} von A \(: \iff x \in A \land x\) untere
+  Schranke von A.
+\item
+  \textbf{größtes Element} von A \(: \iff x \in A \land\) obere Schranke
+  von A.
+\end{itemize}
+
+Wir nennen \(\leq\) eine \textbf{Wohlordnung} auf M und nennen
+\((M, \leq)\) eine \textbf{wohlgeordnete Menege}, falls gilt: 1.
+\(\leq \subseteq M \times M\) ist total 2. jede nicht-leere Teilmenge
+von M besitzt ein kleinstes Element bzgl \(\leq\).
+
+Anmerkung des Chronisten: Ist nur für unendliche Mengen relevant.
+
+
+\ssect{Bemerkung}
+
+Sei \((M, \leq)\) geordnete Menge \(A \subseteq M\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  A besitzt höchstens ein kleinstes Element
+\item
+  A besitzt höchstens ein größtes Element
+\item
+  A besitzt höchstens ein Infimum
+\item
+  A besitzt höchstens ein Supremum
+\end{enumerate}
+
+bzgl \(\leq\)
+
+(Beweis: Sind \(x, x' \in M\) Infima von A, dann \(x \leq x'\) und
+\(x' \leq x\), also \(x = x'\))
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+
+\item
+  Ist \(x \in A\) kleinstes (größtes) Element von A bzgl. \(\leq\), dann
+  x Infimum (Supremum) von A bzgl. \(\leq\)
+\item
+  Ist \(\leq\) total, dann besitzt jede \textbf{endliche} nichtleere
+  Teilmenge von M ein kleinstes (größtes) Element bzgl. \(\leq\)
+\end{enumerate}
+
+(Beweis durch vollständige Induktion über die Kardinalität einer
+endlichen nichtleeren Teilmenge von M.)
+
+
+\ssect{Satz: Wohlordnungssatz}
+
+\((\mathbb{N}, \leq)\) ist wohlgeordnet.
+
+
+\sssect{Beweis}
+
+Nach Satz 5.14: \(\leq\) ist totale Ordnungsrelation auf \(\mathbb{N}\)
+
+Sei \(\emptyset \neq A \subseteq \mathbb{N}\) Wähle \(n \in A\). Die
+Menge \(B := \{a \in A | a \leq n\}\) ist endliche und nicht leer,
+besitzt daher ein kleinstes Element \(b \in B\) (Bemerkung 9.7,3) . Es
+folgt b kleinstes Element von A. \(\hfil \quad \linebreak\)
+
+
+\ssect{Lemma: Division mit
+Rest}
+
+Für alle \(a,b \in \mathbb{N}\) und \(b \neq 0\) existieren
+\(q,r \in \mathbb{N}\), sodass \(a = q \cdot b + r\) und \(r < b\).
+
+
+\sssect{Beweis}
+
+Sei \(b \in \mathbb{N} \setminus \{0\}\). wir beweisen die Aussage:
+
+\begin{flalign*}\forall a \in \mathbb{N}\exists q,r \in \mathbb{N}: a= q \cdot b + r, r < b\end{flalign*}
+
+Beweis mittels vollständiger Induktion über \(a \in \mathbb{N}\)
+
+\(\boxed{IA} a = 0\) Klar mit \(a = 0 \cdot b + 0\).
+
+ \(\boxed{IS}\) Sei
+\(a \in \mathbb{N}\), sodass
+
+Ist \(r+1 < b\), dann folgt IS mit:
+
+\( a+1=b+(r+1)  \)
+
+Ist \(r+1 = b \), dann folgt IS mit:
+\( a+1 = (q+1) b + 0  \)
+
+\(\hfil \quad \linebreak\)
+
+
+\ssect{Definition}
+
+Seien \(a,b \in \mathbb{N}\). Dann heißt \(d \in \mathbb{N}\)
+\textbf{größter gemeinsamer Teiler (ggT)} von a und b \(: \iff\) 1.
+\(d|a \land d|b\) 2.
+\(\forall d' \in \mathbb{N}: d'|a \land d'|b \Rightarrow d'|d\)
+
+Weiter heißt \(m \in \mathbb{N}\) \textbf{kleinstes gemeinsames
+Vielfaches (kgV)} von a und b \(: \iff\) 1. \(a|m \land b|m\) 2.
+\(\forall m' \in \mathbb{N}: (a|m' \land b|m') \Rightarrow m|m'\)
+
+
+\ssect{Satz}
+
+Seien \(a,b \in \mathbb{N}\). Dann gelten: 1. Es existiert genau ein ggT
+von a und b, den wir mit ggT(a,b) bezeichnen. Es gilt: 2. Es existiert
+genau ein kgV von a und b, den wir mit kgV(a,b) bezeichnen.
+
+
+\sssect{Beweis}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  Eindeutigkeit: Sind d und d' ggT von a und b, dann d\textbar{}d' und
+  d'\textbar{}d, also \(d = d'\) (Bemerkung 9.3.1) Existenz: Ist
+  \(a = b = 0\), dann \(ggT(a,b) = 0\) (Klar ;) )
+\end{enumerate}
+
+Wir nehmen daher an (o.B.d.A = Ohne Beschränkung der Allgemeinheit, o.E.
+= ``ohne Einschränkung'', w.l.o.g = without loss of generality), dass
+m\textbar{}
+\(a \neq 0\) oder \(b \neq 0\). Dann ist die Menge nicht leer. Nach Satz
+9.8 besitzt A kleinstes Element \(d \in A\) (bzgl. \(\leq\)). Nach
+Definition von A gibt es \(s,t \in \mathbb{Z}\) mit \(d = sa+bt\).
+
+Behauptung: \(d|a \land d|b\). Dazu (nach Lemma 9.9) gibt es
+\(q,r \in \mathbb{N}\) mit \(a =dq+r, r < d\). Dann
+
+\begin{flalign*}(\star):r = a - qd = \underbrace{(1-qs)}{\in\mathbb{Z}} a + \underbrace{(-qt)}{\in \mathbb{Z}}b\end{flalign*}
+
+Wäre \(r \neq 0\), dann also \(r \in A\) (wegen (\(\star\))) und daher
+Widerspruch wegen \(r < d\) Somit also \(r = 0\), d\textbar{}a. Also
+zeigt man d\textbar{}b. Ist nun \(d' \in \mathbb{N}\) mit
+\(d'|a \land d'|b\), dann \(d'| (sa+tb)\) (nach Proposition 9.2,2).
+
+Somit ggt(a,b) = d = sa + tb
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{1}
+
+\item
+  Eindeutigkeit: wie zuvor mit (Bemerkung 9.3,1). Existenz: Ist a = 0
+  oder b = 0, dann kgV(a,b) = 0
+\end{enumerate}
+\end{document}

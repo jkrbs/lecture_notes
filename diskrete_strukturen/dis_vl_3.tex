@@ -1,0 +1,219 @@
+\documentclass{../../meta/tudscript}
+\begin{document}
+
+\sssect{Beweis}
+
+\((a,b) = {{a}, {a,b}} \\ A \times B = {(a,b) \mid a \in A, b \in B}\)
+
+\ssect{Lemma}
+
+Seien A und B Mengen. So gilt für alle \(a,x \in A\) und \(b, y \in B\)
+
+\((a,b)=(x,y) \iff a = x \wedge b = y\)
+
+\sssect{Beweis}
+
+Offentsichtlich: \((a,b) = (x,y)\), falls a=x und b=y
+
+Zu zeigen ist \(\Rightarrow\)
+
+Annahme: \((a,b) = (x,y)\)
+
+Fallunterscheidung:
+\begin{itemize}
+
+\item
+	Fall 1: \(a=b\), dann
+	\({x,y} \in (x,y)= (a,b) = {{a}, {a,b}} = {{a}}\), also \{x,y\} = \{a\},
+	und somit x=y=a, wegen Extensionalität.
+
+\item
+  Fall 2: \(a \neq b\), dann \({a} \in (a,b)=(x,y) = {{x}, {x,y}}\),
+  also a=x, weiter. \({a,b} \in (a,b) = (x,y) = {{x}, {x,y}}\), daher
+  \({a,b} = {x,y}\) und \(x \neq y\)
+\end{itemize}
+
+Deswegen \(a = x \wedge b = y\)
+
+\ssect{Proposition}
+
+Für beliebige Mengen \(A,B,X,Y\) gilt:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  \((A \cup B) \times X = (A \times X) \cup (B \times X)\)
+\item
+  \((A \cap B) \times (X \cap Y) = (A \times X) \cap (B \times Y)\)
+\item
+  \((A \times X = \emptyset \iff A = \emptyset \vee B = \emptyset\)
+\end{enumerate}
+
+\sssect{Beweis}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  Es gilt:
+  \((u,v) \in (A \cup B) \times X \iff u \in A \cup B \wedge v \in X\)
+  \(\iff (u \in A \vee u \in B) \wedge v \in X \iff (u \in A \wedge v \in X) \vee (u \in B \wedge v \in X)\)
+  \(\iff (u,v) \in A \times x \vee (u,v) \in B \times X\)
+\end{enumerate}
+
+\ssect{Bemerkung: Russelsche Antinomie}
+
+Eine Menge M heiße ``normal'', wenn \(M \notin M\). Betrachten wir die
+Gesamtheit N aller Mengen, d.h.
+
+\(N := {M \mid M \notin M}\)
+
+Ist N eine Menge? Wenn ja, dann wäre N entweder normal oder nicht
+normal.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  Ist N normal, dann ist \(N \in N\) und daher \(N \in N\) nach
+  Definition von N.
+\item
+  ist N nicht normal, dann ist \(N \in N\) und daher \(N \notin N\) nach
+  definition von N.
+\end{enumerate}
+
+Dies ist ein Widerspruch. Es folgt: N ist keine Menge.
+
+\sect{Relationen}
+
+\ssect{Definition: Relation}
+
+Eine Relation zwischen zwei Mengen X und Y ist eine Teilmenge
+\(R \subseteq X \times Y\), für \((x,y) \in R\) schreibt man auch
+\(xRy\)
+
+Eine (binäre)Relation auf einer Menge X ist eine Teilmenge von
+\(X \times X\).
+
+\ssect{Eigenschaften von Relationen}
+
+Sei X eine Menge. Eine Relation \(R \subseteq X \times X\) heißt: 
+\begin{itemize}
+	\item
+		reflexiv \(: \iff \forall x \in X: xRx\) 
+	\item
+		irreflexiv \(: \iff \forall x \in X: \neg (xRx)\) 
+	\item	symmetrisch \(: \iff \forall x, y \in X: xRy \Rightarrow yRx\) 
+	\item	antisymmetrisch \(: \iff \forall x, y \in X: xRy \wedge yRx \Rightarrow y = x\) 
+	\item	transitiv \(: \iff \forall x, y, z \in X: xRy \wedge yRz \Rightarrow xRz\) 
+	\item 	total \(: \iff \forall x, y \in X: xRy \vee yRx\)
+\end{itemize}
+
+\ssect{Bemerkung}
+
+Sei X eine Menge. Dann ist die \emph{Diagonalrelation} (identische
+Realtion)
+
+\(\Delta X := {(x,x) \mid x \in X} = {(x,y) \in X \times X \mid x = y}\)
+
+auf X ist reflexiv, symmetrisch, antisymmetrisch und transitiv.
+
+Die \emph{Allrellation}:
+
+\(\bigtriangledown x = X \times X\) auf X ist reflexiv, symmetrisch,
+transitiv und total.
+
+\ssect{Beispiele}
+\begin{tabular}{l c c c c c r}
+X & \(R \subsetq X \times X\) & refl. & irrefl. & sym. & antisym. & trans. & total \\
+\(\mathbb{Q}\) & \(\{(x,y) \in \mathbb{Q} \times \mathbb{Q} \mid x \leq y\}\) & 1 & 0 &0&1&1&1\\
+\(\mathbb{Q}\) & \(\{(x,y) \in \mathbb{Q} \times \mathbb{Q} \mid x < y\}\) &0&1&0&1&1&0\\
+\(\mathbb{Q}\) & \(\{(x,y) \in \mathbb{Q} \times \mathbb{Q} \mid |x| = |y|\}\)&1&0&1&0&1&0\\
+\(\mathbb{N}\) & \(\{(x,y) \in \mathbb{N} \times \mathbb{N} \mid x teilt y\}\)&1&0&0&1&1&0\\
+\(\mathbb{Z}\) & \(\{(x,y) \in \mathbb{Z} \times \mathbb{Z} \mid x + y = 5\}\) &0&1&1&0&0&0\\
+\(\mathbb{Z}\) &\(\{(x,y) \in \mathbb{N} \times \mathbb{N} \mid x \leq y \}\) &0&1&0&1&1&0\\
+\end{tabular}
+
+\ssect{Definition: Ordnungsrelation}
+
+Sei X Menge. Eine Relation \(R \subseteq X \times X\) heißt
+Ordnungsrelation auf X, falls R reflexiv, antisymmetrisch und transitiv
+ist.
+
+\ssect{Beispiele}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+	\({(x,y) \in \mathbb{N} \times \mathbb{N} | x \leq y} \text{ist eine Ordnungsrelation auf} \mathbb{R}\)
+\item
+	\({(x,y) \in \mathbb{N} \times \mathbb{N} | x teilt y} \text{ist eine Ordnungsrelation auf} \mathbb{N}\)
+\end{enumerate}
+
+\ssect{Definition: Äquivalenzrelation}
+
+Sei X Menge. Eine Relation \(R \subseteq X \times X\) heißt
+Äquivalenzrelation (ÄR) auf X, falls R reflexiv, symmetrisch und
+transitiv ist.
+
+Sei R ÄR auf X. Für \(x \subseteq X\) heißt
+
+\([x]_R := {y \subseteq X | xRy}\) die Äquivalenzklasse von x bzgl. R
+
+Die Menge \(y_r := {[x]_r \mid x \in X} (\subseteq P(X))\)
+
+aller Äquivalenzklassen bzgl. R wird auch mit ``X modulo R'' bezeichnet.
+
+\ssect{Lemma: Eigenschaften von Relationen}
+
+Sei R Äquivalenzrelation auf einer Menge X. Für alle \(x, y \in X\) sind
+folgende Aussagen äquivalent:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  xRy
+\item
+  \([x]_R \cap [y]_R \neq \emptyset\)
+\item
+  \([x]_R = [y]_R\)
+\end{enumerate}
+
+\sssect{Beweis: Ringschluss}
+
+\((1) \Rightarrow (2) \Rightarrow (3)\)
+
+\paragraph{\texorpdfstring{\((1) \Rightarrow (2)\)}}
+
+Annahme: xRy. Wegen Symmetrie: yRx Wir zeigen: \([x]_R = [y]_R\), d.h.
+
+(*) \(\forall z \in X: xRz \iff yRz\)
+
+Für jedes \(z \in X\) gilt tatsächlich
+
+\(xRz \Rightarrow yRz\) und \(yRz \Rightarrow xRz\)
+
+Somit ist (*) eine wahre Aussage.
+
+\paragraph{\texorpdfstring{\((3) \Rightarrow (2)\)}}
+
+Ist \([x]_R = [y]_R\), dann insbesondere
+
+\(x \in [x]_R = [y]_R \Rightarrow x \in [x]_R \cap [y]_R\), also
+\([x]_R \cap [y]_R \neq \emptyset\).
+
+\paragraph{\texorpdfstring{\((2) \Rightarrow (1)\)}}
+
+\([x]_R \cap [y]_R \neq \emptyset \Rightarrow xRy\)
+
+Annahme: \([x]_R \wedge [y]_R = 0\) Dann existiert \(z \in X\) mit xry
+und yRx. Wegen Symmetrie von R ist auch zRy und wegen Transitivität auch
+xRy
+
+qed.
+
+
+\end{document}

@@ -1,0 +1,128 @@
+\documentclass{../../meta/tudscript}
+\begin{document}
+	\ssect*{Fortführung Lemma 11.29}
+		Sei $m \in \bN \setminus \set{0}$ und seien $n_1, \dots , n_m \in \bN \setminus \set{0}$ paarweise teilerfremnd.\\
+		Für alle $z \in \bZ$:
+		\begin{flalign*}
+			n_1 \cdots n_m | z \iff (\forall i \in \set{1, \dots , m}: n_i | z)
+		\end{flalign*}
+		
+		\sssect*{weiter zum Beweis}
+			\framebox{IS} Es gilt ggt$(n_1, \dots , n_m, n_{m+1}) = 1$ \hfill (*) \\
+			Für alle $z \in \bZ$ folgt nun:
+			\begin{flalign*}
+				\underbrace{n_1 \cdots n_{m+1}}_{(n_1 \cdots n_m) \cdot n_{m+1}} | z & \iff^{(*)}_{\text{Lemma 11.26}}\; (n_1 \cdots n_m | z) \land (n_{m+1} | z) \\
+				& \iff_{\text{IV}}\; (\forall i \in \set{1, \dots , m}: n_i | z) \land (n_{m+1} | z) \\
+				& \iff \forall i \in \set{1, \dots , m+1}: n_i | z
+			\end{flalign*}
+			$\hfill\square$
+			
+		\sssect*{Beweis zu Satz 11.28}
+			Sei $n_i := p_i^{k_i}$ für $i \in [m]$. Für alle $x,y \in \bZ$ gilt:
+			\begin{flalign*}
+				x \equiv_n y & \iff n | (x-y) \\
+							 & \iff (\forall i \in [m]: n_i | (x-y)) \\
+							 & \iff (\forall i \in [m]: x \equiv_{n_i} y)
+			\end{flalign*}
+			Wegen ``$\im$'' ist die Abbildung
+			\begin{flalign*}
+				\varphi : \bZ_n \rightarrow \prod_{i \in [m]} \bZ_{n_i}\; ,\; [x]_n \mapsto ([x]_{n_i})_{i \in [m]}
+			\end{flalign*}
+			wohldefiniert, wegen ``$\Leftarrow$'' ist $\varphi$ injektiv. Da:
+			\begin{flalign*}
+				\left| \bZ_n \right| = n = \prod^m_{i=1} n_i = \prod^m_{i+1} \left| \bZ_{n_i} \right| =_{\text{(6.9,3)}} \left| \prod_{i \in [m]} \bZ_{n_i} \right|
+			\end{flalign*}
+			Mit Satz 6.6 $\im$ $\varphi$ bijektiv.\\
+			
+			$\varphi$ Homomorphismus: für alle $x,y \in \bZ$ ist
+			\begin{flalign*}
+				\varphi ([x]_n + [y]_n) & = \varphi ([x+y]_n) \\
+										& = ([x+y]_{n_i})_{i \in [m]} \\
+										& = ([x]_{n_i} + [y]_{n_i})_{i \in [m]} \\
+										& = ([x]_{n_i})_{i \in [m]} + ([y]_{n_i})_{i \in [m]} \\
+										& = \varphi ([x]_n) + \varphi ([y]_n)
+			\end{flalign*}
+			Also ist
+			\begin{flalign*}
+				\varphi : (\bZ_n, +) \rightarrow \prod_{i \in [m]} (\bZ_{n_i}, +)
+			\end{flalign*}
+			ein Isomorphismus. \\
+			
+			$\hfill\square$
+			
+		\ssect{Proposition}
+			Seien $(G, \cdot_G)$ und $(H, \cdot_H)$ Gruppen,\\
+			$\varphi : G \rightarrow H$ eine Abbildung. Dann äquivalent:
+			\begin{enumerate}
+				\item $\varphi : (G, \cdot_G) \rightarrow (H, \cdot_H)$ ist Homomorphismus
+				\item $\set{ (x,y) \in G \times H | \varphi (x) = y }$ ist eine Untergruppe von $(G, \cdot_G) \times (H, \cdot_H)$
+			\end{enumerate}
+			
+			\underline{Beweis} Übung
+			
+	\sect{Grundlagen der Kryptographie}
+		
+		\ssect{Satz}
+			Sei $(K, +, \cdot)$ endlicher Körper. Dann ist $(\underbrace{K^*}_{K \setminus \set{0}}, \cdot)$ zyklisch,\\
+			d.h. $\exists g \in K^* : \langle g \rangle_{(K^*, \cdot)} = K^*$ \\
+			
+			\underline{Beweis} Aigner, Ziegler: "Das Buch der Beweise", Springer (2001)
+				
+		\ssect{Diffie-Hellman-Protokoll}
+			Ziel: Vereinbarung eines geheimen Schlüssels über einen öffentlichen Kanal. \\
+			Diffie-Hellman, 1972: Sei $p \in \bP$ und $g \in \bZ^*_p$ mit $\langle g \rangle_{(\bZ^*_p, \cdot)} = \bZ^*_p$ \\
+			Zwei Teilnehmer, Alice und Bob, einigen sich im Vorfeld\\
+			(öffentlich) auf $p$ und $g$ \\
+			
+			\begin{tabular}{ l c c c r }
+				Alice & & Öffentlich & & Bob \\
+				\hline
+				 & & $p\in \bP, g \in \bZ^*_p$ mit $\bZ^*_p = \langle g \rangle$ & & \\
+				$a \in \bZ_{p-1}$ & $\rightarrow$ & $h_A := g^a$ & & \\
+				 & & $h_B := g^b$ & $\leftarrow$ & $b \in \bZ_{p-1}$ \\
+				$K_A := h^a_B = g^{ba}$ & & & & $K_B := h^b_A = g^{ab}$
+			\end{tabular}
+			
+			Damit haben sich Alice und Bob auf den geheimen Schlüssel $K_A=K_B$ geeinigt. Die (zufällig) gewählten privaten Schlüssel $a,b \in \bZ_{p-1}$ können unmittelbar nach Schlüsselvereinbarung gelöscht werden.
+			
+		\ssect{Beispiele}
+			\begin{enumerate}
+				\item
+					$p=13$ , $g=2$\\
+					\begin{tabular}{ l c c c r }
+						Alice & & Öffentlich & & Bob \\
+						\hline
+						$a = 4$ & $\rightarrow$ & $h_A = 2^4 \equiv 3$ & & \\
+						& & $h_B = 2^5 \equiv 6$ & $\leftarrow$ & $b = 5$ \\
+						$K_A := 6^4 \equiv 9$ & & & & $K_B := 3^5 \equiv 9$
+					\end{tabular}
+				\item
+					$p=23$ , $g=5$\\
+					\begin{tabular}{ l c c c r }
+						Alice & & Öffentlich & & Bob \\
+						\hline
+						$a = 2$ & $\rightarrow$ & $h_A = 5^2 \equiv 2$ & & \\
+						& & $h_B = 5^3 \equiv 10$ & $\leftarrow$ & $b = 3$ \\
+						$K_A := 10^2 \equiv 8$ & & & & $K_B := 2^3 \equiv 8$
+					\end{tabular}
+			\end{enumerate}
+		
+		\ssect{Bemerkung}
+			Die Sicherheit des Diffie-Hellman-Protokolls basiert auf folgendem: Ein Angreifer der $g, g^a, g^b$ abhört. Kann den privaten Schlüssel $g^{ab}$ praktisch nicht aus diesen Informationen berechnen. \\
+			Dieses (schwierige) Berechnungsproblem wird als \underline{Diffie-Hellman-Problem (DHP)} bezeichnet. \\
+			Das DHP und obiges Protokoll können gebrochen werden, wenn das folgende (noch schwierigeres) Problem löst:
+			
+		\ssect{Diskretes Logarithmus Problem (DLP)}
+			Sei $p \in \bP$ und $g \in \bZ^*_p$ mit $\langle g \rangle_{(\bZ^*_p, \cdot)} = \bZ^*_p$ \\
+			Dann ist $f : \bZ_{p-1} \rightarrow \bZ^*_p, a \mapsto g^a$ bijektiv. \\
+			\underline{DLP}: Berechne $f^{-1}$ ! \\
+			
+			Die Abbildung $f$ ist eine sogenannte \underline{Einbahnfunktion}, d.h.
+			\begin{enumerate}
+				\item $f$ ist leicht zu berechnen (mittels ``square-and-multiply''),
+				\item $f^{-1}$ ist schwierig zu berechnen.
+			\end{enumerate}
+			Man bezeichnet $log_g := f^{-1} : \bZ^*_p \rightarrow \bZ_{p-1}$ \\
+			als \underline{diskrete Logarithmusfunktion}.
+
+\end{document}

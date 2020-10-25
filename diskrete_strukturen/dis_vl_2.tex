@@ -1,0 +1,265 @@
+\documentclass{../../meta/tudscript}
+\begin{document}
+
+\ssect{Axiom: Extensionalität}
+
+Zwei Mengen A und B sind genau dann gleich, wenn sie dieselben Elemente
+besitzen, d.h. es gilt \(A = B \iff (\forall x: x \in A \iff x \in B)\)
+
+\sssect{Randbemerkung}
+
+Insbesondere \(\{a, b\} = \{b, a\}\) für beliebige Elemente a,b sowie
+auch \(\{a, a\} = \{a\}\)
+
+\ssect{Definition}
+
+Sind A, B Mengen, dann gilt:
+
+\begin{itemize}
+
+\item
+  \(A \neq B :\iff \neg(A = B)\)
+\item
+  \(A \subseteq B :\iff \forall x: (x \in A \Rightarrow x \in B)\) {[}A
+  ist Teilmenge von B{]}
+\item
+  \(A \subsetneq B :\iff (A \subseteq B) \cap (A \neq B)\) {[}A ist
+  echte Teilmenge von B{]}
+\item
+  \(A \nsubseteq :\iff \neg (A \subseteq B)\)
+\end{itemize}
+
+\ssect{Lemma (Hilfssatz)}
+
+Für beliebige Mengen A, B, C gilt:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  \(A \subseteq A\)
+\item
+  \(A = B \iff (A \subseteq B) \cap (B \subseteq A)\)
+\item
+  \(A \subseteq B \cap B \subseteq C \Rightarrow A \subseteq C\)
+\end{enumerate}
+
+\sssect{Beweis}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  Offenbar ist \(\forall x: x \in A \iff x \in A\) eine wahre Aussage
+\item
+	\(A = B \overset{Extens.}{\iff} \forall x : x \in A \iff x \in B\)
+\end{enumerate}
+
+\(\hspace{37pt} \qquad \Leftrightarrow{1.4, 7)} \forall x: (x \in A \Leftarrow x \in B) \cap (x \in B \Rightarrow x \in A)\)
+
+\(\hspace{37pt} \qquad \Leftrightarrow{1.8} (\forall x: x\in A \Rightarrow x \in B) \cap (\forall x: x \in B \Rightarrow x \in A)\)
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\item
+  Annahme: \(A \subseteq B\) und \(B \subseteq C\)
+
+  Zu zeigen: \(A \subseteq C\) d.h.
+  \(\forall x: x \in A \Rightarrow x \in C\)
+
+  Sei also \(x \in A\). Dann ist \(x \in B\) (wegen \(A \in B\)) und
+  weiter \(x \in C\) (wegen \(B \subseteq C\) )
+
+  qed.
+\end{enumerate}
+
+\ssect{Axiom: Leere Menge}
+
+Es existiert eine Menge, die keine Elemente besitzt, d.h.
+\(\exists M: \forall x: \neg (x \in M)\)
+
+Wegen Extensionalität ist diese Menge eindeutig bestimmt, und wir
+bezeichnen diese als die leere Menge \(\emptyset\).
+\ssect{Bemerkung}
+
+Für jede Menge M gilt:
+
+\(\emptyset \in M\), denn die Aussage
+\(\forall x: x \in \emptyset \Rightarrow x \in M\) ist offenbar war.
+
+\ssect{Axion (Aussonderung)}
+
+Sei M Menge und P(x) Prädikat. Dann existiert die Menge
+\(\{x \in M \vert P(x)\}\) all jener Elemente x von M, für die P(x) wahr
+ist.
+
+\ssect{Definitionen}
+
+Seien A,B Mengen, so gilt
+
+\begin{itemize}
+
+\item
+  \(A \cap B := \{x \in A \vert x \ in B\}\) {[}Schnittmenge ``A und
+  B''{]}
+\item
+  \(A \diagdown B := \{x \in A \vert x \ in B\}\) {[}Differenzmenge ``A
+  ohne B''{]}
+\item
+  Ist \(A \subseteq U\) für eine Menge U, so wird \(U \diagdown A\) auch
+  das Komplement von A in U gennant und mit \({A}^\complement\) oder
+  \(\overline{A}\) bezeichnet, falls U klar ist.
+\item
+  Ist \(\mathscr{C}\) eine nichtleere Menge von Mengen, dann enthält
+  \(\mathscr{C}\) mindestens eine Menge \(C_0 \in \mathscr{C}\) Wir
+  definieren die Schnittmenge
+  \(\bigcup\mathscr{C} := \{x \in C_0 \vert \forall C \in \mathscr{C}: x \in C\}\)
+\end{itemize}
+
+\ssect{Darstellung durch Venn Diagramme}
+\begin{center}
+\begin{tikzpicture}[scale=0.25]
+\fill [pattern=north west lines, pattern color=blue](0,0) circle (2);
+\fill [pattern=north west lines, pattern color=blue](2,0) circle (2);
+\draw (0,0) circle (2)
+      (2,0) circle (2)
+      (-3,-3) rectangle (5, 4.5)
+      (1, 2) node [text=black, above] {$A \cup B$};
+\end{tikzpicture}
+\begin{tikzpicture}[scale=0.25]
+    \scope
+        \clip (0,0) circle (2);
+        \fill [pattern=north west lines, pattern color=blue](2,0) circle (2);
+    \endscope
+    \scope
+        \clip (2,0) circle (2);
+        \fill [pattern=north west lines, pattern color=blue](0,0) circle (2);
+    \endscope
+    \draw (0,0) circle (2)
+          (2,0) circle (2)
+          (-3,-3) rectangle (5, 4.5)
+          (1, 2) node [text=black, above] {$A \cap B$};
+\end{tikzpicture}
+\begin{tikzpicture}[scale=0.25]
+    \scope[even odd rule]
+        \clip (2,0) circle (2)
+              (0,0) circle (2);
+        \fill [pattern=north west lines, pattern color=blue](0,0) circle (2);
+    \endscope
+    \draw (0,0) circle (2)
+          (2,0) circle (2)
+          (-3,-3) rectangle (5, 4.5)
+          (1, 2) node [text=black, above] {$\overline{A \diagdown B}$};
+\end{tikzpicture}
+\begin{tikzpicture}[scale=0.25]
+        \fill [pattern=north west lines, pattern color=blue] (-3,-3)rectangle(5,4.5);
+        \fill [color=white] (2,0) circle (2) (0,0) circle (2);
+    \draw (0,0) circle (2)
+          (2,0) circle (2)
+          (-3,-3) rectangle (5, 4.5)
+          (5, 4.5)  node [text=black, above left] {$U$}
+          (1, 2) node [text=black, above] {$\overline{A \cup B}$};
+\end{tikzpicture}
+\end{center}
+
+\ssect{Proposition}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  Assoziativität
+
+  \begin{itemize}
+  
+  \item
+    \(A \cup (B \cup C) = (A \cup B) \cup C\)
+  \item
+    \(A \cap (B \cap C) = (A \cap B) \cap C\)
+  \end{itemize}
+\item
+  Komplementanität
+
+  \begin{itemize}
+  
+  \item
+    \(A \cap \overline{A} = \emptyset\)
+  \end{itemize}
+\item
+  Kommutativität
+
+  \begin{itemize}
+  
+  \item
+    \(A \cup B = B \cup A\)
+  \item
+    \(A \cap B = B \cap A\)
+  \end{itemize}
+\item
+  Distributivität
+
+  \begin{itemize}
+  
+  \item
+    \(A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\)
+  \item
+    \(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\)
+  \end{itemize}
+\item
+  De Morgansche Regeln
+
+  \begin{itemize}
+  
+  \item
+    \(\overline{(A \cup B)} = \overline{A} \cap \overline{B}\)
+  \item
+    \(\overline{(A \cap B)} = \overline{A} \cup \overline{B}\)
+  \end{itemize}
+\item
+  \(\overline{\overline{A}} = A\)
+\item
+  \(A = B \iff (A \subseteq B) \ cap (B \subseteq A)\)
+\end{enumerate}
+
+\sssect{Beweis (Hier nur für 5)}
+
+\(x \in \overline{A \cup B} \iff \neg(x \in A \cup B) \iff \neg(x \in A \cup x \in B)\)
+
+\(\iff \neg(x \in A) \cap \neg (x \in B) \iff x \in \overline{A} \cap x \in \overline{B}\)
+
+\(\iff x \in \overline{A} \cap \overline{B}\)
+
+\ssect{Axion (Potenzmenge)}
+
+Für jede Menge M existiert die Potenzmenge \(\wp(M)\), welche als
+Elemente genau die Teilmengen von M enthält
+
+\ssect{Proposition}
+
+Sei \(\mathscr{C} \subseteq \wp(U)\) für eine Menge U, dann gilt:
+
+\(\overline{\underset{A\in \mathscr{C}}{\bigcup A}} = \underset{A \in \mathscr{C}}{\bigcup \overline{A}} \quad,\quad \overline{\underset{A\in \mathscr{C}}{\bigcap A}} = \underset{A \in \mathscr{C}}{\bigcap \overline{A}}\),
+
+\sssect{Beweis: Hier nur erste Gleichung. Für jedes $x \in U$ gilt:}
+
+\({x \in \underset{\overline{A}\in \mathscr{C}}{\bigcap A}} \iff {\neg \left(x \in \underset{A\in \mathscr{C}}{\bigcap A}\right)}  \iff {\neg \left(\exists A \in \mathscr{C}: x \in A\right)} \iff {\forall A \in \mathscr{C}: \neg(x \in A)} \iff \forall A \in \mathscr{C}: x \in \overline{A} \iff x \in \underset{A\in \mathscr{C}}{\bigcap \overline{A}}\)
+
+Wegen Extensionalität folgt
+\(\overline{\underset{A\in \mathscr{C}}{\bigcup A}} = \underset{A\in \mathscr{C}}{\bigcap \overline{A}} \quad qed.\)
+
+\ssect{Definition}
+
+Seien A,B Mengen. Für \(a \in A\) und \(b \in B\) definieren wie das
+(geordnete) Paar. \((a, b) := \{\{a\}, \{a,b\}\}\)
+
+Das kartesische Produkt \(A \times B\) ist die Menge aller geordneten
+Paare (a,b) mit \(a \in A\) und \(b \in B\), d.h.
+\(A x B:=\{(a,b) \vert a \in A, b \in B\}\)
+
+Mengentheoretisch genauer:
+
+\(A \times B:=\{x \in \wp(\wp(A \cup B)) \vert \exists a \in A \>\exists b \in B: x=(a,b)\}\)
+
+
+\end{document}

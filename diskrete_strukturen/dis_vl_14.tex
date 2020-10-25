@@ -1,0 +1,157 @@
+\documentclass{../../meta/tudscript}
+\begin{document}
+    \sect{Modulare Arithmetik}
+        \ssect{Lemma: Modulares Rechnen}
+            Sei $m \in \bN \ \Set{0}$. Die Relation $\equiv_m \subseteq \bZ \times \bZ$ mit $x \equiv_m y :\iff m|(x-y) (\iff \exists k \in \bZ: km=x-y)$ ist
+            eine Äquivalenzrelation
+            
+            \sssect{Beweis}
+                Reflexivität und Symmetrie: Klar: Üb!
+		\paragraph{}
+                Transitivität: Seien $x,y,z \in \bZ$ mit $x \equiv_m y$ und $y \equiv_m z$, d.h. $m|(x-y)$ und $m|(y-z)$.
+		Dann $m|((x-y)+(y-z)) = x-z$ nach Proposition 9.2\ref{9.2,2)}, also $x \equiv_m z$.
+                $\hfill\square$
+
+        \ssect{Lemma: Eindeutigkeit}
+            Sei $m \in \bN \setminus \Set{0}$ und $x \in \bZ$. Dann existiert genau ein Paar $(q,r) \in \bZ \times \Set{0, \ldots, m-1}$ mit $x = qm -r$
+            
+            \ssect{Beweis}
+                Existens folgt mit Lemma 9.9\ref{9.9}. Eindeutigkeit: $q, q' \in \bZ$ und $r, r' \in \Set{0, \ldots, m-q}$ mit $qm+r = q'm +r'$
+                
+                O.E. (Ohne Einschränkung): $r \geq r'$. Dann $(q'-q)m = r -r' \in \Set{0, \ldots, m-1}$ und daher $r-r' = 0$ und $q'-q = 0$ und $r = r'$ und $q = q'$
+                
+        \ssect{Definition: Schreibweisen für modulares rechnen}
+            Sei $m \in \bN \setminus \Set{0}$. Für $x \in \bZ$ bezeichnet man das eindeutig bestimmte $r \in \Set{0, \ldots, m-1}$ mit $m|(x-r)$ durch
+
+	    \ilmath{x \text{mod} m:= r: \text{genannt: \underline{Rest} von x \underline{modulo} m}}
+
+            und nennt die Menge $[x]_m := [x]_{\equiv_m} = \Set{y \in \bZ \mid x \equiv_m y}$ die \underline{Restklasse} von x modulo m.
+
+	    \paragraph{}
+            Zahlen $x,y \in \bZ$ heißen \underline{kongruent modulo m} $:\iff x \equiv_m y$
+
+            (Schreibweise $x \equiv y (\mod m)$)
+
+            Definiere $\bZ_m := \bZ \ \equiv_m = \Set{[x]_m \mid x \in \bZ}$
+
+       \ssect{Satz}
+            Sei $m \in \bN \setminus \Set{0}$. Die Menge $\bZ_m$ bildet mit der Addition $+: \bZ_m \times \bZ_m \rightarrow \bZ_m$ und der Multiplikation 
+            $\cdot: \bZ_m \times \bZ_m \rightarrow \bZ_m$, definiert durch $[x]_m + [y]_m = [x+y]_m$, $[x]_m \cdot [y]_m = [x \cdot y]_m$ für alle $x,y \in \bZ$, 
+            einen kommutativen Ring.
+
+            \sssect{Beweis}
+                Wohldefiniertheit: $x, x', y, y' \in \bZ$ mit $x \equiv_m x'$ und $y \equiv_m y'$, also $m|(x-x')$ und $m|(y-y')$, dann mit Proposition 9.2\ref{9.2} auch:
+    
+                \ilmath{m| (x-x'+y-y') &= (x+y)- (x'+y') \\
+                        m| ((x-x')y + x' (y-y')) &= xy-x'y'}
+                
+                daher $x+y \equiv_m  x'+y'$ und $xy \equiv_m x'y'$.
+                Mit 8.6\ref{8.6} folgt nun, dass $(\bZ_m, +, \cdot)$ ein kommutativer Ring mit Nullelement $[0]_m$ und Einselement $[1]_m$.
+
+        \ssect{Bemerkung}
+            Sei $m \in \bN \setminus \Set{0}$ die Abbildung $\Set{0, \ldots, m-1} \rightarrow \bZ_m, x \mapsto [x]_m$ ist eine Bijektion. 
+            (Umkehrabbildung: $\bZ_m \rightarrow \Set{0, \ldots, m-1}, [x]_m \mapsto x \mod m$).
+
+            Man identifiziert häufig $x \in \Set{0, \ldots, m-1}$ mit $[x]_m \in \bZ_m$ und die Menge $\Set{0, \ldots, m-1}$ mit $\bZ_m$
+            
+        \ssect{Beispiel: Verknüpfungstafel}
+            Verknüpfungstafel für den Ring $\underbrace{\bZ_3}_{\Set{0, 1, 2}}, +, \cdot$
+
+		
+
+				
+					\begin{tabular}{|l|l|l|l|}
+						\hline
+						+ & 0 & 1 & 2 \\ \hline
+						0 & 0 & 1 & 2 \\
+						1 & 1 & 2 & 0 \\ 
+						2 & 2 & 0 & 1 \\
+					\end{tabular}
+			
+
+            	Symmetrie an der Diagonalen.
+			
+					\begin{tabular}{|l|l|l|l|}
+		        		       	\hline
+					$\cdot$  & 0 & 1 & 2 \\ \hline
+                				0 & 0 & 0 & 0 \\
+	                	   		1 & 0 & 1 & 2 \\
+       		        		  	2 & 0 & 2 & 1 \\
+            				\end{tabular}
+             
+        		Für den Ring $(\bZ_4, + \cdot)$
+
+			
+            			\begin{tabular}{|l|l|l|l|l|}
+                			+ & 0 & 1 & 2 & 3 \\ \hline	
+        		        		0 & 0 & 1 & 2 & 3 \\
+               			1 & 1 & 2 & 3 & 0 \\
+		         	      	2 & 2 & 3 & 0 & 1 \\
+        		        		3 & 3 & 0 & 1 & 2 \\
+		           	 \end{tabular}
+        	    		$$
+			
+            			\begin{tabular}{|l|l|l|l|l|}
+                			$\cdot$  & 0 & 1 & 2 & 3 \\ \hline
+        			        	0 & 0 & 0 & 0 & 0 \\
+                   			1 & 0 & 1 & 2 & 3 \\
+		                     	2 & 0 & 2 & 0 & 2 \\
+        		             	3 & 0 & 3 & 2 & 1 \\
+            			\end{tabular}
+	            	
+            
+            
+            
+        \ssect{Definition}
+            Sei $(R, +, \cdot)$ Ring. Die Elemente von $R* := \Set{x \in R \mid \exists y \in R: xy = yx = 1_R}$ heißen \underline{Einheiten} des Rings $(R, +, \cdot)$.
+
+        \ssect{Bemerkung}
+            Ist $(M, \cdot)$ ein Monoid, dann ist $(\Set{x \in M \mid \exists y \in M: x \circ y = y \circ x = e}, \circ)$ eine Gruppe. 
+            
+            Insbesondere gilt:
+
+            Ist $(R, +, \cdot)$ ein Ring, dann ist $(R*, \cdot)$ eine Gruppe.
+
+        \ssect{Proposition}
+            Sei $m \in \bN \ \Set{0}$. Für $a \in \Set{0, \ldots, m-1}$ gilt:
+
+            \ilmath{[x]_m \in \bZ*_m \iff ggT (a, m) = 1}
+
+            \sssect{Beweis}
+                Sei $a \in \Set{0, \ldots, m-1}$. Vorüberlegeung:
+                \ilmath{ggT (a, m) = 1 \iff \exists s,t \in \bZ:sa + tm = 1}
+                
+                Beweis dazu: "$\implies$": gilt nach Satz 9.11\ref{9.11} (Lemma von Bezont)
+
+                "$\Leftarrow$": Seien $s,t \in \bZ$ mit $sa + tm = 1$. als $ggT(a,m)|a$ und $ggT(a,m)|m$ folgt mit Proposition 9.2\ref{9.2} auch $ggT(a.m)|(sa+tm) = 1$, 
+                also $ggT(a,m) = 1$.
+                $\hfill\square$
+
+                Zum Beweis der Proposition
+                \ilmath{[a]_m \in \bZ*_m &\iff \exists s \in \bZ:[s][a] = 1\\
+                &\iff \exists s \in \bZ: m|(1-sa) \\
+                &\iff \exists t \in \bZ: 1 - sa = tm \\
+                &\iff \exists s,t \in \bZ: 1 = sa + tm \\
+                &\iff ggT(a,m) = 1}
+                
+                $\hfill\square$
+                
+        \ssect{Folgerung}
+            Sei $m \in \bN \ \Set{0}$. Dann gilt: $(\bZ_m, +, \cdot)$ ist ein Körper, genau dann wenn $m \in \bP$.
+
+            \sssect{Beweis}
+                $(\bZ_m, +, \cdot)$ Körper $\iff [0]_m + [1]_m$ und $\bZ_m \ \Set{0} \subseteq \bZ*_m$
+                $\iff m \geq 2$ und $\forall a \in \Set{1, \ldots, m-1}: ggT(a,m) = 1$ $\iff m \in \bP$
+                
+                $\hfill\square$
+
+        \ssect{Folgerung}
+            Für $m \in \bN \ \Set{0}$ ist $\varphi(m) = |\bZ*_m|$. 
+
+            \sssect{Beweis}
+                Folgt direkt aus Proposition 10.9\ref{10.9}
+
+                $\hfill\square$
+
+
+\end{document}

@@ -1,0 +1,254 @@
+\documentclass{../../meta/tudscript}
+\begin{document}
+
+\ssect{Definition: Partition}
+
+Sei X Menge. Eine Partition von X ist eine Menge \(\mathscr{C}\) von
+nicht-leeren Teilmengen von X derart, dass
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+
+\item
+  \(X = \bigcup \mathscr{C}\)
+\item
+  \(\forall A, B \in \mathscr{C}: A\neq B \Rightarrow A \cap B = \emptyset\)
+\end{enumerate}
+
+Einschub: 2 Mengen A und B heißen disjunkt, wenn
+\(A \cap B = \emptyset\)
+
+Ist \(\mathscr{C}\) eine Partition von X, so definieren wir die Relation
+\(R_\mathscr{C}\subseteq X x X\) durch
+
+\ssect{Satz}
+
+Sei X Menge, dann
+
+\begin{enumerate}
+
+\item
+  Ist R Äquivalenzrelation auf X, dann ist \(X/R\) eine Partition von X
+  und \(R_{X/R} = R\)
+\item
+  Ist \(\mathscr{C}\) eine Partition von X, dann ist \(R_\mathscr{C}\)
+  eine Äquivalenzrelation auf X und \(X/R_\mathscr{C}= \mathscr{C}\)
+\end{enumerate}
+
+\sssect{Beweis}
+
+\paragraph{(1)}
+
+Sei R Äquivalenzrelation auf X. Wegen Reflexivität:
+
+\begin{itemize}
+
+\item
+  \(\emptyset \not\in X/R\), denn
+  \(\forall x \in X: (x \in [x]_R \Rightarrow[x]_R \neq 0)\){]}
+\item
+  \(X = \bigcup X/R\)
+\end{itemize}
+
+Nach Lemma 3.7 auch
+
+Also \(X/R\) Partition von X. Außerdem:
+
+\(\forall x,y \in X: [ (x,y) \in R_{X/R} \iff \exists z \in X: x,y \in [z]_R \overset{3.7}{\iff} (x,y) \in R ]\)
+
+Somit  \(R\_\{X/R\} = R\)
+
+\paragraph{(2)}
+
+Sei \(\mathscr{C}\) Partition von X. Zu zeigen: \(R_\mathscr{C}\) ist
+Äquivalenzerlation auf X 
+\begin{itemize}
+	\item
+		Reflektiv: Für jedes \(\exists x\) existiert \(A \in \mathscr{C}\) mit \(x \in A\), und daher \((x,x) \in R_\mathscr{C}\)
+	\item
+		Symmetrie: Klar 
+	\item 
+		Transitivität: Seien \((x,y) \in R_\mathscr{C}\) und \((y,z)\in R_\mathscr{C}\). Dann gibt es
+		\(A,B \in \mathscr{C}\) mit \( x,y \in A\) und \(y,z \in B\). Da \(y \in A \cup B\), ist 
+		\(A \cup B \neq \emptyset\) und somit \(A = B\) (weil \(\mathscr{C}\) Partition, siehe 3.8.2). Folglich
+		\(x,z \in A = B\) also \((x,z) \in R_\mathscr{C}\)
+\end{itemize}
+Noch zu zeigen: \(X/R = \mathscr{C}\)
+
+\paragraph{Beobachtung:}
+
+\paragraph{\texorpdfstring{Beweis von \((\text{*})\):}}
+
+Sei \(A \in \mathscr{C}\) und \(x \in A\). Für alle \(y \in X\) gilt:
+
+TODO
+
+Mit \((*)\) folgt:
+TODO
+qed.
+
+\ssect{Beispiele: Partitionen}
+
+Es gibt fünf Partitionen auf der Menge \{1, 2, 3\}:
+
+\begin{itemize}
+
+\item
+  \{\{1, 2, 3\}\}
+\item
+  \{\{1\}, \{2\}, \{3\}\}
+\item
+  \{\{1, 2\}, \{3\}\}
+\item
+  \{\{1, 3\}, \{2\}\}
+\item
+  \{\{2, 3\}, \{1\}\}
+\end{itemize}
+
+Darstellung der zugehörigen Äquivalenzrelationen:
+
+\begin{tabular}{|c|ccc|ccc|ccc|ccc|ccc|}
+\hline
+&1&2&3&1&2&3&1&2&3&1&2&3&1&2&3\\
+\hline
+1&    X& & &    X&X& &    X& &X&    X& & &    X&X&X\\
+1&     &X& &    X&X& &     &X& &     &X&X&    X&X&X\\
+1&     & &X&     & &X&    X& &X&     &X&X&    X&X&X\\
+\hline
+\end{tabular}
+
+\ssect{Bemerkung}
+
+Sei X Menge. Betrachte die Menge
+
+Dann ist eine Ordnungsrelation \(\preceq\) auf \(Part(X)\) gegeben durch
+``\(\mathscr{B}\) wird verfeinert durch \(\mathscr{C}\)''
+
+\sect{Abbildungen}
+
+\ssect{Definition: Abbildung}
+
+Seien X,Y Mengen. Eine Abbildung (oder Funktion) f von X nach Y, in
+Zeichen \(f: X -> Y\), ist eine Relation \(f \subseteq X \times Y\)
+derart, dass \(\forall x \in X \;\exists! y \in Y: (x,y) \in f\) Für das
+zu einem \(x \in X\) eindeutig bestimmte \(y \in Y\) mit
+\((x, y) \in f\) schreiben wir \(f(x) := y\)
+
+Sprechweise: f bildet das Argument x auf den Funktionswert y ab
+
+Notation: \(f: X \rightarrow Y,\quad x \mapsto f(x)\)
+
+Die Menge X heißt Definitionsbereich und die Menge Y Zielbereich der
+Funktion f.
+\ssect{Beispiel}
+
+Die Abbildung
+\(f: \mathbb{R} \rightarrow \mathbb{R}, \quad x \mapsto x^2\) ordnet
+jeder reellen Zahl \(x \in \mathbb{R}\) ihr Quadrat
+\(x^2 \in \mathbb{R}\) zu.
+
+\ssect{Definition}
+
+Seien X, Y Mengen mit \(f: X \rightarrow Y\), so heißt für
+\(A \subseteq X\) und \(B \subseteq Y\)
+
+\begin{flalign*}f(A) := \{f(a) \mid a\in A \} = \{y \in Y \mid \exists a \in A: y = f(a)\}&&\end{flalign*}
+
+das Bild von A unter f, sowie
+
+\begin{flalign*}f^{-1}(B) := \{x \in X \mid f(x) \in B\}&&\end{flalign*}
+
+das Urbild von B unter f.
+
+Die Einschränkung von f auf eine Teilmenge \(A \in X\) ist die Abbildung
+\({f \mid _A: A \rightarrow Y, \quad a \mapsto f(a)}\), d.h
+\(f \mid _A = f \cap (A \times Y)\)
+
+Die Abbildung \(f: X \rightarrow Y\) heißt
+
+\begin{itemize}
+
+\item
+  \(\underset{\text{(Injektion)}}{\text{injektiv}}\)
+  \(:\iff \forall x,y \in X: f(x) = f(y) \Rightarrow x=y\)
+\item
+  \(\underset{\text{(Sujektion)}}{\text{sujektiv}}\)
+  \(:\iff \forall y \in Y \enspace\exists x \in X: f(x) = y \Rightarrow x=y\)
+\item
+  \(\underset{\text{(Bijektion)}}{\text{bijektiv}}\) \(:\iff\) f ist
+  injektiv und sujektiv
+\end{itemize}
+
+Die Menge \(im(f) := f(X)\) heißt auch das Bild von f
+
+\ssect{Beispiele}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+
+\item
+  Sei X Menge und \(A \subseteq X\). Dann ist
+  \({c_{A}^X: A \rightarrow X, \enspace a \mapsto a}\) bijektiv
+\item
+  Sei R Äquivalenzrelation auf Menge X. Dann ist
+  \({\pi_R: X \rightarrow X/R,\enspace x \mapsto [X]_R}\)
+\item
+  Sei X Menge. Die identische Abbildung
+  \(Id_X : X \rightarrow X,\enspace x \rightarrow x\) ist bijektiv
+  (Beachte: \(\bigtriangleup_X = Id_x\))
+\item
+  Die Abbildung
+  \(f: \mathbb{R} \rightarrow \mathbb{R},\enspace X \mapsto x^2\) ist
+  weder injektiv noch sujektiv
+\end{enumerate}
+
+\ssect{Definition}
+
+Der Kern einer Abbildung \(f: X \rightarrow Y\) ist definiert als
+
+TODO
+
+\ssect{Proposition}
+
+Sei X Menge
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+
+\item
+  Ist \(f: X \rightarrow Y\) eine Abbildung, dann ist \(Ker(f)\)
+  Äquivalenzrelation auf X
+\item
+  Ist R eine Äquivalenzrelation auf X, dann gilt \(R = Ker(\pi_R)\)
+\end{enumerate}
+
+\sssect{Beweis:}
+
+\paragraph{1)}
+
+\begin{itemize}
+
+\item
+  Reflexivität und Symmetrie: Übung
+\item
+  Transitivität: Für \(x,y,z \in X\) ist 
+\end{itemize}
+
+\paragraph{2)}
+
+Sei R Äquivalenzrelation auf X, so gilt für alle \(x, y \in X\)
+
+\ssect{Bemerkung}
+
+Eine Abbildung \(f: X \rightarrow Y\) ist genau dann injektiv, wenn
+\(Ker(f) = \bigtriangleup_X\) ist.
+
+\ssect{Definition}
+
+Seien X, Y, Z Mengen. Für Abbildungen \(f: X \rightarrow Y\) und
+\(g: Y \rightarrow Z\) heißt die Abbildung
+\(g \circ f: X \rightarrow Z, \enspace x \mapsto g(f(x))\) Komposition
+oder Verkettung (``g nach f'').
+
+
+\end{document}

@@ -1,0 +1,296 @@
+\documentclass{../../meta/tudscript}
+\begin{document}
+
+\ssect{Axiom (Unendlichkeit)}
+
+Es existiert eine Menge M mit \(\emptyset \in M\) und
+\(\forall x \in M: x^+ \in M\)
+
+\ssect{Definition: Menge der natürlichen Zahlen}
+
+Sei M eine Menge, wie in Axiom 5.2. Die Menge der natürlichen Zahlen ist
+definiert als:
+
+\begin{flalign*}\mathbb{N} = \cap \{S \subseteq M | \emptyset \in S \wedge \forall x \in S: x^+ \in S\}\end{flalign*}
+
+Diese Definition von \(\mathbb{N}\) ist unabhängig von der Wahl von M.
+
+
+\ssect{Satz ``Peano Axiome''}
+
+Für die Menge \(\mathbb{N}\) gelten folgende Aussagen:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(0 \in \mathbb{N}\)
+\item
+  \(\forall i \in \mathbb{N}: i^+ \in \mathbb{N}\)
+\item
+  \(\forall i \in \mathbb{N}: i^+ \neq 0\)
+\item
+  \(\forall m,n \in \mathbb{N}: m^+ = n^+ \rightarrow m=n\)
+\item
+  Ist \(S \subseteq \mathbb{N}\) und \(0 \in S\) und
+  \(\forall n \in S: n^+ \in S\), dann \(S = \mathbb{N}\) (Prinzip der
+  vollständigen Induktion)
+\end{enumerate}
+
+
+\sssect{Bemerkung zu 5.4.1 bis
+5.4.4:}
+
+Die Abbildung \(f: \mathbb{N} \rightarrow \mathbb{N}: n \mapsto n^+\)
+ist injektiv aber nicht surjektiv.
+
+\sssect{Beweis von 5.4}
+
+Sei M Menge, wie in 5.2 und
+\(\mathscr{C}= \{S \leq M | \emptyset \in S \wedge \forall x \in S, x^+ \in S\}\),
+dann \(\mathbb{N} = \cap \mathscr{C}\)
+
+1,2) Klar, denn diese Aussagen gelten für alle Mengen in \(\mathscr{C}\)
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{2}
+\item
+  Für alle \(n \in \mathbb{N}\) ist \(n \in n^+\), daher
+  \(n^+ + \emptyset = 0\)
+\item
+  Sei \(S \subseteq M\) mit \(\emptyset \in S\) und
+  \(\forall n \in S: n^+ \in S\). Dann ist \(S \in \mathscr{C}\) und
+  daher
+  \(\mathbb{N} = \cap \mathscr{C}\subseteq S \subseteq \mathbb{N}\),
+  also \(S = \mathbb{N}\)
+\item
+  Wir benötigen folgende Hilfsaussagen: Für alle
+  \(x,y,z \in \mathbb{N}\) gilt:
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(x \in y \rightarrow y \nsubseteq x\)
+\item
+  \(x \in y \wedge y \in z \rightarrow x \in z\)
+\end{enumerate}
+
+\paragraph{Beweis}
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi})}
+
+\item
+  Betrachte
+  \(S := \{y \in \mathbb{N} | \forall x \in y y \nsubseteq x \}\)
+  Offenbar \(0 \in S\)
+\end{enumerate}
+
+Zu zeigen:
+
+Ist \(y \in S\), dann auch \(y^+ \in S\). Sei also \(y \in S\)
+
+\begin{itemize}
+\item
+  Dann: für jedes \(x \in y^+ = y \cup \{y\}\) ist \(x \in y\) und daher
+  \(y \nsubseteq x\), da \(y \in S\)
+\item
+  oder: x = y und daher \(y \nsubseteq x\) da \(y \in S\), in beiden
+  Fällen \(y^+ \nsubseteq x\). Somit \(S = \mathbb{N}\) nach 5..
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi})}
+\setcounter{enumi}{1}
+
+\item
+  Betrachte
+  \(T := \{z \in \mathbb{N} | \forall y \in z \forall x \in y: x \in z\}\)
+\end{enumerate}
+
+Wieder \(0 \in T\)
+
+Behauptung: Ist \(z \in T\), dann auch \(z^+ \in T\). Sei also
+\(z \in T\), dann für jedes
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(y \in z\) (Fall 1) oder
+\item
+  \(y=z\) (Fall 2)
+\end{enumerate}
+
+Fall 1: Dann gilt für jedes \(x \in y\) eben \(x \in z\) (weil
+\(x \in T\)) und somit \(x \in z^+\)
+
+Fall 2: Hier ist für jedes \(x \in y\) eben
+\(x \in y \in z \subseteq z^+\)
+
+
+\paragraph{Zum Beweis von 4}
+
+Seien \(m,n \in \mathbb{N}\) mit \(m^+ = n^+\). Wegen
+\(n \in n^+ = m^+ = m \cup \{m\}\) gilt \(n \in m\) oder \(n = m\).
+Wegen \(m \in m^+ = n^+ = n \cup \{n\}\) gilt \(m \in n\) oder \(n = m\)
+
+Annahme \(n \neq m\)
+
+Dann folgt \(n \in m\) und \(m \in n\). Nach i) folgt \(n \in n\) und
+nach ii) \(n \nsubseteq n\).
+
+Widerspruch! Also n = m
+
+
+\ssect{Bemerkung: vollständige
+Induktion}
+
+Das Prinzip der vollständigen Induktion stellt eine Beweismethode dar.
+Wie man eine Aussage der Form \(\forall n \in \mathbb{N}: P(n)\)
+beweisen, so zeigt man:
+
+\begin{itemize}
+\item
+  Induktionsanfang IA: P(0) ist wahr
+\item
+  Induktionsschritt IS:
+\end{itemize}
+
+\begin{flalign*}\forall n \in \mathbb{N} P(n) \rightarrow P(n^+)\end{flalign*}
+
+Hierbei bezeichnet man P(n) als Induktionsvoraussetzung IV bzw. als
+Induktionshypothese.
+
+Zugehörige Definitionsmethode: vollständige Rekursion
+
+
+\ssect{Definition: Addition}
+
+Sei \(m \in \mathbb{N}\). Dann
+
+\begin{itemize}
+\item
+  \(m + 0 = m\)
+\item
+  \(m + n^+ = (m + n)^+\) für jedes \(n \in \mathbb{N}\)
+\end{itemize}
+
+
+\ssect{Bemerkung}
+
+Wegen \(1 = 0^+\) ist \(m+1= m + 0^+ = (m + 0)^+ = m^+\) für alle
+\(n \in \mathbb{N}\)
+
+
+\ssect{Proposition}
+
+Für alle \(k,m,n \in \mathbb{N}\) gilt
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Assioziativität: \((k + m) + n = k + (m + n)\)
+\item
+  Neutralität der Null: \(0 + n = n = n + 0\)
+\item
+  Kommutativität: \(m + n = n + m\)
+\end{enumerate}
+
+
+\sssect{Beweis}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  Vollständige Induktion über \(n \in \mathbb{N}\)
+\end{enumerate}
+
+IA: \(n = 0\). Dann \((k + m) + n = k + m = k + (m + 0)\) für alle
+\(k,m \in \mathbb{N}\)
+
+IS:Sei \(n \in \mathbb{N}\), sodass
+
+Dann folgt:
+
+\((k + m) + n^+ = ((k + m) + n)^+ = (k + (m + n))^+ = k + (m + n)^+ = k + (m + n^+)\)
+für alle \(k,m \in \mathbb{N}\)
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+
+\item
+  Nach Definition \(n+ 0 = n\) für \(n \in \mathbb{N}\) Rest durch
+  vollst. Induktion über \(n \in \mathbb{N}\)
+\end{enumerate}
+
+IA: n = 0. Offenbar gilt 0 + 0 = 0
+
+IS: Sei \(n \in \mathbb{N}\), sodass \(0+n=n\)
+
+Dann folgt \(0+n^+ = (0+n)^+ = n^+\)
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+
+\item
+  Übung. (es ist sinnvoll zuerst \(m^+ + n = (m+n)^+\))
+\end{enumerate}
+
+
+\ssect{Bemerkung}
+
+Für alle \(k,m,n \in \mathbb{N}\) gilt:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Kürzbarkeit: \(m + k = n + k \rightarrow m = n\)
+\item
+  Nullsummenfreiheit: \(m + n = 0 \rightarrow m = n = 0\)
+\end{enumerate}
+
+Beweis mittels vollständiger Induktion möglich.
+
+
+\ssect{Definition:
+Multiplikation}
+
+Sei \(m \in \mathbb{N}\). Dann:
+
+
+\ssect{Proposition}
+
+Für alle \(k,w,n \in \mathbb{N}\) gilt.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Assoziativität: \((k \cdot m) \cdot n = k \cdot (m \cdot n\)
+\item
+  Neutralität der Eins: \(1 \cdot n = n = n \cdot 1\)
+\item
+  Absorbtion der Null: \(0 \cdot n = 0 = n \cdot 0\)
+\item
+  Kommutativität: \(m \cdot n = n \cdot m\)
+\item
+  Distributivität: \(k \cdot (m + n) = k \cdot m + k \cdot n\)
+\end{enumerate}
+
+Beweis mittel vollst. Induktion möglich.
+
+
+\ssect{Definition}
+
+Sei \(m \in \mathbb{N}\). Dann:
+
+\begin{flalign*}m^0 := 1\end{flalign*}
+\begin{flalign*}m^{n+1} := m^n \cdot m\end{flalign*}
+
+für alle \(n \in \mathbb{N}\)
+
+
+\end{document}

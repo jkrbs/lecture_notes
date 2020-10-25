@@ -1,0 +1,240 @@
+\documentclass{../../meta/tudscript}
+\begin{document}
+
+\ssect{Nochtrag zur Bemerkung 8.5}\label{nochtrag-zur-bemerkung-8.5}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item sfür jede ganze Zahl \(z = [(a,b)] \in \mathbb{Z}\) erhalten wir eine
+  Darstellung der Form
+\end{enumerate}
+
+
+und es gilt \((a,b) ~ (a', b' \iff a-b = a' - b'\)
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+
+\item
+  Für jedes \(z \in \mathbb{Z}\) gibt es ein \(n \in \mathbb{N}\) mit
+  \(z = n\) oder \(z = -n\)
+\end{enumerate}
+
+
+\ssect{Beweis}\label{beweis}
+
+Sei \(z =p [(a,b)] \in \mathbb{Z}\). Nach Satz 5.14 ist
+\(a \leq b aber b \geq a\), aber exisitert \(n \in \mathbb{N}\) mit
+\(b = a + n\) oder \(a = b + n\), und somit
+
+\begin{flalign*}z = [(a,b)] = [(a, a+n)] = [(0,n)] = -n\end{flalign*}
+
+oder
+
+\begin{flalign*}z = [(a,b)] = [(b+n,b)] = [(n,0)] = n\end{flalign*}
+
+
+\ssect{8.6 Satz Multiplikation in \(\mathbb{Z}\)}
+Die Menge\(\mathbb{Z}\) bildet mit der Addition
+\(+: \mathbb{Z}\times \mathbb{Z}\rightarrow \mathbb{Z}\) aus Satz 8.4
+und der Multiplikation
+
+\(\cdot : \mathbb{Z}\times \mathbb{Z}\rightarrow \mathbb{Z}\), definiert
+durch
+
+\begin{flalign*}[(a,b)] \cdot [(c,d)] := [(ac+bf)],ad+bc)]\end{flalign*}
+
+für alle \(a,b,c,d \in \mathbb{N}\), einen \textbf{kommutativen Ring}.
+
+
+\ssect{8.7 Bemerkung}\label{bemerkung}
+
+Nach obiger Definition gilt:
+
+\begin{flalign*}(a-b) \cdot (c-d) = (ac + bd) -  (ad - bc)\end{flalign*}
+
+für alle \(a,b,c,d \in \mathbb{N}\).
+
+
+\ssect{Beweis von 8.6}\label{beweis-von-8.6}
+
+Wohldefiniert (d.h Unabhängigkeit der Definition von der Wahl der
+Repräsentanten):
+
+Für \(a,b,c,d \in \mathbb{N}\) sei
+\((a,b) \cdot (c,d) := (ac+bd, ad+bc)\)
+
+Seien \(a,b,c,d,a',b',c',d' \in \mathbb{N}\) mit \((a,b) ~ (a',b')\) und
+\((c,d) \ (c',d')\). Zu zeugen:
+
+Wir beweisen: (1): \((a,b) \cdot (c,d) ~ (a',b') \cdot (c',d')\)
+
+(2): \((a',b') \cdot ~ (a',b') \cdot (c',d')\)
+
+Dann folgt aus (1) und (2) wegen Transitivität:
+
+\begin{flalign*}(a,b) \cdot (c,d) ~ (a',b') \cdot (c',d')\end{flalign*}
+
+\textbf{Beweis zu (1)}
+
+Wegen \((a,b) ~ (a',b')\) ist \(a + b' = a' + b\) und daher
+
+\begin{flalign*}ac+ bd + a'd + 'c = (a+b')c + (a'+b)d\end{flalign*}
+
+\begin{flalign*}= (a' + b)c  + (a+b')d = a'c + b'd + ad + bc\end{flalign*}
+
+d.h
+
+\begin{flalign*}(a,b) \cdot (c,d) ~ (a',b') \cdot (c,d)\end{flalign*}
+
+\textbf{Beweis zu (2)}
+
+Analog: Üb!
+
+Mit Satz 8.4 und Proposition 5.11 folgt nun leicht, dass
+\((\mathbb{Z}, +, \cdot)\) ein kommutativer Ring ist
+
+
+\ssect{8.8 Bemerkung:
+``Nullteilerfreiheit''}\label{bemerkung-nullteilerfreiheit}
+
+Der Ring \((\mathbb{Z}, +, \cdot)\) ist ``nullteilerfrei'', d.h für alle
+\(x,y \in \mathbb{Z}\) gilt:
+
+\begin{flalign*}x \cdot y \Rightarrow x = 0 \lor y = 0\end{flalign*}
+
+
+\ssect{8.9 Lemma}\label{lemma}
+
+Sei \(X := \mathbb{Z}\times (\mathbb{Z}\\ \{0\})\). Dann ist die
+Relation: eine Äquivalenzrelation auf X.
+
+
+\ssect{Beweis}\label{beweis-1}
+
+Reflexivität + Symmetrie: Üb!
+
+Transitivität:
+
+Seien \((x,y),(x'y'),(x'',y'') \in X\) mit \((x,y) ~ (x',y')\) und
+\((x',y') ~ (x'',y'')\), d.h.\(xy' = x'y\) und \(x'y'' = x''y'\). Dann
+\(xy''y' = x'yy'' = x''y'y = x''yy'\), also \((xy'' - x''y) y' = 0\)
+Wegen \(y' \neq 0\) und Nullteilerfreiheit von
+\((\mathbb{Z}, +, \cdot)\) folgt \(xy'' = x''y\).
+
+Somit \((x,y) ~ (x'',y'')\).
+
+
+\ssect{8.10 Definition: Rationale Zahlen}\label{definition-rationale-zahlen}
+
+Wir bezeichnen:
+
+als die Menge der rationalen Zahlen.
+
+
+\ssect{Bemerkung: $\bZ$ als Teilmenge von $\bQ$}\label{bemerkung-mathbbz-als-teilmenge-von-mathbbq}
+
+Die Abbildung \(\mathbb{Z}\rightarrow \mathbb{Q}, x \mapsto [(x,1)]\)
+ist injektiv. Wir indentifizieren im Folgenden eine ganze Zahl
+\(\mathbb{Z}\) mit ihrem Bild \([(x,1)] \in \mathbb{Q}\) wir schreiben:
+
+\begin{flalign*}x =  [(x,1)]\end{flalign*}
+
+und fassen so \(\mathbb{Z}\) als Teilmenge von \(\mathbb{Q}\) auf.
+
+
+\ssect{8.12 Satz}\label{satz}
+
+Die Menge \(\mathbb{Q}\) bildet mit der Addition
+\(+: \mathbb{Q}\times \mathbb{Q}\rightarrow \mathbb{Q}\) und der
+Multiplikation
+\(\cdot : \mathbb{Q}\times \mathbb{Q}\rightarrow \mathbb{Q}\) definiert
+durch \([(x,y)] + [(z,w)] := [(xq+yz,yw)]\)
+
+\([(x,y)] \times [(z,w)] := [(xz,yw)]\)
+
+für \(x,y,z,w \in \mathbb{Z}\) mit \(y \neq 0\) und \(w \neq 0\), einen
+Körper.
+
+\textbf{Beweis}
+
+Wohldefiniertheit (d.h Repräsentantenunabhängigkeit)
+
+Sind
+\((x,y),(x',y'),(z,w),(z',w') \in \mathbb{Z}\times (\mathbb{Z}\\ \{0\})\)
+mit \((x,y) ~ (x',y')\) und \((z,w) ~ (z',w')\), also \(xy' =x'y\) und
+\(zw' = z'w\), dann folgt \((xw+yz)y'w' = (x'w'+y'z')yw\),
+\((xz)(y'w') = (x'z')(yw)\).
+
+Somit \(((xw+yz,yw) ~ (x'w'+y'z',y'w')\) und \((xz,yw) ~ (x'z',y'w')\)
+
+(Beatchte auch, dass \(yw + 0\) für alle \(yw \in \mathbb{Z}\\ \{0\}\)
+nach Bemerkung 8.8) Mithilfe von Satz 8.6 folgert man leicht, dass
+\((\mathbb{Q},+, \cdot)\) ein kommutativer Ring mit Einselement
+\([(1,1)]_{~}\) ist.
+
+Existenz inverser Elemente für die Multiplikation: Für alle
+\(x,y \in \mathbb{Z}\\ \{0\}\) ist
+
+\begin{flalign*}[(x,y)] \cdot [(y,x)] = [(xy,xy)] = [(1,1)]\end{flalign*}
+
+q.e.d.
+
+
+\ssect{8.13 Bemerkung (vgl. Bemerkung 8.11)}\label{bemerkung-vgl.-bemerkung-8.11}
+
+Für eine ganze Zahl \(x \in \mathbb{Z}\\ \{0\}\) schrieben wir
+
+\begin{flalign*}\frac{1}{x} := x^{-1} = [(x,1)] = [(1,x)]\end{flalign*}
+
+Für jede rationale Zahl \(q = [(x,y)] \in \mathbb{Q}\) erhalten wir eine
+darstellung der Form:
+
+\begin{flalign*}q = [(x,1)] \cdot [(1,y)] = x \cdot \frac{1}{y} := \frac{x}{y}\end{flalign*}
+
+mit dieser Notation gilt für die Operation des Körpers
+\((\mathbb{Q}, +, \cdot)\):
+
+\begin{flalign*}\frac{x}{y} + \frac{z}{w} = \frac{x+w+yz}{yw} und \frac{x}{y} \cdot \frac{z}{w} = \frac{xz}{yw}\end{flalign*}
+
+
+\part{§9 Elementare Zahlentheorie}\label{elementare-zahlentheorie}
+
+
+\ssect{9.1 Definition}\label{definition}
+
+Wir definieren die Relation : \(|: \mathbb{Z}\times \mathbb{Z}\) wie
+folgt: (gerader senkrechter Strich (it's not a pipe)) (a teilt b)
+
+
+\ssect{9.2 Proposition}\label{proposition}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  Die relation \textbar{} ist reflexiv und transitiv (auf
+  \(\mathbb{Z}\))
+\item
+  Für alle \(a,b,d,x,y \in \mathbb{Z}\) gilt: 
+\end{enumerate}
+
+\textbf{Beweis} (1) Üb!
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\setcounter{enumi}{1}
+
+\item
+  Gelte d\textbar{}a und d\textbar{}b, d.h es gilt
+  \(k,l \in \mathbb{Z}\) mit \(a = k \cdot d\) und \(b = l \cdot d\).
+  Dann folgt:
+\end{enumerate}
+
+\begin{flalign*}xa + yb = xkd + yld = (xk+yl)d)\end{flalign*}
+
+somit d\textbar(xa+yb)
+
+\end{document}

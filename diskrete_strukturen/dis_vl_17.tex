@@ -1,0 +1,120 @@
+\documentclass{../../meta/tudscript}
+\begin{document}
+\setcounter{section}{11}
+\setcounter{subsection}{17}
+    \ssect{Definition: Homomorphismus}
+        Seien $(G, \cdot_G)$ und $(H, \cdot_H)$ Gruppen. Eine Abbildung
+        $\varphi: G \rightarrow H$ heißt \underline{(Gruppen-)Homomorphismus}
+        von $(G, \cdot_G)$ nach $(H, \cdot_H)$, falls:
+
+\ilmath{\forall y,x \in G: \varphi(x \cdot_G y) = \varphi(x) \cdot_H \varphi(y)}
+
+    \ssect{Lemma}
+        Seien $(G, \cdot_G)$ und $(H, \cdot_H)$ Gruppen mit neutralen Elementen
+        $e_G \in G, e_H \in H$. Sei $\varphi: g \rightarrow H$ Homomorphismus.
+        
+        Dann gilt:
+        \begin{enumerate}
+            \item $\varphi (e_G) = e_H$
+            \item $\forall x \in G: \varphi (x)^{-1} = \varphi (x^{-1})$
+            \item $U \leq G \implies \varphi (U) \leq H$
+            \item $V \leq H \implies \varphi^{-1} (V) \leq G$
+            \item $\varphi$: bijektiv $\implies \varphi^{-1}: H \rightarrow G$ Hom.
+        \end{enumerate}
+
+        \sssect{Beweis}
+        \begin{enumerate}
+            \item Es gilt: 
+            \ilmath{\varphi (e_G) = \varphi {e_G \cdot_G e_G} = \varphi (e_G) \cdot_H \varphi {e_G}}
+            daher 
+            \ilmath{e_H = \varphi (e_G) \cdot_H \varphi (e_G)^{-1} = \varphi (e_G) \cdot_H \varphi (e_G) \cdot_H \varphi (e_G)^{-1} = \varphi (e_G)}
+        
+            \item Für alle $x \in G$ gilt:
+            \ilmath{\varphi (x) \cdot_H \varphi (x^{-1}) = \varphi (x \cdot_G x^{-1}) = \varphi (e_G) = e_H}
+            \ilmath{\varphi (x^{-1}) \cdot_H \varphi (x) = \varphi (x^{-1} \cdot_G x) = \varphi (e_G) = e_H}
+            also 
+            \ilmath{\varphi (x^{-1}) = \varphi (x)^{-1}}
+
+            \item analog zu 4. Üb!
+            
+            \item Wegen $\varphi (e_G) = e_H \in V$, da $V \leq H$ folgt $e_G \in
+            \varphi^{-1} (V)$.
+            Für alle $x \in G$:
+            \ilmath{x \in \varphi (V) \iff \varphi (x) \in V \implies \varphi^{-1} (x) \in V \\
+                    = \varphi (x^{-1}) \iff x^{-1} \in \varphi^{-1} (V)}
+            Für 
+            \ilmath{x,y \in \varphi^{-1} (V) \iff \varphi (x), \varphi (y) \in V \implies \varphi (x \cdot_G y) \\
+                        = \varphi (x) \cdot_H \varphi (y) \in V \implies x \cdot_G y \in \varphi^{-1} (V)}
+
+            \item Sei $\varphi$ bijektiv. Für alle $x, y \in H$ gilt:
+            \ilmath{\varphi (\varphi^{-1} (x \cdot_H y)) = x \cdot_H y &= \varphi (\varphi^{-1} (x) \cdot_H \varphi (\varphi^{-1} (y)) \\
+                                                                       &= \varphi (\varphi^{-1} (x) \cdot_G \varphi^{-1} (y))}
+            daher $\varphi^{-1} (x \cdot_H  y) = \varphi^{-1} (x) \cdot_G \varphi^{-1} (y)$ wegen Injektivität von $\varphi$.
+            $\hfill\square$  
+        \end{enumerate}
+
+        \ssect{Definition: Isomorphismus}
+            Seien G und H Gruppen. Ein \underline{(Gruppen-) Isomorphismus} von G nach H ist ein 
+            bijektiver Homomorphismus: $\varphi: G \rightarrow H$. Wir nennen G \underline{isomorph} zu H.
+            \ilmath{x \rightarrow \exists \varphi: G \rightarrow H}
+            \ilmath{G \cong H}
+       
+        \ssect{Bemerkung: Symmetrie der Isomorphie}
+            Wehen Lemma 11.19\ref{11.19} ist die Relation $\cong$ symmetriesch.
+        
+        \ssect{Satz}
+            Ist $(G, \cdot)$ eine zyklische Gruppe, dann ist entweder $(G, \cdot) \cong (\bZ, +)$ oder $(G, \cdot) \cong (\bZ_n, +)$ für ein $n \in \bN \setminus \Set{0}$.
+
+            \sssect{Beweis}
+                Da $(G, \cdot)$ zyklisch, gibt es $g \in G$ mit $G = \langle g \rangle = \Set{g^k \mid k \in \bZ}$, d.h.
+                \ilmath{\varphi: \bZ \rightarrow G, k \mapsto g^k}
+                ist surjektiv. $\varphi: (\bZ, +) \rightarrow (G, \cdot)$ Hom.
+
+                \ilmath{\varphi (k + l) = g^{k + l} = g^k \cdot g^l = \varphi (k) \cdot \varphi (l)}
+                für alle $k, l \in \bZ$. Ist $\varphi$ injektiv, dann auch bijektiv, also $\varphi: (\bZ, +) \rightarrow (G, \cdot)$ Isomorphismus.
+                somit $(\bZ, +) \cong (G, \cdot)$. Annahme: $\varphi$ \underline{nicht} inkeltiv.
+                
+                Wie im Beweis von Lemma 11.9\ref{11.9} folgt:
+                \ilmath{M := \Set{m \in \bN \ \Set{0} \mid g^m = e} \neq \emptyset}
+                und mit $n := min M$ weiter:
+                \ilmath{\forall m \in \bZ: g^m = e \iff n|m\hfill(\star)}
+
+                Damit für alle $k, l \in \bZ$:
+                \ilmath{\varphi (k) = \varphi (l) \iff \varphi (k-l) = e \iff g^{k-l} = e \overset{\iff}{\star} n|(k-l)}
+                Wegen $\leftarrow$ ist die Abbildung $\bar{\varphi}: \bZ_n \rightarrow G$, $[k]_n \mapsto g^k = \varphi (k)$ wohldefiniert, wegen $\implies$ ist $\bar{\varphi}$ injektiv.
+                $\bar{\varphi}$ surjektiv: $\bar{\varphi} (\bZ) = \Set{\bar{\varphi} ([k]_n) \mid k \in \bZ} = \Set{\varphi (k) \mid k \in \bZ} = \Set{g^k \mid k \in \bZ} = G$.
+
+                $\varphi$: Homomorphismus: $\bar{\varphi} ([k]_n + [l]_n) = \bar{\varphi} ([k+l]_n) = \varphi (k+l) = \varphi (k) \cdot \varphi (l) = \bar{\varphi} ([k]_n) \cdot \bar{\varphi} ([l]_n)$
+
+                für alle $k, l \in \bZ$. Aber $\bar{\varphi}: (\bZ, +) \rightarrow (G, \cdot)$ Isomorphismus, somit $(\bZ, +) \cong (G, \cdot)\hfill\square$
+
+        \ssect{Lemma}
+            Seien G und H Gruppen, $\varphi: G \rightarrow H$ Hom: Dann äquivalent:
+            \begin{enumerate}
+                \item $\varphi$ injektiv
+                \item $\forall x \in G:  \varphi (x) = e_H \implies x = e_G$
+            \end{enumerate}
+            
+            \sssect{Beweis}
+
+                (1) $\implies$ (2) klar.
+
+                (2) $\implies$ (1): Angenommen (2) ist wahr. Sind $x,y \in G$ mit $\varphi (x) = \varphi (y)$, dann
+                \ilmath{\varphi (xy^{-1}) = \varphi (x) \cdot \varphi (y)^{-1} = e_n}
+                daher $xy^{-1} = e_G$ wegen (2), also $x = y$.
+                $\hfill\square$
+
+        \ssect{Proposition (und Definition)}
+            Sei $(G, \cdot_G)$ und $(H, \cdot_H)$ Gruppen, dann ist auch $(G \times H, \cdot_{G \times H})$ mit 
+            \ilmath{\cdot_{g \times H} : (G \times H) \times (G \times H \rightarrow G \times H)}
+            definiert durch
+            \ilmath{(x,y) \cdot_{G \times H }(\tilde{x},\tilde{y}) := (x \cdot_G \tilde{x}, y \cdot_H \tilde{y})}
+            für alle $(x,y),(\tilde{x}, \tilde{y}) \in G \times H$, eine Gruppe. Wir nennen $(G \times H, \cdot{G \times H})$ das \underline{direkte Produkt}
+            von $(G, \cdot_G)$ und $(H, \cdot_H)$ und schreiben
+            \ilmath{(G, \cdot_G) \times (H, \cdot_H) := (G \times H, \cdot_{G \times H})}
+            \ssect{Beweis}
+                Assoziativität: Üb!\\
+                Das Paar $(e_G, e_H)$ ist das neutrale Element von $(G \times H, \cdot_{G \times H})$.\\
+                Zu $(x,y) \in G \times H$ ist $(x^{-1}, y^{-1})$ das Inverse in $(G \times H, \cdot_{G \times H})$.
+
+\end{document}

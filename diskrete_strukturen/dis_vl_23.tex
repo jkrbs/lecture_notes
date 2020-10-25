@@ -1,0 +1,129 @@
+\documentclass{../../meta/tudscript}
+\begin{document}
+    \setcounter{section}{13}
+    \setcounter{subsection}{15}
+
+    \ssect{Satz:}
+        Ein Graph ist bipartit, genau dann, wenn er keinen Kreis ungerader 
+        Länge enthält.
+    \paragraph{Beweis}
+        Sei $G = (V, E)$ Graph.\\
+    
+        \underline{$\implies$}\\
+
+        Sei G bipartit. $f: V \rightarrow \Set{0, 1}$ Färbung von G. \\
+        
+        Annahme: G enthält Kreis $(v_0, \ldots, v_{2k+1})$ mit $k \in \bN 
+        \setminus \Set{0}$. \\
+        
+        Ist $f(v_0) = 0, f(v_1) = 1, f(v_2) = 0, f(v_3) = 1, \ldots, f(v_{2k+1}) = 1$
+        unmöglich, wegen $v_0 = v_{2k + 1}$. Widerspruch. \lightning.\\
+        
+        Ist $f (v_0) = 1$, dann $f(v_1) = 0, \ldots, f(v_{2k}) = 1, f(v_{2k+1}) = 0)$
+        ebenfalls unmöglich wegen $v_0 = v_{2k +1}$ \lightning\\
+        \\
+        \\
+   
+        \underline{$\Leftarrow$}\\
+
+        Sei $G = (V, E)$ nicht-leerer Graph ohne Kreis ungerader Länge.
+        Zeige: G bipartit. \\
+        
+        Spezialfall: G zushgd.
+        Für $u, v \in V$ sei:
+        \ilmath{dist_G (u, v) := min \Set{n \in \bN \mid \exists (w_0, \ldots, w_n) \text{Weg in G}: w_0 = u, w_n = v}}
+        Wähle $w \in V$ fest.
+
+            
+        Definniere $f: V \rightarrow \Set{0, 1}$ durch 
+        \ilmath{f (v) := \begin{cases} 1 \text{ falls } dist_G (w, v) ungerade \\ 0 \text{ falls } dist_G (w, v) gerade \end{cases}}
+        für alle $v \in V$. Zeige: f Färbung von G.
+
+        Seien $u, v \in V$ mit $\Set{u, v \in E}$.
+        Annahme: $f (u) = f (v) (\star)$
+
+        %%TODO tikz work needed.
+
+        Wegen $\Set{u, v} \in E$ folgt:
+        \ilmath{|dist_G (w, u) - dist_G (w, v) | \leq 1}
+
+        Wegen $(\star)$ folgt: 
+        \ilmath{dist_G (w, u) = dist_G (w, v) = n}
+
+        Seien $(u_0, \ldots, u_n)$ und $(v_0, \ldots, v_n)$ Wege in G mit 
+        $u_0 = v_0 = w, u_n = u, v_n = v$.
+        \\
+        
+        Wegen Minimalität der Weglängen sind $u_0, \ldots, u_n$ und 
+        $v_0, \ldots, v_n $ paarweise verschieden.
+        
+        Sei: $k := max \Set{l \in \Set{0, \ldots, n} \mid u_l \in \Set{v_0, \ldots, v_n}}$.
+        Dann $u_k = v_k$ wegen Minimalität der Weglängen. Es gilt: $k < n. (\star\star)$
+
+        Denn: sonst $u = u_n = v = v_n$, Widerspruch zu $\Set{u, v} \in E$ \lightning 
+        
+        Es folgt: $(u_k, \ldots, u_n, v_n, \ldots, v_k)$ Kreis in G der Länge 
+        $(n-k) + 1 + (n-k) = 2(n-k) + 1 \geq 3$ wegen $\star\star \lightning$
+
+        Also $f (u) \neq f (v)$. Somit f Färbung. \\ 
+        \underline{Allgemeiner Fall:} \\
+        
+        G hat keinen Kreis ungerader Länge $\iff \forall v \in V: G [C_G (v)] $ hat keinen Kreis ungerader Länge.
+        s.O. $\iff \forall v \in V: G [_G (v)]$ bipartit. $\iff$ G bipartit. $\hfill\square$
+    \ssect{Definition: Inzidenzstruktur}
+        Eine \undelrine{Inzidenzstruktur} ein \underliner{(formaler Kontext)}, auch als
+        bipartiter Graph refeerenziert, ist ein Tripel
+        \ilmath{I = (X, Y, R)}
+        bestehend aus zwei endlichen, nicht-leeren Mengen X, Y mit $X \cap Y = \emptyset$ und einer Relation $R \subseteq X \times Y$.
+        
+        Sei $I = (X, Y , R)$ Inzidenzstruktur. Eine Abb. $\varphi: D \rightarrow Y$ heißt \underline{Paarung} in I (Matching) $:\iff$
+        \begin{enumerate}
+        \item $D \subseteq X$
+        \item $\varphi$ injektiv
+        \item $\forall x \in D: (x, \varphi (x)) \in R$
+        \end{enumerate}
+
+        Eine \underline{Paarung} $\varphi D \rightarrow Y$ in I heißt perfekt $:\iff D = X$.
+
+        Für $S \subseteq X$ sei:
+        \ilmath{N_I (S) := \Set{y \in Y \mid \exists x \in S: (x, y) \in R}}
+        \ssect{Beispiel}
+        X Mengen  von Arbeitsauftägen. 
+        Y... Menge von Geräten/Maschienen/Prozessen
+        \ilmath{(x,y) \in R \iff \text{Gerät y kann Auftrag x ausführen}}
+
+        Bedingung: In gegebenen Zeitfenster kann jedes Gerät höchstens einen Auftrag bearbeiten.
+        Gesucht: perfekte Paarung in $(X, Y, R)$ enstspricht Aufteilung der Aufträge auf Geräte,
+        sodass jeder Auftrag ausgeführt wird.
+
+    \ssect{Satz: Heiratssatz von Philipp Hall, 1935}
+        Sei $I = (X, Y, R)$ Inzidenzstruktur. Dann:
+        I besitzt perfekte Paarung $\iff \forall S \subseteq X: |N_I (S)| \geq |S|$
+        
+        \paragraph{Beweis}
+        \underline{$\implies$} \\
+
+        Sei $\varphi$ perfekte Paarung in I. Dann folgt für alle $S \in X:$
+
+        \ilmath{|N_I (S)| \geq |\varphi (S)| = |S|}
+
+
+        \underline{$\Leftarrow$} \\
+        Vollständige Induktion über $n := |X|$.
+
+        \boxed{IA} (n = 1): Klar. falls $X = \Set{x}$ und $y \in Y$ mit $(x,y) \in R$,
+        da $\varphi: X \rightarrow Y, x$ mit $\varphi (x) = y$ perfekte Paarung
+
+        \boxed{IS} Sei $|X| = n \geq 2$.
+
+        Fall 1: $|N_I (S)| \geq |S| + 1$ fr alle $S \in \wp (X) \setminus \Set{\emptyset, X}$
+        Wähle $(s, t) \in R$. Dann $\tilde{I} := (X \setminus \Set{s}, Y \setminus \Set{s}, \tilde{R})$
+        mit $R := R \setminus ((x \times \Set{t}) \cup (\Set{s} \times Y))$ Inz. Str. und 
+        $|N_{\tilde{I}} (Q)| \geq |N_I (Q)| -1 \geq Q$ für alle $Q \in \wp (X \setminus \Set{s}) \setminus \Set{\emptyset}$.
+
+        Nach \boxed{IV}: I besitzt perfekte Paarung $\tilde{\varphi}$. Dann:
+        \ilmath{\varphi: X \rightarrow Y \text{ mit} \\
+                \varphi (x) := \begin{cases} \tilde{\varphi} \text{ falls } x \in X \setminus \Set{s} \\
+                                             t \text{  falls } x = s}
+
+\end{document}

@@ -1,0 +1,122 @@
+\documentclass{../../meta/tudscript}
+\begin{document}
+    \setcounter{section}{13}
+    \setcounter{subsection}{23}
+   
+    Nach Satz von Euler\ref{13.22} beistzt $\tilde{G}$ eine Eulertour $(w_0, \ldots, w_n)$
+    \ilmath{deg_{\tilde{G}} = 2 \implies \exists! i \in \Set{0, \ldots, n-1}: w_i = t}
+    
+    Daher $(w_{i + 1 \mod n}, \ldots, w_{i - 1 \mod n})$ Eulerweg in G.
+
+    \paragraph{$\Rightarrow$}
+        Sei $(w_0, \ldots, w_n)$ Eulerweg in G. Falls $w_n = w_0$, dann $(w_0, \ldots, w_n)$
+        Eulertour, also G eulersch, daher $|U| = 0$ nach Satz von Euler\ref{13.22}
+        
+        Annahme: $w_n \neq w_0$. Wähle "neuen" Knoten $t \notin V$. Definiere 
+        $\tilde{G} := (\tilde{V}, \tilde{E})$ mit $\tilde{V} := V \cup \Set{t}$,
+        $\tilde{E} := E \cup \Set{\Set{w_n, t}, \Set{w_n, t}}$.
+
+        Dann $(t, w_0, \ldots, w_n, t)$ Eulertour in G.
+        
+        Nach Satz von Euler\ref{13.22}: $deg_{\tilde{G}} (v)$ gerade für alle $v \in V$.
+
+        Da $deg_G (v) = deg_{\tilde{G}} (v)$ für alle $v \in V \setminus \Set{w_0, w_n}$,
+        folgt $U \subseteq \Set{w_n, w_0}$ und daher $|U| \leq 2$.$\hfill\square$
+      
+    \ssect{Definition: Hamiltionkreis}
+        Sei $G = (V, E)$ Graph. Ein Kreis $(w_0, \ldots, w_n)$ in G heißt
+        \ilmath{\text{\underline{Hamiltonkreis} in G } :\iff \forall v \in V \exists! i \in \Set{0, \ldots, n-1}: w_i = v}
+
+        Der Graph heißt \underline{Hamiltonsch}, wenn G einen Hamiltonkreis besitzt.
+        
+    \ssect{Bemerkung: Komplexität des Hamiltonproblems}
+        Eine Satz 13.22\ref{13.22} entsprechende "einfache" Charakterisierung von Hamiltongraphen ist nicht bekannt.
+        Algorithmisch zu entscheiden, ob ein gegebener endlicher Graph hamiltonsch ist, ist ein kompliziertes
+        Problem, das sogennante Hamiltonkreisproblem. 
+
+    \ssect{Satz: Lösungsansatz für das Hamiltonproblem (Dirac)}
+        Sei $G = (V, E)$ endlicher Graph mit $n = |V| \geq 3$.
+        Dann:
+        \ilmath{min (\Set{deg_G (v) \mid v \in V}) \geq \frac{n}{2} \implies \text{ G hamiltonsch.}}
+        \paragraph{Beweis}
+            Siehe z.B. Satz 8.11 (Seite 232) in R. Diestel, Graphentheorie, 3. Auflage, Springer 2006
+            
+            Ein wahres interessantes Problem der Graphentheorie: das
+            \underline{Idomorphieproblem}, d.h. die Entscheidung, ob zwei gegebene
+            endliche Graphen isomorph sind. Dabei helfen manchmal geeignete (Isomorphie-)
+            Invarianten. 
+    \ssect{Definition}
+        Sei $G = (V, E)$ endlicher Graph und sei $K (G) := \Set{n \in \bN \mid \text{ G bisitzt Kreis der Länge n}}$
+        Dann heißt:
+        \ilmath{circ (G) := \begin{cases} max K (G) \text{ falls } K (G) \neq \emptyset \\
+                                          0         \text{ sonst} \end{cases}}
+        der \underline{Umfang (engl. circumference)} von G, und
+        
+        \ilmath{girth (G) := \begin{cases} min K (G) \text{ falls } K (G) \neq \emptyset \\
+                                           \infty    \text{ sonst} \end{cases}}
+        die \underline{Tallienweite (engl. girth)} von G.
+
+        Ist zusammenhängend, dann heißt:
+        \ilmath{dist_G: V \times V \rightarrow \bN: (u,v) \mapsto min \Set{n \in \bN \mid \begin{cases} \exists (w_0, \ldots, w_n) \text{ Weg in G} \\
+                                                                                                        w_0 = u, w_n = n \end{cases}}}
+        die \underline{Graph-Metrik} von $G$,
+        
+        \ilmath{diam (G) := max \Set{dis_G (u,v) \mid u,v \in V}}
+        
+        der \underline{Durchmesser (engl. diameter)} von G, und
+        
+        \ilmath{rad (G) := \underbrace{min}_{w \in V} (\underbrace{max}_{v \in V} ( dist_G (w, v)))}
+        
+        der \underline{Radius} von $G$.
+        
+        \ssect{Bemerkung}
+        Sei G zusammenhängender endlicher Graph.
+        \begin{enumerate}
+            \item Es gilt: $rad (G) \leq diam (G) \leq 2 rad (G)$
+            \item Ist H weiterer Grapoh mit $H \cong G$ (dann H endl., zushgd.), dann:
+            \ilmath{circ (G) = circ (H), girth (G) = girth (H), rad (G) = rad (H), diam (G) = diam (H)}
+        \end{enumerate}        
+        
+    \ssect{Beispiele}
+    \begin{enumerate}
+
+    \item Sei $G = (V, E)$ der Peterson Graph\ref{13.22} (3. Beispiel)
+        %%TODO some tikz work needed
+
+        \ilmath{diam (G) = rad (G) = 2}
+        \ilmath{girth (G) = 5}
+        \ilmath{circ (G) = 9}
+    \item Sei $d \in \bN \setminus \Set{0}$ Dann heißt der Graph
+        \ilmath{H_d := (\Set{0, 1}^d, E_d)}
+        mit
+        \ilmath{E_d := \Set{\Set{x, y} \mid x, y \in \Set{0, 1}^d, |\Set{i \in \Set{1, \ldots, d}| x_i \neq y_i}| = 1}}
+        der \underline{d-dimensionale (Hemming-)Würfel}
+        
+        Es gilt:
+        \ilmath{rad (H_d) = diam (H_d) = d}
+
+        \ilmath{girth (H_d) = \begin{cases} 4\text{ falls } d \geq 2 \\
+                                           \infty \text{ sonst} \end{cases}}
+        \ilmath{circ (H_d) = \begin{cases} 2^d \text{ falls } n \geq 2 \\
+                                           0   \text{ sonst} \end{cases}} 
+    \end{enumerate} 
+    \enquote{Sie sollten Ihr Frühstücksei nicht salzen, bevor Sie es augeschlagen haben.}
+
+    \sect{Geordnete Mengen}
+    \ssect{Definition}
+        Sei $(M, R)$ geordnete Menge (d.h. M Mengeund R Ordnungsrelation auf M), vgl.\ref{9.6} und \ref{3.4}
+        Zwei Elemente $x,y \in M$ heißen \underline{unvergleichbar in (M, R)} $:\iff \neg (xRy \lor yRx)$.
+        
+        Eine Teilmenge $L \subseteq M$ heißt 
+        \ilmath{\text{\underline{Kette} } :\iff \forall x, y \in L: xRy \lor yRx}
+        ($\iff R \cap (L \times L)$ totale Relation auf L)
+    
+        \ilmath{\text{\underline{Antikette} } :\iff \forall x, y \in L: xRy \implies x = y}
+        ($\iff R \cap (L \times L) = \vartriangle_L$).
+
+        Wir nennen (M, R) Kette $:\iff$ R totale Relation auf M (lineare Ordnung auf M.)
+
+        Eine (lineare) \underline{Ordnungserweiterung} von R ist eine (lineare)
+        Ordnungsrelation $\tilde{R}$ auf M mit $R \subseteq \tilde{R}$.
+
+\end{document}

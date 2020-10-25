@@ -1,0 +1,87 @@
+\documentclass{../tudscript}
+\author{Jakob Krebs}
+\title{Mathe VL 18}
+
+\begin{document}
+    \ssect{(Totale) Diffenezierbarkeit von Funktionen mit zwei veränderlichen}
+        \ilmath{y = f(x_n, \ldots, x_1), patielele Ableitung f_{_i} = \frac{delta f}{\delta x_i}}
+        wobei $x_j$ mit $j^+$ const. \enquote{del f nach del x}
+    
+        ex. partielle Abl. $\implies f$ ist partiell Diffenzierbar,\\
+                DEF        $\implies f$ ist \underline{total} differenzierbar\\
+        lineare Approximierbarkeit $\implies$ totale Diffenrenzierbarkeit\\
+
+   \ssect{Definition}
+        Sei
+        \ilmath{f: X \rightarrow \bR, X \subseteq \bR^n, x_0 \in X (\vec{x_i} = (x_0, \ldots, x_n))}     
+        f heißt an der Stelle $x_0$ total differenzierbar, wenn gilt:
+        \ilmath{\exists a \in \bR^n: f(\vec{x}) = f(\vec{x_0}) + a \circ (\vec{x} - \vec{x_a})^1 + R(\vec{x}), \vec{c} \in X}
+        mit 
+        \ilmath{\lim_{x \to x_0} \frac{| R_n (\vec{x})|}{|| \vec{x} - \vec{x_0} ||}= 0}
+        \ilmath{n = 1 \hfill f(x) = f(x_0) ] f(x_-)(x-x_0) + R(x)}
+    \ssect{Bemerkung}
+        R(x) geht scheinbar gegen Null, also $x \to x_0$ gilt
+    \ssect{Bemerkung}
+        Ist f in $\vec{x_0}$ total differenzierbar, dann gilt:
+        \ilmath{f(x) \approx f(\vec{x_0}) ] a \circ (x - x_0)^1}
+        (lineare Approximation von f)
+    \ssect{Bemerkung: Bestimmung von a}
+        Ist f an $\vec{x_0}$ linear approximierbar, dann kann $\vec{a}$ wie folgt bestimmt werden.
+        \ilmath{a = \m{f_{x_1} (x_0)\\ 
+                       f_{x_2} (x_0)\\
+                       f_{x_3} (x_0)\\ 
+                       f_{x_4} (x_0)\\
+                       f_{x_5} (x_0)\\
+                       \ldots} \* \m{\frac{\delta f}{\delta x_1}\\
+                                     \frac{\delta f}{\delta x_2}\\
+                                     \frac{\delta f}{\delta x_3}\\
+                                     \ldots}_{|x_0}}
+    \ssect{Bemerkung}
+        f (total) diffbar $\overset{\implies}{\not\Leftarrow}$ f partiell diffbar\\
+        f (total) diffbar $\overset{\Leftarrow}{\not\implies}$ f stetig diffbarr
+
+    \ssect{Verallgemeinerung Kettenregel}
+        \ilmath{f(x,y) = z, x = x(t) = y = y(t)\\
+               f(x(t), y(t)) = \varphi (t)}
+        Beispiel:
+        \ilmath{z = f(x,y) = x^2 y, x(t) = t^2, y(t) = t \\
+                \varphi (t) = (t^2 )^2 t = t^5\\
+                f(x()t, y(t)) = \varphi (t)}
+        Ableitung nach t
+        \ilmath{f_{x}( x(t), y(t)) \frac{dx}{dt} + f_y (x(t), y(t)) \frac{dy}{dt}\frac{d \varphi}{dt} = \varphi'}
+
+        \ilmath{\boxed{f_x \frac{dx}{dt} + f_y \frac{dy}{dt} = \frac{d \varphi}{dt}}}
+    \sssect{Bemerkung}
+        Für die Gültigkeit der Formel benötigt man stetige Diffbarkeit (für f,x,y und $\varphi$ und t)
+    
+    \sssect{Beispiel weiterführung}
+        Ableitung nach t:
+        \ilmath{f_x \frac{dx}{dt} + f_y \frac{dy}{dt} = 2xy 2t +x^2 = 4t^2 + 4t^4 = 5t^4}
+    \ssect{Taylorentwicklung}
+        für 
+        \ilmath{z=f(x,y)}
+        an der Stelle $x_0, y_0$
+        \ilmath{f(x,y) &= f(x_0, y_0) + \ldots\\
+                       &= f(x_0 + 1 \* (x - x_0)), y_0 + 1 \* (y - y_0)\\
+                       &= f(\underbrace{x_0 + t \* \underbrace{(x - x_0)}_{h}}_{x(t) = x_0 = th}), \underbrace{y_0 + t \* \underbrace{(y - y_0)}_{k}}_{y(t) = y_0 = lt}\\
+                       &- \varphi (t)}
+        Taylorformel für $\varphi (t)$ an der Stelle $t_0 = 0$
+        \ilmath{\varphi (t) = \varphi (0) + \varphi' (0) t + 0.5 \varphi^{(2)} (0) t^2 + \ldots + R_n (t)}
+        für t = 1
+        \ilmath{\varphi (t) = \varphi (0) + \varphi' (0) + 0.5 \varphi'' (0) + \ldots + \frac{1}{n!} \varphi^{(n)} t^n + R_n (1)}
+        $\varphi (t) = f(x(t), y(t))$ nach t ableiten und dabei die verallg. KEttenregel verwenden.
+        \ilmath{\varphi' (t) = f_x h + f_y k}
+        \ilmath{\varphi'' (t) = (f_{xx} h + f_{yx} k)h + (f_{yx} h + f_{yy} k)k = f_{xx} h^2 ] 2 f_{xy} hk + f_{yy} k^2}
+        \ilmath{\varphi''' (t) = f_{xxx} h^3 + 3 f_{xxy} h^2 k + 3 f_{yyx} k^2 h+ f_{yyy} k^3}
+        usw. siehe pascalsches Dreieck
+
+     \sssect{Lineare Näherungformel}
+        für $f(x,y)$ an $(x_0, y_0)$
+        \ilmath{\varphi (0) + \varphi' (0) &= \underbrace{f(x_0 + 0 \* (x - x_0), y_0 + 0 \* (x-x_0))}_{f(x_0, y_0)}\\ 
+                                                    &+ f_x (x_0, y_0) \* (x-x_0) + f_y (x_0, y_0) \* (y-y_0)}
+        beschreibt die Tangentialebene
+   \sssect{quadrtische Näherungformel}
+        für $f(x,y)$ an $(x_0, y_0)$
+        \ilmath{\boxed{tangentialebene} &+ \frac{1}{2} (f_{xx} (x_0, y_0) (x-x_0)^2\\ 
+                                        &+ 2 f_{xy} (x-x_0)(y-y_0) + f_{yy} (y-y_0)^2)}
+\end{document}

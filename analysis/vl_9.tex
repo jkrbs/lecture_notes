@@ -1,0 +1,127 @@
+\documentclass{../tudscript}
+\title{Mathe VL 9}
+\author{Jakob Krebs}
+
+\begin{document}
+    \ssect{Beispiel: Taylorpolynome}
+        \ilmath{f: \bR \rightarrow \bR: x \mapsto x^2 -1}
+        gesucht: \underline{Taylorpolynom ($P_n (x)$)} von f(x).
+        \ilmath{f(x) &= x^2 -1 \\
+                f'(x)&= 2x \\
+                f''(x) &= 2 \\
+                f'''(x) &= 0 \\
+                \vdots}
+
+        \ilmath{x_0 &= 0 \\
+                f(x_0) &= -1 \\
+                f'(x_0) &= 0 \\
+                f''(x_0) &= 2 \\
+                f'''(x_0) &= 0 \\
+                \vdots}
+
+        \ilmath{p_n (x) &= f(0) + f'(0) (x-0) + \frac{f''(0)}{2!} (x-0)^2 + \frac{f'''(0)}{3!} (x-0)^3 + \ldots \\
+                        &= -1 + 0 \cdot x + \frac{2}{2!} x^2 + 0 = -1 + x^2 = f(x)}
+
+        an der Entwicklungsstelle
+        
+        \ilmath{x_0 &= 1 \\
+                f(x_0) &= 0 \\
+                f'(x_0) &= 2 \\
+                f''(x_0) &= 2 \\
+                f'''(x_0) &= 0 \\
+                \vdots}
+
+        \ilmath{p_n (x) &= f(1) + f'(1) (x-1) + \frac{f''(1)}{2!} (x-1)^2 + \frac{f'''(1)}{3!} (x-1)^3 + \ldots \\
+                        &= 0 + 2 \cdot (x-1) + \frac{2}{2!} (x-1)^2 + 0 = 2x -2 + x^2 - 2x + 1 = f(x)}
+
+        nun $e^x$
+        \ilmath{f(x) = \frac{e^x}{cos x}}
+        gesucht: $p_x(x)$
+    \ssect{Methode des implizieten Differenzierens}
+        \ilmath{f(x) \cdot cos x = e^x \\
+                f'(x) cos x + f(x) (-sin x) = e^x \\
+                f''(x) cos x + f'(x) (-sin x) + f'(x) (-sin x) + f(x) (-cos x) = e^x}
+        (ges. $f'(0), f(0), f''(0)$)
+        \ilmath{f(0) \cdot cos 0 = e^0 \implies f(0) = 1}
+        \ilmath{f'(0) 1 + \frac{1}{f(0)} \cdot 0 = 1 \implies f'(0) = 1}
+        \ilmath{f'(0) 1 + f(0) (-1) = 1 \implies f''(0) = 2}
+        \ilmath{p_2(x) = 1 + 1x + \frac{2}{2!} x^2 = 1 + x + x^2}
+        
+    \ssect{Beispiel: sonderfälle bei Taylorpolynomen}
+        \ilmath{f(x) = \frac{1}{x+1}\text{ rot}} 
+        \ilmath{p_1(x) &= 1-x\text{ blau}\\
+                p_2(x) &= 1 - x + x^2\text{ grün}\\
+                p_3(x) &= 1 - x + x^2 -x^3\text{ orange}}\\
+
+		Die immer bessere Annäherungen an die echte Funktion.
+
+        \begin{tikzpicture}
+	        \draw[->] (-1.2,0) -- (4.2,0) node[right] {$x$};
+	        \draw[->] (0,-0.2) -- (0,3.2) node[above] {$y$};
+	        \draw[scale=1,domain=-0.75:4,smooth,variable=\x,red] plot ({\x},{1/(\x+1)});
+	        \draw[scale=1,domain=-0.75:3,smooth,variable=\x,blue] plot ({\x},{1-\x});
+	        \draw[scale=1,domain=-0.75:2,smooth,variable=\x,green] plot ({\x},{1-\x+\x^2});
+	        \draw[scale=1,domain=-0.75:1.5,smooth,variable=\x,orange] plot ({\x},{1-\x+\x^2-\x^3});
+        \end{tikzpicture}
+
+    \ssect{Taylor-Formel}
+        \ilmath{f(x) = p_n(x) + \underbrace{R_n(x, x_0)}_{\text{n-tes Restglied}}}
+        $R_n(x, x_0)$: Fehler bei der Approximation
+        
+        \sssect{Satz:}
+            Darstellung von $R_n(x, x_0)$ nach Lagrange.
+
+            Sei
+            \ilmath{f: (a, b) \rightarrow \bR}
+            eine $(n+1)$-mal stetig differenzierbare Funktion. $x_0 \in (a, b)$
+ 
+            Dann gilt:
+            \ilmath{f(x) = p_n (x) + R_n(x, x_0)}
+            und
+            \ilmath{\forall x \in (a, b): \exists z \in \bR: \text{zwischen x und $x_0$}: \\
+            R_n (x, x_0) = \frac{f^{(n+1)}(z)}{(n+1)!} (x-x_0)^{n+1}}
+    \sssect{Beispiel}
+        \ilmath{f(x) = e^x, x_0 = 0}
+        \ilmath{p_n(x) = \sum_{k = 0}^\infty \frac{f^{(k)}(0)}{k!} x^k = \sum_{k = 0}^\infty \frac{x^k}{k!}}
+        \ilmath{f(x) = p_n (x) + R_n (x, x_0)}
+        und
+        \ilmath{R_n (x, x_0) = \frac{e^z}{(n+1)!} x^{n+1}}
+        für ein geeignetes $z \in (0,x)$oder $z \in (x, 0)$
+
+        Wir betrachten
+        \ilmath{f(x) = e^x \text{ für } |x| \leq 1}
+        \ilmath{|R_n(x, 0)| = |\frac{e^z}{(n+1)!} x^{n+1}| \leq \frac{e^z}{(n+1)!} \cdot 1^{n+1}}
+        Näherungsformel für $e^x$
+        \ilmath{p_5 (x) = 1  + x+ \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \frac{x^5}{5!}}
+
+        \ssect{Definition: Taylorreihe}
+            Sei
+            \ilmath{f: (a, b) \rightarrow \bR}
+            beliebig oft stetig differenzierbar und $x_0 \in (a, b)$
+            Die Reihe
+            \ilmath{\sum_{k = 0}^\infty \frac{f^{(k)} (x_0)}{k!} (x-x_0)^k}
+            heißt \underline{Taylorreihe} von f an der Stelle $x_0$.
+        \ssect{Bemerkungen zu Taylorreihen}
+        \begin{enumerate}
+            \item Nicht für jede Funktion f(x) ist die Taylorreihe konvergent.
+            \item Ist die Taylorreihe konvergent, dann muss der Grenzwert nicht die Funktion f sein.
+            \item Ist die Taylorreihe konvergent gegen f, dann heißt
+                \ilmath{f(x) = \sum_{k = 0}^\infty \frac{f^{(k)} (x_0)}{k!} (x-x_0)^k}
+                reel analytisch.
+                %%TODO the nth example
+        \end{enumerate} 
+   \ssect{Rechnen mit Potenzreihen}
+        Sei
+        \ilmath{ a(x) = \sum a_k (x-x_0)^k, b(x) = \sum b_k (x-x_0)^k}
+        mit Konvergenzradius $r_1$ für $a(x)$ und $r_2$ für $b(x)$.
+        Sei 
+        \ilmath{r := min \Set{r_1, r_2}}
+        dann gilt:
+        \ilmath{a(x) \pm b(x) = \sum (a_k \pm b_k) (x-x_0)^k \text{ für } x \in (x_0 -r, x_0 +r)}
+        \ilmath{x \cdot a(x) = \sum c a_k (x-x_0)^k \text{ für } x \in (x_0 -r, x_0 + r)}
+
+        %%TODO 
+        \ilmath{a(x) \cdot b(x) = \sum (a_0 b_k + }
+        \ilmath{\frac{1}{a(x)} \text{ für } f(x) \neq 0}
+        kann mit der %%TODO berechnet werden.
+\end{document}

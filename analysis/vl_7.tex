@@ -1,0 +1,103 @@
+\documentclass{../tudscript}
+\author{Jakob Krebs}
+\title{Mathe VL 7}
+
+\begin{document}
+    \sect{Differentialrechnung}
+        \ssect{Wiederholung: Grenzwert von Funktionen}
+            \ilmath{f: D \rightarrow \bR, D \subseteq \bR, a \neq 0}
+            \ilmath{\lim_{x \to a} f(x) =r \in \bR &\iff \forall (x_n) \lim_{n \to \infty} x_n = a \land x_n \in D\\
+                                                   &\implies \lim_{n \to \infty} f(x_n) = r}
+            \sssect{Bemerkung: Anwendbarkeit der Grenzwertsätze}
+            Die Grenzwertsätze sind nicht immer Anwendbar
+            \ilmath{\lim_{x \to 0} x \cdot sin(\frac{1}{x}) \lim_{x \to 0} x, \lim_{x \to 0} \frac{1}{x}} 
+
+        \ssect{Definition: offenes Intervall}
+        Sei
+        \ilmath{f: D \rightarrow \bR, x \in (a,b)}
+        \ilmath{x \in (a, b) \iff x \in \bR \land a < x < b}
+    
+        \ssect{Definition: differenzierbarkeit}
+        f ist an $x_0$ differenzierbar
+        \ilmath{\iff f'(x) = \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0}}
+        existiert.
+        Falls der Grenzwert existiert, nennt man $f'(x_0)$ die erste Ableitung in
+        $f(x_0)$.
+        
+        \ssect{Ableitungsfunktion}
+        \ilmath{\forall x_0 \in (a,b): f'(x_0) ex.}
+        dann nennt man
+        \ilmath{f': (a,b) \rightarrow \bR, x_0 \mapsto f'(x_0)}
+        die erste Ableitung von f.
+
+        \sssect{Beispiel}
+	\ilmath{f(x) = \frac{1}{x} \text{ auf } (0, r) \text{ mit } r \in \bR_{>0} \text{ fest, bel.}}
+        \ilmath{f'(x_0) &= \lim_{x \to x_0} \frac{\frac{1}{x} - \frac{1}{x_0}}{x-x_0}\\
+                        &= \lim_{x \to x_o} \frac{(x_0-x)}{x x_0 (x - x_0)}\\
+                        &= \lim_{x \to x_o} ( - \frac{1}{x_0}) \cdot \frac{1}{x}\\
+                        &= \frac{1}{x^{2}_0}}
+        \ilmath{f': (0, r) \rightarrow \bR x \mapsto \frac{1}{x^2}}
+
+    \ssect{Satz: differenzierbar $\implies$ Stetigkeit}
+        f in $x_0$ differenzierbar $\implies$ f in $x_0$ stetig
+        Beweis: siehe Hilfsfolien
+    
+        \begin{tikzpicture}
+	        \draw[->] (-0.2,0) -- (4.2,0) node[right] {$x$};
+	        \draw[->] (0,-0.2) -- (0,4.2) node[above] {$y$};
+	        \draw[scale=1,domain=0.25:3.9,smooth,variable=\x,blue] plot ({\x},{1/\x});
+	        \node[label=below:$x_0$] at (1, 0) (x0) {$|$};
+	        \node[label=left:$f(x_0)$] at (0, 1) (fx0) {$-$};
+	        \draw[scale=1,domain=-0.2:2.2,smooth,variable=\x,red] plot ({\x},{-\x+2});
+        \end{tikzpicture}
+        
+        
+        t: Tangente an der Stelle $x_0$
+        Anstieg:
+        \ilmath{m = \frac{t(x) - t(x_0)}{x - x_0} = \frac{f(x) - f(x_0)}{x - x_0}\\
+                t(x) = f(x_0) + x-x_0 \\
+                f(x) \approx f(x_0) + f'(x_0) \cdot (x-x_0)}
+    \sssect{Bemerkung}
+        $f(x_0)$ gibt den Anstieg der Tangente an dem Graphen der Funktion f in dem Punkt $(x; f(x))$ an.
+
+
+    \ssect{Berechnung von Ableitungen von Funktionen}
+        \sssect{Linearität}
+            \ilmath{(f(x) \pm g(x))' = f'(x) \pm g'(x)}
+            \ilmath{(s \cdot f(x))' = s \cdot f'(x) \mid s \in \bR, fest}
+        \sssect{Produktregel}
+            \ilmath{(f(x) \cdot g(x))' = f'(x) \cdot g(x) + f(x) \cdot g'(x)}
+        \sssect{Kettenregel}
+            \ilmath{(f \circ g)'(x) = (f(g(x)))' = f'(g(x)) \cdot g'(x)}
+        \sssect{Quotientenregel}
+            \ilmath{(\frac{f(x)}{g(x)})' &= (f(x) \cdot \frac{1}{g(x)})' = f'(x) \cdot \frac{1}{g(x)} + f(x) \cdot \frac{1}{g(x)^2} \\
+                                         &= \frac{f'(x) \cdot g(x) - f(x) \cdot g'(x)}{g(x)^2}}
+        \sssect{Ableitung der UKF}
+            \begin{enumerate}
+                \item $f(x) = e^x, f'(x) = e^x$
+                \ilmath{f^{-1}(x) = ln x, ((e^x)^{-1})' = (ln x)' = \frac{1}{e^{ln x}} = \frac{1}{x}}
+                \item $f(x) = tan(x), f'(x) = 1+ tan^2 (x)$
+                \ilmath{f^{-1}(x) = arctan(x), ((tan(x))^{-1})' = \frac{1}{1+ x^2}}
+            \end{enumerate}
+        \ssect{Mittelwertsatz der Differentialrechnung}
+       		\begin{enumerate}
+       			\item $f:(a,b) \rightarrow \bR \text{ diffbar}$
+       			\item $f:(a,b) \rightarrow \bR \text{ stetig}$
+       		\end{enumerate}
+			\ilmath{
+				\im \exists x_n \in (a,b) : f'(x_0) = \frac{f(b)-f(a)}{b-a}
+			}
+			\begin{tikzpicture}
+				\draw[->] (-0.2,0) -- (4.2,0) node[right] {$x$};
+				\draw[->] (0,-0.2) -- (0,3.2) node[above] {$y$};
+				\draw[scale=1,domain=0.7:3.3,smooth,variable=\x,blue] plot ({\x},{-0.37*\x^2 +2.16*\x - 0.92});
+				\node[label=below:$a$] at (1, 0) (a) {$|$};
+				\node[label=below:$b$] at (3, 0) (b) {$|$};
+				\node[label=below:$x_0$] at (1.5, 0) (x0) {$|$};
+				\node[label=left:$f(x_0)$] at (0, 1.5) (fx0) {$-$};
+				\draw[scale=1,domain=0.5:3,smooth,variable=\x,red] plot ({\x},{\x});
+			\end{tikzpicture}
+
+			D.h. Anstieg der Tangente in $x_0$ ist $f'(x_0)$
+		
+\end{document}

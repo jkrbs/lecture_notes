@@ -1,0 +1,223 @@
+\documentclass{../tudscript}
+\title{Mathematische Methoden für Informatik VL 1}
+\author{Jakob Krebs}
+
+\begin{document}
+    \sect{Organisatorisches}
+    \begin{itemize}
+        \item Inhalt: Sommersemester: Analysis und Anwendungen
+        \item Inhalt: Wintersemester: Algebra und Anwendungen, Wahrscheinlichkeitstheorie
+        \item erste Modulprüfung im SS (90 min)
+        \item zweite Modulprüfung im WS (120 min)
+        \item Folien auf der Website
+        \item Hilfsmittel: Bücher, Skripte. Keine Taschenrechner
+        \item Bonspunkteaufgaben mit A auf den Übungsblättern gekennzeichnet
+    \end{itemize}
+    \sect{Literaturempfehlung}
+    \begin{itemize}
+        \item Analysis für Informatiker, Springer
+        \item Analysis Eins, Serlo Hochschulmathematik
+    \end{itemize}
+    
+    \part{Analysis}
+        \sect{Folgen und Reihen}
+            \ssect{Definition: Folge}
+                Eine \underline{Folge} ist eine Abbildung
+                \ilmath{f: \bN \rightarrow \underbrace{M}_{Menge}: n \mapsto \underbrace{x_n}_{\underline{Folgenglied}}}
+            \ssect{Bemerkung: *-wertige Folgen}
+                \begin{itemize}
+                    \item $M = \bR$: reelwertige Folge
+                    \item $M = \bC$: komplexwertige Folge
+                    \item $M = \bR^n$: vektorwertige Folge
+                \end{itemize}
+            \ssect{Bezeichnung von Folgen}
+                \ilmath{(x_n)_{n \in \bN} \text{ oder } (x_n)_{n = 0}^\infty \text{ oder } (x_n)}
+
+            \ssect{Bespiel: Folge}
+                $(x_n)$ und $(x_n) = \frac{n}{n+1}$
+                Aufzählung der Folgenglieder:
+                \ilmath{0, \frac{1}{2}, \frac{2}{3}, \frac{3}{4}...}
+                % TODO: use standardized plot function from document
+                \begin{tikzpicture}
+	                \begin{axis}[
+		                	xmin=0,
+		                	xmax=4,
+		                	ymin=0,
+		                	ymax=1,
+		                	only marks,
+		                	scaled y ticks = false]
+		                \addplot+[
+			                blue,
+			                mark=*,
+			                mark options={color=blue, fill=blue}]
+		                	{x/(x+1)};
+	                \end{axis}
+                \end{tikzpicture}
+
+            \ssect{Bemerkung: Einschränkung der Abbildung}
+                Zuweilen wird $\bN$ durch
+                \ilmath{\bN \setminus \Set{0, 1, ...}}
+                ersetzt.
+                
+            \ssect{Standard Beispiele für Folgen}
+                \begin{enumerate}
+                    \item Konstante Folge: $(x_n)$ mit $x_n = a \in M$, a fest
+                    \item Harmonische Folge: $(x_n)$ mit $x_n = \frac{1}{n}$
+                    \item Geometrische Folge: $(x_n)$ mit $x_n = q^n$ mit $q \in \bR$, fest
+                    \item Fibonacci Folge: $(x_n)$ mit $x_n = \frac{1}{\sqrt{5}} ((\frac{1 + \sqrt{5}}{2})^n - (\frac{1-\sqrt{5}}{2})^n)$
+                    \item Conway Folge: $1, 11, 21, 1211, 111221, 312211, ...$
+                    \item Folge aller Primzahlen: $2, 3, 5, 6, ...$
+                \end{enumerate}
+                \sssect{Bemerkung}
+                    1 bis 4 sind explizite sind explizite Darstellungen von Folgen
+                    
+                    5 ist rekursiv darstellbar
+                
+            \ssect{Rechnen mit Folgen}
+                \ilmath{(M = \bR \text{ oder } M = \bC)}
+                \ilmath{(x_n) + (y_n) := (x_n + y_n)}
+                \ilmath{k (x_n) := (k x_n) \mid k \in \bR \lor \bC}
+                
+                Die Folgen bilden einen Vektorraum.
+
+            \ssect{Definition: Beschränktheit einer Folge}
+                Eine reelwertige oder komplexwertige Folge heißt
+                \underline{beschränkt}, wenn gilt:
+		\ilmath{\exists r \in \bR_+: \forall n \in \bN: \underbrace{|x_n|}_{\text{Betrag einer reelen oder komplexen Folge}} \leq r}
+
+            \ssect{Beispiel: Beschränktheit einer Folge}
+                \sssect{Beispiel 1}
+                \ilmath{(x_n): x_n = (-1)^n \cdot \frac{1}{n}}
+                Aufzählung:
+                \ilmath{-1, \frac{1}{2}, - \frac{1}{3}, \frac{1}{4}, ...}
+                % TODO: use standardized plot function from document
+                \begin{tikzpicture}
+	                \begin{axis}[
+	                		axis lines=center,
+			                xmin=0, xmax=5,
+			                ymin=-1.2, ymax=1.2,
+			                ytick distance=1,
+			                samples at={0,...,5},
+			                restrict y to domain=-1:1,
+			                scaled y ticks = false]
+		                \addplot+[x=int,
+			                blue,
+			                only marks,
+			                mark=*,
+			                mark options={color=blue, fill=blue}]
+			                {((mod(x,2) * 2) - 1) * (1/x)};
+			            \addplot+[gray, dashed, mark=none] {1};
+			            \addplot+[gray, dashed, mark=none] {-1};
+	                \end{axis}
+                \end{tikzpicture}
+
+                $(x_n)$ ist beschränkt mit $r = 1$, denn
+                \ilmath{|(-1)^n \cdot \frac{1}{n}| = |\frac{1}{n}| \leq 1}
+                
+                \sssect{Beispiel 2}
+                \ilmath{(x_n): x_n = (-1)^n \cdot \frac{1}{n} + 1}
+                % TODO: use standardized plot function from document
+                \begin{tikzpicture}
+	                \begin{axis}[
+			                xmin=0, xmax=5,
+			                ymin=-.2, ymax=1.7,
+			                ytick distance=1,
+			                samples at={0,...,5},
+			                restrict y to domain=0:1.7,
+			                scaled y ticks = false]
+		                \addplot+[x=int,
+			                blue,
+			                only marks,
+			                mark=*,
+			                mark options={color=blue, fill=blue}]
+			                {((mod(x,2) * 2) - 1) * (1/x) + 1};
+		                \addplot+[gray, dashed, mark=none] {1.5};
+	                \end{axis}
+                \end{tikzpicture}
+                
+                beschränkt durch $r = \frac{3}{2}$
+                \ilmath{\implies \forall n \in \bN: -\frac{3}{2} \leq x_n \leq \frac{3}{2}}
+
+                \sssect{Standardbeispiel}
+                \ilmath{((1 + \frac{1}{n})^n)_{n = 1}^\infty}
+                ist durch 3 beschränkt:
+                \paragraph{Beweis}
+                z.z:
+                \ilmath{\forall n \in \bN: -3 \underbrace{\leq}_{\checkmark} x_n \leq 3}
+                Siehe Zusatzmaterial zu $\leq 3$ \url{https://unidocs.krbs.me/sem2/mathe/mathe_vl_1_fl_2.pdf} 
+
+            \ssect{Definition: Monotone Folge}
+                De Folge $(x_n)$ heißt monoton steigend/falled, wenn gilt:
+                \ilmath{\forall n \in \bN: \begin{cases} x_n \leq x_{n+1} \\ x_n \geq x_{n+1}\end{cases}}
+                Man spricht von strenger Monotonie, wenn $\leq$ durch $<$ und $\geq$ durch $>$ ersetzt wird.
+
+           \sssect{Bemerkung: Äquivalenzen zur Monotonie}
+                \ilmath{x_n \leq x_{n+1} \iff x_n - x_{n+1} \leq 0 \iff \frac{x_n}{x_{n+1} \leq 1}}
+
+           \sssect{Besispiel: Rekursive Folgen}
+                \ilmath{(x_n): x_0 := 1; x_{n+1} := \sqrt{x_n +6}}
+                ist streng monoton wachsend.
+                Beweis mittels vollständiger Induktion über n.
+
+            \sssect{Beispiel: Standardbeispiel}
+                \ilmath{(1+ \frac{1}{n})^n}
+                ist streng monoton wachsend.
+                
+        \ssect{unabhängigkeit von Monotonie und Beschränktheit}
+            \begin{tabular}{c|cc}
+	            Besch/Monoton & ja & nein \\
+	            \hline &&\\
+	            ja & $(\frac{1}{n})$ & $(-1)^n$ \\
+	            nein & (n) & $((-1)^n \cdot n)$
+            \end{tabular}
+
+        \ssect{Definition: Konvergenz}
+           $(x_n)$ heißt \underline{konvergent}, wenn $(x_n)$ einen Grenzwert
+           hat
+	   $(x_n)$ heißt \underline{divergent}, wenn sie nicht konvergiert.
+
+        \ssect{Definition: Grenzwert}
+            $a \in \bR$ heißt Grenzwert von $(x_n)$, wenn gilt:
+            \ilmath{\forall \underbrace{\epsilon > 0}_{\text{bel. klein}}: \exists \underbrace{N \in \bN}_{bel. groß}: \forall n \in \bN: n \geq N \implies \underbrace{|x_n - a| < \epsilon}_{a - \epsilon \leq x_n \leq a + \epsilon}}
+            
+            Sei $\epsilon > 0$, $\epsilon$ bel., fest
+            
+            Siehe geogebra in vl2.
+            % TODO: use standardized plot function from document
+            \begin{tikzpicture}
+	            \begin{axis}[
+			            axis lines=center,
+			            xmin=0, xmax=20,
+			            xtick={10, 13},
+			            xticklabels={$N$, $n$},
+			            samples at={0,...,20},
+			            ymin=-0.3, ymax=1.3,
+			            ytick={0.3, 0.5, 0.7},
+			            yticklabels={$a+\epsilon$, $a$, $a-\epsilon$},
+			            restrict y to domain=-0.5:1.5,
+			            scaled y ticks = false]
+		            \addplot+[x=int,
+			            blue,
+			            small,
+			            only marks,
+			            mark=x,
+			            mark options={color=blue, fill=blue}]
+			            {((mod(x,2) * 2) - 1) * 0.05/sin(x-7) * (1/x) + 0.5};
+		            \addplot+[red, dashed, mark=none, name path=upper] {0.7};
+		            \addplot+[red, dashed, mark=none, name path=lower] {0.3};
+		            \addplot [
+			            thick,
+			            color=red,
+			            fill=red, 
+			            fill opacity=0.05
+			            ]
+			            fill between[
+				            of=upper and lower,
+				            soft clip={domain=10:20},
+			            ];
+	            \end{axis}
+            \end{tikzpicture}
+            
+            Alle Folgenglieder mit $n\geq N$ liegen im schattigen Bereich.
+            
+\end{document}

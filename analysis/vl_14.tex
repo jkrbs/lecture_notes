@@ -1,0 +1,117 @@
+\documentclass{../tudscript}
+\author{Jakob Krebs}
+\title{Mathe VL 14}
+
+\begin{document}
+    \sect{Differentialgleichnungen}
+    %%TODO Tree view
+        \ssect{Definition: gewöhnliche Differentialgleichung}
+            \ilmath{y' (x) = f(x, y(x))}
+            heißt \underline{gewöhnliche DGL 1. Ordnung} in expliziter Form.
+            
+            \ilmath{y = \underbrace{I}_{\text{Intervall}} \rightarrow \bR (\subseteq \bC)}
+            heißt Lösung der DGL, wenn sich beim Einsetzen von y (x) und den Ableitungen
+            der Funktion in die DGL eine wahre Aussage ergibt.
+        \ssect{Beispiel}
+            \ilmath{y' = x \* y^2}
+            ausführlicher (richtiger)
+            \ilmath{y'(c) = x \* (y(x))^2, \text{ ges. y(x)}}
+            Drei Lösungen dieser DGL:
+            \begin{itemize}
+                \item $y_1 (x) = \frac{-2}{y^2}, I = (0, \infty)$
+                \item $y_1 (x) = \frac{2}{2-x^2}, I = (0, \sqrt{2})$
+                \item $y_1 (x) = \frac{2}{2-x^2}, I = (\sqrt{infty}, \infty)$
+            \end{itemize}
+            Denn: (einfaches einsetzen.)
+
+    %%TODO plot zum vorstellen der Lösungen
+        \ssect{Grafische Lösungsmethode}
+            \ilmath{y' = f(x, y)}
+            Im Punkt (x,y) ist ein Anstieg gegeben. (Anstieg der Tangente am
+            Graphen einer Lösungskurve im Punkt (x,y))
+
+            \begin{itemize}
+                \item Linienelement: x(x,y)
+                \item Richtungsfeld: Menger aller Linienlemente
+                \item Isoklinen: verbinden Punkte gleichen anstiegs
+            \end{itemize}
+            Daraus y(x) graphisch konstruieren.
+
+        \ssect{Beispiel: $y' = x$}
+        \begin{enumerate}
+            \item Isoklienen bestimmen
+            \item Lösungskurven in das Richtungsfeld eintragen
+        \end{enumerate}
+        \ilmath{y' = c const \implies x = c}
+        %%TODO top plot by urs
+        allgemeine Lösung einer DGL
+        \ilmath{y (x, c), c \in bR \text{ reeler Parameter}}
+        Wählt man ein festes $c \in \bR$, so erhält man eine \underline{siguläre}
+        Lösung.
+        \ssect{Beispiel: $y' = - \frac{x}{y}$}
+        \ilmath{y' = - \frac{x}{y}}
+        y(x) ist nicht die Funktion
+        \ilmath{\boxed{y \neq 0}}
+        \ssect{Definition:}
+            \ilmath{g^{(n)} (x) = f(x, y(x), y'(x), y^{(n+1)} (x))}
+            gem. DGL n-te Lösung 
+            \ilmath{g(x): I \rightarrow \bR}
+            Allg. Lösung.
+            \ilmath{y (x, C_1, C_2, \ldots, C_3)} i
+            mit $c_1, c_2, \ldots c_n \in \bR$
+            Für konkrete Werte für C: erhält partielle Lösung.
+            \\
+            \underline{Anfangswert-Aufgabe}
+            \\
+            (spezille Bedingungen zur Bestimmung)
+            $y(x_0) r_0, y(x_1) = r_1, \ldots$
+        \ssect{Methode: Trennung der Veränderlichen}
+            für DGL. $y' = f(x)$
+            \\
+            Beispiel:
+            \ilmath{y' = y \implies \frac{dx}{dy} = y \implies dy = ydx}
+            \\
+            \paragraph{1. Fall} 
+            \ilmath{y \equiv 0}
+            RS: y' = 0, LS: y = 0, RS=LS 
+            $\implies y \equiv 0$ ist eine Lösung
+            \paragraph{2. Fall} 
+            \ilmath{y \neq 0 \implies dx = \frac{dy}{y} = \int \frac{dy}{y} = \int dx}
+            \ilmath{&\implies ln (y) = x + k, k \in \bR \implies ln = e^{x+k} = e^x + \underbrace{e^k}_{>0} \\
+                    &\implies y = C \* e^x, c \in \bR \setminus \Set{0}} 
+    
+            \ilmath{y' = y}
+            hat die allgemeine Lösung:
+            \ilmath{y(x) = C \* e^x, C \in \bR}
+
+        \ssect{Beispiel: Scheinlösungen bei Formalem lösen}
+            \ilmath{y' = \sqrt{y}, y \geq 0 \\
+                    y = \frac{1}{4} (x+c)^2, c \in \bR}
+            Probe:
+            \ilmath{y' = \frac{1}{4} 2 (x+c), \sqrt{y} = \frac{1}{2} |x+c|, x \geq -c}
+
+        \ssect{Beispiel: Anfangswertaufgabe}
+            \ilmath{T(0) &= 90 \\
+                    T(1) &= 80}
+            Raumtemperatur 20.
+            ges. t bei der T(t) = 40.
+            \ilmath{T'(t) ~ T-20, T'(t) = k (T-20)}
+            TdV:
+            \ilmath{\frac{dT}{dt} = k(T-20) \overset{\rightarrow}{T \neq 20} \int \frac{dT}{T-20} = \int k dt \implies kt +K\implies |T-20| = e^{kt} e^x \\
+                    \implies T-20 = \pm e^K \* e^{kt} \implies T-20 = C e^{kt}, C \in \bR \setminus \Set{0}}
+            \ilmath{\boxed{T=20 + C e^{kt}}, C \in \bR}\\ 
+            \ilmath{T(0) &= 90 = 20 + C e^{k0} \implies C = 70 \\
+            T(1) &= 80 = 20 + C e^(k1) \implies c^k = \frac{6}{7}}
+            \ilmath{T(t) = 20 + 70 (\frac{6}{7})^t}
+            \ilmath{T(t) = 40 \implies t = \frac{ln \frac{2}{7}}{ln \frac{6}{}}}
+        \ssect{Beispiel: Populationswachstum}
+            n(t): größe der Population \\
+	    \ilmath{n'(x) ~ n(t) ~ \text{ressourcen} \implies N' = \alpha \* N (a-n)}
+            Lösen mit Trennung der Veränderlichen.
+            \ilmath{\frac{dn}{dt} = \alpha \* (a-n) \implies \frac{dn}{N (a-n)} = \alpha dt}
+            Lösung:
+            \ilmath{\int (\frac{\frac{1}{\alpha}}{n} + \frac{\frac{1}{\alpha}}{a-n}) = \alpha dt}
+            \ilmath{\implies \frac{N}{a-n} = C e^{\alpha dt}}
+            \ilmath{n(t) = \frac{aC}{e^{-\alpha t} C}}
+\end{document} 
+

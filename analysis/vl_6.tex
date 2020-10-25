@@ -1,0 +1,101 @@
+\documentclass{../tudscript}
+\title{Mathe VL 6}
+\author{Jakob Krebs}
+
+\begin{document}
+    \ilmath{|x-a| < \delta}
+    \ilmath{|x-a| = \begin{cases} x-a; x-a \geq 0 \\
+                                  -(x-a); x-a < 0 \end{cases} = \begin{cases} x-a ; x \geq a \\
+                                                                                 a-x ; x < a \end{cases}}
+    \ilmath{x &\geq a : x-a < \delta \implies x < a+ \delta\\
+            x &< a : a-x < \delta \implies a - \delta < x}
+    \ilmath{\implies &a \leq x < a \\
+                     &a - \delta < x < a}
+    Ergebnis:
+    \ilmath{|x-a| < \delta \iff a- \delta < x < a + \delta \iff x \in (a- \delta; a + \delta)}
+    x liegt in der Deltaumgebung von a.
+    \ilmath{|f(x) - f(a)| < \epsilon \iff }
+    f (x) liegt in der $\delta$Umgebung von f(a)
+    \ilmath{\iff f(x) \in (f(a)- \epsilon ; f(a) + \epsilon)}
+
+    \sect{Informationsmaß}
+       siehe Hilfsfolien.
+    \sect{Verhalten stetigen Funktionen auf Intervallen}
+    \ilmath{D (x) = \begin{cases} 1 ; x \in \bQ \\
+                                  0 ; x \in \bR \setminus \bQ \end{cases}}
+    stetig für welche a?
+        \ssect{a sei rational}
+            a rational, fest, sei $\epsilon = \frac{1}{2}$.
+            Behauptung:
+            \ilmath{\exists \delta > 0: \forall x \in D: |x-a| < \delta \implies |D(x) - \underbrace{D(a)}_{=1}| < \frac{1}{2}}
+            Sei $\delta$ bel., $\delta > 0$, x irrational, fest
+            \ilmath{|x-a| < \delta \implies |0-1| = 1 < \frac{1}{2} \text{Widerspruch!!}}
+            $\implies$ D ist nicht stetig für alle $a \in \bR$
+        \ssect{a sei irrational}
+            a irrational, fest. sei $\delta  > 0$, bel. x rational, fest. $\epsilon = \frac{1}{2}$ fest
+            \ilmath{|x-a| < \delta \implies |\underbrace{D(x)}_{=1} - \underbrace{D(a)}_{= 0}| < \frac{1}{2} = \epsilon \implies 1 < \frac{1}{2} \text{Widerspruch!!}}
+            $\implies$ D ist nicht stetig für alle $a \in \bR \setminus \bQ$.
+            D(x) ist nirgens stetig.
+
+    \sect{Zwischenwertsatz}
+        Es sei 
+        \ilmath{f: [a, b] \rightarrow \bR, \text{ stetig}}
+        f besitzt in dem abgeschlossenem Intervall a, b ein globales Maximum und ein globales Minimum.
+        Beide Vorbemerkungen sind wichtig.
+
+        \ssect{abgeschlossenes Intervall}
+            \ilmath{[a,b] = \Set{x \in \bR \mid a \leq x \leq b}}
+        \ssect{globales Maximum/Minimum}
+        \begin{tikzpicture}
+	        \draw[->] (-0.2,0) -- (10.2,0) node[right] {$x$};
+	        \draw[->] (0,-4.2) -- (0,4.2) node[above] {$y$};
+	        \draw[scale=1,domain=0.65:9.3,smooth,variable=\x,blue] plot ({\x},{ 0.05*(\x-5.1)^4 -0.75*(\x-5.1)^2 +0.29*(\x-5.1) + 0.63 });
+	        \node[label=below:$a$] at (0.8, 0) (a) {$|$};
+	        \node[label=left:$f(x_M)$] at (0, 3.45) (fxM) {$-$};
+	        \node[label=above:$x_m$] at (2.3, 0) (xm) {$|$};
+	        \node[label=left:$f(x_m)$] at (0, -3) (fxm) {$-$};
+	        \node[label=below:$a_1$] at (5.3, 0) (a1) {$|$};
+	        \node[label=above:$a_2$] at (7.7, 0) (a2) {$|$};
+	        \node[label=below:$b$] at (8.9, 0) (b) {$|$};
+        \end{tikzpicture}
+        
+        
+        \ssect{Satz}
+            Sei
+            \ilmath{f [a, b] \rightarrow \bR}
+            stetig mit
+            \ilmath{x_m &: \text{globale Minimalstelle} \\
+                    x_M &: \text{golabel Maximalstelle}}
+            sei 
+            \ilmath{\hat{y} \in [f(x_m) ; f(x_M)]}
+            Dann existiert ein
+            \ilmath{\hat{x} \in [a ; b] \text{ mit } \hat{y} = f(\hat{x})}
+            
+    \sect{Folgerung: Nullstellensatz}
+        Sei 
+        \ilmath{f: [a;b] \rightarrow \bR, \text{stetig}, f(a) \cdot f(b) < 0}
+        Dann hat f(x) in dem Intervall [a; b] eine Nullstelle, d.h.
+        \ilmath{\exists x \in [a;b]: f(x) = 0}
+
+        \ssect{Beweis mittels Bisektionsverfahren}
+	    für $f(a) < 0 \text{ und } f(b) > 0$
+            \ilmath{f(\frac{a_1 + b_1}{2}) = \begin{cases} 0 ; \frac{a_1 + b_1}{2} \text{ ist die gesuchte Nullstelle} \\
+                                                          <0 ; a_2 = \frac{a_1 + b_1}{2}, b_2 = b_1 \\
+                                                          >0 ; a_2 = a_1, b_2 = \frac{b_1 + a_1}{2} \end{cases}}
+
+            Betrachte: $(a_n)  = a_0 \leq a_1 \leq a_2 \leq \ldots$
+            $(a_n)$ ist smf und konvergent.
+            \ilmath{\lim_{n \to \infty} a_n = c \text{ ex.}}
+            
+            Betrachte: $(b_n) = b_0 \leq b_1 \leq b_2 \leq \ldots$
+            $(b_n)$ ist smf und konvergent.
+            \ilmath{\lim_{n \to \infty} b_n = d \text{ ex.}}
+  
+
+            \ilmath{\lim_{n \to \infty} |a_n - b_n| = \lim_{n \to \infty} \frac{|a-b|}{2^{n+1}} = |a-b| \lim_{n \to \infty} \frac{1}{2^{n+1}}\\
+                    = 0} 
+
+            \ilmath{f(c) = f(\lim_{n \to \infty} a_n = \lim_{n \to \infty} f(a_n)}
+            \ilmath{f(c) = f(\lim_{n \to \infty} b_n = \lim_{n \to \infty} f(b_n)}
+\end{document}
+

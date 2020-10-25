@@ -1,0 +1,104 @@
+\documentclass{../tudscript}
+\author{Jakob Krebs}
+\title{Mathe VL 11}
+
+\begin{document}
+    \ssect{Nachtrag: Nullmenge}
+        Eine Aussage $A(x)$ gilt für $x \in \bR$. bzw. $x \in [a; b]$,
+        oder $x \in \bR \setminus M$, bzw. $x \in [a;b] \setminus M$.
+        $M$ ist Nullmenge.
+        $A (x)$ gilt für \underline{fast alle} $x \in bR$ bzw. $x \in [a;b]$
+    \ssect{Definition: Nullmenge}
+        \ilmath{M \subset \bR}
+        heißt \underline{Nullmenge}, wenn gilt:
+        \ilmath{\forall \epsilon > 0 \text{ex. Intervalle } J_1, J_2, \ldots \subseteq \bR},
+        sodass
+        \begin{enumerate}
+        \item \ilmath{M \subseteq \bigcup_{k = 1}^\infty J_k = J_1 \cup J_2 \cup \ldots}
+        \item \ilmath{\sum_{k = 1}^\infty |J_k | \subseteq \epsilon},
+               wobei $|J_k |$ die länge des Intervalls $J_k$ beschreibt.
+        \end{enumerate}
+
+        \sssect{Bemerkung}
+            abzählbar viele Intervalle: endliche viele oder abzählbar unendlich viele.
+        \sssect{Beweis}
+            Sei $\epsilon > 0$ fest, beliebig.
+            %%TODO tikz
+            Bedingung: M ist Nullmenge.
+            wähle
+            \ilmath{J_k = [x_k - \frac{\epsilon}{6}, x_k + \frac{\epsilon}{6}]}
+            Dann gilt:
+            \ilmath{|J_k| = \frac{\epsilon}{3}, x_k \in J_k}
+            Nullmengen sind Nullmengen.
+    \ssect{Bemerkung: abzählbar, unendliche Mengen}
+        Abzählbar unendliche Mengen sind Nullmengen.
+        \sssect{Beweis}
+            \ilmath{M = \Set{x_1, x_2, \ldots}}
+            Sei $\epsilon > 0$ beliebig, fest.
+            %%TODO tikz
+            Gesamtlänge:
+            \ilmath{\sum_{k = 1}^\infty \frac{\epsilon}{2^k} = \epsilon \sum_{k = 1}^\infty (\frac{1}{2})^k = \epsilon (\frac{1}{1 - \frac{1}{2}} - 1) = \epsilon}
+            Intervalle:
+            \ilmath{J_k = [x_k - \frac{\epsilon}{2^{k+1}}, x_k + \frac{\epsilon}{2^{k+1}}]}
+        \sssect{Bemerkung}
+            Es gibt abzählbre Mengen, die Nullmengen sind,
+            z.B. die Cantor-Menge (Teilmenge von $[0, 1]$)
+            %%TODO tikz
+            Die nicht gelöschten Punkte bilden die Canto-Menge.
+
+    \ssect{Eigenschaften von Integralen}
+        \ssect{Definition}
+            \ilmath{\int^{c}_b f(x) dx = - \int_{c}^b f(x) dx}
+    \ssect{Mittelwertsatz der Integralrechnung}
+        Sei $f$ auf $[a, b]$ stetig.
+        %%TODO tikz
+        Dann existiert ein $z \in [a, b]$ mit
+        \ilmath{\in_{a}^b f(x) dx = f(z) \* (b-a)}
+    \ssect{1. Hauptsatz der Differential- und Integralrechnung}
+        Sei $f [a, b] \rightarrow \bR$ stetig. 
+        \ilmath{\tilde{F}: [a, b] \rightarrow \bR, x \mapsto \int_{a}^x f(x) dt}
+        $\tilde{F}$ ist auf $[a, b]$ differenzierbar und es gilt:
+        \ilmath{\tilde{F}' (x) = f(x)}
+        für alle $x \in (a, b)$
+        \sssect{Beweis}
+            Sei $x_0 \in (a, b)$ beliebig, fest.
+            %%TODO WARN wahrscheinlich falsche indizes
+            \ilmath{\tilde{F}' (x_0) &= \lim_{x \to x_0}\frac{\tilde{F} (x) - \tilde{F} (x_0)}{x - x_0} \\
+                                     &= \lim_{x \to x_0}\frac{\int_{a}^x f(t) dt - \int_{a}^{x_0} f(t) dt}{x-x_0} \\
+                                     &= \lim_{x \to x_0}\frac{\int_{a}^{x_0} f(t) dt + \int_{b}^{x} f(t) dt - \int_{a}^{x_0} f(t) dt}{x - x_0} \\
+                                     &= \lim_{x \to x_0}\frac{\int_{x_0}^x f(t) dt}{x - x_0}}
+            Laut Mittelwertsatz existiert ein $z \in (x_0, x)$ mit
+            \ilmath{\tilde{F}' (x_0) = \lim_{x \to x_0} \frac{f(x) (x-x_0)}{x - x_0} = f(x_0)}
+        \sssect{Bemerkung}
+            $\tilde{F}$ ist eine spezielle Stammfunktion.
+    \ssect{Definition: Stammfunktion}
+        Eine Funktion $F(x)$ heißt \underline{Stammfunktion} zu $f(x)$ im Intervall $(a, b)$, wenn gilt:
+            \ilmath{\forall x \in (a, b): F'(x) = f(x)}
+        \ssect{Bemerkung}
+            Wenn $F_1' (x) = F_2' (x) \implies f(x) - f(x) = 0 \implies (F_2' (x) - F_1')' = 0 $
+            für alle x, dann $F_1 (x) = F_2 (x) + c \mid c \in \bR$
+    \ssect{Definition: unbestimmtes Integral}
+        Die Menge aller Stammfunktionen F(x) zu f(x) heißt \underline{unbestimmtes Integral}.
+        \sssect{Bemerkung}
+            Und ist kein Integral.
+            Screibweise:
+            \ilmath{\int f(x) dx = \Set{F(x) \mid F'(x) = f(x)}}
+            \ilmath{\int f(x) dx = F(x) +c , c \in \bR}
+    \ssect{2. Hauptsatz der Differential- und Integralrechnung}
+        Sei $f: [a, b] \rightarrow \bR$ stetig und F eine Stammfunktion zu f.
+        Dann gilt:
+        \ilmath{\int_a^b f(x) dx = F(b) - F(a)}
+        \sssect{Beweis}
+            \ilmath{\int_a^b f(x) dx &= \int_a^b f(t) dt - \int_a^a f(t) dt\\
+                                     &= \tilde{F} (b) - \tilde{F} (a) \\
+                                     &= F(b) + c - F(a) + c \\
+                                     &= F(b) - F(a)}
+    \ssect{Integrationsregeln}
+        Integrationsregeln entstehen aus Ableitungsregeln
+        \begin{enumerate}
+            \item $(F(x) + G(x))' = F'(x) + G'(x) = \int f(x) dx + \int g(x) dx$
+            \item $(\frac{1}{a} \*F(ax +b))' = \frac{1}{a} \* F'(ax +b) \* a = F'(ax +b)$
+                  $\implies \int F(ax +b) dx = \frac{1}{a} F(ax + b) +c$
+        \end{enumerate}
+
+\end{document}

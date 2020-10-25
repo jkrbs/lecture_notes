@@ -1,0 +1,191 @@
+\documentclass{../tudscript}
+\author{Urs Kober}
+\title{Mathe VL 3}
+
+\begin{document}
+	
+	\ssect{Bemerkung}
+		Oft muss man $x_n$ umformen bevor die GWS anwendbar sind.
+		
+		\sssect{Beispiel}
+			\ilmath{
+				\lim_{n \to \infty}& \underbrace{\frac{11+n}{9-n}}_{x_n} ? \\
+				& \frac{11+n}{9-n} = \frac{n(\frac{11}{n}+1)}{n(\frac{9}{n}-1)}\\
+				\lim_{n \to \infty}& (\frac{11}{n}+1) = 1 \\
+				\lim_{n \to \infty}& (\frac{9}{n}-1) = -1 \\
+				\lim_{n \to \infty}& x_n = \frac{1}{-1} = -1 \\
+			}
+			\ilmath{
+				\underbrace{\infty}_{uneig. GW} &= \lim_{n \to \infty} (11+n) + \lim_{\underbrace{n \to \infty}_{ex. nicht}} n = \xcancel{11+\dots} \\
+				\underbrace{- \infty}_{uneig. GW} &= \lim_{n \to \infty} (9-n)
+			}
+		
+	\ssect{Lemma: Quetschlemma}
+		Seien $(x_n), (y_n)$ Folgen mit
+		\ilmath{\lim_{n \to \infty} x_n =  \lim_{n \to \infty} y_n = a}
+		und es gelte $x_n \leq z_n \leq y_n$ für \emph{"fast alle"} $n \in \bN$\\
+		D.h. es ex. ein $N \in \bN$, so dass für alle $n \geq N$ die Ungleichung gilt. (Endlich viele Ausnahmen erlaubt.) \\
+		
+		\ilmath{ \text{Dann gilt für die Folge $(z_n)$: } \boxed{ \lim_{n \to \infty} z_n = a } }
+		
+		\sssect{Beispiel}
+			Ist die Folge $((-1)^n \frac{1}{n})$ konvergent?
+			\ilmath{
+				- \frac{1}{n} \leq (-1)^n \frac{1}{n} \leq + \frac{1}{n} \\
+				& \lim_{n \to \infty} (- \frac{1}{n}) = -1 \cdot 0 = 0 \\
+				& \lim_{n \to \infty} \frac{1}{n} = 0 \im \lim_{n \to \infty} (-1)^n \frac{1}{n} = 0
+			}
+			
+		\sssect{Beispiel}
+			$x_n = \frac{a^n}{n!}$ mit $a \in \bR$, $a$ fest, $a > 0$ \\
+			
+			\ilmath{\lim_{n \to \infty} \frac{a^n}{n!} = 0}
+			denn \\
+			\ilmath{
+				 x_n &= 0 \leq \frac{a^n}{n!} \\
+				 \lim_{n \to \infty} x_n &= 0 \leq \frac{a^n}{n!} \leq \underbrace{\overbrace{y_n}^{\text{gesucht}}}_{\lim_{n \to \infty} y_n = 0} \\
+			} \\
+			für hinreichend großes $n$.\\
+			
+			\ilmath{
+				\frac{a^n}{n!} = \frac{a}{n} \cdot \frac{a^{n-1}}{(n-1)!} & \leq \frac{1}{2} \cdot \frac{a^{n-1}}{(n-1)!} \\
+				& \frac{1}{2} \cdot \frac{a}{n-1} \cdot \frac{a^{n-2}}{(n-2)!} \leq \frac{1}{2} \cdot \frac{1}{2} \cdot \frac{a^{n-2}}{(n-2)!}  \\
+				y_n = \left(\frac{1}{2}\right)^{\underline{n-k}} \cdot \frac{a^{\underline{k}}}{(\underline{k})!} \text{ $k$ fest} & \\
+			}
+		
+		Es gilt: $\frac{a^n}{n!} \leq y_n$ für hinreichend großes n
+		und
+		\ilmath{
+			\lim_{n \to \infty} y_n &= \lim_{n \to \infty} \underbrace{(\frac{1}{2})^{n-k}}_{(\frac{1}{2})^n \cdot (\frac{1}{2})^{-k}} \cdot \underbrace{\frac{a^k}{k!}}_{\text{konst.}} \\
+			&= \lim_{n \to \infty} (\frac{1}{2})^n \cdot \lim_{n \to \infty} (\frac{1}{2})^{-k} \cdot \lim_{n \to \infty} \frac{a^k}{k!} \\
+			&= 0 \cdot (\frac{1}{2})^{-k} \cdot \frac{a^k}{k!} \\
+			&\underline{= 0}
+		}
+	
+	\ssect{Grenzwerte Rekursiv definierter Folgen}
+		Kann man oft durch Lösen einer "Fixpunktgleichung" berechnen. \\
+		
+		$x_0, x_{n+1} = f(x_n,\dots)$ \\
+		
+		Idee: Falls $(x_n)$ konvergent ist, muss gelten: \\
+		\ilmath{\lim_{n \to \infty} x_n = \lim_{n \to \infty} x_{n-1} = \lim_{n \to \infty} x_{n-2} = \dots = a}
+		
+		\sssect{Beispiel}
+			$(x_n) x_0 = \frac{7}{5}, x_{n+1} = \frac{1}{3} (x^2_n + 2)$ \\
+			Ü: ist mon. fallend, beschränkt -> konvergent \\
+			
+			\ilmath{
+				\lim_{n \to \infty} x_n = a, \lim_{n \to \infty} x_{n+1} = a& \\
+				\lim_{n \to \infty} x_{n+1} = \lim_{n \to \infty} \frac{1}{3} (x^2_n + 2) &= \frac{1}{3} \lim_{n \to \infty} (x^2_n + 2) \\
+				&= \frac{1}{3} (\underbrace{(\lim_{n \to \infty} x_n)^2}_{a} + 2)
+			}
+	
+		\paragraph{Fixpunktgleichung}
+			$a = \frac{1}{3} (a^2 + 2)$ ges: a \\
+			$3a = a^2 + 2 \iff a^2 - 3a + 2 = 0 \iff a_{1,2} = \frac{2}{3} \pm \sqrt{\frac{9}{4} - \frac{8}{4}} = \frac{3}{2} \pm \frac{1}{2}$ \\
+			Lösungen sind $a_1 = 2, a_2 = 1$ \\
+			Nur eine Lösung kann Grezwert sein, also betrachte Startwert und monotonieverhalten.. \\
+			
+			$\boxed{\im \lim_{n \to \infty} x_n = 1}$
+		
+	\ssect{Beispiel}
+		$(x_n)$ mit $x_0 := c$ ($c \in \bR_{+} \text{ und } c > 0$, $c$ fest), $x_{n+1} := \frac{1}{2} (x_n + \frac{c}{x_n})$ \\
+		(1) $(x_n)$ beschränkt \\
+		(2) $(x_n)$ monoton \\
+		$\im$ also \underline{$(x_n)$ konvergent.} (wichtige Vorraussetzung!) \\
+		
+		Sei \ilmath{\lim_{n \to \infty} x_n = a} Dann
+		
+		\ilmath{
+			\underbrace{\lim_{n \to \infty} x_{n+1}}_{a} &= \lim_{n \to \infty} \frac{1}{2} (x_n + \frac{c}{x_n}) \\
+			&= \boxed{\frac{1}{2} (a + \frac{c}{a}) = a} \text{ Fixpunktgleichung} \\
+			&\iff 2a = a + \frac{c}{a} \iff a = \frac{c}{a} \\
+			&\iff a^2 = c \iff a \ \sqrt{c}
+		}
+		Wir haben \ilmath{\lim_{n \to \infty} x_n = \sqrt{c}} erhalten \\
+		
+	\ssect{Bemerkung}
+		Der Nachweis der Konvergenz der rekursiven Folge darf \underline{NICHT} weggelassen werden, \\
+		denn z.B.: $x_0 := 2$, $x_{n-1} := x^2_n$ ist divergent. \\
+		\ilmath{
+			\lim_{n \to \infty} x_n = \infty
+		}
+	
+		Ausnahme:
+		\ilmath{
+			\lim_{n \to \infty} x_n = a \\
+			\underbrace{\lim_{n \to \infty} x_{n+1}}_{a} = \underbrace{\lim_{n \to \infty} x^2_n}_{a^2} \\
+			\im a \in \set{0, 1}
+		}
+	
+	\ssect{Definition}
+		Sei $(a_k)$ eine reellwertige/komplexweritge Folge
+		\ilmath{
+			\underline{s_n} = \sum_{k=0}^{n} a_k = a_0 + a_1 + \dots + a_n
+		}
+		heißt n-te Partialsumme\\
+			
+		$(s_n)$ heißte (undendliche) \underline{Reihe}
+		
+		Schreibweise: $(s_n)^{\infty}_{n=0}$ bzw.
+		\ilmath{
+			(\sum_{k=0}^{n} a_k)^{\dots}_{\dots} \text{ bzw. } \sum_{k=0}^{\infty} a_k
+		}
+		sind Symbole für die Reihe.
+		
+	\ssect{Bemerkung}
+		Reihen sind spezielle Folgen, also konvergent oder divergent.
+		
+	\ssect{Definition}
+		Für eine konvergent Reihe wird der Grenzwert auch \underline{Wert der Reihe} genannt.
+		
+		Schreibweise:
+		\ilmath{
+			\lim_{n \to \infty} s_n = \lim_{n \to \infty} \sum_{k=0}^{n} a_k \text{ bzw. } \sum_{k=0}^{\infty} a_k
+		}
+		Symbol für den Wert der Reihe, falls er existiert.
+		
+	\ssect{Beispiel}
+		Teleskop-Reihe
+		\ilmath{
+			\sum_{k=1}^{\infty} (\frac{1}{k} - \frac{1}{k+1})
+		}
+		ist konvergent, Wert der Reihe ist
+		\ilmath{
+			\sum_{k=1}^{\infty} (\frac{1}{k} - \frac{1}{k+1}) = 1
+		}
+		\ilmath{
+			&\lim_{n \to \infty} s_n = \lim_{n \to \infty} \sum_{k=1}^{\infty} (\frac{1}{k} - \frac{1}{k+1}) = \lim_{n \to \infty} \left((1-\frac{1}{2}) + (\frac{1}{2} - \frac{1}{3}) + (\frac{1}{3} - \frac{1}{4}) + \dots + (\frac{1}{n} - \frac{1}{n+1})\right) \\
+			&\lim_{n \to \infty} (1 - \frac{1}{n+1}) = 1 - 0 = 1
+		}
+		(setze Klammern so um das viele Terme sich selbst "wegkürzen")
+		
+	\ssect{Beispiel}
+		Geometrische Reihe\\
+		\ilmath{
+			\sum_{k=0}^{\infty} q^k \text{ ist für } |q| < 1 \text{ konvergent,}
+		}
+		Wert der Reihe für $|q| < 1$
+		\ilmath{
+			\sum_{k=0}^{n} q^k = \underline{\frac{1}{1-q}} \text{ für } |q| < 1
+		}
+		Berechnung
+		\ilmath{
+			s_n &= q^0 + q^1 + \dots + q^n | \cdot q \\
+			q s_n &= q^1 + q^2 + \dots + q^{n+1} \\
+			(1-q) s_n &= q^0 - q^{n+1} \\
+		}
+		Es folgt
+		\ilmath{
+			s_n &= \frac{1-q^{n+1}}{1-q} = \frac{1}{1-q} (1-q^{n+1}) \\
+			\im \lim_{n \to \infty} s_n &= \frac{1}{1-q} \lim_{n \to \infty} (1-q^{n+1}) \\
+			&= \frac{1}{1-q} (1- \lim_{n \to \infty} q^{n+1})
+		}
+	
+	\ssect{Definition}
+		Rechenregeln für Reihen: $\frac{1}{1-q}$\\
+		\underline{Konvergente} Reihen kann man addieren, subtrahieren mit einem Skalar multiplizieren, wie endliche Summen. \\
+		
+		ABER: Das gilt im Allgemeinen nicht für das Multiplizieren.
+
+\end{document}

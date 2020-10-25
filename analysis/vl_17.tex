@@ -1,0 +1,116 @@
+\documentclass{../tudscript}
+\author{Jakob Krebs}
+\title{Mathe VL 17}
+
+\begin{document}
+\sect{Funktionen mehrerer Veränderlicher}
+    \ssect{Defintion: Funktion mehrerer Veränderlicher}
+        Sei
+        \ilmath{X \subseteq \bR^n}
+        Die Abbildung
+        \ilmath{f: X \rightarrow \bR (x_1, x_2, \ldots, x_n) \mapsto f(x_1, x_2, \ldots, x_n)}
+        heißte Reelle Funktion in n reellen Veränderlichen $$x_1, x_2, \ldots, x_n$$.
+    \ssect{Bemerkung: Definitionsbereich}
+        \ilmath{D (f) = X?, W(f)?, \text{grafische Darstellung?}}
+
+        \sssect{Beispiel}
+            \ilmath{n = 2, z = f(x_1, x_2) = f(x, y) = \sqrt{4-(x^2 + y^2)}}
+            \ilmath{D(f) = \Set{(x, y) \in \bR^2 \mid x^2 + y^2 \leq 2^2}}
+            \ilmath{W(f) = \Set{r \in \bR \mid 0 \leq r \leq 2}}
+
+Grafische Darstellung:
+\begin{center}
+\begin{tabular}{ll}
+1. Weg & 2. Weg \\\hline
+mittels Höhenlinien & Darstellung in xyz Koordinatensystem\\
+$\Set{(x, y) \mid f(x, y) = c(c \in \bR const.)}$ &\\
+\end{tabular}
+\end{center}
+\ilmath{\sqrt{4- (x^2+y^2)} = c \iff x^2 + y^2 = 4-c^2}
+
+\begin{center}
+%%TODO circle plot
+
+%%TODO 3d circle plot
+\end{center}
+
+\ssect{Definition: Grenzwert}
+    Sei
+    \ilmath{f: X \rightarrow \bR, X \subseteq \bR^n, \underline{x_0} \in X}
+    in der Umgebung von $x_0$ definiert. a heißt Grenzwert von f an der STelle $x_0$,
+    wenn gilt:
+    \ilmath{\forall (\underline{x_n}): x_n \in X \land \lim_{n \to \infty} \underline{x_1} = \underline{x_0} \\
+            \implies \lim_{n \to \infty} f(\underline{x_n}) = a}
+
+Schreibweise:
+        \ilmath{\lim_{x \to x_0} f(\underline{x_n})}
+        mit $x \in X$
+\sssect{Grenzwertsätze}
+    \ilmath{\lim_{x \to x_0} (f \underset{\div}{\overset{\cdot}{\pm}}g)(x) = \lim_{x \to x_0} f(x)  \underset{\div}{\overset{\cdot}{\pm}} \lim_{x \to x_0} g(x)}
+
+
+\paragraph
+punktierte $\epsilon$-Umgebung von $x_0$ für (n = 2)
+%%TODO tikz
+
+\ilmath{\Set{(x,y) \mid (x-x_0)^2 + (y-y_0)^2 < \epsilon^2} \\
+        \Set{(x,y) \mid (x_1 - x_0)^ + (x_2 - x_0)^2 + \ldots + (x_n - x_0)^2 < \epsilon^2}}
+\ssect{Definition: Stetigkeit}
+    Sei
+    \ilmath{f: X \rightarrow \bR, X \subseteq \bR^n}
+    f ist in einer Umgebung von $x_0$ definiert, f ist stetig in $x_0$, wenn gilt:
+    \begin{enumerate}
+        \item $f(\underline{x_0}) ex.$
+        \item $\lim_{x \to x_0} f(x) ex.$
+        \item $\lim_{x \to x_0} f(x) = f(\underline{x_0})$
+    \end{enumerate}
+    
+\ssect{Beispiele}
+\sssect{1.}
+    \ilmath{f(x,y) = x^2 - y^2, (x, y) bel.}
+    %%TODO plot
+    \begin{enumerate}
+    \item $\lim_{(x, y) \to (x_0, y_0)} f(x, y) = \lim_{x \to x_0} x^2 - \lim_{y \to y_0} y^2 = x_{0}^2 - y_{0}^2 $
+        \ilmath{\lim_{x_n \to \infty} x_n = x_0}
+        \ilmath{\lim_{y_n \to \infty} y_n = y_0}
+    \item $f(x_0, y_0) = x_{0}^2 - y_{0}^2$
+    \item fw = gw
+    \end{enumerate}
+\sssect{2.}
+    \ilmath{f(x,y) = \frac{x^2 - y^2}{x^2 + y^2}}
+    ist bei $(x_0, y_0) = (0,0)$ nicht stetig, an allen anderen Stellen stetig.
+    $f(0,0)$ ex. nicht. f hat an der Stelle $(0,0)$
+    
+    Falls der GW ex., muss für alle Folgen, die gegen $(0,0)$ konvergieren, die 
+    Folge der Funktionswerte gegen den GW konvergieren.
+    \ilmath{\lim_{n \to \infty} (\frac{1}{n} + 0) = \lim_{n \to \infty} \frac{1}{n},  \lim_{n \to \infty} 0 = (0, 0)\\
+\lim_{n \to \infty (0, \frac{1}{n}) = (0, 0)}}
+Für (1) Folge der Funktionswerte:
+    \ilmath{\lim \frac{(\frac{1}{n})^2 - 0^2}{(\frac{1}{n})^2 + 0^2} = \lim_{n \to \infty} 1 = 1}
+Für (2) Folge der Funktionswerte:
+    \ilmath{\lim \frac{(0^2 -\frac{1}{n})^2}{(\frac{1}{n})^2 + 0^2} = \lim_{n \to \infty} -1 = -1}
+    GW ex. nicht!\\
+    Aber es gibt Funktionen, für die Folge der Funktionswerte für die alle \newline
+ Folgen auf der x bzw. y Achse gegen den gleichen Wert konvergieren, \newline die aber trotzdem keine Grenzwert haben.
+        
+\sssect{3.}
+    \ilmath{f(x,y) = \frac{xy^2}{x^2 + y^2}}
+%%TODO fill the gap
+
+Quetschlemma:
+    
+
+\ssect{Partielle Ableitung}
+%%TODO tikz
+Richtungsableitung in Richtung der Koordinatenachsen heißen partielle Ableitungen,
+die mit bekannten Ableitungsregeln berechnet werden.
+\sssect{Beispiel}
+\ilmath{f_x = \frac{\delta f}{\delta x} \\
+        f_y = \frac{\delta f}{\delta x} \\
+        f_{yx} = \frac{\delta f}{\delta y} \frac{\delta f}{\delta x}\\ 
+        f_{xy} = \frac{\delta f}{\delta x} \frac{\delta f}{\delta y}}
+
+\ilmath{f(x,y) = x^2 \cdot y - e^{xy} \\
+        f_x = 2yx - y \cdot e^{xy}\\
+        f_y = x^2 - x \cdot e^{xy}}
+\end{document}

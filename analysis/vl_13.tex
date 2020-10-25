@@ -1,0 +1,69 @@
+\documentclass{../tudscript}
+\author{Jakob Krebs}
+\title{Mathe VL 13}
+
+\begin{document}
+    \ssect{Fourier-Analyse}
+
+        \sssect{Definition: Periodenlänge}
+        $f(x)$ heißt l-perodisch (l>0), wenn gilt:
+        \ilmath{\forall x \in \bR: f(x+l) = f(x)}    
+        \sssect{Bemerkung}
+            Es genügt $2 \pi$ periodische Funktionen zu betrachten, denn
+            $f(x)$ ist l-periodisch $\implies$
+            \ilmath{g(x) = f(x \* \frac{l}{2 \* \pi})}
+            Wir betrachten nurnoch $2\* \pi$ periodische Funktionen.
+            \\
+            $\cos x$ ist $2\* \pi$ periodisch
+            
+            %%TODO fix this ugly shit
+            \plot{cos (x)}
+
+            \ilmath{\cos (t \cdot \frac{2 \pi}{\boxed{l}}) \text{ ist l und 2 $\pi$ periodisch}}
+        \sssect{Bemerkung}
+            Die Funktionen $\cos (kt)$ und $\sin (kt)$ mit $k \in \Set{0, 1, \ldots}$ sind $2 \pi$ periodisch.
+        \sssect{Bemerkung: trigonometrisches Polynom}
+            \ilmath{\frac{a_0}{2} \* 1 + \sum_{k = 1}^n a_k \* \cos (kt) + b_k \* \sin (kt)}
+            trigonometrisches Polynom der Ordnung n. dalls $a_n\neq 0$ oder $b_n \neq 0$
+    \ssect{Fourier-Theorie}
+        kontinueirlich -> Fourierreihen, diskret -> DFT, FFT
+        \\
+        Fourier-Synthese: gg. $a_k, b_k$. ges. trigonometrisches Polynom.
+        Fourier-Analyse:  gg. $f(x)$, ges. $a_k, b_k$, sodass $f(x)$ näherungsweise 
+        durch ein trigonometrisches Polynom beschrieben werden kann.
+        
+        \sssect{Bemerkung}
+            $C[0, 2 \pi]$ ist der $\bR-VR$ der auf $[0, 2 \pi]$ stetigen Funktionen.
+            $f, g \in C[0, 2\pi]$
+            \begin{itemize}
+                \item $f+g: t \mapsto f(t) + g(t)$
+                \item $rf: t \mapsto r \* f(t), r \in \bR$
+            \end{itemize}
+            \ilmath{W = span \Set{1, cos (t), cos(2t), \ldots, sin (t), sin(2t), \ldots}}
+            ist ein UVR von $C[0, 2\pi]$
+        \\
+        Gegeben: $f(x) \in C[0, 2 \pi]$, $2 \pi$-periodisch, gesucht: $\hat{f}(x)$ Bestapproxmimation von $f(x)$ durch ein Element aus W.
+        z.z Elemente aus $W$ ist paarweise orthogonale Vektoren,
+        \\
+        Behauptung: Die Vektoren aus w sind paarweise orthogonal.
+        bzgl. des Skalarprodukts $\circ$
+        \ilmath{f \circ g := \int_{0}^{2 \pi} f(t) \* g(t) dt}
+
+        \ilmath{\hat{f}(t) = 1 + \frac{f(t) \circ {1}}{cos t \circ sin t} cos t + \frac{f(t) \circ cos (2t)}{cos t \circ sin t} cos t + \ldots}
+
+    \sssect{Berechnung der Fourier-Koeffizienten}
+        \ilmath{a_k = \frac{f (t) \circ cos (kt)}{cos kt \circ cos kt} &= \frac{1}{\pi} \* \int_{0}^{2 \pi} f(t) cos (kt) dt, k = 0}
+        \ilmath{b_k = \ldots &= \frac{1}{\pi} \* \int_{0}^{2 \pi} f(t) sin(kt) dt, k \geq 1}
+    \sssect{Bemerkung: Fourier-Approximation}
+        \ilmath{\hat{f} (t) = \frac{a_0}{2} \sum_{k = 1}^n a_k cos(kt) + b_k sin (kt)}
+        heißt Fourier-Approximation.
+    \sssect{Satz: Existenz von Fourier-Reihen}
+        Sei $f(x) \in C[0, 2 \pi]$. Dann existiert eine Fourier-Reihe von $f(x)$
+    \sssect{Beispiel}
+        %%TODO plot sägezahn
+        $f(x) = ax, f(t)$ ist $2 \pi$ periodisch.
+        Fourier-Reihe:
+        \ilmath{f(t) = 2a \sum_{k = 0}^\infty \frac{(-1)^{k+1}}{k} sin (kt)}
+
+    %%TODO missing equation
+\end{document}

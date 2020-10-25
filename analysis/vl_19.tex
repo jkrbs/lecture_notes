@@ -1,0 +1,74 @@
+\documentclass{../tudscript}
+\author{Jakob Krebs}
+\title{Mathe VL 19}
+
+\begin{document}
+    \ssect{Gradient für Funktionen}
+        \ilmath{y = f(x_1. \ldots, x_n), n = 2, z = f(x,y)}
+        \ilmath{\nabla f(x,y) = \m{f_x (x, y)\\f_y (x, y)}}
+        \ilmath{\nabla f (x_1, \ldots, x_n) = {\m{f_{x_1} (x_1, \ldots, x_n)\\\vdots\\f_{x_n} (x_1, \ldots, x_n)}}}
+        Nabla von $f(x_1, \ldots, x_n)$
+        Gradient an der Stelle $(x_0, y_0)$: $\nabla f(x_0, y_0)$
+
+    \sssect{Bemerkung}
+        \ilmath{f' (x_1, \ldots, x_n) = \nabla f(x_1, \ldots, x_n)}
+    \sssect{Bemerkung: Bedeutung des Gradienten}
+        Der Gradient steht für n=2 senkrecht auf den Höhenlinien von $z=f(x,y)$. \label{toproof}
+        Der Gradient steht für n=3 senkrecht auf den Niveauflächen von $w = f(x,y,z)$
+        Der Gradient steht für belibiges n  senkrecht auf den Niveauhyperebenen von $w = f(x_1, \ldots, x_n)$
+
+    \sssect{Beweis zu \ref{toproof}}
+        \ilmath{f(x,y), x = x(t), y=y(t)}
+        Höhenlinien: $z = f(x,y) = c = const.$
+        \ilmath{z(t) &= f(x(t), y(t)) = c\\
+                &\iff \frac{dz}{dt} = f_x \frac{dx}{dt} + f_y \frac{dy}{dt}\\
+                &\iff dz = f_x \* dx + f_y \* dy\\
+                &\iff dz = \underbrace{\m{f_x\\f_y}}_{\text{Gradient}} \circ \underbrace{\m{dx\\dy}}_{\text{Weggradient auf der Höhenlinie}}\\
+                &\implies \nabla f \bot dr} 
+       %%TODO @urs skizze, damit dr sinn ergibt 
+    \sssect{Bemerkung}
+        In Richtung der Gradienten ändern sich die Funktionswerte am stärksten. Der Betrag des Gradienten ist ein Maß für die Änderung der
+        Funktionswerte.
+    \sssect{Bemerkung}
+        Mit Hilfe des Gradienten und der Hesse-Matrix kann man lineare und quadratische Näherungspolynome für $z=f(x,y)$ elegant aufschreiben.
+        \ilmath{z=f(x,y)\hspace{4cm} H_f (x,y) = \m{f_{xx} (x,y)& f_{xy} (x,y)\\ f_{xy} (x,y)& f_{yy} (x,y)}}
+    \ssect{Taylorentwiklung}
+        \ilmath{z = f(x_1, \ldots, x_n)}
+        Approximation durch Taylorpolynome 
+        \ilmath{t_n (x_1, \ldots, x_n)}
+        der Ordnung m an der Stelle. $\tilde{x} = (\tilde{x_1}, \ldots, \tilde{x_n})$
+        \ilmath{t_m (x_1, \ldots, x_n) = \sum_{k = 0}^{m} \sum_{k = k_1 + k_2 + \ldots + k_n} \underbrace{a_{k_1, k_2, \ldots, k_n}}_{\text{gesucht}} \* (x_1 - \tilde{x_1})^{k_1} \* (x_2 - \tilde{x_2})^{k_2} \* \ldots \* (x_n - \tilde{x_n})^{k_n}}
+
+        \sssect{Formel}
+            $m = 3, n = 2$
+            \ilmath{t_3 (x_1, x_2) &= a_{0,0} \* x_{1}^0 \* x_{2}^0 \mid k = 0 \\
+                                   &+ a_{1,0} \* x_{1}^1 \* x_{2}^1 \mid k = 1 \\
+                                   &+ a_{2,0} \* x_{1}^2 \* x_{2}^0 + a_{1,1} x_{1}^1 \* x_{2}^1 + a_{0,2} \* x_{1}^0 \* x_{2}^2 \mid k = 2 \\
+                                   \ldots \mid k = 3}
+            Formel für $a_{k_1, k_2}$:
+            \ilmath{a_{k_1, k_2} = \frac{1}{(k_1 + k_2)!} \* \underbrace{\binom{k_1 + k_2}{k_1}}_{\frac{1}{\cancel{(k_1 + k_2)!}}\* \frac{\cancel{(k_1 + k_2)!}}{k_1 ! + k_2 !}} \* \underbrace{\frac{\delta^{k_1 + k_2} }{\delta x_{1}^{k_1} \delta x_{2}^{k_2}} f(\tilde{x_0}, \tilde{y_0})}_{f_{\underbrace{x_1 \ldots x_1}_{k_1}\underbrace{x_2 \ldots x_2}_{k_2}} (\tilde{x_1}, \tilde{x_2})}}
+
+            Multibinomialkoeffizient
+            \ilmath{\binom{k_1 + k_2}{k_1, k_2} = \frac{(k_1 + k_2)!}{k_1 ! + k_2 !} = \binom{k_1 + k_2}{k_1} = \binom{k_1 + k_2}{k_2}}
+
+            \ilmath{a_{k_1, k_2} = \frac{1}{k_1 ! + k_2 !} f_{\underbrace{x_1 \ldots x_1}_{k_1} \underbrace{x_2 \ldots x_2}_{k_2}} (\tilde{x_1}, \tilde{x_2})}
+            Allgemein:
+            \ilmath{a_{k_1, \ldots k_n} = \frac{1}{k_1 ! = \ldots + k_n !} f_{\underbrace{x_1 \ldots x_1}_{k_1} \ldots \underbrace{x_2 \ldots x_2}_{k_n}} (\tilde{x_1}, \ldots, \tilde{x_n})}
+         \sssect{Beispiel}
+            \ilmath{f(x,y) = (x=2y)^3, \tilde{x} = (-1, 1)}
+            ges. Taylorpolynom 3. Grades
+            \ilmath{t_3 (x,y) &= \frac{1}{2} f_{xxy} (-1, 1) (x+1)(y-1)\\
+                    f_{xxy} &= 12 \\
+                    t_3 (x,y) &= 6 (x=1)(y-1)}
+
+    \ssect{Differenzierbarkeit von Funktionen $f: x \subseteq \bR^n \rightarrow \bR^m$}
+        \ilmath{f: X \rightarrow \bR^m, X \subseteq \bR^n}
+        Vektorfeld (vektorweritge Funktionen)
+        \sssect{Beispiel}
+            \ilmath{\underbrace{(x_1, \ldots, x_n) \mapsto \nabla f(x_1, \ldots, x_n)}_{Vektorfeld}}
+            Bemerkung:
+            \ilmath{f(x_1, \ldots, x_n) \mapsto \nabla f(x_1, \ldots, x_n)}
+            Gradient ist ein \underline{Differentialoperator}
+            \ilmath{f: (x_1, \ldots, x_n) \mapsto \m{f_1 (x_1, \ldots, x_n) \\ \vdots\\ f_m (x_1, \ldots, x_n)}}
+\end{document}
+

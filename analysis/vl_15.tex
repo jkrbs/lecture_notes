@@ -1,0 +1,112 @@
+\documentclass{../tudscript}
+\author{Jakob Krebs}
+\title{Mathe VL 15}
+
+\begin{document}
+    \ssect{Beispiel}
+        \ilmath{y_{1}' = 0 \* y_1 + 8 \* y_2 + 15 y_3 + \sin x \\
+                y_{2}' = y_2 - y_3 + e^x \\
+                y_{3}' = y_1 + 2 y_2 + y_3 + ln x}
+    \ssect{Definition: Differentilagleichungsystem}
+    \ilmath{\hat{y'} = A \hat{y} + \hat{a}}
+    heißt lineares Differentialgleichungssystem 1. Ordnung mit konstanten
+    Koeffizienten, wenn gilt:
+    \ilmath{\hat{y} = \m{y_1 \\ \vdots \\ y_n}, \hat{y'} = \m{y'_1 \\ \vdots \\ y'_n}, A \in \bR^{n \times n}}
+    $\hat{y}$ ist der Vektor der gesuchten Funktionen.
+
+    \ssect{Bemerkung: homogenes DGL System}
+    \ilmath{a = \m{0 \\ \vdots 0} \implies}
+    Das DGL System heißt homogen.
+
+    \ssect{Bemerkung: Lösungsmenge ist VR}
+    Die Lösungsmenge von $y' = Ay$ bildet einen Vektorraum (Untervektorraum).
+
+    Denn:
+    \begin{enumerate}
+        \item $\m{0 \\ \vdots 0}$ d.h. $y_i (x) = 0$ für $i = 1, \ldots, n$ ist eine Lösung.
+        \item $\hat{y_1}, \hat{y_2}$ seien Lösungen. Dann ist $\hat{y_1} + \hat{y_2}$ eine Lösung, denn:
+        \ilmath{A (y_1+ y_2) = Ay_1 + Ay_2 = y_{1}' + y_{2}' = (y_1 + y_2)'}
+        \item y sei eine Lösung, $t \in \bR$. Dann ist auch $t y$ eine Lösung, denn
+        \ilmath{A(ry) = rAy = r y' = (ry)'}
+    \end{enumerate}
+    \ssect{Beispiel}
+    \ilmath{\m{y_1' \\ y_2' \\ x_3'} = \m{2 & 0 & 0 \\ 0 & -2 & 0 \\ 0 & 0 & 5} \* \m{y_1 \\ y_2 \\ y3}\\
+            \iff \\
+            y'_1 = 2 y_1 \\
+            y'_2 = -3 y_2 \\
+            y'_3 = 5 y_3}
+    ges. $y_1, y_2, y_3$
+    
+    Lösung: $y_1 (x) = c_1 \* e^{2x}, c_1 \in \bR$
+    Lösung: $y_2 (x) = c_2 \* e^{-3x}, c_2 \in \bR$
+    Lösung: $y_2 (x) = c_2 \* e^{5x}, c_2 \in \bR$
+    \ssect{Bemerkung}
+        \ilmath{y' = ky, k \in \bR}
+        hat die allgemeine Lösung:
+        \ilmath{y = C e^{kx}, c \in \bR}
+
+    \sssect{Probe}
+        \ilmath{C e^{kx} k = k C e^{kx}}
+\ssect{Bemerkung}
+    \ilmath{y' = Ay}
+    ist sehr leich lösbar, falls A eine Diagonalmatrix ist.
+
+    Idee: Substitution ausführen, sodass die Matrix Digonalgestalt bekommt,
+    ohne die Lösungsmengge zu verändern.
+
+    Gegeben: A, Basis $u_1 (x), \ldots u_n (x)$ der Lösungsmenge von $y' = Ay$ \\
+    Gesucht: $y$
+
+    Substitution:
+    \ilmath{y_1(x) &= p_{11} u_1 + \ldots + p{1n}u_n\\
+           \vdots \\
+            y_n (x) &= p_{n1} u_1 + \ldots + p_{nn}u_n}
+    \ilmath{y = Pu, P = (P_{ij})} 
+   
+    Zeilenweise ableiten.
+    \ilmath{y' = Pu', P = (P_{ij})} 
+    
+    Zu lösen: $y' = Ay$ zur Substitution: $y = Pu, y' = Pu'$
+
+    $\implies Pu' = APu$
+    falls $P^{-1}$ ex.
+    $\implies u' = P^{-1}APu$
+    $P^{-1}APu$ soll Diagonalmatrix sein.
+    $u' = D u$ (leicht lösbar)
+   
+    Vorgehen $u' =Du$ lösen. Substitution Rückgängig machen. $y = Pu$ 
+    $y' = Ay$ lösen.
+    \begin{enumerate}
+        \item Eigenwerte von A berechnen
+        \item zu jedem Eigenwert eine Basis des Eigenraums angeben
+        \item \underline{Falls möglich}: Basis des $R^n$ angeben, die aus Eigenvektoren von A besteht
+        \item Vektoren de Eugenvektorbasis des $\bR^n$ als Spaltenvektoren einer Matrix P aufschreiben.
+        \item $P^{-1} A P = D$ berechnen
+        \item $u' = D u$ lösen
+        \item Rücksubstitution
+    \end{enumerate}
+
+    \ssect{Beispiel}
+        \ilmath{\m{y_1 ' \\ y_2 '} = \m{1 & 1 \\ 4 & 2} \m{y_1 \\ y_2}}
+        mit $y_1(0) = 1, y_2 (0) = 6$
+        \begin{enumerate}
+            \item $det(\m{1-k & 1 \\ 4 & -2 -k}) = (1-k)(-2-k) -4 = k^2 + k - 6 = 0 \implies k_1 = -3, k_2 = 2$
+            \item EV zu $k_1$: $\m{1-(-3) & 1 \\ 4 & -2-(-3)} = \m{4 & 1 \\ 4 & 1}$ EV zu -3: $\m{1 \\ -4}$\\
+                  EV zu $k_2$: $\m{1-2 & 1 \\ 4 & -2-2}$ EV zu 2: $\m{1 \\ 1}$
+            \item Eigenvektorbasis: $\Set{\m{1 \\ -4}, \m{1 \\1}}$ 
+            \item $P = \m{1 & 1 \\ -4 & 1}$
+            \item $P^{-1}AP = \m{-3 & 0 \\ 0 & 2}$
+            \item $\hat{u'} = \m{-3 & 0 \\ 0 & 2} \hat{u}$. lösen: $\m{u_1 \\ u_2} = \m{C_1 e^{-3x} \\ C_2 e^{2x}} (C_1, C_2 \in \bR)$ 
+            \item $y = \m{y_1 \\ y_2} = \m{1 & 1 \\ -4 & 1} \m{C_1 e^{-3x} \\ C_2 e^{2x}} (c_1, c_2 \in \bR)$
+    \end{enumerate}
+    
+    \ssect{Beispiel}
+        \ilmath{\m{y_1 ' \\ y_2 '} = \m{-5 &3 \\ -5 & 7} \m{y_1 \\ y_2}}
+        EW zu A: $k_1 = 1+3i, k_2 = 1-3i$
+
+        EV zu A: $v_1 = \m{1 \\ 2+ i}, v_2 = \m{1 \\ 1-i}$
+
+        Komplexe Lösung: $\m{y_1 \\ y_2} = C_1 \underbrace{\m{1 \\ 2+i} e^{(1+3i)x}}_{z_1} +  C_2 \underbrace{\m{1 \\ 2-i} e^{(1-3i)x}}_{z_2}, (C_1, C_2 \in \bC)$
+        Übergang zur reelen Basis $\implies$ Reele Lösung:
+        $K_1 + Re(z_1) + K_2 Im(z_2) (K_1, K_2 \in \bR)$
+\end{document}

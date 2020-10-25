@@ -1,0 +1,88 @@
+\documentclass{../tudscript}
+\author{Jakob Krebs}
+\title{Mathe VL 8}
+
+\begin{document}
+    \ssect{Definition Potenzreihe}
+        Eine Reihe
+        \ilmath{\sum_{k=0}^\infty a_k (x-x_0)^k}
+        heißt Potenzreihe. Dabei gilt: $a_0, \ldots, a_k \in \bR$ und 
+        $x_0 \in \bR$ und x istr eine relle Veränderliche.
+        $x_0$ heißt Mittelpunkt der Potenzreihe.
+    \sssect{Bemerkung}
+	\ilmath{(f_k (x))_{k = 0}^\infty \text{ mit } f_k(x) = a_k (x-x_0)^k}
+        Folge von Funktionen $f_k (x)$
+        \ilmath{(\sum_{k = 0}^n f_k (x))_{n = 0}^\infty}
+        Folge von Partialsummen oder Reihe
+        \ilmath{\sum_{k = 0}^\infty f_k (x)}
+    \sssect{Bemerkung}
+        Wir fragen NICHT nach der Konvergenz der Folge, sondern wir fragen
+        für welche x ist diese Folge (Potenzreihe) konvergent.
+    \sssect{Beispiel}
+        \ilmath{\sum_{k = 1}^\infty (\frac{-2}{3})^k (x-0)^k}
+        für akke $x \in \bR$ konvergent?
+        Wurzelkriterium.
+        \ilmath{\lim_{k \to \infty} \sqrt{\ldots} = \lim_{k \to \infty} \frac{2}{3} \sqrt[k]{\frac{1}{k}} |x| = \frac{2}{3} |x| \frac{1}{1} < 1}
+        Die Potenzreihe ist absolut konvergent für $|x| < \frac{3}{2}$
+        
+        Betrachtung von $x= - \frac{3}{2}$
+        \ilmath{\sum_{k = 1}^\infty (\frac{-2}{3})^k (-\frac{3}{2})^k = \sum \frac{1}{k} \ldots}
+        divergent.
+
+        Betrachtung von $x= \frac{3}{2}$
+        \ilmath{\sum_{k = 1}^\infty (\frac{-2}{3})^k (\frac{3}{2})^k = \sum (-1)^k \frac{1}{k}}
+        konvergent.
+    \sssect{Beispiel}
+        \ilmath{\sum_{k = 1}^\infty (\frac{-2}{3})^k \frac{1}{k} (x-7)^k}
+        ist für 
+        \ilmath{x \in (7-\frac{3}{2}, 7+ \frac{3}{2})}
+        also konvergent.
+    \ssect{Definition: Potenzreihe}
+        \ilmath{\sum_{k = 0}^\infty a_k (x-x_0)^k}
+        eine Potenzreihe. Dann existiert eine $r \in \bR_{\geq 0}$ oder $r = \infty$, sodass
+        die Potenzreihe für alle x mit $|x-x_0| \leq r$ oder $x \in \bR$ absolut konvergent ist.
+        Dieses $r$ heißt \underline{Konvergenzradius} der Potenzreihe.
+        
+        Bemerkung: Der Konvergenzraidus r ist unabhängig vom Mittelpunkt $x_0$.
+        
+        Bemerkung: Jede Potenzreihe ist für $x = x_0$ absolut konvergent, denn
+        \ilmath{\sum_{k = 0}^\infty a_k (x-x_0)^k = \sum_{k = 0}^\infty a_k \cdot 0^k = 0}
+    \sssect{Beispiel}
+        Sei
+        \ilmath{\sum_{k = 0}^\infty a_k (x-x_0)^k}
+        eine Potenzreihe mit Konvergenzradius r.
+        Dann kann eine Funktion f defiiert werden:
+        \ilmath{f: (x_0 - r; x_0 + r) \rightarrow \bR, x \mapsto \underbrace{\sum_{k = 0}^\infty a_k (x-x_0)^k}_{GW der Reihe}}
+        Wegen der abs. Konvergenz ist die Funktion f:
+        \begin{itemize}
+            \item stetig auf $(x_0 - r; x_0 + r)$
+            \item beliebig oft differenzierbar
+        \end{itemize}
+    \sect{Herleitung der eulerischen Formel}
+        \ssect{Bemerkung: Potenzreihenreihen über $\bC$}
+            Analog aknn man PR über $\bC$ definieren.
+            z.B.
+            \ilmath{\sum_{k = 0}^\infty \frac{z^k}{k!}, z \in \bC}
+            Ist die Reihe absolut konvergent?
+            QK:
+            \ilmath{\lim_{k \to \infty} \frac{\frac{z^k}{k!}}{\frac{z^{k+1}}{(k+1)!}} = \lim_{k \to \infty} \frac{|z|}{k+1} = |z| \cdot \lim_{k \to \infty} \frac{1}{k+1} < 1}
+            Die Reihe ist für alle $z \in \bC$ konvergent.
+        
+        \ssect{Herleitung}
+            \ilmath{exp(z): \bC \rightarrow \bC, z \mapsto \sum_{k = 0}^\infty \frac{1}{k!}}
+            \ilmath{e = exp(i \varphi) = e^{i \varphi}}
+            \ilmath{e^{i \varphi} &= \sum_{k = 0}^\infty \frac{(i \varphi)^k}{k!} = \ldots \\
+                                  &= 1 + i \frac{\varphi^1}{1} -1 \frac{\varphi^2}{2!} - i \frac{\varphi^3}{3!} + \frac{\varphi^4}{4!} \ldots \\
+                                  &= \sum_{k = 0}^\infty (-1)^k \frac{\varphi^{2k}}{(2k)!} + i \cdot \sum_{k = 0}^\infty (-1)^k \frac{\varphi^{k+1}}{(2k+1)!}}
+    \sect{Taylorpolynome}
+        Approximation stetiger Funktionen f(x) durch Taylorpolynome $p_n(x)$
+        \begin{enumerate}
+            \item $f(x) \approx f(x_0) + f'(x_0) \cdot (x-x_0)^1 = p_1(x)$
+            linare Approximation (n = 1) 
+            Bemerkung: $F(x_0) = p_1(x_0)$
+            \item Approximation von f(x) durch Taylor-Polynom $p_n$ vom Grad $\leq n$ in der Umgebung von $x_0$-
+            \ilmath{f(x) \approx p_1 (x) + \frac{f''(x_0)}{2!} \cdot (x-x_0)^2 + \frac{f^3 (x_0)}{3!} (x-x_0)^3 + \ldots + \frac{f^k(x_0)}{k!} (x-x_0)^k}
+        \end{enumerate}
+   \ssect{Bemerkung: Taylorpolynome von Polynomfunktionen}
+        Taylorpolynome $p_n (x)$ von Polynomfunktionen f(x) vom Grad n stimmen mit f(x) überein. 
+\end{document}

@@ -1,0 +1,111 @@
+\documentclass{../tudscript}
+\author{Jakob Krebs}
+\title{Mathe VL 4}
+
+\begin{document}
+    \ssect{Beispiel: Geometrische Reihe}
+    %%TIKZ
+
+    \ilmath{2 A = 1^2 + (\frac{1}{2})^2 +(\frac{1}{4})^2 + \ldots + (\frac{1}{2^k})^2}
+    \ilmath{q = \frac{1}{4} = \frac{1}{1 - \frac{1}{4}} = \frac{1}{\frac{3}{4}} = \frac{4}{3} = 2A}
+
+    Beispiel Perioden
+    \ilmath{0, 4\bar{3} &= \frac{4}{10} + \frac{3}{100} + \frac{3}{1000} + \ldots \\
+                        &= \frac{4}{10} + \frac{3}{10^2} + \frac{3}{(10^2)^2}\\
+                        &= \frac{4}{10} + \frac{1}{30}  = \frac{12 + 1}{30} = \frac{13}{30}}
+    Beispiel: unmögliche Periode
+    \ilmath{0,4\bra{9} &= \frac{4}{10} + \frac{9}{100} + \frac{10}{9} \\
+                       &= \frac{4}{10} + \frac{1}{10} = \frac{5}{10} = \frac{1}{2} = 0,5}
+
+    \ssect{Konvergenz der geometrischen Reihe}
+    %TODO missing notes
+    \ilmath{\sum^{\infty}_{k = 1} \frac{1}{k}}
+    ist divergent
+    \ilmath{\lim_{n \to \infty} \sum^{n}_{k = 1} \frac{1}{k}}
+    existiert nicht.
+    \ilmath{s_n &= \frac{1}{1} + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \ldots + \frac{1}{n} \\
+                &> 1 + \frac{1}{2} + \frac{2}{4} + \frac{4}{8} + \ldots
+                &\implies \lim_{n \to \infty} s_n = \infty}
+    \sect{Allgemeine harmonische Reihe}
+    \ilmath{\sum_{k = 1}^\infty \frac{1}{k^\alpha} (\alpha \text{ fest})}
+    \ilmath{\begin{cases} \alpha > 1 \implies \text{ R konv.}\\
+                          \alpha \leq 1 \implies \text{ R div.}\end{cases}}
+    \ssect{Beispiel}
+        \ilmath{\sum_{k = 1}^\infty \frac{1}{k^2}}
+        ist konvergent.
+        Beweis mit Monotoniekriterium für Folgen:
+        \begin{enumerate}
+        \item \ilmath{\sum_{k = 1}^n \frac{1}{k^2}} ist monoton wachsend
+        \item \ilmath{\sum_{k = 1}^n \frac{1}{k^2}} ist beschränkt
+        \end{enumerate}
+        $\implies$ Folge ist konvergent.
+    \sect{Exponentioalreihe}
+    Die Exponentialreihe 
+    \ilmath{\sum_{k = 1}^\infty \frac{1}{k!} = \lim_{n \to \infty} (1 + \frac{1}{n})^n =: e}
+    ist konvergent.
+    \sect{Konvergenzkriterien für Reihen}
+    \begin{enumerate}
+        \item Kriterien für Folgen gelten auch für Reihen
+        \item Hauptkriterium/Nullfolgenkriterium
+        \item Leibnizkriterium (für alternierende Reihen)
+        \item Kriterien für absolute Konverenz von Reihen
+    \end{enumerate}
+
+    \ssect{Hauptkriterium}
+        \ilmath{\sum_{k = 0}^\infty a_k \text{ konvergent} \implies (a_k) \text{ Nullfolge} \\
+                \lim_{k \to \infty} a_k \neq 0 \implies \sum_{k = 1}^\infty a_k \text{ nicht konvergent}}
+
+        Beispiel:
+        \ilmath{\sum_{i = 0}^\infty \frac{3 k^2 + 1}{4 k^2 -1}}
+        divergiert, aber
+        \ilmath{\sum \frac{1}{k}}
+        divergiert und 
+        \ilmath{\frac{1}{k}}
+        Nullfolge.
+
+    \ssect{Behauptung}
+        \ilmath{\sum a_k \text{ konvergiert } \implies (a_k) \text{ Nullfolge}}
+
+        \ilmath{s_n = \sum_{k = 0}^n a_k, s_{n+1} = \sum_{k = 0}^{n+1} a_k, s_{n+1} = s_n + a_{n+1}}
+        \ilmath{s = \lim_{n \to \infty} s_n = \lim_{n \to \infty} s_{n+1}}
+        \ilmath{\lim_{n \to \infty} a_{n+1} = \lim_{n \to \infty} s_{n + 1} - \lim_{n \to \infty} s_n = s - s = 0}
+    \ssect{Kriterium für alternierende Reihen}
+    z.B.:
+    \ilmath{\sum (-1)^k}
+
+    \ilmath{\sum (-1)^k (a_k) \implies \text{ Reihe ist konvergent}}
+    wobei $(a_k)$ eine Streng monoton fallende Nullfolge ist. mit $(a_k) \geq 0$
+    
+    \ssect{Definition: absolute Konvergenz}
+        Reihe
+        \ilmath{\sum_{k = 0}^\infty }
+        heißt absolut konvergent, wenn 
+        \ilmath{\sum |a_k|}
+        konvergent ist.
+        
+        Beispiel:
+        \ilmath{\sum (-1)^k \frac{1}{k}}
+        ist konvergent, aber nicht absolut konvergent.
+
+        \ilmath{\sum (-1)^k \frac{1}{k^2}}
+        ist konvergent und absolut konvergent.
+
+    \ssect{Satz: Folge aus absoluter Konvergenz}
+        Wenn eine Reihe absolut konvergent ist, ist sie auch konvergent.
+
+    \ssect{Bemerkung: multiplikation konvergenter Reihen}
+        Absolut konvergente Reihen kann man multiplizieren, wie endliche Summen.
+        (konvergente nicht.)
+
+    \ssect{Quotienten und Wurzelkriterium}
+        Quotientenkriterium (QK):
+        \ilmath{\lim_{n \to \infty} |\frac{a_{k+1}}{a_{k}}| < 1&\implies \sum a_k \text{ist (absolut) konvergent}\\
+        \lim_{n \to \infty} |\frac{a_{k+1}}{a_{k}}| > 1&\implies \sum a_k \text{ist divergent}\\
+        \lim_{n \to \infty} |\frac{a_{k+1}}{a_{k}}| = 1&\implies \text{keine Aussage}}
+        
+        Wurzelkriterium (WK):
+        \ilmath{\lim_{n \to \infty} \sqrt[k]{|a_k|} < 1 &\implies \sum a_k \text{ ist (absoult) konvergent}\\
+        \lim_{n \to \infty} \sqrt[k]{|a_k|} > 1 &\implies \sum a_k \text{ ist divergent}\\
+        \lim_{n \to \infty} \sqrt[k]{|a_k|} = 1 &\implies \sum a_k \text{ keine Aussage}}
+
+\end{document}

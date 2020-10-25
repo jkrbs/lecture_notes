@@ -1,0 +1,116 @@
+\sect{Faktorhalbgruppen und Faktorgruppen}
+\ssect{Definition: Kongruenzrelation}
+Sei $(H, \circ)$ eine Halbgruppe und R eine Aequivalenzrelation auf H. R
+heisst \underline{Kongruenzrelation} in $(H, \circ)$, wenn gilt:
+\ilmath{\forall a, b, c, d \in H: (a,b) \in R \land (c, d) \in R \implies (a \circ c, b \circ d) \in R}
+\sssect{Beispiel}
+\ilmath{(\bN,+), (a, b) \in R :\iff a \mod n = b \mod n}
+\ilmath{a\equiv b (\mod n), c \equiv d (\mod n) \iff a + c = b + d \mod n}
+R ist eine Aequivalenzrelation in $\bN$
+\sssect{Beispiel}
+Halbgruppe $(\bZ_4, \cdot), R_1 = \Set{(0,0), (1,1), (2,2), (2,3), (3,2), (3,3)}$
+\begin{center}
+  \begin{tabular}{lllll}
+    $\cdot$ & 0 & 1 & 2 & 3 \\
+    0     & 0 & 0 & 0 & 0 \\
+    1     & 0 & 1 & 2 & 3 \\
+    2     & 0 & 2 & 0 & 2 \\
+    3     & 0 & 3 & 2 & 1
+  \end{tabular}
+   \end{center}
+  $R_1$ ist keine Kongruenzrelation, denn:
+  \ilmath{(2,2) \in R \land (2,3) \in R, \text{ aber } (2\cdot2, 2\cdot3) = (0,2) \notin R}
+  $(0,2)$ ist nicht in der selben Aequivalenzklassen
+
+  $R_2 = \Set{(0,0), (2,2), (1,1), (1,3), (3,1), (3,3)}$
+  ist Kongruenzrelation.
+  \ssect{Bemerkung}
+  Sei $(H, \circ)$ eine Halbgruppe, R eine Aequivalenzrelation in H, $a \in H$
+  \ilmath{[a]_R := \Set{b \in H \mid (a,b) \in R}}
+  bezeichnet die Aequivalenzklasse.
+
+  Die Menge
+  \ilmath{H/R := \Set{[a]_R \mid a \in H}}
+  aller Aequivalenzklassen heisst \underline{Faktormenge}
+  \sssect{Beispiel}
+  \ilmath{\bZ_4 / R_1 = \Set{\Set{0},\Set{1},\Set{2,3}}\\
+    \bZ_4 / R_2 = \Set{\Set{0},\Set{2},\Set{1,3}}}
+  \sssect{Beispiel}
+  $\bZ_4,\cdot$, Kongruenzrelation $R_2$ mit den Aequivalenzklassen
+  $\Set{0},\Set{2},\Set{1,3}$
+  % todo tables
+\underline{Aber:}\\
+$ \bZ_4, \cdot$ Aequivalenzrelation $R_1$ mit den
+Aequivalenzklassen  $\Set{0},\Set{1},\Set{2,3}$ keine Kongruenzrelation.
+\ilmath{\Set{2,3}\circ_{R_1}\Set{2,3} = ?}
+ist nicht eindeutig bestimmt, also ist $\circ_{R_1}$ keine Operation.
+
+\ssect{Bemerkung}
+Ist $H,\circ$ eine Halbgruppe und R eine Kongruenzrelation, dann ist durch
+\ilmath{\forall [a]_R, [b]_R \in H/R | [a]_R \circ_R [b]_R := [a \circ b]_R} eine
+Operation $\circ_R$ auf der Faktormenge H/R definiert.
+D.h. fuer alle $[a]_R, [b]_R \in H/R$ gilt: \\
+\begin{enumerate}
+  \item$[a]_R \circ_R [b]_R$ existiert
+  \item$[a]_R \circ_R [b]_R$ ist eindeutig bestimmt
+  \item$[a]_R \circ_R [b]_R \in H/R$
+\end{enumerate}
+\sssect{Beweis von 2.}
+\ilmath{[a]_R = [a']_R \text{ und } [b]_R = [b']_R \\
+\implies (a,a'),(b,b') \in R\\
+  \implies (a \circ b, a' \circ b') \in R\\
+\implies [a \circ b]_R = [a' \circ b']_R}
+
+\ssect{Bemerkung}
+Ist $(H, \circ)$ eine Halbgruppe und R eine Kongruenzrelation, dann ist $[a]_R
+\circ_R [b]_R $ die eindeutig bestimmte Aequivalenzklasse, die $a \circ b$
+enthaelt (naemlich $[a \circ b]_R$)\\
+Es gilt also: \ilmath{[a]_R = [a']_R, b]_R = [b']_R \implies [a \circ b]_R = [a'
+\circ b']_R}
+Diese Eigenschaft nennt man \underline{Repraesentantenunabhaengigkeit}.\\
+Ist die Repraesentantenunabhaengigkeit erfuellt, so ist $[a]_R \circ_R [b]_R$
+eindeutig bestimmt.
+
+\ssect{Satz}
+Sei $(H,\circ)$ eine Halbgruppe und R eine Kongruenzrelation. Dann ist
+$(H/R,\circ_R)$ eine Halbgruppe.
+\sssect{Beweis}
+$H/R = {[a]_R | a \in H \neq \emptyset}$\\
+$\circ_R$ ist eine Operation in H/R.\\
+$\circ_R$ ist assoziativ, denn:
+\ilmath{\forall a,b,c \in H &| [a] \circ_R ([b] \circ_R [c])\\
+  &= [a] \circ_R [b \circ c]\\
+  &= [a \circ (b \circ c)]\\
+  &= [(a \circ b) \circ c]\\
+  &= [a \circ b] \circ_R [c]\\
+  &= ([a] \circ_R [b]) \circ_R [c]
+}
+\ssect{Definition}
+Sei $(h, \circ)$ eine Halbgruppe und R eine Kongruenzrelation. $(H/R,\circ_R)$
+heisst Faktorhalbgruppe von $(H, \circ)$ nach R
+\sssect{Beispiel}
+$(\bZ_4,\cdot)$ Halbgruppe\\ 
+$R = \{(a,b \in \bZ_4 \times \bZ_4 | a \cong b \mod 2)\}$ Kongruenzrelation\\
+$\bZ_4/R = \Set{\Set{0,2},\Set {1,3}}$
+Faktorhalbgruppe:
+%todo table
+\ssect{Definition}
+$(H_1,\circ_1), (H_2,\circ_2)$ seien Halbgruppen und  $h: H_1 \rightarrow H_2$
+eine Abbildung.\\
+h heisst Homomorphismus, wenn gilt:
+\ilmath{\forall a,b \in H_1 | h(a \circ b) = h(a) \circ_2 h(b)}
+\sssect{Beispiel}
+\begin{enumerate}
+	\item $h: \bZ_4 \rightarrow \bZ_2 | x \mapsto x\mod 2$ ist ein Homomorphismus
+   von $(\bZ_4,\circ)$ auf $(\bZ_2,\circ)$
+   \item $h: R^{n \times n} \rightarrow \bR | A \mapsto det(A)$ ist ein
+     Homomorphismus von $(\bR^{n \times n, \cdot})$ auf $(\bR,\cdot)$
+   \end{enumerate}
+   \ssect{Bemerkung}
+   Sei $h: H_1 \rightarrow H_2$ ein Homomorphismus der Halbgruppe
+   $(H_1,\circ_1)$ in die Halbgruppe $(H_2,\circ_2)$. Dann gilt:
+   U Untergruppe von $(H_2, \circ_2)$
+   \ssect{Bemerkung}
+   Homomorphismen sind strukturvertraegliche Abbildungen.
+   \ssect{Spezielle Homomorphismen}
+   %to-do table spezielle Homomorphismen

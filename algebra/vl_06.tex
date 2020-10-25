@@ -1,0 +1,112 @@
+\documentclass{../tudscript}
+\title{VL 06}
+\author{Jakob Krebs}
+
+\begin{document}
+\sect{Ringe und Koerper}
+\ssect{Definition: kommutativer Ring}
+$(R, +, \cdot)$ hiesst Ring \underline{Ring}, wenn gilt:
+\begin{enumerate}
+\item $(R, +)$ ist eine abelsche Gruppe
+\item $(R, \cdot)$ ist eine Halbgruppe
+\item $a \cdot (b + c) = (a \cdot b) + (a \cdot c)$ und $(b +c) \cdot a = (b \cdot a) + (c \cdot a)$ fuer alle $a, b, , c \in R$ ($\cdot$ ist distributiv bzgl +)
+  \item $a \cdot b = b \cdot a$ fuer alle $a, b \in R$
+\end{enumerate}
+, dann wird $(R, +, \cdot)$ ein \underline{kommuttiver Ring} genannt.
+\ssect{Bemerkung}
+Punktrechnung vor Strichrechnung
+\ssect{Beispiele}
+kommutative Ringe:
+\begin{itemize}
+\item $\bZ$
+\item $\bR$
+\item $\bC$
+\item $\bZ_n$
+\end{itemize}
+Ringe
+\begin{itemize}
+\item $\bR^{n \times n}$
+\end{itemize}
+\ssect{Bemerkung: Nullelement}
+Jeder Ring $(R, +, \cdot)$ enthaelt ein neutrales Element bzgl $+$, das \underline{Nullelement 0}
+Das Nullelement ist eindeutig bestimmt.
+\ssect{Bemerkung}
+Sei $a \in R$. Dann ex. ein eindeutig bestimmtes Element von a bzgl $+$, Bezeichnung $-a$
+\ssect{Bemerkung}
+Nicht jedes $a \in R$ hat ein inverses Element bzgl $\cdot$, Bezeichnung $a^{-1}$
+\ssect{Unterring}
+Sei $(R, +, \cdot)$ ein Ring. $(U, +, \cdot)$ mit $U \subseteq R$ ist ein \underline{Unterring} von $(R, +, \cdot)$, wenn gilt:
+\begin{enumerate}
+\item $0 \in U$
+\item $a, b \in U \implies a +b \in U$ fuer alle $a, b \in U$
+\item $a \in U \implies -a \in U$ fuer alle $a \in U$
+\item $a, b \in  U\implies a \cdot b \in U$ fuer alle $a, b \in U$
+\end{enumerate}
+\ssect{Bemerkung}
+$0 \notin U implies (U, +, \cdot)$ ist kein Unterring
+\ssect{Definition}
+Sei $(R, +, \cdot)$ ein Ring.
+Ex. ein Element $1 \in R \setminus \Set{0}$ mit $a \cdot 1 = 1 \cdot a = a$ fuer alle $a \in R$, dann wird 1 \underline{Einselement} im Ring R genannt.
+\sect{Bemerkung}
+1 ist das neutrale Element bzgl $\cdot$. Ex. ein Einselement, dann ist es eindeutig bestimmt. Ringe mit Einselement haben mindestens zwei Elemente.
+\ssect{Beispiel}
+Sei M eine Menge, $M \neq \emptyset$
+$(P(M), \Delta, \cap)$ ist ein Ring mit Nullelement $\emptyset$, Einselement $M$.
+
+$(\bZ, \oplus, \odot)$ mir $a \oplus b = a + b -1$ und $a \odot b = a + b - ab$
+ist ein Ring mit Nullelement $1$ und Einselement $0$.
+\ssect{Rechnen im Ring $(R, +, \cdot)$}
+Sei $a \in R$. Dann gilt:
+\begin{enumerate}
+\item $a \cdot 0 = 0$
+\item $0 \cdot a = 0$
+\end{enumerate}
+\ssect{Definition: Nullteiler im Ring}
+Sei $(R, +, \cdot)$ ein kommutativer Ring. Sei $a, b \in R \setminus \Set{0}$ und $a \cdot b = 0$.
+Dann werden $a, b$ \underline{Nullteiler} genannt.
+\ssect{Bemerkung}
+Ein Ring heisst nullteilerfrei, wenn er keinen Nullteiler enthaellt.
+\ssect{Definition}
+Ein Integritaetsring ist ein kommutativer nullteilerfreier Ring mit Einselement.
+\sssect{Beispiele}
+\begin{itemize}
+\item $\bZ$ integer
+\item $2\bZ$ ist kein Integritaetsring
+\item $\bZ_p p Prim$ ist ein Integritaetsring
+\item $\bZ_p p kein Prim$ ist kein Integritaetsring
+\end{itemize}
+  \sssect{Beweis}
+  $\bZ_n$ mit $n = a \cdot b, 1 < a \leq b < n$.(in $\bZ$) 
+  $0 = a \cdot b, a, b \in \bZ_n$
+  $\implies a, b $ sind Nullteiler in $\bZ_n$
+
+  \ssect{Definition}
+  Sei $(R, +, \cdot)$ ein Ring mit Einselement. $a \in R$ heisst Einheit, wenn $a^{-1}$ existiert.
+  \ssect{Bemerkung}
+  $a^{-1}$ bezeichnet das Inverse von a bzgl $\cdot$
+  \sect{Definition: Koerper}
+  Sei $(R, +, \cdot)$ ein kommutativer Ring mit Einselement. Ist $(R \setminus \Set{0}, \cdot)$ eine Gruppe, dann wird $(R, +, \cdot)$ ein \underline{Koerper} genannt.
+  \ssect{Bemerkung}
+  Fuer jeden Koerper ist die multiplikative Gruppe $(R \setminus \Set{0}, \cdot)$ abelsch.
+
+  $(R, \cdot)$ ist keine Gruppe.
+  \ssect{Bemerkung}
+  Ist der Ring $(R, +, \cdot)$ ein Koerper, dann sind alle von 0 verschiedenen Elemente Einheiten.
+  \ssect{Satz}
+  Jeder Koerper ist ein Integritaetsring.
+  Beweis:\\
+  Sei K ein koerper,
+  \ilmath{a, b \in K, a \cdot b = 0 &\implies a = 0 \lor a^{-1} ex. \\
+    &\implies a = 0 \lor a^{-1} \cdot (a \cdot b) = a^{-1} = 0 \\
+  &\implies a = 0 \lor b = 0}
+  Also gibt es in K keine Nullteiler, also is K ein Integritaetsring$\hfill\square$
+  \ssect{Bemerkung}
+  Es gibt INtegritaetsringe, die keine Koerper sind.
+  \ssect{Satz}
+  Jeder endliche Integritaetsring ist ein Koerper
+
+  Beweis:\\
+  Sei $a \in R, a \neq 0$. Z.z?: $a^{-1}$ ex in R
+  [\ldots]
+  
+\end{document}

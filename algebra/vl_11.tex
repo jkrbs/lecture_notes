@@ -1,0 +1,109 @@
+\documentclass{../tudscript}
+\author{Jakob Krebs}
+\title{Mathe VL 11}
+
+\begin{document}
+\part{Numerische Mathematik}
+\sect{Auswertung von Polynomen}
+\ssect{Definition}
+Sei $p(x):- a_n x^n + \ldots + a_1 x + a_0 \in K[x]$ K Körper $\alpha \in K$
+Man nennt
+\ilmath{p(\alpha) = a_n \alpha^n + \ldots + \alpha_0}
+die Auswertung von p(x) an der Stelle $\alpha$. Die Polynomfunktion zu p(x) ist die Abbildung $K \rightarrow K: \alpha \mapsto p(\alpha)$
+\ssect{Bemerkung}
+Zur Aswertung von $p(x) = a_n x^n + \ldots + a_0$ in der Form
+\ilmath{p(x) = \alpha_0 + x ( a_1 + x (a_2 + x (\ldots)))}
+benötigt man n Multiplikationen und n Additionen.
+\ssect{Horner Schema}
+Die Form: siehe oben. Geht mit Fancy Tabelle
+
+\sssect{Bemerkung}
+Das Horner Schema kann man auch zur Polynomdivision von p(x) durch $x -alpha$
+verstehen:
+\ilmath{p(x) = q(x) (x-\alpha) + r}
+Insebesondere gilt
+\ilmath{p(\alpha) = q(\alpha) \cdot \underbrace{(x- \alpha)}_{0} + r = r}
+\ssect{Satz: D.E. Knuth}
+Jedes reelle Polynom vom Grad $\geq 3$ lässt sich mit $\lfloor \frac{n}{2} \rfloor + 2$ Multiplikationen und $n+1$ Additionen ausrechnen 
+\sect{Interpolation}
+\underline{Interpolationsaufgabe}\\
+
+Gegeben: $n+1$ Punkte $(x_i, g_i) (i = 0, 1, \ldots, n)$ mit paarweise verschiedenen Stützstellen
+
+Gesucht: Polynom p(x) mit
+\ilmath{p(x_i) = g_i (i = 0, 1, \ldots, n)}
+als Interpolationsbedingung.
+\ilmath{g = p(x) = \sum_{k = 0}^n a_k x^k}
+erfüllt die Interpolationsbedingung.
+
+Lösen der Interpolationsaufgabe durch Aufstellen und lösen des LGS ist möglich, aber sehr rechenaufwändig.
+\sssect{Bemerkung: lösbarkeit}
+Das LGS ist lösbar, weil die Koeffizientenmatrix eine von Null verschiedene Determinate hat. (mit der VANDERHONDE Determinatnte zeigen).
+
+\ssect{Allgemein}
+Gegeben: $n+1$ Punkte mit paarweise verschiedenen Stützpunkten.
+
+Gesucht: Gunktion F(x) aus einer bestimmten Funktionenklasse, die die INterpolationsbedingungen
+\ilmath{F(x_i) = g_i (i - 0, \ldots, n)}
+erfüllt.
+
+\sssect{Bemerkung}
+F(x) wird als Linearkombination von Basisfunktionen $\varphi_k (x)$ dagestellt:
+\ilmath{F(x) = \sum_{k = 0}^n a_k \varphi_k (x)}
+Gesucht sind die Koeffizienten $a_0, \ldots, a_n$
+
+\begin{itemize}
+\item $p(x) = \sum_{k = 0}^n a_k x^k$ Basisfunktion $1, x, x^2, \ldots, x^k$ (Berechnugn von $a_0, \ldots, a_k$ nicht effizient möglich)
+\item $p(x) \sum_{k = 0}^n a_k L_k (x)$ Basisfunktion $L_0(x), \ldots, L_n(x)$ Lagrange Basispolynome: Gesucht: $a_0, \ldots, a_k$
+\item $p(x) = \sum_{k = 0}^n c_k N_k (x)$ Basisfunktion $N_0 (x), \ldots, N_1 (x)$ Newton Basispolynome
+\item $p(x) = \sum_{k = 0}^n a_k \varphi_k (x)$ Basisfunktion $\varphi_0 (x), \ldots, \varphi_n (x)$ B Splines
+\end{itemize}
+
+\ssect{Lagrange Interpolationsmethode}
+Definition der Lagrange POlynome $L_k (x) (k = 0, \ldots n)$
+\ilmath{L_k (x) = \frac{\prod_{k =0, j \neq k}^n (x-x_j)}{\prod_{j = 0, j \neq k}^n (x_k -x_j)}}
+
+Eigenschaften der Lagrange Polynome $L_k (x)$
+\ilmath{K_k (x_i) = \begin{cases} 1; i = k \\ 0, i \in \Set{0, 1, \ldots, n} \setminus \Set{k}\end{cases}}
+Die POlynome $L_0 (x), L_1(x), \ldots, L_n (x)$ sind linear unabhängig.
+
+\ssect{Lagrange Interpolation}
+zu den Stützstellen
+\begin{enumerate}
+\item Lagrange Polynome $L_0, \ldots$ berechnen
+\item Ansatz: $p(x) a_0 L_0 (x) + \ldots + a_n L_n (x)$ Gesucht $a_1, \ldots a_n$
+\item Berechnung von $a_0, \ldots, a_n$ mit der Interpolationsbedingung $p(x_i) = g_i$
+  $y_i = a_i$.
+\item Ergebnis:
+  \ilmath{p(x) = \sum_{k = o}^n y_k \cdot L_k(x)}
+  Lagrangepolynom der Ordnung n
+\end{enumerate}
+\ssect{Newton Interpolationmethode}
+\begin{itemize}
+\item Definition der Newton POlynome $N_k(x) (k = 0, \ldots, n)$
+  $N_0 (x) := 1$\\
+  $N_k (x) := (x -x_0) (x - x_1) \cdot \ldots \cdot (x - x_{k-1})$ für $(k = 1, \ldots, n)$
+\item Eigenschaften der Newoton POllynome %N_k (x) (k = 0, \ldots, n$
+  \ilmath{N_k(x_i) = 0 \text{ für alle } i \in \Set{0, 1, \ldots, k-1}}
+  Die Polynome $N_0 (x), N_1 (x), \ldots, N_n(x)$ sind linear unabhängig.
+\end{itemize}
+
+\underline{Berechnung von $c_0, \ldots, c_n$}
+\begin{itemize}
+  \item $p(x_0) = c_0 N_0 (x_0) + c_1 N_1 (x_0) + \ldots = z_0\implies c_0 = y_0$
+  \item $p(x_1) = c_0 N_0 (x_1) + c_1 N_1 (x_1) + \ldots  c_n \underbrace{N_n(x_0)}_{0} = y_1$
+    \ilmath{\implies c_1 = \frac{y_1 - y_0}{x_1 - x_0} =: [x_1;x_0]}
+    Steigung (1. Ordnung)
+    \ilmath{\implies c_2 = \frac{[x_2 x_1] - [x_1 - x_0}{x_2 - x_0}}
+    Steigung (2. Ordnung)
+\end{itemize}
+\ssect{Newton Interpolation}
+\begin{enumerate}
+\item Newton POlynom $N_0 (x), \ldots$ breechne
+\item Ansatz $p(x) = x_0 N_0 (x) + \ldots$ Gesucht $c_0, \ldots$
+\item Berechnung von $c_0 , \ldots$
+  Es ist ein gestaffeltes lineares Gelichungssystem zu lösen
+\item Ergebnis $p(x) = \sum_{k = 0}^n c_k N_k (x)$ Newton Interpolationspolynom der Ordnung n
+\end{enumerate}
+\enquote{Der Steigunsspiegel heißt Spiegel, weil er kein Spiegel ist. Zudem ist es der einzige Spiegel, den ich kenne, bei dem rechts was völlig anderes steht, als auf der linken Seite.}
+\end{document}

@@ -1,0 +1,112 @@
+\documentclass{../tudscript}
+\author{Jakob Krebs}
+\title{Mathe VL 7}
+
+\begin{document}
+\sect{Bemerkung}
+Im Restklassenring $\bZ_n$ gilt:
+\ilmath{a \in \bZ_n \setminus \Set{0} \implies \text{ a ist entweder Nullteiler oder Einheit}}
+\paragraph{Beweis}
+Sei $a \in \bZ_n \setminus \Ste{0}$/
+\begin{enumerate}
+\item $ggT(a, n) = 1 \implies A^{-1} ex. \implies$ a Einheit
+\item $ggT(a, n) = d > 1 \implies an = n' d $ und $a = a' d$ mit $a', n' \in \bZ_n$
+  d.h. a ist ein Nullteiler in $\bZ_n$
+\item a kann nicht geleichzeitig Einheit und Nullteiler sin. $\hfill\square$
+\end{enumerate}
+
+Sei $(R, +, \cdot)$ ein kommutativer Ring mit Einselemnt.
+
+Annahme: $a \in R, a \neq 0$, a Nullteiler, a Einheit.
+
+$a a^{-1} = 1 \implies (a a^{-1})b = 1 b \implies (ab) a^{-1} = 1 b \implies b = 0$
+
+Widerspruch. Also kein a nicht Nullteiler und einheit gleichzeit sein.
+
+\ssect{Bemerkung}
+$\bZ = \Set{0, 1, -1}$ enthält weder Nullteiler noch Einheiten
+
+%TODO Lücken füllen
+
+\sect{Polynomringe}
+Sei $(z, +, \cdot)$ ein Ring
+
+$R(x)$ R adjungiert x bezeichnet die Menge der Polynome in (der unbestimmten) x über R.
+
+\ilmath{R(x) := \underbrace{\Set{_0 + a_1 x + a_2 x^2 + \ldots \mid a_-, \ldots a_n \in R(x)}}_{Nur endlich viele Summanden sind von 0 verschieden.}}
+
+\ssect{Bezeichnung}
+\ilmath{\underbrace{a_0 + a_1 x + \ldots + a_n x^n}_{a(x)} = (a_0 a_1 \ldots a_n)}
+heißt Polunom in x über R, $a_0, \ldots$ heißt Koeefizienten
+
+\ssect{Bemerkung}
+x ist ein formales Rechensymbol
+\ssect{Rechnen in POlynomringen}
+
+Addition:
+
+\ilmath{a(x) \oplus b(x) = (a_0 + b_0) + (a_1 + b_1)x + \ldots \\
+(a_0 a_1 a_2 ) \oplus (b_0 b_1 b_2 ) = (a_0b_0 a_1b_1 a_2b_2)}
+
+Multiplikation:
+\ilmath{a(x) \odot b(x) = \sum_{m = 0}^n ((\sum_{i = 0}^{m} a_i b_{m-1})x^m})
+
+\ssect{Satz}
+$(R, +, \cdot)$ Ring $\implies (R(x), \oplus, \odot)$ Ring, \underline{Polynomring} über R in der unbestimmten x.
+\ssect{Satz}
+
+$(R, +, \cdot)$ Integritäatsring $\implies (R(x), \oplus, \odot)$ Integritätsring.
+
+\ssect{Bemerkung}
+$(K, +, \cdot)$ Körper $\implies (K(x), \oplus, \odot)$ kein Körper, denn x hat kein multiplikatives Inverses
+\ilmath{a(x) \odot x + 1 \text{ für alle } a(x) \in K(x)}
+%TODO Beweis 
+\ssect{Satz}
+
+$(K, +, \cdot)$ Körper $\implies (K(x), \oplus, \odot)$ euklidischer Ring.
+
+\sect{Bemerkung: euklidische Ringe}
+Ein Ring R ist genau dann ein \underline{euklidischer Ring}, wenn man jeden $ggT(a, b)$ mit $a, b \in R, (a, b) \neq (0,0)$ mit dem
+euklidischen Algorithmus berechnen kann.
+
+\ssect{Grad eines Plynoms}
+%%TODO
+wie bei Polynomfunktionen.
+
+Das Nullpolynom 0 hat keinen Grad.
+
+\ssect{Satz: Polynomdivision}
+Sei K ein Körper.
+Gilt $a(x), b(x) \in K(x)$ mit $a(x) \neq 0$, dann gibt es eindeutig bestimmte POlynome $q(x), r(x) \in K(x)$ mit:
+
+\ilmath{b(x) &= q(x) \odot a(x) \oplus r(x)}
+und
+\ilmath{r(x) = 0 \lor grad(r(x)) < grad(a(x))}
+
+\ssect{Bemerkung}
+%%TODO kann ich nicht lesen. wir sitzten echt zuweit hinten.
+
+%%TODO vielleicht hat jemand Lust das Beisiel zu texen
+
+\sect{Definition: ggT in Integritätsringen}
+Sei $(R, +, ]cdot)$ ein Integritätsring, $a, b \in R, (a, b) \neq (0, 0)$
+$d \in R$ heißt \underline{ein größter gemeinsamer Teiler}, von a und b, wenn gilt:
+\begin{enumerate}
+  \item $d|a$ und $d|b$
+  \item $t|a$ und $t|b \implies t|d$ für alle $t \in R$
+\end{enumerate}
+\ssect{Bezeichnung}
+  \ilmath{ggT(a, b) \cong d}
+  assoziiert zu.
+  \ssect{Beispiel}
+  %%TODO kann jakob wieder nicht lesen
+
+\sect{endliche Körper GF(q)}
+\ssect{Satz}
+Ein endlicher Körper mit q Elementen existiert genau dann,
+wenn q eine Primzahl ist. Gilt $q = p^k$ (p Prim, $k \in \bN, k \geq 1$), dann gibt bis auf Isomorphie genau einen endliche Körper mit q Elementen.
+
+\ssect{Beispiel}
+\ilmath{GF(p) \cong \bZ_p, P prim}
+Aber: $Z_n$ n kein Prim, ist kein Körper.
+\end{document}

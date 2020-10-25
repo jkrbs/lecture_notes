@@ -1,0 +1,145 @@
+\documentclass{../tudscript}
+\author{Jeroen Trzaska}
+\title{Mathe VL 5}
+
+\begin{document}
+$(H_1,\circ_1)$ und $(H_2,\circ_2)$ seine Halbgruppen.
+Sei $h: H_1 \rightarrow H_2$ ein surjektiver Homomorphismus, d.h. :
+\begin{itemize}
+\item $\forall a,b \in H_1 | h(a \circ_1 b) = h(a) \circ_2 h(b)$
+\item $\{h(a)|a \in H_1\} = H_2$
+\end{itemize}
+Dann gilt:
+\begin{enumerate}
+  \item ker(h) $:= \{(a,b) \in H_1 \times H_1 | h(a)=h(b)\}$ ist eine
+    Kongruenzrelation in $(H_1, \circ_1)$
+  \item Die Abbildung $nat_{ker(h)}: H_1 \rightarrow H_1/_{ker(h)} : a \mapsto
+      [a_{Ker(h)}]$ ist ein Homomorphismus (natuerlicher Homomorphismus).
+      $nat_{ker(h)}$ surjektiv.
+\end{enumerate}
+\sssect{Beispiel}
+Halbgruppen $(\bN,+)$ und $(\bZ_4,+_{\mod 4})$
+\ilmath{h:\bN \rightarrow \bZ_4 : a \mapsto a \mod 4}
+ist ein surjektiver Homomorphismus
+\begin{itemize}
+\item $ker(h) = \{(a,b) \in \bN \times \bN | a \mod 4 \}$ ist eine
+  Kongruenzrelation in $(\bN,+)$
+ \item $nat_{ker(h)}: \bN \rightarrow \bN/_{ker(h)}: a \mapsto [a]_{ker(h)}$ ist
+   ein surjektiver Homomorphismus
+ \end{itemize}
+ \sssect{Beweis von 1)}
+ \ilmath{ ker(h) := \{(a,b) \in H_1 \times H_1 | h(a) = h(b)\}}
+ \begin{itemize}
+ \item ker(h) ist eine Aequivalenzrelation in $H_1$
+ \item ker(h) ist strukturvertraeglich, da \\
+   \ilmath{(a,b),(c,d) &\in ker(h)\\
+     &\implies h(a) = h(b), h(c) = h(d)\\
+     &\implies h(a) \circ_2 h(c) = h(b) \circ_2 h(d)\\
+     &\implies h(a \circ_1 c) = h(b \circ_1 d)\\
+     &\implies (a \circ_1 c, b \circ_1 d) \in ker(h)}
+   
+   Also ist ker(h) eine Kongruenzrelation
+ \end{itemize}
+ \sssect{Beweis von 2)}
+ $nat_{ker(h)} : H_1 \rightarrow H_1/_{Ker(h)}: a \mapsto [a]_{ker(h)}$
+ \begin{itemize}
+   \item $nat_{ker(h)}$ ist surjektiv (denn fuer jeder $[a]_{ker(h)} \in H_1/_{ker(h)}$
+   existiert ein $a \in H_1$ mit $nat_{ker(h)} [a] = [a]_{ker(h)}$)
+ \item $nat_{ker(h)}$ ist strukturvertraeglich, denn:
+   \ilmath{nat_{ker(h)}(a \circ_1 b) &= [a \circ_1 b]_{ker(h)}\\
+     &= [a]_{ker(h)} \circ_{ker(h)} [b]_{ker(h)}\\
+     &= nat_{ker(h)} \circ_{ker(h)} [b]_{ker(h)}\\
+   &= nat_{ker(h)} (a) \circ_{ker(h)} nat_{ker(h)} (b) \text{ fuer alle } a,b
+   \in H_1}
+ Also ist $nat_{ker(h)}$ ein surjektiver Homomorphismus
+\end{itemize}
+\ssect{Homomorphiesatz fuer Halbgruppen}
+$(H_1, \circ_1), (H_2,\circ_2)$ seien Halbgruppen\\
+$h:H_! \rightarrow H_2$ sei ein surjektiver Homomorphismus.\\
+$ker(h) : \{(a,b) \in H_1 \times H_1 | h(a) = h(b)\}$ ist Kongruenzrelation\\
+Die Faktorhalbgruppe von $(H_1, \circ_1)$ nach $ker(h)$ ist zu $(H_2,\circ_2)$
+isomorph und\\
+$f: H_1/_{ker(h)} \rightarrow H_2 : [a]_{ker(h)} \rightarrow h(a)$ ist ein
+Isomorphismus:
+\ilmath{H_1/_{ker(h)},\circ_{ker(h)} \underset{f}{\cong} (H_2,\circ_2)}
+\sssect{Beispiel}
+Halbgruppen $\bN,+$ und $\bZ_4, +_{\mod 4}$\\
+surjektiver Homomorphismus $h:\bN \rightarrow \bZ_4 : a \mapsto a \mod 4$\\
+$ker(h) = \{(a,b) \in \bN \times \bN | a \mod 4 = b \mod 4\}$\\
+Faktorhalbgruppe
+\ilmath{\bN/_{ker(n)} = \{[2]_{ker(h)} | a \in \bN\}=
+  \{[0]_{ker(h)},[1]_{ker(h)},[2]_{ker(h)},[3]_{ker(h)}\}\\
+  [a]_{ker(h)} +_{ker(h)} [b]_{ker(h)} = [a+b]_{ker(h)}\\
+  (\bN/_{ker(h)},+_{ker(h)})\\
+(\bN/_{ker(h)} \underset{f}{\cong} (\bZ_4,+_{\mod 4}))}
+Isomorphismus $f: \bN/_{ker(h)} \rightarrow \bZ_4:[a]_{ker(h)}\mapsto a \mod 4$
+$(G_1, \circ_1)$ und $(G_2,\circ_2)$ seien Gruppen.
+Sei $h:G_1 \rightarrow G_2$ eine surjektiver Homomorphismus, d.h.:
+\begin{itemize}
+\item $\forall a,b \in G_1 : h(a \circ_1 b) = h(a) \circ_2 h(b)$
+\item $\{h(a) | a \in G_1\}$
+\end{itemize}
+Dann gilt:
+\begin{enumerate}
+  \item $ker(h):=\{a \in G_1 | h(a) =  e_2\}$ ist ein Normalteiler in
+    $(G_1,\circ_1)$
+    \item Die Abbildung $nat_{ker(h)}: G_1 \rightarrow G_1/_{ker(h)}:g \mapsto
+      ker(h)$ ist ein Homomorphismus (natuerlicher Homomorphismus),
+      $nat_{ker(h)}$ ist surjektiv
+\end{enumerate}
+\sssect{Beispiel}
+Gruppen $(\bZ,+)$ und $\bZ_4, +_{\mod 4}$\\
+$h: \bZ \rightarrow \bZ_4 | a \mapsto a \mod 4$ ist ein surjektiver
+Homomorphismus.
+\begin{enumerate}
+\item $ker(h) = \{a \in \bZ | a \mod 4 = 0\} = 4 \bZ = \{4z|z \in \bZ\}$ ist ein
+  Normalteiler in $(\bZ,+)$
+  \item $nat_{ker(h)}:\bZ \rightarrow \bZ/_{4_\bZ}:a \mapsto a + 4 \bZ$ ist ein
+    surjektiver Homomorphismus.
+  \end{enumerate}
+
+  \sssect{Beweis}
+  $ker(h) := \{a \in G_1 | h(a) = e:2\}$
+  \begin{itemize}
+  \item $ker(h) \neq \emptyset$, denn $h(e_1) = e_2$ und $e_1 \in ker(h)$
+    \item $a,b \in ker(h) \implies h(a \circ_1 b) = h(a) \circ_2 h(b) =
+        e_2 \circ e_2 = e_2 \implies a \circ_1 b \in ker(h)$
+      \item $a \in ker(h) \implies h(a) = e_2 \implies h(a)^{-1} =
+          e_2^{-1} \implies h(a^{-1})= e_2 \implies a^{-1} \in ker(h)$
+
+\item $a ker(h) = \{a \circ_1 g | g \in ker(h)\} \overset{\ast}{=}\{b \in G_1 |
+  h(a) = h(b)\} \\
+  ker(h) a = \{g \circ_1 a | g \in ker(h)\} \overset{\ast}{=} \{b \in G_1 | h(a)
+  = h(b)\}$\\
+$\implies a ker(h) = ker(h)a$ fuer alle $a \in G_1$
+Also ist $ker(h)$ ein Normalteiler in $(G_1, \circ_1)$
+\end{itemize}
+$\ast$\\
+\ilmath{h(a \circ_1 g) = h(a) \circ_2 h(g) = h(a) \circ_2 e_2 = h(a)}
+und
+\ilmath{h(b)=h(a) &\implies h(a)^{-1} \circ_2 h(b) = h(a)^{-1} \circ_2 h(a)\\
+  &\implies h(a^{-1}) \circ_2 h(b) = e_2\\
+  &\implies h(a^{-1} \circ_1 b) = e_2\\
+  &\implies a^{-1} \circ_1 b \in ker(h)\\
+  &\implies b \in a ker(h)}
+$\ast \ast$ analog
+\sssect{Beweis von 2)}
+$nat_{ker(h)}: G_1 \rightarrow G_1/_{ker(h)}:g \mapsto g ker(h), g\in g ker(h)$
+\begin{itemize}
+\item $nat_{ker(h)}$ ist surjektiv, denn $\forall a ker(h) \in G_1/_{ker(h)}:
+  \exists a\in G_1 mit  nat_{ker(h)} (a) = a ker(h)$
+\item $\forall a,b \in G$ gilt: \\
+  \ilmath{nat_{ker(h)}(a \circ_1 b) &= (a \circ_1 b) ker(h)\\
+    &= a ker(h) \circ_{ker(h)} ker(h)\\
+    &= nat_{ker(h)} (a) \circ_{ker(h)} nat_{ker(h)} (b)}
+  Also ist $nat_{ker(h)}$ ein surjektiver Homomorphismus.
+\end{itemize}
+\ssect{Homomorphiesatz fuer Gruppen}
+$G_1, \circ_1$ und $(G_2,\circ_2)$ seien Gruppen.\\
+$h:G_1 \rightarrow G_2$ sei ein surjektiver Homomorphismus.\\
+$ker(h) := \{a \in G_1 | h(a) = e_2\}$ ist ein Normalteiler.\\
+Die Faktorgruppe von $(G_1, \circ_1)$ nach $ker(h)$ ist zu $(G_2,\circ_2)$
+isomorph und $f:G_2/_{ker(h)} \rightarrow G_2 : a ker(h) \rightarrow h(a)$ ist
+ein Isomorphismus.
+\ilmath{(G_1/_{ker(h)},\circ_{ker(h)}) \underset{f}{\cong} (H_2, \circ_2)}
+\end{document}

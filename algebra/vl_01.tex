@@ -1,0 +1,179 @@
+\sect{Organisatorisches}
+\ssect{Inhalt der Vorlesung}
+\begin{itemize}
+    \item Halbgruppen und Gruppen
+    \item Ringe, Ingritaetsringe, Koerper
+    \item Faktorstrukturen, Chinesischer Restsatz und Anwendungen
+    \item Modularpolynome, BCH Kode
+    \item Konstruktion aller endlichen koerper
+    \item Wahtsceinlichkeitstheorie
+    \item Polynomauswertung
+    \item Splineinterpolation
+    \item Diskrete Fourierinformationen (DFT, FFT)
+\end{itemize}
+\sect{Halbgruppen und Gruppen}
+\ssect{Definition: Halbgruppe}
+Sei $H \neq \emptyset$ eine Menge und $\circ$ eine assoziative \underline{Operation auf H},
+d.h.:
+\ilmath{\forall a, b,c \in H: a \circ (b \circ c) = (a \circ b) \circ c}
+Dann nennt man $(H; \circ)$ eine \underline{Halbgruppe}
+(kurz: Halbgruppe H)
+
+$\mid H \mid$ heisst \underline{Ordnung} der Halbgruppe H.
+
+Eine Halbgruppe $(H; \circ)$ heisst \underline{kommutativ}, wenn gilt:
+\ilmath{\forall a, b, \in H: a \circ b = b \circ a}
+
+\ssect{Bemerkung: Operation auf Halbgruppen}
+$\circ$ ist eine Operation auf H $\iff \circ$ ist eine Abbildung von$H \times H$ in H
+$\iff$
+\ilmath{\forall a,b \in H: &a \circ b \text{ ex.} \\
+                           &a \circ b \text{ eindeutig bestimmt} \\
+                           &a \circ b \in H}
+\ssect{Beispiel}
+\begin{itemize}
+    \item $(\bN \setminus \Set{0}, +)$ ist eine kommutative Halbgruppe
+    \item $(\bZ, -)$ ist keine Halbgruppe, denn
+        \ilmath{0 - (8-5) + (0 - 9) = 15}
+    \item $(\bR^{n \times n},\underbrace{\cdot}_{Matrixmultiplikation})$ Halbgruppe (nicht kommutativ)
+    \item $(T_A, \circ)$ Halbgruppe (nicht kommutativ)\\
+    (Transformationshalbgruppe)
+\end{itemize}
+
+\ssect{Definition: neutrales Element}
+Sei $(H, \circ)$ eine Halbgruppe und $e \in H$. e heisst \underline{neutrales Element},
+wenn gilt:
+\ilmath{\forall a \in H: e \circ a = a \circ e = a}
+\sssect{Bemerkung}
+Enthaellt eine Halbgruppe ein neutrales Element, dann ist es eindeutig bestimmt, denn
+\ilmath{e_1 \circ e_2 = e_2, e_1 \circ e_2 = e_1 \implies e_1 = e_2}
+Halbgruppe entgaelt hoechstens ein neutrales Element.
+
+\ssect{Definition: Monoid}
+Sei $(H, \circ)$ eine Halbgruppe mir einem neutralem Element, dann ist $(H, \circ)$ ein Monoid
+\sssect{Beispiel}
+\begin{itemize}
+\item $(\bN, +), e = 0$
+\item $(\bZ, \cdot) , e = 1$
+\item Freies Monoid ueber dem Alphabet $\Sigma$ (Worthalbgruppe)
+\ilmath{(\underbrace{\Sigma^\star}_{\text{Menge aller Woerter ueber ueber $\Sigma$}}), \underbrace{\circ}_{\text{Konkatination}}, e = \epsilon}
+\end{itemize}
+
+\ssect{Definition: Unterhalbgruppe}
+Sei $(H, \circ)$ eine Halbgruppe, $\emptyset \neq U \subseteq H$.
+U iheisst Unterhalbgruppe von H, wenn gilt:
+\ilmath{\forall a, b \in U \implies a \circ b \in U}
+\sssect{Bemerkung}
+Unterhalbgruppen sind Halbgruppen (Uebung)
+\sssect{Beispiel}
+$(2\bZ, \cdot)$ ist eine Unterhalbgruppe von $(\bZ, \cdot)$
+
+\ssect{Definition: Inverse Elemente}
+Sei $(H, \circ)$ ein Monoid mit dem neutralem Element e.
+$a \in H$ heisst \underline{invertierbar}, wenn es $b \in H$ mit
+\ilmath{a \circ b = b \circ a = e}
+existiert.
+\sssect{Bemerkung}
+Sei $a \circ b_1 = b_1 \circ a = e$ und $a \circ b_2 = b_2 \circ a =e$. Dann gilt
+$b_1 = b_1 \circ e = b_1 \circ (a \circ b_2) = (b_1 \circ a) \circ b_2 = e \circ b_2 = b_2$
+\sssect{Bemerkung}
+Ist $a \in H$ invertierbar, dann nennt man $b \in H$ mit 
+\ilmath{b \circ a = a \circ b = e}
+\underline{das Inverse} von $a$.
+\sssect{Schreibweise}
+\ilmath{b = a^{-1}}
+
+\ssect{Definition}
+Sei $(H, \circ)$ ein Monoid mit dem neutralen Element e.
+
+\ilmath{H^* = \Set{a \in H \mid a^{-1} \in H}}
+nennt man die Menge der invertierbaren Elemente.
+
+\sssect{Bemerkung}
+\begin{itemize}
+
+\item $(a^{-1})^{-1} = a$
+\item $e^{-1} = e$
+\item $(a \circ b)^{-1} = b^{-1} \circ a^{-1}$
+
+\end{itemize}
+
+\sssect{Satz}
+Sei $(H, \circ)$ ein Monoid, Dann gilt:
+$H^*$ ist eine Unterhalbgruppe von $(H, \circ)$
+
+
+\ssect{Satz: Gruppe}
+
+Sei $(H, \circ)$ ein Monoid. $(H, \circ)$ ist eine Gruppe $\iff H = h^*$
+
+\sssect{Beispiel}
+\begin{itemize}
+\item $(\bZ, +), (\bR \setminus \Set{0}, \cdot)$
+\item $(\bZ_n, +)$
+\item $(\bZ_p \setminus \Set{0}, \cdot) (p prim)$
+\end{itemize}
+sind abelsche Gruppen\\
+
+Gruppoid $\overset{\circ\; assoz.}{\rightarrow}$ Halbgruppe $\overset{e}{\rightarrow}$ Monoid $\overset{a^{-1}}{\rightarrow}$ Gruppe $\overset{\circ\; komm.}{\rightarrow}$ abelsche Gruppe
+
+\ssect{Satz: Kuerzungsregeln}
+Sei $(G, \circ)$ eine Gruppe. Dann gelten die \underline{Kuerzungsregeln}
+\begin{enumerate}
+\item $\forall a, x_1, x_2 \in G: a \circ x_1 = a \circ x_2 \implies x_1 = x_2$
+\item $\forall a, x_1, x_2 \in G: x_1 \circ a = x_2 \circ a \implies x_1 = x_2$
+\end{enumerate}
+\sssect{Beweis}
+\begin{enumerate}
+\item Sei $a, x_1, x_2 \in G$ und $a \circ x_1 = a \circ x_2$\\
+Wegen $G^* = G \text{ ex. } a^{-1} \in G$\\
+Also gilt $a^{-1} \circ (a \circ x_1) = a^{-1} \circ (a \circ x_2)$ sowie\\
+$(a^{-1} \circ a) \circ x_1 = (a^{-1} \circ a) \circ x_2$\\
+Daraus folgt:\\
+$e \circ x_1 = e \circ x_2$ und $x_1 = x_2$
+\item Analog
+\end{enumerate}
+\ssect{satz}
+Sei $(G, \circ)$ eine Gruppe. Dann sind alle Gleichungen $a \circ x = b$, $z \circ a = b$ mit $a, b \in G$
+in G eindeutig loesbar.
+\ssect{Satz}
+Sei $(H, \circ)$ ein Halbgruppe. $(H, \circ)$ ist genau dann eine Gruppe, wenn alle Gleichungen
+$ax = b, ya =b$ mit $a, b \in H$ in H eindeutig loesbar.
+\ssect{Satz}
+Sei $(H, \circ)$ eine endliche Halbgruppe. Gelten in $(H, \circ)$ die Kuerzungsregeln, dann ist $(H, \circ) eine Gruppe$
+
+\ssect{Bemerkung}
+In $(\bN, +)$ gelten die Kuerzungsregeln, aber $(\bN, +)$ ist keine Gruppe.
+
+\ssect{Beispiel: bijektive Abbildungen sind eine Gruppe}
+Menge $A \neq \emptyset$ A endlich
+\ilmath{T_{A}^\star = \Set{f: A \rightarrow A \mid f \text{ bijektiv}}}
+$(T_{A}^{\star}, \circ)$ ist eine Gruppe.
+\sssect{Bezeichnung}
+
+$\mid A\mid = n \implies s_n := T_{A}^\star$
+\sssect{Bemerkung}
+$\mid s_n\mid = n!$, $(s_n, \circ)$ist die \underline{symmetrische Gruppe von grad n}
+\ssect{Definition: Permutationsgruppe}
+Die Untergruppen von $(S_n, \circ)$ heissen \underline{Permutationsgruppen}
+\ssect{Beispiel: Permutationsgruppen vom Grad 3}
+$n = 3$\\
+$$ s_3 = \left\{ \m{1 & 2 & 3 \\ 1 & 2 & 3}, \m{1 & 2 & 3 \\ 1 & 3 & 2}, \m{1 & 2 & 3 \\ 3 & 2 & 1},\\
+		\m{1 & 2 & 3 \\ 2 & 1 & 3},	\m{1 & 2 & 3 \\ 2 & 3 & 1},	\m{1 & 2 & 3 \\ 3 & 1 & 2} \right \} $$
+
+$(s_3, \circ)$ ist eine nicht abelsche Gruppe.
+
+\ssect{Bemerkung}
+$(S_n, \circ)$ ist fuer $n \geq 3$ eine nicht abelsche Gruppe
+
+\ssect{Zyklenschreibweise fuer Permutationen}
+Jede Permutation auf einer endlichen Menge laesst sich als Konkatination elementfremder Zyklen schreiben.
+
+z.b.
+\ilmath{\alpha = \m{1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\ 8 &2 & 4 & 7 & 6 & 3 & 5 & 1 & 9} \in s_9}
+in Zyklenschreibweise:
+\ilmath{\alpha = (1 8) (2) (3 4 7 5 6 ) (9)}
+\ilmath{\alpha = (1 8) (3 4 7 5 6) = (3 4 7 5 6) (1 8)}
+
+Bei elementfremden zyklen ist die Reihenfolge der Zyklen beliebig.
+

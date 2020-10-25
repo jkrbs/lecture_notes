@@ -1,0 +1,111 @@
+\documentclass{../tudscript}
+\author{Jakob Krebs}
+\title{Mathe VL 4}
+
+\begin{document}
+\ssect{Definition: Kungruenzrelation in einer Gruppe}
+Sei $(G, \circ )$ eine Gruppe und R eine Aequivalenzrelation in G. R heisst \underline{Kungruenzrelation}
+in $(G, \circ )$, wenn gilt:
+\ilmath{\forall a, b, c, d \in G:(a,b), (c,d) \in R \implies (a\circ c, b\circ d) \in R}
+\sssect{Beispiel}
+Gruppe $(\bZ_n, +)$, Relation mit $(a,b) \in R \iff a \equiv b \mod n$
+\sssect{Bemerkung}
+Aequivalenzklassen:
+\ilmath{[a]_R = \Set{b \in G \mid (a,b) \in R}}
+Faktormengen:
+\ilmath{G/R = \Set{[a]_R \mid a \in G}}
+\sssect{Beispiel}
+\ilmath{\bZ_n / \equiv_n = \Set{[i]_{\equiv_n}} \mid i = 0, 1, \ldots, n-1}
+$[i]_{\equiv_n}$ enthaellt genau diejenigen ganzen Zahlen, die bei der Division durch n den Rest i haben.
+
+\ssect{Bemerkung}
+Durch
+\ilmath{[a]_R \circ_R [b]_R := [a \circ b]_R}
+ist eine assoziative Gruppe in G/R defininiert.
+\sssect{Beispiel}
+
+\ilmath{[a]_{\equiv_n} + [b]_{\equiv_n} := [a+b]_{\equiv_n}}
+
+\sssect{Bemerkung: neutrales Element}
+$[e]_R$ ist das neutrale Element bezgl $\circ_R$, wenn e das neutrale Element in $(G, \circ)$ bezeichnet.
+\sssect{Bemerkung: inverses Element}
+\ilmath{\forall a \in G: [a]^{-1}_R = [a^{-1}]_R}
+\ssect{Folgerung}
+$(G/R, \circ_R)$ ist eine Gruppe.
+\ssect{Definition: Faktorgruppe}
+Sei $(G, \circ )$ eine Gruppe und R eine Kongruenzrelation $(G/R, \circ_R)$ heisst \underline{Faktorgruupe} von $(G, \circ)$ nach R.
+\sssect{Beispiel}
+Gruppe $(\bZ, +), (a,b) \in R \iff a \equiv b \mod 3$
+
+Faktormenge: $\Set{[0]_R, [1]_R, [2]_R} = \bZ/R$
+
+Faktorgruppe: $(\bZ/R, +_R)$
+%TODO Verknuepfungstafel
+
+\ssect{Definition: Normalteiler}
+Sei $(G, \circ)$ eine Gruppe und $(N, \circ)$ eine Untergruppe von $(G, \circ)$. $(N, \circ)$ heisst \underline{Normalteiler} in $(G, \circ)$, wenn gilt:
+\ilmath{\forall g \in G: gN = Ng}
+wobei
+Linksnebenklasse:
+\ilmath{gN := \Set{g \circ a \mid a \in N}}
+Rechtsnebenklasse:
+
+\ilmath{Ng := \Set{a \circ g \mid a \in N}}
+
+\ssect{Bemerkung}
+\begin{itemize}
+\item In ableschen Gruppen ist jede Untergruppe ein Normalteiler.
+\item Jede Gruppe hat die Normalteiler $(G, \circ)$ und $(\Set{e}, \circ)$
+\end{itemize}
+\ssect{Bemerkung}
+\ilmath{G_1 N \ g_2 N \text{ oder } g_1 N \land g_2 N = \emptyset \text{ fuer alle } g_1, g_2 \in G}
+\ssect{Bemerkung}
+Man kann die \underline{Struktur}(das Rechnene) der Faktorgruppen beschreiben, wenn man \underline{die Normalteiler} (spezielle Untergruppen) der Gruppe kennt.
+\ssect{Bemerkung: Rechnen mit Nebenklassen}
+Ist $(G, \circ)$ eine Gruppe und $(N, \circ)$ eine Normalteiler, dann ist durch:
+\ilmath{\forall a, b \in G: aN \circ_N bN:= (a\circ b)N}
+eine Operation $\circ_N$ auf der Menge $\Set{gN \mid g \in G}$ (Faktormenge) definiert.
+D.h. fuer alle $aN, bN$ gilt:
+\begin{enumerate}
+\item $aN \circ_N bN$ existiert.
+\item $aN \circ_N bN$ ist eindeutig bestimmt
+\item $aN \circ_N bN \in \Set{gN \mid g \in G}$ 
+\end{enumerate}
+
+\sssect{Beweis der Repraesentantenunabhaengigkeit}
+wir brauchen:
+Sei $(U, \circ)$ eine Untergruppe der Gruppe $(G, \circ)$. Dann gilt:
+\ilmath{\forall g_1 , g_2 \in G: G_1 N = g_2 N \iff g^{-1}_1 \circ g_2 \in U}
+Beiweis:.... \% if one is bored. TODO
+\sssect{Bemerkung}
+$\circ_N$ ist eine assoziative Operation auf $G/N = \set{gN \mid d \in G}$,
+denn
+\ilmath{\forall a,b,c \in G: aN \circ_N (bN \circ_N cN) = aN \circ_N (b \circ c)N = (a \circ (b \circ c))N = ((a \circ b)\circ c)N = (a \circ b )N \circ_N cN = (aN \circ_N bN) \circ_N cN} 
+\ssect{Bemerkung}
+$N(=eN)$ ist das neutrale Element bzgl. $\circ_N$
+\sssect{Bemerkung}
+\ilmath{\forall a \in G: (aN)^{-1} = a^{-1}N}
+\sssect{Bemerkung}
+\ilmath{(G/N, \circ_N)}
+ist eine Gruppe.
+\sssect{Definitio: Faktorgruppe}
+Sei $(G, \circ)$ eine Gruppe und $(N, \circ)$ ein Normalteiler in $(G, \circ)$.
+$(G/N, \circ_N)$ heisst \underline{Faktorgruppe} nach $(N, \circ_N)$
+
+\ssect{Beispiel}
+siehe Zusatzmaterial
+
+\ssect{Zusammenhang Kongruenzrelation/Normalteiler}
+Sei G eine Gruppe mit dem neutralem Element e:
+\begin{itemize}
+\item R Kongruenzrelation in G: $[e]_R = \Set{g \in G \mid (e,g) \in R}$ ist ein Normalteiler von G
+\item N Normalteiler in G: Die Relation $R \subseteq G \times G$ mit $R = \Set{(a,b) \mid aN = bN}$ ist eine KR in G
+\end{itemize}
+
+\ssect{Zusammenhang Homomorphismus/Normalteiler}
+Sei G eine Gruppe
+\begin{itemize}
+  \item N normalteiler in G: $k: G \rightarrow G/N: g \mapsto gN$ ist ein Homomorphismus
+  \item h sei ein Homomorphismus von G in eine Gruppe G' mit dem neutralen Element e' $\implies \Set{g \in G \mid h(g) = e'}$(Kern des Homomorphismus inh. Bezeichnung ker(h)) ist ein Normalteiler in G
+\end{itemize}
+\end{document}

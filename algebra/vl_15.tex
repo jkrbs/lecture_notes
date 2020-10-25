@@ -1,0 +1,150 @@
+\documentclass{../tudscript}
+
+\title{Mathe VL 15}
+\author{Jakob Krebs}
+
+\begin{document}
+\sect{Wahrscheinlichkeitstheorie}
+\ssect{Beispiel}
+Stochastischer Test eines Algorithmus A auf Korrektheit
+
+Eingabe: Polynom $f(x)$ vom Grad $\leq d$ über einem Körper K.
+
+Ausgabe: Normalform von $f(x)$
+
+\ilmath{f (x) \overset{\rightarrow}{A} g (x)}
+
+Wähle:
+\ilmath{r \in\Set{0, 1, \ldots, 100d-1}}
+\underline{zufällig aus.}
+
+\begin{itemize}
+
+\item $f(r) \neq g(r) \implies f(x) \neq g(x) \implies$ A nicht korrekt
+\item $f(r) = g(r) \implies f(x) = g(x)$ oder $f(x) \neq g(x)$ mit Wahrscheinlichkeit $\leq \frac{1}{100} = \frac{d}{100d}$
+
+\end{itemize}
+
+Denn $f(r) = g(r) \implies$ r ist Nullstelle von $f(x) - g(x)$. Gilt $f(x) \neq g(x)$, denn $f(x) - g(x)$ hat höchstens d Nullstellen über K.
+
+\ssect{Definition: Ereignisfeld}
+Sei $\Omega$ eine Menge.
+
+$\sE$ heißt Ereignisfeld, wenn $\sE$ eine Menge von Teilmengen von $\omega$ ist und gilt:
+
+\begin{enumerate}
+\item $\Omega \in \sE$
+\item $A \in \sE \implies \bar{A} := \Omega \setminus A \in \sE$
+\item $A_1, A_2, \ldots \in \sE \implies \bigcup_{i = 1}^{\infty} A_i = A_1 \cup A_2 \cup, \ldots \in \sE$
+\end{enumerate}
+
+\ssect{Bemerkung}
+Ein Ereignisfeld wird auch E-Algebra genannt.
+
+\begin{itemize}
+\item $\sE \subseteq P(\Omega)$
+\item Man kann auf Ereignisfeldern rechnen mit $\bar{}, \cup, \cap$
+\end{itemize}
+
+\ssect{Bezeichnungen}
+\begin{itemize}
+\item $A \in \sE$: (zufällige) Ereignis
+\item $\Omega \in \sE$: sicheres Eregnis
+\item $\bar{\Omega} = \emptyset \in \sE$: unmögliches Ereignis
+\end{itemize}
+
+\ssect{Bemerkung}
+$A_1, A_2, \ldots$ sind abzählbar viele Ereignisse. Endliche viele oder abzählbar undendlich viele.
+
+endlich: $A_1, A_2, \emptyset, \emptyset, \ldots$
+
+\ssect{Beispiel}
+Würfeln: $A_i, \ldots$ der i-te Wurd ist eine 6. $\bar{A_i}$: der i-te Wurf ist keine 6.
+
+\begin{enumerate}
+\item $\bigcap_{i = 1}^{4} A_i = A_1 \cap A_2 \cap A_3 \cap A_4$ In den ersten vier Würfen wird jeweils eine 6 gewürfelt.
+\item $\bigcup_{i = 1}^4 A_i = A_1 \cup A_2 \cup A_3 \cup A_4$ unter den ersten vier Würfen ist mindestens eine 6.
+\item $\bigcap_{n = 1}^{\infty} \bigcup_{i =n}^{\infty} A_i = (A_1 \cup A_2 \cup A_3 \cup \ldots) \cap (A_2 \cup A_3 \cup \ldots) \cap (A_3 \cup \ldots) \cap \ldots$
+Für jedes $n_0$ gibt es ein $n \geq n_0$, sodass im n-ten Wurf 6 gewürfelt wird. Die 6 wird \underline{unendlich oft} gewürfelt.
+\item $bigcup_{n = 1}^{\infty} \bigcap_{i = n}^{\infty} A_i = (A_1 \cap A_2 \cap \ldots) \cup (A_2 \cap \ldots) \cup \ldots$
+
+Es gibt ein $n_0$ mit $A_{n_0} \cap A_{n_0 + 1} \cap \ldots$ Ab dem $n_0$-ten Wurf wird immer 6 gewürfelt.
+
+Die 6 wird \enquote{fast immer} gewürfelt (es gibt endlich viele Ausnahmen.)
+
+\end{enumerate}
+
+\ssect{Defeinition Wahrscheinlichkeitsmodell}
+
+Sei $\sE$ ein Ereignisfeld über $\Omega$.
+
+Eine Abbildung
+\ilmath{p: \sE \rightarrow \bR: A \mapsto p(A)}
+heißt \underline{uWahrscheinlichkeitsmaß} und $p(A)$ die \underline{Wahrschinlichkeit} von A, wenn gilt:
+
+\begin{enumerate}
+\item $A \in \sE \implies 0 \leq p(A) \leq 1$
+\item $p(\Omega) = 1$
+\item Sind die Ergebnisse $A_1, A_2, \ldots$ \underline{paarweise unvereinbar} d.h. gilt
+\ilmath{\forall i,j mit i \neq j:A_i \cap A_j = \emptyset}
+dann gilt:
+\ilmath{p(\bigcup_{i = 1}^{\infty} A_i) = \sum_{i =1}^{\infty} p(A_i)}
+\end{enumerate}
+
+\ssect{Bemerkung}
+$p(\emptyset) = 0$, denn $p(\Omega \cup \emptyset) = \underbrace{p(\Omega)}_{=1} + p(\emptyset) = 1$
+
+Aus $p(A) = 0$ folgt nicht, dass $A = \emptyset$ gilt. A heißt \underline{fast unmögliches Ereignis}
+
+Aus $p(A) = 1$ folgt nicht, dass $A = \Omega$ gilt. A heißt \underline{fast sicheres Ereignis}
+
+\ssect{Satz: Siebformel}
+Falls paarweise Unvereinbarkeit nicht erfüllt ist, kann amn bei endlich vielen Ergebnissen die Siebformal anwenden.
+
+Für Ergebnisse $A_1, A_2, \ldots, A_n, n \geq 2$ gilt:
+
+\ilmath{p(\bigcup_{i =1}^{n} A_i) &= \sum_{i = 1}^n p(A_1) - \sum_{i < j} p(A_i \cap A_j) + \sum_{i < j < k} p(A_i \cap A_j \cap A_k) - \ldots + \ldots \\
+&= \sum_{k =1}^n (-1)^{k+1} \sum_{i_1 < \ldots < i_k} p(A_{i_1} \cap \ldots \cap A_{i_k})}
+
+\ssect{diskrete Wahrscheinlichkeitsräume $(\Omega, p)$}
+$\Omega = \Set{\omega_1, \omega_2, \ldots}$ (Menge von Elementarereignisse)
+
+$p: \Omega  \rightarrow [0,1]$ mit $\sum_{i =1}^\infty p(\omega_i) = 1$
+
+Bezeichnung:
+
+\ilmath{\m{\omega_1 & \omega_2 & \ldots \\ p(\omega_1) & p(\omega_2) & \ldots}}
+
+\ilmath{A= \Set{\omega_{i_1}, \omega_{i_2}, \ldots, \omega_{i_k}} \implies p(A) = \sum_{j = 1}^k p(w_{i_j})}
+
+\ssect{klassicher (kombinatorische) Wahrscheinlichkeitsbegriff}
+\begin{itemize}
+\item Annahme: Das Ereignisfeld ist ein Laplace-Feld, d..:
+\begin{itemize}
+\item nur endliche viele Vorsuchsdurchgänge/Ereignisse möglich
+\item die Versuchsdurchgänge beeinflussen sich nicht gegenseitig
+\item alle Versuchsduchgänge sind gleichmöglich
+\item bei jeder Versuchsdurchführung tritt genau ein Ereignis ein.
+\end{itemize}
+\item Definition: Sei $A \in \sE$ und $\sE$ ein Ereignisfeld.
+\ilmath{p(A) := \frac{\text{Anzahl der Versuchsdurchgänge, bei denen A eintritt}}{\text{Gesamtzahl der Versuchsdurchgänge}}}
+\end{itemize}
+
+\sssect{Beispiel: Geburtstagsproblem}
+siehe Wikipedia
+
+\ssect{Geometrischer Wahrscheinlichkeitsbegriff}
+\begin{itemize}
+\item Annahme:
+\begin{itemize}
+\item unendlich viele Vorsuchsdurchgänge/Ereignisse möglich
+\item die Versuchsdurchgänge beeinflussen sich nicht gegenseitig
+\item alle Versuchsduchgänge sind gleichmöglich
+\item bei jeder Versuchsdurchführung tritt genau ein Ereignis ein.
+\end{itemize}
+\item Definition: Bezeichnet $F(\Omega)$ den Flächeninhalt eines endlichen Gebiets G, das dem sicheren Ereignis $\Omega$ entspricht. und $F(x)$ dem Flächeninhalt eines Teilgebiets von G, das dem Ereignis A entspricht,
+dann heißt
+\ilmath{p(A) = \frac{F(A)}{F(\Omega)}}
+die \underline{geometrische Wahrscheinlichkeit} von A.
+\end{itemize}
+\end{document}

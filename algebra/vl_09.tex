@@ -1,0 +1,108 @@
+\documentclass{../tudscript}
+\author{Jakob Krebs}
+\title{Mathe VL 9}
+
+\begin{document}
+\sect{Satz vom primitiven Element}
+\ssect{Satz}
+Für jeden endlichen Körper GF(q) ist die multiplikative Gruppe zyklisch.
+\ssect{Bemerkung}
+In GF(q) gibt es ein Element $\alpha$ mit
+\ilmath{GF(q) &= \Set{0} \cup \Set{\alpha, \alpha^2, \ldots, \alpha^{q-1}} \text{ mit} \alpha^{q-1} =1 \\
+  &= \Set{0} \cup \langle \alpha \rangle}
+$\alpha$ wir ein \underline{primitives} Elemenet genannt.
+
+\ssect{Bemerkung}
+x ist ein primitives Element in $GF(p)[x] / f(x) \iff f(x)$ ist ein primitives polynom, mit $f(x)$ irreduzibel.
+\ssect{Beispiel}
+\begin{enumerate}
+  \item $x^4 + x^3 + 1$ ist primitiv über GF(2) $\implies x$ ist ein primitives Element im Körper %GF(2)[x]/ x^4 + x^3 + 1 \implies$
+    $GF(2)[x]/x^4+x^3 + 1$ hat die Elemente $0$ und $x^i mod x^4 + x^3 + 1 (i = 0, 1, \ldots, 2^4 -2)$ also $0, a, \alpha, \alpha^2, \ldots, \alpha^{14}$
+    Es gilt $GF(2)[x]/x^4 + x^3 + 1 = 0 \cup \langle \alpha \rangle$ mit $\alpha:= x \mod x^4 + x^3 + 1$
+
+    siehe Logarithmentafel
+  \item $x^4 + x^3 + x^2 + x +1$ ist nicht primitiv über $GF(2)$ $\implies x$ ist kein primitives Element im Körper $GF(2)[x] / x^4 + x^3 + x^2 + x + 1$
+    Aber: $GF(2)/x^4 + x^3 + x^2 + x + 1= 0 \cup \langle \alpha \rangle$ mit $\alpha := x+1 mod x^4 + x^3 + x^2 + x + 1$, d.h. $x + 1$ ist ein primitives Element.
+  \item Auch endliche Körper $GF(p), p prim$ enthalten primitive Elmenete
+    \begin{itemize}
+    \item $\bZ_3 = 0 \cup \langle 2 \rangle$
+    \item $\bZ_5 = 0 \cup \langle 2 \rangle = 0 \cup \langle 3 \rangle$
+    \item $\bZ_7 = 0 \cup \langle 3 \rangle = 0 \cup \langle 5 \rangle$
+    \end{itemize}
+\end{enumerate}
+\ssect{Bemerkung}
+Die multiplikative Gruppe von GF(q) enthält $q-1$ Elemente. $GF(q)$ enthält genau $\varphi(q-1)$ Elemente. Dabei bezeichnet $\varphi$ die Eulerische Phi Funktion
+\ilmath{\varphi(n) := \mid \Set{x \in \bZ_n \mid ggT(x, n) = 1}\mid}
+\ssect{Bemerkung}
+Endliche Körper $GF(p)[x]/f(x)$ sind Vektorrräume öber GF(p).
+Allgemein gilt:
+\begin{itemize}
+\item Der kleinste Teilkörper eines Körpers wird Primkörper genannt
+  \item Für jeden endliche Körper ist der Primkörper ein Körper GF(p)
+\end{itemize}
+\sssect{Folgerung}
+Endliche Körper K sind Vektorräume üuber GF(p). Daher haben endliche Körper $p^k$ Elemente.
+\ssect{Satz}
+Sind $K_1$ und $K_2$ endliche Körper mit $\mid K_1 \mid = \mid K_2 \mid$, dann sind $K_1$ und $K_2$ gleich.
+\sect{Minimalpolynome}
+\ssect{Definition: Minimalpolynom}
+Sei $GF(q) = GF(p^k, p prim$ ein endlicher Körper mit dem Primkörper $GF(p)$
+\ilmath{GF(q) = 0 = \cup \langle \alpha \rangle}
+Sei $\alpha^i \in GF(q) \setminus \Set{0}$.
+
+Das normierte Polynomkleinsten Grades in $GF(p)[x] \subseteq GF(q)[x]$, das $\alpha^i$ als Nullstelle hat, wird \underline{Minimalpolynom $m_{\alpha^i}(x)$} von $\alpha^i$ gennant.
+
+\ssect{Bemerkung}
+Normierte POlynome haben den höchsten Koeffizienten 1:
+\ilmath{1 \cdot x^k + a_{k-1} x^{k-1} + \cdots + a_1 x + a_0}
+\ssect{Bemerkung}
+$a^i$ ist Nullstelle von $m_{\alpha^i}(x) \iff x- \alpha^i$ ist ein Teiler von $m_{\alpha^i} (x)$
+\ssect{Bemerkung}
+\ilmath{M_{\alpha^i} (x) \in GF(p)[x]}
+
+\ssect{Eigenschaften von $m_{\alpha^i} (x)$}
+\begin{enumerate}
+\item $m_{\alpha^i} (x)$ ist irreduzibel über GF(p)
+\item $m_{\alpha^i} (x) = \prod_{j \in Z_i} (x - \alpha^j)$ mit $Z_i = \Set{i, ip, ip^2, ip^3, \ldots, ip^l}$, wobei $l > 0$, die kleinste natürliche Zahl mit
+  \ilmath{i\cdot p^{l-1} = i \mod p^k -1}
+  ist.
+  \item $m_{\alpha^i} (x) = m_{\alpha^{ipt}} (x)$ für alle $t \in \bN$
+\end{enumerate}
+\ssect{Beispiel}
+\ilmath{GF(q) \cong GF(2)[x] / x^4 + x^3 + 1, GF(p) \cong GF(2)}
+Bezeichnungn des Minimalpolynoms von $\alpha^3$:
+\ilmath{Z_3 = \Set{3, 3 \* 2, 3 \* 2^2, 3 \* 2^3}}
+denn $3 \* 2^4 \equiv 3 \mod 2^4 -1$
+Rechnung modulo $2^3 -1$
+\ssect{Bemerkung}
+Primitive Element $\alpha^i$ in $GF(2)[x] / x^4 + x^3 +1$:
+
+$\alpha^i$ mit $i \in \Set{1, 2, 4, 8, 7, 14, 13, 11}$ (d.h. $ggT(2^4 -1, i) = 1$)
+
+Minimalpolynome $m_{\alpha^i}(x)$, die primitive Polynome sind: (1, 2, 4, 3) und (7, 14, 13, 11)
+
+$m_{\alpha^o} (x)$ primitives Polynom $off \alpha^i$ primitives Element
+\sect{Primitive n-=te Einnheitswurzel}
+\ssect{Definition}
+Die Nullstellen von $x^n -1 \in GF(q)[q] (n \in \bN, n >0)$ nennt man n-te Einheitswurzeln in $GF(q)$.
+
+\ssect{Bemerkung}
+$\tilde{\alpha}$ ist eine n-te Einheitswurzel in GF(q) $\iff \alpha \in GF(q) und \tilde{\alpha}^n = 1$
+\ssect{Bemerkung}
+Die n-ten Einheitswurzeln bilden eine Untergruppe der multiplikativen von GF(q).
+
+Standard lame ass Beweis von Untergruppen...
+\ssect{Bemerkung}
+Die n-ten Einheitswurzeln bilden eine zyklische Untergruppe der multiplikativen Gruppe von GF(q).
+(denn Untergruppen von zyklische Gruppen sind zyklisch.)
+\ssect{Bemerkung}
+ist a eine n-te Einheitswurzel in GF(q),
+dann ist die Bedeutung von a in der multiplikativen Gruppe $GF(q) \setminus \Set{0}$ ein Teiler der ORdnung der multiplikativen Grippe, also filt
+\ilmath{ord(a) / q-1}
+wegen $ord(a)  = \mid \langle a \rangle \mid$ gilt auch
+\ilmath{\mid \langle \alpha \rangle \mid / q-1}
+
+\ssect{Definition}
+Eine n-te Einheitswurel in GF(q) heisst primitiv, wenn gilt:
+\ilmath{\mid \langle \alpha \rangle \mid = n}
+\end{document}

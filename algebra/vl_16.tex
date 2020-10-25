@@ -1,0 +1,60 @@
+\documentclass{../tudscript}
+\author{Jakob Krebs}
+\title{Mathe VL 16}
+
+\begin{document}
+\ilmath{(\sE, \Omega, p) \begin{cases} \text{diskret}: \Omega = \Set{\omega_1, \ldots} \\ \text{kontinuierlich}\end{cases}}
+
+\ssect{Definition: bedingte Wahrscheinlichkeiten}
+Sind A,b (zufällige) Ereignisse (aus dem Ereignisfeld $\sE$) und ist $p(B) > 0$, so wird die \underline{bedingte Wahrscheinlichkeit $p(A \mid B)$} wie folgt defineirt:
+\ilmath{p(A\mid B) := \frac{p(A \cap B)}{p(B)}}
+
+$p(A\mid B)$ ist die bedingte Wahrscheinlichkeit von A unter B.
+
+\ssect{Bemerkung}
+$P(. \mid B)$ ist eine Wahrscheinlichkeit, denn  für festes B gilt:
+
+\begin{enumerate}
+\item $0 \leq \frac{p(A \cap B)}{p(B)} = p(A \mid B) \leq \frac{p(A\cap B) + p(B \setminus A)}{p(B)} = 1$
+\item $p(\Omega \mid B) = \frac{p(\Omega \cap B)}{p(B)} = 1$
+\item $p(\bigcup_{i =1}^\infty A_i \mid B) = \frac{p(\bigcup_{i =1}^\infty A_i \mid B)}{p(B)} = \frac{p(\bigcup_{i =1}^\infty (A_i \cap B)}{p(B)} = \sum_{i =1}^\infty \frac{p(A_i \cap B)}{p(B)} = \sum_{i =1}^\infty p(A_i \mid B)$
+\end{enumerate}
+
+\ssect{Formel von Bayes}
+Seien $A, B \in \sE, p(A) > 0, p(B) > 0$. 
+
+Dann gilt:
+\ilmath{\boxed{\underbrace{p(A \mid B) \cdot p(B)}_{p(A \cap B)} = \underbrace{p(B \mid A) \cdot p(A)}_{p(B \cap A)}}}
+
+\ssect{Definition: Unabhängigkeit}
+Sei $\sE$ ein Ereignisfeld und $A, B \in \sE$. $A, B$ heißen \underline{unabhägig}, wenn gilt
+\ilmath{p(A \cap B) = p(A) \cdot p(B)}
+\sssect{Folgerung}
+$A, B$ unabhängig $\iff p(A \mid B) = p(A) \iff p(B \mid A) = p(B)$
+
+\ssect{Definition: paarweise Unabhängig}
+Sei $\sE$ ein Ereignisfeld und $A_1, A_2, \ldots, A_n \in \sE$.
+
+$A_1, \ldots, A_n$ heißen \underline{paarweise unabhängig}, wenn gilt:
+\ilmath{p(A_1 \cap A_2 \cap \ldots \cap A_n) = p(A_1) \cdot \ldots \cdot p(A_n)}
+
+\ssect{Definition: vollständiges Eregnisfeld}
+Sei $\sE$ ein ereignisfeld über $\Omega$ und $A_1, A_2, \ldots \in \sE$. Es gelte
+$\bigcup_{i =1}^\infty A_i = \Omega$ und $A_1, A_2, \ldots$ seien paarweise unvereinbar.
+Dann nennt man $\Set{A_1, A_2, \ldots}$ ein \underline{vollständiges Ereignisfeld}
+
+\sssect{Bemerkung}
+$Set{A_1, A_2, \ldots}$ ist ein Eregnisfeld über $\Omega$. $\Set{A_1, A_2, \ldots}$ ist eine abzählbare Menge von paarweise unvereinbaren Eregnissen, von denen eines mit sicherheite eintreten muss.
+
+\ssect{Satz von der totalen Wahrscheinlichkeit}
+
+Sei $\Set{A_1, \ldots}$ ein vollständiges Ereignisfeld über $\Omega$ und B ein belibiges Eregnis (über $\Omega$).
+Dann gilt:
+\ilmath{p(B) = \sum_{i =1}^\infty p(B \mid A_i) \cdot p(A_i)}
+
+\paragraph{Beweis:}
+
+$B = B \cap \Omega = B \cap \bigcup_{i =1}^\infty A_i = \bigcup_{i=1}^\infty (B \cap A_i) \implies
+p(B) = \sum_{i =1}^\infty p(B \cap A_i) = \sum_{i =1}^\infty p(B\mid A_i) \cdot p(A_i)\hfill\square$
+
+\end{document}

@@ -1,0 +1,90 @@
+\documentclass{../tudscript}
+\author{Jakob Krebs}
+\title{Mathe VL 10}
+
+\begin{document}
+\ssect{Beispiel: Einheitswurzeln}
+$GF(16) \cong GF(2)[x]/x^4+x^3+1, \alpha = x mod x^4+x^3+1$
+
+\begin{itemize}
+\item $\alpha$ ist eine primitive 15-te Einheitswurzel in GF(16), denn $|\langle \alpha \rangle| = 15$
+  Daher sind alle $\alpha^i$ mit $ggT(i, 15) = 1$ primitive 15-te Einheitswurzeln in GF(16)
+\item $\alpha^3$ ist eine prmitive 5-te Einheitswurzel in GF(16), denn $|\langle \alpha^3 \rangle| = 5$
+\item $\alpha^{10}$ ist eine primitive 3-te Einheitswurzel in GF(16), denn $\langle \alpha^{10} \rangle | = 3$
+\item GF(16) enthlt keine primitive 7-te Einheitswurzel
+\end{itemize}
+
+\sect{Satz} GF(q) mit $q = p^k, p prim, ggT(p, n = 1$ ethlt eine primitive n-te Einheitswurzel, gdw.
+\ilmath{n \mid p^k -1}
+gilt.
+\ssect{Bemerkung}
+$ggT(p, n) = 1 \implies x^n -1$ hat nur einfache Nullstellen.
+\ssect{Bemerkung}
+Bestimmen des kleinsten $k \in \bN, k > 0$ mit $n \mid p^k -1$ durch Probieren ist nicht effizient.
+\sssect{Beispiel}
+In welchen Körpern $GF(2^k)$ gibt es primitive 15-te Einheitswurzeln?
+Gesucht ist das kleinste $k \in \bN, k >0$
+
+\begin{itemize}
+\item $ggT(15,2) = 1 \implies GF(2^k)$ enthält eine primitive 15-te Einheitswurzel gdw $15 \mid 2^k = 1 \mod 15$
+\item $15 \mid 2^k -1 \iff 2^k -1 \equiv 0 (\mod 15) \iff 2^k \equiv 1 (\mod 15)$
+  \ilmath{\Set{2^1, 2^2, 2^3, 2^4} = \Set{2, 4, 8, 1} = Z_1}
+  immer $\cdot 2 mod 15$
+
+  Also gilt: $k = |Z_1| = 4$
+\item Außer in $GF(2^4)$ gibt es auch in $GF(2^8), GF(2^12, \ldots$ primitive 15-te Einheitswurzeln.
+  \end{itemize}
+
+\ssect{Allgemein}
+\begin{itemize}
+\item $n \mid p^k -1 \iff p^k \equiv 1 (\mod n)$
+\item $k = |Z_1| = |\Set{1, p, p^2, \ldots}| = ord_n (p)$ Ordnung von p in der Gruppe $(Z_{n}^{*}, \cdot) mit Z_{n}^* = \Set{x \in \bZ_n \mid ggT(x, n) = 1}$
+  ist das kleinste $k \in \bN \setminus \Set{0}$, sodass $GF(p^k$ primitive n-te Einheitswurzeln enthält.
+\end{itemize}
+
+\sssect{Beispiel}
+\begin{itemize}
+\item $n = 31, p = 2$
+  \ilmath{k = |Z_1| = |\underbrace{\Set{2, 4, 6, 16, 1}}_{\mod 31}| = 5}
+    In $GF(2^5) = GF(32)$ gibt es primitive 31-te Einheitswurzeln.
+\item $n = 23, p = 2$
+  \ilmath{k = |Z_1| = |\Set{2, 4, 8, 16, 9, 18, 13, 3, 6, 12, 1}| = 11}
+  In $GF(2^{11}) = GF(2048)$ gibt es primitive 23-te Einheitswurzeln.
+\end{itemize}
+\sect{effizientes Rechnen in $\bZ_n$}
+\begin{itemize}
+\item $h: \bZ_{m_1 \cdot m_2 \cdot \ldots} \rightarrow \bZ_{m_1} \times \bZ_{m_1} \times \bZ_{\ldots}: a \mapsto (a mod m_1, a mod m_2, \ldots)$
+  ist ein Homomorphismus
+\item Sind $m_!, m_2, \ldots$ paarweise Teilerfremd, dann ist die Abbildung h sogar ein Isomarphismus. (folgt aus dem chinisischen Restsatz)
+\item Man rechnet nicht in $\bZ_{m_1 \cdot m_2 \cdot \ldots}$, sondern in $\bZ_{m_1}, \ldots \bZ_{m_k}$ und transformiert das Ergebnis in $\bZ_{m_1 \cdot \ldots \cdot m_k}$
+\end{itemize}
+\sect{chinesicher Restsatz}
+Seien $m_1, \ldots, m_t$ in $\bN \setminus \Set{0, 1}$ paarweise Teilerfremd und $b_1,\ldots b_t \in \bZ$, dann gibt es modulo $m_1, \ldots, m_t$ genau ein x mit
+  \ilmath{x \equiv b_1 \mod m_1\\ \vdots x \\ \equiv b_t \mod m_t}
+  nämlich
+  \ilmath{x \equiv a_1 x_1 + \ldots + a_t x_t \mod m}
+  wobei $m := m_1 \cdot \ldots \cdot m_t$, $a_j := \frac{m}{m_j}, (j = 1, \ldots, t) a_j \cdot x_j = b_j \mod m_j$ erfüllt ist.
+
+  \ssect{Bemerkung}
+  Wegen $ggT(a_j, m_j) = 1$ ex. $a_{j}^{-1}$, sodass $a_j \cdot x_j \equiv b_j (\mod m_j)$ lösbar ist.
+
+  \sect{chinesischer REstsatz für Polynomringe über Körpern}
+  Seien $m_1(x), \ldots, m_t(x) \in K[x]$ (K Körper) paarweise tilerfremde Polynome vom Grad $\geq 1$ und $b_1(x), \ldots, b_t(x) \in K[x]$.
+  Dann gibt es modulo $m_1(x), \ldots, m_t(x)$ genau ein Polynom f(x) mit:
+  \ilmath{f(x) \equiv b_1(x) \mod m_1(x) \\ \vdots \\ f(x) \equiv b_t(x) \mod m_t(x)}
+  \ssect{Bemerkung}
+  Die Lösungen f(x) berechnet man analog zum Vorgehen in $\bZ$.
+  \ssect{Beispiel}
+  gesucht: $f(x) \in \bR[x]$ mit $f(x) = 3 (\mod x + 1), f(x) = x+2 \mod x^2 + x + 1)$
+
+
+  Ansatz:
+
+  $f(x) = a_1(x) p_1(x) + a_2(x) p_2(x)$ mit $a_1(x) = x^2 + x + 1, a_2(x) = x+ 1$
+
+  \begin{itemize}
+  \item $(x^2 + x + 1) p_1 (x) \equiv 3 \iff p_1(x) \equiv 3 \iff p_1(x) = 3$
+  \item $(x+1) p_2(x) \equiv x+2 \iff p_2(x) = (x+1)^{-1} (x+2) \iff p_2(x) = -x^2 =2x$
+  \end{itemize}
+$\implies f(x) = -x^3 + x + 1$
+\end{document}

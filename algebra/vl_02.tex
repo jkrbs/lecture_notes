@@ -1,0 +1,107 @@
+\sect{Isomorphieklassen von Gruppen}
+Isomorphe Gruppen unterscheiden sich nur in der Bezeichnung der Elemente.
+
+Die Isomorphie von Gruppen ist eine Aequivalenzrelation
+\ssect{Beispiel}
+Isomorphe Gruppen
+\begin{multicols}{2}
+\begin{tabular}{lllll}
+  $+$ & 0 & 1 & 2 & 3 \\
+  \hline\\
+  0 & 0 & 1 & 2 & 3 \\
+  1 & 1 & 2 & 3 & 0 \\
+  2 & 2 & 3 & 0 & 1 \\
+  3 & 3 & 0 & 1 & 2 \\
+\end{tabular}
+\columnbreak
+und
+\begin{tabular}{lllll}
+  $\cdot$ & 1 & -1 & i & -i \\
+  \hline\\
+  1 & 1 & 1- & i & -i \\
+  -1 & -1 & 1 & -i & i \\
+  i & i & -i & -1 & -1 \\
+  -i & -i & i & 1 & -1 \\
+\end{tabular}
+\end{multicols}
+\begin{tabular}{lllll}
+  $\cdot$ & 1 & i & -1 & -i \\
+  \hline\\
+  1 & 1 & i & -1 & -i \\
+  i & i & -1 & -i & 1 \\
+  -1 & -1 & -i & 1 & i \\
+  -i & -i & -1 & i & -1 \\
+\end{tabular}
+\ilmath{(G_1, +) \overset{f}{\cong} (G_2, +) mit f: 0 \mapsto 1, 1 \mapsto i, 2 \mapsto -1, 3 \mapsto -i}
+
+\sect{Eigenschaften von Isomorphismen}
+Sei $f: G_1 \rightarrow G_2$ ein Isomorphismus der Gruppe $(G_1, \circ_1)$ auf $(G_2, \circ_2)$
+\begin{enumerate}
+\item $e_1$ neutrales Element von $G_1 \implies f(e_1)$ neutrales Element von $G_2$
+\item $f(a^{-1}) = f(a)^{-1}$ 
+\item $ord (1) = oed (f(a))$
+\item U Untergruppen von $G_1 \implies f(U) = \Set{f(u) \mid e \in U}$ Untergruppe von $G_2$
+\item $G_1$ abelsch $\implies G_2$ abelsch.
+\end{enumerate}
+\sect{zyklische Gruppen}
+\ilmath{(Z_n, \circ)}
+\ilmath{Z_n = \langle a \mid a^n = \underbrace{a \circ \ldots \circ a = e}_{n \times}\rangle = Set{\underbrace{a^0}_{e}, A^1, \ldots, a^{n-1}} = \langle a \rangle}
+\ilmath{a^i \circ a^j := a^{(i + j) \mod n}}
+\ssect{Beispiel}
+$(\bZ_n, +)$ additive Restklalassengruppe mod n
+\ilmath{\bZ_n = \Set{0, 1, \ldots, n-1} = \langle 1 \rangle}
+\ssect{Bemerkung}
+\ilmath{(\bZ_n, +) \overset{f}{\cong} (\bZ_n, +)}
+\ilmath{f: e &\mapsto 0 \\ a &\mapsto 1 \\ a \circ a &\mapsto 1+1\\ f: a^i &\mapsto i}
+\sect{Eigenschaften zyklischer Gruppen}
+\begin{enumerate}
+\item Zyklische Gruppen sind abelsch.
+\item Untergruppen zyklischer Gruppen sind zyklisch.
+\item Zu jedem Teiler t von n gibt es in der Gruppe $\bZ_n$ genau eine Untergruppe der Ordnung t.
+\end{enumerate}
+\ssect{Beweis: Untergruppen zyklischer Gruppen sind zyklisch}
+$Z_n = \langle a \rangle$. U sei eine Untergruppe von $Z_n$.
+
+\paragraph{1. Fall}
+
+$|U| = 1$ d.h. $U = \Set{e}$ Dann ist U zyklisch: $U = \langle e \rangle$
+
+\paragraph{2. Fall}
+
+$|U| > 1$. Dann gilt $U = \langle a^j \rangle$, wobei $j > 0$ der kleinste Exponent mit $a^j \in U$ ist.
+D.h. U ist zyklisch.
+
+Denn: Sei
+\ilmath{a^k \in U, k + q \cdot j + r (0 \leq r \leq j)\\
+  &\implies a^k = (a^j)^q \cdot a^r\\
+  &\implies a^r = ((a^j)^q)^{-1} \circ a^k \in U\\
+  &\implies a^r \in U}
+Also gilt $r = 0$ und $a^k = (a^j)^q \in \langle a^j \rangle\hfill\square$
+\sect{Direktes Produkt}
+\ilmath{G_1 \times G_2 := \Set{(g_1, g_2) \mid g_1 \in G_1, g_2 \in G_2}}
+\ssect{Satz: Wann ist das direkte Produkt zyklisch}
+\ilmath{Z_m \times Z_n zyklisch \iff ggT(m, n) =1}
+\sect{Basissatz fuer endlich abelsche Gruppen}
+Jede endliche abelsche Gruppe ist isomorph zu einem direkten Produkt zyklischer Gruppen von Primenzahlpotenzordnungen.
+Diese Darstellung ist eindeutig bis auf die Reihenfolge der "Faktoren" im direkten Produkt.
+\ssect{Bemerkung}
+Damit kann man die Anzahl der Isomorphiklassen abelscher Gruppen der Ordnung n leicht bestimmen.
+\ssect{Satz}
+Jede endliche abelsche Gruppe ist isomorph zu einer Gruupe
+\ilmath{Z_{m_1} \times Z_{m_2} \times \ldots \times Z_{m_k}}
+mit
+\ilmath{m_1 | m_2, m_2 | m_3, \ldots, m_{k-1} | m_k}
+\ssect{Beispiel 1}
+Gesucht sind bis auf Isomorphie alle abelschen Gruppen der Ordnung 8.
+\ilmath{n = 8 = 2^3 = 2^2 \cdot 2^1 = 2^1 \cdot 2^1 \cdot 2^1}
+\ilmath{&Z_{2^3}  &\cong Z_8\\
+  &Z_{2^2} \times Z_{2^2} &\cong Z_4 \times Z_2 \cong Z_2 \times Z_4\\
+&Z_2 \times Z_2 \times Z_2 &\cong Z_2 \times Z_2 \times Z_2}
+
+\ssect{Beispiel 2}
+Gesucht sind bis auf Isomorphie alle abelschen Gruppen der Ordnung 108.
+\ilmath{n = 108 = 2^2 \cdot 3^3, 2^2 = 2^1 \cdot 2^1, 3^3 = 3^2 \cdot 3^1 = 3 \cdot 3 \cdot 3}
+
+\ilmath{z_4 \times Z_{27} &\cong Z_{108}\\
+  Z_4 \times Z_3 \times Z_9 &\cong Z_3 \times Z_{26}\\
+Z_4 \times Z_3 \times Z_3 \times Z_3 &\cong Z_3 \times Z_3 \times Z_{12}\\ etc.}

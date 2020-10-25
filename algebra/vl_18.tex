@@ -1,0 +1,87 @@
+\documentclass{../tudscript}
+\author{Jakob Krebs}
+\title{Mathe VL 18}
+
+\begin{document}
+\sect{Verteilung diskreter zufallsgrößen}
+\ssect{Verteilungsfunktion der Normalverteilung}
+\ilmath{\underbrace{f_X (x)}_{\varphi (X, \mu, \sigma^2)} \underset{\rightarrow}{integrieren} \underbrace{F_X (x)}_{F_X (x, \mu, \sigma^2)}}
+
+\ilmath{F_X (x, \mu, \sigma^2) = p(X < x) = \int_{- \infty}^x \varphi(t, \mu, sigma^2) dt}
+ist nicht elementar integrierbar
+
+\ilmath{p(a < X < b) = F_X (b, \mu, \sigma^2) - F_X (a, \mu, \sigma^2)}
+
+\ssect{Bemerkung}
+(Einzel) Berechnung der Werte von $F_X$ ist zu aufwendig, Tabellierung der WErte für ale Paare $(\mu, \sigma^2)$ ist nicht möglich.
+
+\ssect{standardisierte Normalverteilung}
+\ilmath{X (E(X) = \mu, D^2 (X) = \sigma^2) \underset{\rightarrow}{standardisierren} Z := \frac{X-\mu}{\sigma}}
+
+\ssect{Verteilungsfunktionder standardisierten Normalverteilung}
+\ilmath{\varphi(\frac{X-\mu}{\sigma}, 0, 1) \rightarrow \phi(\frac{X-\mu}{\sigma})}
+Verteilungsfunktion $F_Z (z)$ für die Parameter $(\mu, \sigma^2) = (0,1)$. Berechnung und Tabellierung der Werte (für $(\mu, ]\sigma^2) = (0,1)$)
+
+\ssect{Satz}
+Für die Verteilungsfunktion $F_X (x)$ einer $N(\mu, \sigma^2)$-verteilten Zufallsgröße X gilt:
+\ilmath{F_X (x) = \phi (\frac{x-\mu}{\sigma})}
+\sssect{Folgerung}
+$p(a < X < b) = F_X (b, \mu, \sigma^2) - F_X (a, \mu, \sigma^2) = \phi (\frac{b-\mu}{\sigma}) - \phi (\frac{a-\mu}{\sigma})$
+
+\sect{Diskrete gleichmäßige Verteilung}
+X ist die Wertemenge $\Set{x_1, \ldots, x_n}$ (endlich!) und die Werteverteilung $\m{x_1 & x_2 & \ldots & x_n \\ \frac{1}{n} & \frac{1}{n} & \ldots & \frac{1}{n}}$
+
+\begin{itemize}
+\item $E(X) = \sum_{i = 1}^n x_1 \* \frac{1}{n} = \frac{1}{n} \sum_{i =1}^n x_i$ (Durchschnitt)
+\item $D^2(X) = E(X^2) - (E(X))^2$ 
+\end{itemize}
+\ssect{Bemerkung}
+Eine gleichmäßige Verteilung auf abzählbar unendlich vielen Werten kann es nicht geben.
+\sect{Bernoulli-Verteilung}
+X ist die Wertemenge $\Set{0,1}$ und die Wahrscheinlichkeitsverteilung $\m{1 & 0 \\ p & 1-p}$
+\begin{itemize}
+\item $E(X) = 1p + 0 (1-p) = p$
+\item $D^2(X) = E(X^2) - (E(X))^2 = p(1-p)$
+\end{itemize}
+Ein Versuch, der nur zwei mögliche Ereignisse hat, heißt \underline{Bernoulli-Versuch} mit Parameter p (Erfolgswahrschinlichkeit)
+\sect{Binomialverteilung}
+Es werden n unabhängige Bernoulli-Versuche mnit Parameter p durchgeführt.
+
+X ist die Wertemenge $\Set{0, 1, \ldots, n}$ und die Wahrscheinlichkeitsverteilung $\m{0 & 1 & \ldots & n \\ p_0 & p_1 & \ldots & p_n}$ mit $p_i = \binom{n}{i} \* p^i \* (1-p)^{n-i}$ für $i = 0, 1, \ldots, n$.
+
+Insbesondere gilt:
+\ilmath{\sum_{i =0}^n p_i = \sum_{i =0}^n \binom{n}{i} p^i (1-p)^{n-i} = (p^i + (1-p)^n = 1^n = 1)}
+
+X kann als Summe von n unabhängigen Brounoulli verteilten Zufallsgrößen $X_i$ aufgefasst werden (mit einheitlichen Parameter p)
+\ilmath{X = X_1 + X_2 + \ldots + X_n}
+
+\ssect{Definition: unabhängige Zufallsgrößen}
+Die Zufallsgrößen $X_1, \ldots, X_n$ heißen unabhängig, wenn gilt:
+\ilmath{\forall (x_1, \ldots, x_n): p(X_1 = x_1, \ldots, X_n = x_n) = p(X_1 = x_1) \cdot \ldots \cdot p(X_n = x_n)}
+\ssect{Satz}
+Für Zufallsgrößen $X_1, \ldots, x_n$ und $X = a_1  X_1 + \ldots + a_n X_n, (a_1, \ldots, a_n \in R)$ gilt:
+\ilmath{E(X) a_1 E(X_1) + \ldots + a_n E(X_n)}
+\ssect{Satz}
+Für unabhängige Zufallsgrößen $X_1, \ldots, X_n$ gilt:
+\ilmath{E(X_1 \cdot \ldots \cdot X_n) = E(X_1) \cdot \ldots \cdot E(X_n)}
+\ilmath{D^2 (X_1 \cdot \ldots \cdot X_n) = D^2 (X_1) + \ldots + D^2(X_n)}
+\ssect{Folgerung}
+Ist X eine binomialle Zufallsgröße mit Parameter p und Wertemenge $\Set{0, 1, \ldots, n}$, dann gilt:
+
+\ilmath{E(X) = \ldots = np}
+\ilmath{D^2 (X) = \ldots = np(1-p)} 
+
+\sect{Poisson-Verteilung}
+X hat die Wertemenge $\Set{0, 1, \ldots}$ und die Wertevertelung $\m{0 & 1 & \ldots \\ p_0 & p_1 & \ldots}$ mit $p_i = \frac{\lambda^i}{i !} e^{-\lambda} (\lambda > 0)$ für $i = 1, 2, \ldots$
+
+\ilmath{E(X) = D^2(X)= \lambda}
+\ssect{Grenzwertsatz von Poisson}
+\ilmath{\lim_{n \to \infty, p \to 0, np = \lambda = const} \binom{n}{i} p^i (1-p)^{n-i} = \frac{\lambda^i}{i !} e^{-\lambda}} für $i = 0, 1, \ldots$
+
+\begin{itemize}
+\item Eregnisse treten nicht gleichzeitig ein
+\item wahrscheinlichkeit, dass ein Ereignis in einem Zeitintervall eintritt, ist proportional zur Intervalllänge
+\item Anzahl der Ereignisse in einem Intervall hängt nur von der Intervalllänge ab
+\sect{Hypergeometrische Verteilung}
+
+\end{document}

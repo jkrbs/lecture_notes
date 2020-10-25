@@ -1,0 +1,106 @@
+\documentclass{../tudscript}
+\author{Jakob Krebs}
+\title{Mathe VL 13}
+
+\begin{document}
+\ssect{Rückblick}
+\begin{itemize}
+\item Interpolationsbedingung zur Unterteilung $ x_0 < x_1 < \ldots < x_n$
+\ilmath{(x_0, y_0), (x_1, y_1), \ldots}
+\item Interpolationspolynom zu den Interpolationsbedingungn $(x_i, y_i), (i = 1, 2, \ldots, n)$
+\ilmath{p(x) = a_0 + a_1 x + \ldots + a_n x^n}
+
+\item Polynom gegeben, Werte gesucht \underline{Polynomauswertung} (Transformation T)
+\item Werte gegeben, Polynom gesucht \underline{Polynominterpolation} (inverse Transformation $T^{-1}$)
+
+\end{itemize}
+
+\ssect{Vandermonde - Determinante}
+\begin{itemize}
+\item Vandermonde - Matrix über einem Körper K:
+\ilmath{V(x_0, x_1, \ldots, x_n) = \m{1 & x_0 & x_{0}^2 & \ldots & x_{0}^n\\
+                                      1 & x_1 & x_{1}^2& \ldots & x_{0}^n\\
+                                      \vdots & \vdots  & & \vdots \\
+                                      1 & x_n & x_{n}^2 & \ldots & x_{n}^n}}
+\item Vandermonde - Determinante
+
+\ilmath{det V(x_0, x_1, \ldots, x_n) = \prod_{i > j, i, j \in {0, 1, \ldots, n}} (x_i - x_j)}
+\item \ilmath{|\Set{x_0, x_1, \ldots, x_n}| = n + 1 \implies det V(x_0, x_1, \ldots, x_n) \neq 0}
+
+\end{itemize}
+
+\ssect{Transformation}
+Transformation:
+\ilmath{T: K^{n+1} \rightarrow K^{n+1}: \m{a_0 \\ a_1 \\ \vdots \\ a_n} \mapsto \m{y_0 \\ y_1 \\ \vdots \\ y_n}}
+Die Transformation beschriebbt die Polynomauswertung von $p(x) = a_0 + a_1 x + \ldots + a_n x^n$ an den Stützstellen $x_0, x_1, \ldots, x_n$
+
+\ilmath{V(x_0, \ldots, x_n) \m{a_0 \\ a_1 \\ \vdots \\ a_n} = \m{y_0 \\ y_1 \\ \vdots \\ y_n}}
+
+Wegen $det(V(x_0, \ldots, x_n)) \neq 0$ exisiter $V(x_0, \ldots, x_n)^{-1}$, also ist T bijektiv.
+
+\ssect{Bemerkung}
+\begin{itemize}
+\item Zur Polynominterpolation mit $T^{-1}$ benötigt man $V(x_0, x_1, \ldots, x_n)^{-1}$.
+\item Aufwand zur Berechnung von $V(x_0, \ldots, x_n)^{-1}$ reduzieren, indem man $x_0, \ldots, x_n$ geschickt auswählt.
+\end{itemize}
+\ssect{Definition}
+Sei K ein Körper, $\omega \in K \setminus \Set{0}$. $\omega$ heißt \underline{primitive (n+1)te Einheitswurzel} in K, wenn $\omega$ in der multiplikativen Gruppe von K die Ordnung $n + 1$ hat.
+
+\ssect{Bemerkung}
+Für primitive (n+1)te einheitswurzel $\omega$ gilt:
+\ilmath{|\rangle \omega \langle| = |\Set{\omega^0, \omega^1, \ldots, \omega^n}| = n+1}
+Man kann im Exponenten modulo n+1 rechnen.
+
+\ssect{Satz}
+Ist $\omega$ eine primitive (n+1)te Einheitswurzel im Körper K, dann gilt:
+\ilmath{\sum_{k = 0}^n (\omega^\alpha)^k = \begin{cases} n + 1, \alpha = 0 \\ 0, \alpha \in \Set{1, 2, \ldots, n}\end{cases}}
+
+\% hier Beweis einfügen
+
+\ssect{Bemerkung}
+\ilmath{\omega^\alpha -1 \neq 0}, denn $\alpha \neq 0$
+\ssect{Bemerkung}
+Im Körper $\bC$ der komplexen Zahlen gibt es für jedes $n > 0$ primitive (n+1)te Einheitswurzeln:
+\ilmath{\omega = e^{\frac{2 \pi}{n + 1} i}}
+ist eine primitive (n + 1)te Einheitswurzel.
+$\omega^j$ mit $ggT(j, n + 1) = 1$ sind primitive (n+1)te Einheitswurzeln.
+
+\ssect{Bemerkung}
+Bei $ggT(p, n) = 1$, p Prim.
+
+\ilmath{GF(p^k)} mit $n+1\ p^k -1$ ($k > 0$, k minimal) ist der Körper mit kleinstem k, sodass $(GF(p^k)$ prmitive (n+1)te Einheitswurzeln enthält.
+
+\ssect{DFT}
+Polynomauswertung an den Stützstellen $\omega^0, \omega^1, \ldots, \omega^n$ für eine primitive (n+1)te Einheitswurzel $\omega$.
+
+\underline{DFT Matrix $D_{n+1, \omega}$}
+
+\ilmath{D_{n+1 , \omega} + V(x_0, x_1, \ldots, x_n) = \m{1 &  \omega^0 & (\omega^0)^2 & \ldots \\
+                                                         1 &  \omega^1 & (\omega^1)^2 & \ldots \\
+                                                         \vdots & \vdots & \vdots & \vdots}\\
+        \implies D_{n+1 \omega} = (\omega^{i \cdot j})_{i, j = 0, 1, \ldots, n}}
+
+\ssect{Beispiel}
+
+$K = \bC, p(x) = 1 + 2x + x^3 \rightarrow \boxed{n+1 = 4, \omega = i}$
+
+\ilmath{D_{4, \omega} = \m{1 & 1 & 1 & 1 \\
+                           1 & i & -1 & -i \\
+                           1 & -1 & 1 & -1 \\
+                           1 & -i & -1 & i}}
+
+\ssect{Bemerkung}
+\ilmath{D_{n+1, \omega}^{-1} = \frac{1}{n+1} D_{n+1, \omega^{-1}}}
+\sssect{Beweis}
+Man kann zeigen, dass
+\ilmath{D_{n+1, \omega} \cdot (\frac{1}{n+1} D_{n+1}, \omega^{-1}) \overset{=}{\star} E_n}
+gilt.
+
+\% too lazy to tex
+\ssect{inverse DFT Transformation}
+Polynominterpolation mit den INterpolationsbedingungen
+$(\omega_0, y_0), \ldots, (\omega_n, y_n)$ für eine primitive (n+1)te Einheitswurzel $\omega$:
+
+Inverse der DFT Matrix $D_{n+1, \omega^{-1}}$
+\ilmath{D_{n+1, \omega}^{-1} = \frac{1}{n+1} D_{n+1, \omega^{-1}}}
+\end{document}

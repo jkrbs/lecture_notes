@@ -1,0 +1,98 @@
+\documentclass{../tudscript}
+\author{Jakob Krebs}
+\title{Mathe VL 8}
+
+\begin{document}
+\ssect{Definition}
+Sei K ein Körper, $f(x) \in K[x]$.
+f(x) heißt \underline{irreduzibel über K}, wenn es keine Polynome $a(x), b(x) \in K[x]$ gibt, sodass
+\ilmath{f(x) = a(x) \odot b(x)}
+und
+\ilmath{0 < grad(a(x)) \leq grad(b(x)) < grad(f(x))}
+gilt.
+
+\sssect{Beispiel}
+\begin{enumerate}
+\item $x^4 + 1 = (x+1)^4$ ist nicht irreduziebel über $GF(2)$
+\item $x^3 + x + 1$ ist irreduzibel über $GF(2)$ (sonst müsste eines der Polynome x, x+1 von Grad 1 ein Teiler von $x^3 + x+1$ sein)
+\item In $GF(3)$ gilt: $2 (x+2) = 2x+1$ Dennsoch ist $2x+1$ irreduzibel über $GF(3)[x]$
+\end{enumerate}
+
+\ssect{Bemerkung}
+Sei K ein Körper, $f(x) \in K[x], a \in K$
+\ilmath{\underbrace{f(a) = 0}_{\text{a Nullstelle von f(x)}} \iff \underbrace{x-a \mid f(x) in K[x]}_{\text{x -a ist ein Teiler von f(x) in K[x]}}}
+\paragraph{Beweis}
+$\implies$:
+
+Division mit Rest: $f(x) = q(x) \odot (x-1) \oplus r (r const.) \implies f(a) = q(a) \odot (x-a) \oplus r \implies 0 = r$
+
+$\Leftarrow$:
+
+$x-a \mid f(x)$ in $K[x] \implies \exists q(x) \in K[x]: f(x) = q(x) \odot (x-a) \implies f(0) = q(a) \odot (x-a) \implies f(a) = 0 \hfill\square$
+
+\ssect{Beispiel}
+%TODO
+\sect{Plynomring modulo f(x)}
+$(K[x]/f(x), \oplus, \odot)$ mit
+\ilmath{K[x]/f(x) := \Set{a(x) \mod f(x) \mid a(x) \in K[x]}\\ = \Set{0} \cup \Set{r(x) \mid r(x) \in K[x], grad(r(x)) < k}}
+und $a(x) \odot b(x) := a(x) \odot b(x) mod f(x)$
+
+Der Polynomring modulo f(x) ist ein Körper genau dann, wenn f(x) irreduzibel ist.
+
+\ssect{Bemerkung}
+Sei $K = GF(p)$ und $Grad(f(x)) = k$
+Dann hat der Polynomring modulo f(x) genau $p^k$ Elemente, nämlich
+\ilmath{r(x) = r_0, r_1 x, r_2 x^2 + \ldots r_{k-1} x^{k-1}}
+mit
+\ilmath{r_i \in \Set{0, \ldots, p-1} für i = 0, \ldots, k-1}
+
+\sssect{Beispiel}
+Körper mit $2^3$ Elementen
+
+$GF(2^3): GF(2)[x]/ \underbrace{x^3 + x + 1}_{irreduzibel} = \Set{0, 1, x, x+1, x^2, x^2 + 1, x^2 + x, x^2 + x + 1}$
+
+$a(x) = x+1, b(x) = x^2 + x + 1, a(x) \oplus b(x) = x^2, a(x) \odot b(x) = x^3 + x^2 + x + x^2 + x+ 1 \mod x^2 + x + 1 = x^3 + 1 \mod x^2 + x + 1 = x$
+
+%TODO @cmrs: fill all the gaps
+
+\sect{Definition: primitives Polynom}
+Sei $K = GF(p)$ und $f(x) \in K[x]$ ein irreduzibeles Plynom vom Grad k.
+f(x) heißt \underline{primitiv} über K, wenn gilt:
+\ilmath{min \Set{l \in \bN \setminus \Set{0} \mid x^l \mod f(x) = 1} = p^k -1}
+\ssect{Bemerkung}
+Es gilt $x^{p^k -1} \mod f(x) = 1$, also existiert das Minimum.
+
+\ssect{Bemerkung}
+Ist f(x) primitiv, dann gilt:
+\ilmath{\mid \Set{\underbrace{x^0 mod f(x)}_{ = 1}, x^1 mod f(x), x^2 mod f(x), \ldots, x^{p^k -2} mod f(x)}\mid = p^k -1}
+
+$p^k -1$ ist die Ordnung der multiplikativen Gruppe des Körpers $GF(p)[x]/f(x)$
+
+
+\ssect{Beispiel}
+(1) $f_3 (x) = x^4 + x^3 + x^2 + x + 1 \in GF(2^x)$ ist nicht primitiv über GF(2), denn:
+\begin{itemize}
+\item $x^0 mod f(x) = 1$
+\item $x^1 mod f(x) = x$
+\item $x^2 mod f(x) = x^2$
+\item $x^3 mod f(x) = x^3$
+\item $x^4 mod f(x) = x^3 + x^2 + x + 1$
+\item $x^5 mod f(x) = x \odot (x^3 + x^2 + x + 1) mod f(x) = x^4 + x^3 + x^2 + x mod f(x) = 1$
+\end{itemize}
+$\implies |\Set{x^l mod f(x)| l \in \bN} | = 5 < 2^4 -1$
+
+\ssect{Bemerkung}
+Allgemein gilt: Sei $f(x) \in GF(p)[x]$ ein primitives Polynom vom Grad k über GF(p).
+
+Elemente des Körpers $GF(p)[x]/f(x)$:
+
+\ilmath{0, 1, x mod f(x), x^2 mod f(x), \ldots, x^{p^k -2} mod f(x)}
+
+Multiplikation in $GF(p)[x] / f(x)$:
+
+\ilmath{x^i \mod f(x) \odot x^j \mod f(x) = x^{(i+j) mod p^k -1} mod f(x)}
+
+Berechnung inverser Elemente bzgl. $\odot$ in $GF(p)[x] / f(x)$:
+
+\ilmath{(x^i \mod f(x))^{-1} = x^{p^k -1 - i} \mod f(x)}
+\end{document}

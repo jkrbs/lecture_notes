@@ -1,0 +1,49 @@
+\documentclass{../tudscript}
+\author{Jakob Krebs}
+\title{Mathe VL 20}
+
+\begin{document}
+\sect{Markov Ketten}
+Folge von Zufallsgrößen $(X_t)_{t \in \bN}$ betrachten. mit
+\ilmath{X_t : \Omega \rightarrow \Set{0, 1, \ldots, n-1}}
+\ilmath{i, j \in S \text{ mit } p_{ij} = p(X_{t+1} = j \mid X_{t} = i)}
+$p_{ij}$ unabhängig von t: zeithomogen\\
+
+Markov Eigenschaft:
+\ilmath{P_{ij} = P(X_{t+1} = j \mid X_t = i, \forall k \in I \subseteq \Set{0, 1, \ldots, t-1}: X_k = s_k (\in S))}
+für alle solche Mengen I.\\
+gedächtnislos\\\\
+
+Wahrscheinlichkeitsraum einer MArkov-Kette: $(\Omega, p)$
+Zeitpunkte: $0, 1, \ldots, t_0$\\
+durchlaufene Zustände:
+\ilmath{\omega = (x_0, x_1, \ldots, x_{t_0}) \in \Set{0, 1, \ldots, n-1}^{t_0 +1} = \Omega}
+
+\ilmath{p(\omega) &= p (X_0 = x_0) p(X_1 = x_1 \mid X_0 = x_0) p(X_2 = x_2 \mid X_1 = x_1) \cdot \ldots \cdot p(X_{t_0} = x_{t_0} \mid X_{t_0 -1} = x_{t_0 -1})\\
+&=(q_0)_0 \cdot \prod_{i =0}^{t_0} p (X_i = x_i \mid X_{i -1} = x_{i -1})}
+
+\ilmath{\sum_{\omega \in \Omega} p(\omega) = 1}
+
+\ssect{Bemerkung}
+Die Beschreibung einer Markovkette mit Zustandsmenge $\Set{0, 1, \ldots, n-1}$ ist durch
+Angeabe einer \enquote{Übergangsmatrix P} und einem \enquote{Startverktor $q_0$} möglich:
+\ilmath{P = (p_{ij})_{i, j = 0, 1, \ldots, n-1}:\text{ Übergangsmatrix}}
+Alle Zeilensummen sind 1.\\
+Startvektor $q_t$ zur Zustandsmenge $\Set{0, 1, \ldots, n-1}$\\
+\ilmath{q_t = \m{ (q_t)0 & (q_t)_1 & \ldots & (q_t)_{n-1}}}
+mit
+\ilmath{(q_t)_i = p(X_t = i)}
+mit
+\ilmath{\sum_{i = 0}^{n-1} (q_t)_i = 1}
+
+Berechung von $Q_{i +1}$:
+\ilmath{(q_{t +1})_k = p(X_{t+1} = k) &= \sum_{i =0}^{n-1} p(X_{t+1} = k \mid X_t = i) \cdot p(X_t =i)\\
+        &= \sum_{i =0}^{n-1} (q_t)_i \cdot p_{ik}\\
+        &= (q_t \cdot P)_k \text{ für } k = 1, 2, \ldots, n-1}
+\ilmath{\implies q_{t+1} = q_t \cdot P}
+\ilmath{\implies q_t = q_0 \cdot P^t}
+
+Klassiche Fragestellungen:
+Langfristige entwicklungen $\lim_{t \to \infty} q_t$
+stationärer Zustand: sationäre Zustaände sind Eigenvektoren zum Eigenwert 1 der Übergangsmatrix P
+\end{document}

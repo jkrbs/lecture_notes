@@ -1,0 +1,140 @@
+\documentclass{../tudscript}
+\title{Mathe VL 17}
+\author{Jakob Krebs}
+
+\begin{document}
+    \sect{Definition: Zufallsgröße}
+Sei $(\Omega, \sE, p)$ ein Wahrscheinlichkeitsraum. Eine Abbildung
+\ilmath{X: \Omega \rightarrow \bR: \omega \mapsto X(\omega)}
+heißt \underline{Zufallsgröße}, wenn für jedes $x \in \bR$ gilt:
+\ilmath{\Set{\omega \in \Omega \mid \underbrace{X(\omega) < x}_{\text{kurz:} X < x}} \in \sE}
+\ssect{Bemerkung}
+Zufallsgrößen beschreiben zahlenmäßig erfassbare Merkmale zufälliger Ereignisse.
+
+Jedem Intervall $(- \infty, x)$ entspricht ein zufälliges ERegnis.
+
+Zufallsgrößen besitezen Verteilungsfunktionen.
+
+\sect{Definition: Verteilungsfunktion}
+
+Sei $(\Omega, \sE, p)$ ein Wahrscheinlichkeitsraum und X eine Zufallsgröße.
+
+Die Abbildung
+\ilmath{F_{X}: \bR \rightarrow [0,1]: x \mapsto F_X (x)}
+mit 
+\ilmath{F_X (x) = p(X <x)}
+heißt \underline{Verteilungsfunktion} von X.
+
+\ssect{Bemerkung}
+$F_X$ liefert Informationen über X, ohne Einzelwahrscheinlichkeiten explizit anzugeben. Mit Hilfe von $F_X$
+kann man Wahrscheinlichkeiten für Zahlen bzw. Intervalle berechnen (ohne Kenntnis über die Eregnisse):
+
+\begin{enumerate}
+\item $p(X < c) = F_X (c)$
+\item $p(X \geq c) = 1 - F_X (c)$
+\item $p(X = c) = F_X (c + 0) - F_X (0)$, denn $(- \infty, c] = (-\infty, c) \cup \Set{c} \implies p(X \leq c) = p(X < c) + p(X = c)\implies F_X (c + 0) = F_X (c) + p(X = c)$
+\item $p(a < X < b) = F_X (b) - F_X (a+0)$, denn $(-\infty, b) = (-\infty, a] \cup (a,b) \implies p(X < b) = p(X < a +0) = p(a < X < b)$
+\item $p(a \leq X < b) = F_X (b) - F_X (a)$, denn $(-\infty, b) = (- \infty, a) \cup [a, b) \implies p(X < 0) = p(X < a) + p(a \leq X < b)$
+\item $p(a < X \leq b) = F_X (b + 0) - F_X (a +0)$
+\item $p(a \leq X \leq b) = F_X (B +0) - F_X (a)$
+
+\end{enumerate} 
+
+\ssect{Verteilungsgrößen}
+\begin{enumerate}
+\item diskret
+\begin{itemize}
+\item können nur abzählbar viele Werte annehmen (endlich viele, oder abzählbar unendlich viele)
+\item haben als Verteilungsfunktion eine Treppenfunktion
+\end{itemize}
+\item stetig/kontinuierlich
+\begin{itemize}
+\item können alle Werte aus einem reelen Intervall annehmen
+\item werden duch Angabe einer Dichte(funktion) der Zufallsgröße X definiert (konkrete Def. folgt)
+\end{itemize}
+\end{enumerate}
+
+\sect{Definition: diskrete Zufallsgröße}
+Eine \underline{diskrete Zufallsgröße X} nähert Werte $x_1, x_2, \ldots$ mit Wahrscheinlichkeiten 
+$p_i = p(X = x_1) > 0 (i = 1, 2, \ldots)$ an und es gilt
+\ilmath{\sum_{i =1}^\infty p_1 = 1}
+\ilmath{\m{x_1 & x_2 & \ldots \\ p_1 & p_2 & \ldots} \text{ wird Wahrscheinlichkeitsverteilung auf X genannt}}
+Die Verteilungsfunktion von X ist
+\ilmath{F_X (x) = p(X < x) = \begin{cases} 0, x \leq x_1 \\ p_1, x_1 < x \leq x_2 \\ p_1 + p_2, x_2 < x \leq x_2 \\ \vdots \end{cases}}
+
+\sect{Kenngrößen von Zufallsgrößen X}
+\begin{itemize}
+\item EX: Erwartungswert liefert Informationen über X, ohne die Einzelwahrscheinlichkeiten und die Verteilungsfunktion zu kennen.
+\item $D^2 X$: Streuung, Varianz präzisiert diese Information.
+\end{itemize}
+
+\sect{Definition: Erwartungswert}
+Sei X eine diskrete Zufallsgröße mit der Wahrscheinlichketisverteilung $\m{x_1 & x_2 & \ldots \\ p_1 & p_2 & \ldots}$.
+\ilmath{E(X) := \sum_{i =1}^\infty x_i p_i}
+heißt Erwartungswert von X, falls die Reihe $\sum_{i=1}^\infty x_i p_i$ absolut konvergent ist.
+
+Ansonsten existiert kein Erwartungswert.
+
+\ssect{Bemerkung}
+$E(X)$ (Bezeichnung auch EX) ist ein gewichteter Mittelwert mit den Wahrscheinlichkeiten $p_i$ als Gewicht.
+
+\ssect{Bemerkung}
+\begin{enumerate}
+    \item $E(aX + b) = a \cdot E(X) + b$
+    $\m{x_1 & x_2 & \ldots\\ p_1 & p_2 & \ldots}$ $\omega$-Verteilung von $X \implies \m{a x_1 + b & a x_2 + b & \ldots \\ p_1 & p_2 & \ldots}$ $w$-Verteilung von $a X + b$
+
+    \item $E (X - E (X)) = 0$
+    
+    $X \overset{\longrightarrow}{zentrieren} X - E(X)$
+
+    \ilmath{E(\overset{1}{a} \cdot X + (- E(X))) = 1 \cdot E(X) = 0}
+\end{enumerate}
+
+\sect{Definition}
+Sei X eine diskrete Zufallsgröße mit dem Erwartungswert E(X).
+\ilmath{D^2 (X) := E((X - E(X))^2}
+heißt Varianz von X, falls der Erwartungswert $E((X - E(X))^2)$ existiert. Andernfalls existiert $D^2 (X)$ nicht.
+
+\ilmath{\sigma := \sqrt{D^2(x)}}
+heißt \underline{Standartabweichung von X}.
+\ssect{Bemerkung}
+$X: \m{x_1 & x_2 & \ldots \\ p_1 & p_2 & \ldots}$
+
+$(X - E(X))^2: \m{(x_1 - E(x))^2 & (x_2 - E(X))^2 & \ldots \\ p_1 & p_2 & \ldots}$ 
+
+\ssect{Bemerkung}
+\begin{enumerate}
+\item $D^2 (X) = E(X^2) - E(x)^2$
+\item $D^2(aX +b) = a^2 D^2(X)$
+\item $D^2 (\frac{X}{\sqrt{D^2 (X)}}) = 1$
+\end{enumerate}
+
+\ssect{Bemerkung}
+
+$X \overset{\longrightarrow}{Standardisieren} \frac{X - E(X)}{\sqrt{D^2 (X)} =: Y }$
+hat Erwartungswert 0 und Varianz 1.
+
+Standardisieren besteht aus Zentrieren und Normieren.
+\sect{Definition: stetige Zufallsgröße}
+Eine Zufallsgröße X heißt \underline{stetig}, wenn es eine nicht negative stückweise stetige Funktion $f_X$ gibt, sodass für alle reelen Zahlen $a, b$ mit $a \leq b$ gilt:
+
+\ilmath{p(a \leq X \leq b) = \int_{a}^b f_X(x) dx}
+Die Funktion $f_x$ heißt \underline{Dechte(funktion)} der Zufallsgröße X.
+
+\ssect{Bemerkung}
+Für stetige Zufallsgrößen gilt
+\ilmath{p(X = c) = \int_{c}^c f_X (x) dx = 0}
+Daher lassen sie sich nicht durch Einzelwahrscheinlichkeiten beschreiben.
+
+\sect{Normalverteilung}
+\ssect{Definition}
+Seien $\mu, \sigma \in \bR$, $\sigma > 0$.
+Seine stetige Zufallsgröße X heißt $N(\mu, \sigma)$ verteilt (normalverteilt mit den Parametern $\mu$ und $\sigma^2$),
+wenn die Dichte $f_x$ die Form
+\ilmath{f_X (x) = \frac{1}{\sqrt{2 \pi} \* \sigma} e^{-\frac{(x-\mu)^2}{2\mu^2}} (x \in \bR)}
+hat.
+\ssect{Bemerkung}
+\ilmath{\int_{-\infty}^\infty \varphi (x, \mu, \sigma^2) dx = 1}
+Die Dichte der Normalverteilung ist nicht elementar integrierbar.
+
+\end{document}
